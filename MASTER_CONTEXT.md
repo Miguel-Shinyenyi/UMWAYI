@@ -1,6 +1,6 @@
 # Master Context
 
-Last updated: 2026-09-16
+Last updated: 2026-09-18
 
 ## Who this is for
 
@@ -12,11 +12,12 @@ Prior experience at IBM Research Nairobi and Quikk API.
 
 Become a strong technical writer, backend engineer, and AI engineer. Qualify for roles with
 better ease. Be able to explain what he knows without the original context in front of him.
-Understand people and interact without condescension or intellectual superiority.
+Understand people and interact without condescension or intellectual superiority. A master's
+degree at CMU sits alongside these, not separate from them.
 
 ## The method
 
-Observe → Name → Investigate → Record → Learn → Govern.
+Observe, Name, Investigate, Record, Learn, Govern.
 
 This applies to the journal, and it applies to how the projects below get built: TDD,
 observability, architecture, documentation as context, CI/CD, security, server setup where
@@ -29,8 +30,10 @@ where the observation gets tested against something real.
 |---|---|---|
 | Journal | `journal/entries/` | Daily observation. Weather check-in, then whatever the entry needs. |
 | Weekly summaries | `journal/weekly-summaries/` | What the week's entries actually showed, not a highlight reel. |
-| Career prep | `projects/career-prep.md` | Ezra and other target roles. Interview prep, applications, what's working and what isn't. |
+| Career prep | `projects/career-prep.md` | PostHog (primary), Ezra (secondary), and other roles. Interview prep, applications, what's working and what isn't. |
+| CMU masters | `projects/cmu-masters.md` | Fall 2027 application cycle. Feeds from the writing, backend, and AI engineer goals. |
 | Settlement engine | `projects/settlement-engine.md` | Idempotent Settlement and Reconciliation Engine. Portfolio project for fintech backend roles. |
+| Routine system | `projects/routine.md` | Personal consistency tool. Context parked, build not started. |
 | Website | `website/PLAN.md` | Personal site. Design should reflect the same hub-and-spoke thinking: self, philosophy, technology, people, and how they connect. |
 | Articles | `articles/` | Weekly pieces on how the observation, the tech, and the philosophy fit together. Published to the site, Hashnode, dev.to, Medium, LinkedIn. |
 
@@ -44,13 +47,19 @@ where the observation gets tested against something real.
 - I update project files from journal entries only when the connection is clear, not because
   a connection is available.
 - I log every sync in `SYNC_LOG.md` so the trail is visible.
+- No em dashes in anything written here.
 
 ## Current open threads
 
-- Journaling practice: started. First entry on record concerns the gap between knowing
-  something and being able to explain it, which showed up in interview performance.
-- Career prep: Ezra is the primary target. CV and cover letter already tailored around real
-  Global Link+ metrics.
+- Journaling practice: active. First entry tested the knowing-versus-explaining hypothesis
+  against a real technical topic. Result: the hypothesis didn't hold for that topic. See
+  `journal/entries/2026-09-16.md` and `projects/career-prep.md` for the full shift.
+- Career prep: PostHog is now the primary target. Not selected after final round, feedback
+  from the hiring contact and open questions about it are recorded in `career-prep.md`, not
+  yet worked through. Ezra kept as a secondary target.
+- CMU masters: Fall 2027 cycle open now, final deadline 2026-12-09. Program choice (MSCS,
+  MSAII, MSE) and test timeline (GRE, TOEFL/IELTS) both still undecided.
 - Settlement engine: architecture and documentation system designed. Phase 1 not started.
-- Website and publishing pipeline: not started. Accounts on dev.to and Medium still need
-  creating.
+- Routine system: daily inventory recorded. Priority, frequency, and build not yet discussed.
+- Website and publishing pipeline: initial Astro scaffold built, not yet deployed. Accounts
+  on dev.to and Medium still need creating.
