@@ -53,3 +53,16 @@ Record of what moved from a journal entry into a project file, and why.
   doc inconsistency (test count mismatch between PROJECT.md and testing.md) for
   Routine Machine, not yet corrected.
 - Confidence: factual confirmation of work already done and reviewed, no pattern claims.
+
+
+## 2026-09-18 (Phase 2 confirmed)
+
+- Source: `journal/entries/2026-09-18.md` (continued, Phase 2 done)
+- Updated: `MASTER_CONTEXT.md`, correcting two stale status lines for routine-machine and
+  the website.
+- What moved: confirmed Phase 2 built, tested, and pushed, matching its documentation.
+  Independently reran the intelligence service's suite, 18 passed. Noted the recurring
+  pattern of manual end-to-end verification catching bugs the test suite alone didn't, for
+  the second phase running.
+- Confidence: factual confirmation, no pattern claims beyond noting the recurrence itself,
+  which is observed twice, not yet established.

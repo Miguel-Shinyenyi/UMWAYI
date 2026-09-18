@@ -33,8 +33,8 @@ where the observation gets tested against something real.
 | Career prep | `projects/career-prep.md` | PostHog (primary), Ezra (secondary), and other roles. Interview prep, applications, what's working and what isn't. |
 | CMU masters | `projects/cmu-masters.md` | Fall 2027 application cycle. Feeds from the writing, backend, and AI engineer goals. |
 | Settlement engine | `projects/settlement-engine.md` | Idempotent Settlement and Reconciliation Engine. Private repo `Invoice-Financing`, all nine build phases done and deployed to staging. |
-| Routine machine | `projects/routine-machine.md` | AI project: logs routines and learning, phases toward active reprioritization. Own repo, built with Claude Code. Reads this hub's journal and articles directly. |
-| Website | `website/PLAN.md` | Personal site. Design should reflect the same hub-and-spoke thinking: self, philosophy, technology, people, and how they connect. |
+| Routine machine | `projects/routine-machine.md` | AI project: logs routines and learning, phases toward active reprioritization. Own repo, built with Claude Code. Phases 1 and 2 done and verified. Reads this hub's journal and articles directly. |
+| Website | `website/PLAN.md` | Personal site. Live on GitHub Pages, design implemented in full. |
 | Articles | `articles/` | Weekly pieces on how the observation, the tech, and the philosophy fit together. Published to the site, Hashnode, dev.to, Medium, LinkedIn. |
 
 ## Standing principles for how I (Claude) operate here
@@ -63,7 +63,8 @@ where the observation gets tested against something real.
   MSAII, MSE) and test timeline (GRE, TOEFL/IELTS) both still undecided.
 - Settlement engine: found to be fully built, not just designed, all nine phases done and
   verified on a live staging server. Next step is a real read-through, not further planning.
-- Routine machine: documentation complete and pushed to its own repo. Code being built
-  separately with Claude Code, tracked here by checking the repo.
-- Website and publishing pipeline: initial Astro scaffold built, not yet deployed. Accounts
+- Routine machine: Phases 1 (logging, rule-based suggestion) and 2 (pattern detection) both
+  built, tested, and verified end to end. Phase 3 (active reprioritization) is gated on real
+  usage data accumulating first, not started.
+- Website and publishing pipeline: live on GitHub Pages, design fully implemented. Accounts
   on dev.to and Medium still need creating.
