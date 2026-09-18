@@ -32,8 +32,8 @@ where the observation gets tested against something real.
 | Weekly summaries | `journal/weekly-summaries/` | What the week's entries actually showed, not a highlight reel. |
 | Career prep | `projects/career-prep.md` | PostHog (primary), Ezra (secondary), and other roles. Interview prep, applications, what's working and what isn't. |
 | CMU masters | `projects/cmu-masters.md` | Fall 2027 application cycle. Feeds from the writing, backend, and AI engineer goals. |
-| Settlement engine | `projects/settlement-engine.md` | Idempotent Settlement and Reconciliation Engine. Portfolio project for fintech backend roles. |
-| Routine system | `projects/routine.md` | Personal consistency tool. Context parked, build not started. |
+| Settlement engine | `projects/settlement-engine.md` | Idempotent Settlement and Reconciliation Engine. Private repo `Invoice-Financing`, all nine build phases done and deployed to staging. |
+| Routine machine | `projects/routine-machine.md` | AI project: logs routines and learning, phases toward active reprioritization. Own repo, built with Claude Code. Reads this hub's journal and articles directly. |
 | Website | `website/PLAN.md` | Personal site. Design should reflect the same hub-and-spoke thinking: self, philosophy, technology, people, and how they connect. |
 | Articles | `articles/` | Weekly pieces on how the observation, the tech, and the philosophy fit together. Published to the site, Hashnode, dev.to, Medium, LinkedIn. |
 
@@ -48,6 +48,8 @@ where the observation gets tested against something real.
   a connection is available.
 - I log every sync in `SYNC_LOG.md` so the trail is visible.
 - No em dashes in anything written here.
+- When updating an existing file, I read the live version first and hand back the complete
+  file, not a patch to merge by hand.
 
 ## Current open threads
 
@@ -59,7 +61,9 @@ where the observation gets tested against something real.
   yet worked through. Ezra kept as a secondary target.
 - CMU masters: Fall 2027 cycle open now, final deadline 2026-12-09. Program choice (MSCS,
   MSAII, MSE) and test timeline (GRE, TOEFL/IELTS) both still undecided.
-- Settlement engine: architecture and documentation system designed. Phase 1 not started.
-- Routine system: daily inventory recorded. Priority, frequency, and build not yet discussed.
+- Settlement engine: found to be fully built, not just designed, all nine phases done and
+  verified on a live staging server. Next step is a real read-through, not further planning.
+- Routine machine: documentation complete and pushed to its own repo. Code being built
+  separately with Claude Code, tracked here by checking the repo.
 - Website and publishing pipeline: initial Astro scaffold built, not yet deployed. Accounts
   on dev.to and Medium still need creating.
