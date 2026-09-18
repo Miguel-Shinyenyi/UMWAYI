@@ -41,3 +41,15 @@ Record of what moved from a journal entry into a project file, and why.
   to match the settlement-engine and routine-machine pattern, "carr" clarified as Carrd and
   found incompatible with the codebase, publishing settled on GitHub Pages only.
 - Confidence: factual record of decisions made this session, no pattern claims.
+
+
+## 2026-09-18 (site live, Phase 1 complete)
+
+- Source: `journal/entries/2026-09-18.md` (continued, site live and Phase 1 done)
+- Updated: nothing in `projects/`, this is a status confirmation, not a new decision.
+- What moved: confirmed the site is live and matches its documentation, confirmed
+  Routine Machine's Phase 1 is built, tested, and pushed, matching its documentation.
+  Independently reran the intelligence service's test suite, 8 passed. Found one minor
+  doc inconsistency (test count mismatch between PROJECT.md and testing.md) for
+  Routine Machine, not yet corrected.
+- Confidence: factual confirmation of work already done and reviewed, no pattern claims.
