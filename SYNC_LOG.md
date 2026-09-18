@@ -21,3 +21,13 @@ Record of what moved from a journal entry into a project file, and why.
   feedback recorded but not yet investigated.
 - Confidence: hypothesis shifting, not settled. Register calibration and self-prediction of
   failure are candidate signals, not established patterns.
+
+## 2026-09-18 (session close)
+
+- Source: `journal/entries/2026-09-18.md`
+- Updated: `projects/routine-machine.md`, `projects/career-prep.md`, `projects/cmu-masters.md`
+- What moved: context hub gone live, PostHog/Ezra/CMU reprioritization, Routine Machine
+  scoped and documented, settlement-engine reviewed and found fully built, Routine Machine
+  docs reconciled against its real structure.
+- Confidence: factual record of work done. No pattern claims made in this entry, the two
+  open interpretive questions are left for Miguel to answer, not assumed.
