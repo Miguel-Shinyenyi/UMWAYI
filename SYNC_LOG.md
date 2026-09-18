@@ -31,3 +31,13 @@ Record of what moved from a journal entry into a project file, and why.
   docs reconciled against its real structure.
 - Confidence: factual record of work done. No pattern claims made in this entry, the two
   open interpretive questions are left for Miguel to answer, not assumed.
+
+## 2026-09-18 (site design and publishing)
+
+- Source: `journal/entries/2026-09-18.md` (continued, later the same day)
+- Updated: nothing in `projects/`, this work is scoped entirely to the site repo's own
+  `PROJECT.md` and `docs/`.
+- What moved: real design direction chosen and documented, site documentation restructured
+  to match the settlement-engine and routine-machine pattern, "carr" clarified as Carrd and
+  found incompatible with the codebase, publishing settled on GitHub Pages only.
+- Confidence: factual record of decisions made this session, no pattern claims.
