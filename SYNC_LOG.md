@@ -66,3 +66,19 @@ Record of what moved from a journal entry into a project file, and why.
   the second phase running.
 - Confidence: factual confirmation, no pattern claims beyond noting the recurrence itself,
   which is observed twice, not yet established.
+
+## 2026-09-19 (Phase 3 confirmed, reading tracker added)
+
+- Source: `journal/entries/2026-09-19.md`
+- Updated: `projects/routine-machine.md`, `MASTER_CONTEXT.md`.
+- What moved: confirmed Phase 3 built, tested, and pushed (fixed schedule, tasks, reading
+  log, Next.js frontend with all four views). Recorded the new reading tracker and its
+  standing rule (template line and hub-sync string change together). Recorded the corrected
+  mislabeling of settlement-engine study under Phase 1's `learning_topics` rather than
+  deep-work. Independently reran the frontend's suite (5 passed) and the intelligence
+  service's (18 passed, unchanged). Corrected `MASTER_CONTEXT.md`'s stale Phase 1/2-only
+  status line for routine-machine.
+- Confidence: factual confirmation of work done and reviewed. The proactive-fix pattern
+  (`JOIN FETCH` applied ahead of the bug) is now two data points, named as worth watching,
+  not claimed as established. No connection drawn to the 09-16 register-calibration or
+  self-prediction observations, since the entry itself states none was found.
