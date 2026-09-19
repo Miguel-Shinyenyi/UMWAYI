@@ -8,8 +8,11 @@
 - My environment:
 - Today's weather:
 - Today's offering:
+- Current book:
 
-(Skip or reorder any of these if the entry naturally starts somewhere else.)
+(Skip or reorder any of these if the entry naturally starts somewhere else. Current book only
+needs updating when it actually changes, Routine Machine reads this line to keep its own
+record current.)
 
 ## What happened
 
