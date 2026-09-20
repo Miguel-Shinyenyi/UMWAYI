@@ -1,6 +1,6 @@
 # Master Context
 
-Last updated: 2026-09-19
+Last updated: 2026-09-20
 
 ## Who this is for
 
@@ -50,6 +50,9 @@ where the observation gets tested against something real.
 - No em dashes in anything written here.
 - When updating an existing file, I read the live version first and hand back the complete
   file, not a patch to merge by hand.
+- Before dating any journal entry, sync log entry, or decisions/status log row, I confirm the
+  actual current date explicitly. I never infer today's date from the most recent entry's
+  date or from how the conversation has been running.
 
 ## Current open threads
 
