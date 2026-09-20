@@ -82,3 +82,12 @@ Record of what moved from a journal entry into a project file, and why.
   (`JOIN FETCH` applied ahead of the bug) is now two data points, named as worth watching,
   not claimed as established. No connection drawn to the 09-16 register-calibration or
   self-prediction observations, since the entry itself states none was found.
+
+
+## 2026-09-20 (learning begins)
+
+- Source: `journal/entries/2026-09-20.md` (continued, learning begins)
+- Updated: nothing in `projects/` yet, this is the start of a session, not a finding.
+- What moved: recorded the current reading position and the eleven principles as stated, with
+  two early, tentative noticings flagged as such, not claimed as patterns.
+- Confidence: factual record of a starting point. No conclusions.
