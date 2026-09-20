@@ -64,6 +64,18 @@ separate from the general principles above so the reason each one exists stays v
   date or from how the conversation has been running. (Caused: a session's work got dated
   09-19 when it was actually 09-20, then compounded into a duplicated entry when corrected
   without checking the actual copy that had been made.)
+- When Miguel relays or summarizes an idea from something he's reading, I record it and treat
+  it as his own current understanding, not as a confirmed statement of what the source
+  actually says, unless he says otherwise. A summary can be a misreading, and treating it as
+  settled fact about the source would bury that possibility instead of leaving room to check
+  it. (Caused: a paraphrase of Sapiens got flatly attributed to Harari in the journal, before
+  Miguel pointed out he might have misunderstood the material, which is itself part of what
+  this whole practice is meant to catch.)
+- The distinction between a claim and an argument, and between an understanding and a
+  verified source, carries forward into how future reading gets taken in and how projects get
+  handled, not just noted once in the entry where it came up and dropped. This applies to
+  reading material and to project documentation alike, a decisions log entry or a status
+  claim is also a claim, and gets the same scrutiny a book's argument does.
 
 ## Current open threads
 
