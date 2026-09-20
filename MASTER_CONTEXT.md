@@ -29,13 +29,14 @@ where the observation gets tested against something real.
 | Spoke | File | What it's for |
 |---|---|---|
 | Journal | `journal/entries/` | Daily observation. Weather check-in, then whatever the entry needs. |
-| Weekly summaries | `journal/weekly-summaries/` | What the week's entries actually showed, not a highlight reel. |
+| Weekly summaries | `journal/weekly-summaries/` | What the week's entries actually showed, not a highlight reel. Written Sunday evenings. |
+| Backlog | `backlog.md` | Every open question and pending decision or action across all projects, marked answered when resolved, never silently dropped. |
 | Career prep | `projects/career-prep.md` | PostHog (primary), Ezra (secondary), and other roles. Interview prep, applications, what's working and what isn't. |
 | CMU masters | `projects/cmu-masters.md` | Fall 2027 application cycle. Feeds from the writing, backend, and AI engineer goals. |
-| Settlement engine | `projects/settlement-engine.md` | Idempotent Settlement and Reconciliation Engine, built with Claude Code. Private repo `Invoice-Financing`, all nine build phases done and deployed to staging. Currently being restudied for deep, on-demand explainability, not built from scratch. |
-| Routine machine | `projects/routine-machine.md` | AI project: logs routines, learning, and a reading tracker. Own repo, built with Claude Code. All three phases done and verified. Reads this hub's journal and articles directly. |
-| Website | `website/PLAN.md` | Personal site. Live on GitHub Pages, design implemented in full. |
-| Articles | `articles/` | Weekly pieces on how the observation, the tech, and the philosophy fit together. Published to the site, Hashnode, dev.to, Medium, LinkedIn. |
+| Settlement engine | `projects/settlement-engine.md` | Idempotent Settlement and Reconciliation Engine, built with Claude Code. Private repo `Invoice-Financing`, all nine build phases done and deployed to a live staging server. Currently being restudied for deep, on-demand explainability. |
+| Routine machine | `projects/routine-machine.md` | AI project: logs routines, learning, and a reading tracker. Own repo, built with Claude Code. All three phases done and verified. Reads this hub's journal and articles directly. Email reminders for time-related items planned. |
+| Website | `website/PLAN.md` | Personal site. Historical plan, now resolved and superseded by the site's own repo. Live on GitHub Pages, design implemented in full. |
+| Articles | `articles/` | Weekly pieces on how the observation, the tech, and the philosophy fit together. Published to the site. Broader cross-posting (Hashnode, dev.to, Medium, LinkedIn) still pending, see `backlog.md`. |
 
 ## Standing principles for how I (Claude) operate here
 
@@ -60,6 +61,15 @@ where the observation gets tested against something real.
 - After writing any article, I state which site category it belongs under, philosophy, tech,
   journal, or projects, and why, rather than leaving that decision for Miguel to raise
   separately afterward.
+- Weekly summaries are written Sunday evenings, starting 2026-09-20, the day this rule was
+  introduced.
+- `backlog.md` holds every open question and pending decision or action across every
+  project. I add to it as new ones come up in any conversation, not just at the end of a
+  session, and I mark an item answered with the date and a one-line resolution when it's
+  resolved, I never delete a line or leave it silently unmarked.
+- Anything time-sensitive, a deadline, a scheduled decision point, gets flagged as a
+  candidate for an eventual email reminder once Routine Machine supports it. Until that
+  exists, it stays visible in `backlog.md` so it isn't missed in the meantime.
 
 ## Rules from caught mistakes
 
@@ -91,23 +101,25 @@ separate from the general principles above so the reason each one exists stays v
 - After finishing an article, I state its category before moving on, rather than waiting to
   be asked. (Caused: the claim-versus-argument piece was written and Miguel had to ask
   separately which section it belonged in.)
+- I check project-status claims in the hub against reality periodically, not just when
+  something is actively being worked on. (Caused: `website/PLAN.md` and
+  `projects/settlement-engine.md` both sat stale for days after the underlying work had moved
+  well past what they described, discovered only when pointed out directly.)
 
 ## Current open threads
+
+See `backlog.md` for the full, itemized list. Summary by project:
 
 - Journaling practice: active. First entry tested the knowing-versus-explaining hypothesis
   against a real technical topic. Result: the hypothesis didn't hold for that topic. See
   `journal/entries/2026-09-16.md` and `projects/career-prep.md` for the full shift.
-- Career prep: PostHog is now the primary target. Not selected after final round, feedback
-  from the hiring contact and open questions about it are recorded in `career-prep.md`, not
-  yet worked through. Ezra kept as a secondary target.
-- CMU masters: Fall 2027 cycle open now, final deadline 2026-12-09. Program choice (MSCS,
-  MSAII, MSE) and test timeline (GRE, TOEFL/IELTS) both still undecided.
-- Settlement engine: built by Miguel with Claude Code, all nine phases done and verified on a
-  live staging server. Currently being restudied in depth, to confirm it can be explained on
-  demand, not to learn it from scratch.
-- Routine machine: all three phases built, tested, and verified end to end (logging plus
-  suggestion, pattern detection, and a fixed schedule with a Next.js frontend). A reading
-  tracker now reads the journal's `Current book:` line. Next step is letting it run against
-  real use, not further building.
-- Website and publishing pipeline: live on GitHub Pages, design fully implemented. Accounts
-  on dev.to and Medium still need creating.
+- Career prep: PostHog is now the primary target. Rejection feedback recorded but still not
+  worked through. Ezra kept as secondary.
+- CMU masters: Fall 2027 cycle open, final deadline 2026-12-09. Program and test timeline
+  both undecided.
+- Settlement engine: built by Miguel, all nine phases done and verified on staging. Being
+  restudied for deep explainability, subsystem not yet chosen.
+- Routine machine: all three phases built, tested, and verified. Email reminders for
+  time-related items now planned as a future addition.
+- Website and publishing: site live, design done. Broader cross-posting accounts and plan
+  still pending.
