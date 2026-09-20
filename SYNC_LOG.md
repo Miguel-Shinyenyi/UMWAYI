@@ -91,3 +91,18 @@ Record of what moved from a journal entry into a project file, and why.
 - What moved: recorded the current reading position and the eleven principles as stated, with
   two early, tentative noticings flagged as such, not claimed as patterns.
 - Confidence: factual record of a starting point. No conclusions.
+
+## 2026-09-20 (boundary set, rules formalized)
+
+- Source: `journal/entries/2026-09-20.md` (continued, "A boundary set, on purpose" and the
+  Sapiens-discussion sections above it).
+- Updated: `MASTER_CONTEXT.md`, added to "Rules from caught mistakes".
+- What moved: the two cautions named in the entry, treat a relayed reading as Miguel's
+  current understanding rather than a confirmed statement of what the source says, and carry
+  the claim-versus-argument distinction into project documentation and status claims too, not
+  just reading. Moved because the entry itself states both are meant to carry forward beyond
+  this one session, not stay a one-off note. The Sapiens-discussion content itself (the
+  mismatch idea, the exercise-as-substitute question and its first answer) was left in the
+  journal only, no project file names it as something to feed.
+- Confidence: factual record of a decision made this session. No pattern claims, the entry
+  frames these as cautions set ahead of a problem, not findings about one that occurred.
