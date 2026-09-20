@@ -32,7 +32,7 @@ where the observation gets tested against something real.
 | Weekly summaries | `journal/weekly-summaries/` | What the week's entries actually showed, not a highlight reel. |
 | Career prep | `projects/career-prep.md` | PostHog (primary), Ezra (secondary), and other roles. Interview prep, applications, what's working and what isn't. |
 | CMU masters | `projects/cmu-masters.md` | Fall 2027 application cycle. Feeds from the writing, backend, and AI engineer goals. |
-| Settlement engine | `projects/settlement-engine.md` | Idempotent Settlement and Reconciliation Engine. Private repo `Invoice-Financing`, all nine build phases done and deployed to staging. |
+| Settlement engine | `projects/settlement-engine.md` | Idempotent Settlement and Reconciliation Engine, built with Claude Code. Private repo `Invoice-Financing`, all nine build phases done and deployed to staging. Currently being restudied for deep, on-demand explainability, not built from scratch. |
 | Routine machine | `projects/routine-machine.md` | AI project: logs routines, learning, and a reading tracker. Own repo, built with Claude Code. All three phases done and verified. Reads this hub's journal and articles directly. |
 | Website | `website/PLAN.md` | Personal site. Live on GitHub Pages, design implemented in full. |
 | Articles | `articles/` | Weekly pieces on how the observation, the tech, and the philosophy fit together. Published to the site, Hashnode, dev.to, Medium, LinkedIn. |
@@ -53,6 +53,10 @@ where the observation gets tested against something real.
 - When I make a mistake in this work and it gets noticed, whether by Miguel or by me, I add a
   specific rule to the section below describing what went wrong, not just fix the immediate
   error. The fix closes one instance, the rule is what stops the next one.
+- At the end of a day's conversation, I check whether anything from that day is genuinely
+  article-worthy, and raise it for discussion rather than deciding on my own whether to write
+  it, unless Miguel has already flagged and asked for it himself, the way the claim-versus-
+  argument piece came about on 2026-09-20.
 
 ## Rules from caught mistakes
 
@@ -76,6 +80,11 @@ separate from the general principles above so the reason each one exists stays v
   handled, not just noted once in the entry where it came up and dropped. This applies to
   reading material and to project documentation alike, a decisions log entry or a status
   claim is also a claim, and gets the same scrutiny a book's argument does.
+- Settlement-engine is a system Miguel built himself, with Claude Code, not one he merely
+  found or inherited. Restudying it is about verifying his own ability to explain it on
+  demand, not about learning someone else's work for the first time. (Caused: an article
+  draft described settlement-engine as something studied but not built, misstating actual
+  authorship.)
 
 ## Current open threads
 
@@ -87,8 +96,9 @@ separate from the general principles above so the reason each one exists stays v
   yet worked through. Ezra kept as a secondary target.
 - CMU masters: Fall 2027 cycle open now, final deadline 2026-12-09. Program choice (MSCS,
   MSAII, MSE) and test timeline (GRE, TOEFL/IELTS) both still undecided.
-- Settlement engine: found to be fully built, not just designed, all nine phases done and
-  verified on a live staging server. Next step is a real read-through, not further planning.
+- Settlement engine: built by Miguel with Claude Code, all nine phases done and verified on a
+  live staging server. Currently being restudied in depth, to confirm it can be explained on
+  demand, not to learn it from scratch.
 - Routine machine: all three phases built, tested, and verified end to end (logging plus
   suggestion, pattern detection, and a fixed schedule with a Next.js frontend). A reading
   tracker now reads the journal's `Current book:` line. Next step is letting it run against

@@ -106,3 +106,13 @@ Record of what moved from a journal entry into a project file, and why.
   journal only, no project file names it as something to feed.
 - Confidence: factual record of a decision made this session. No pattern claims, the entry
   frames these as cautions set ahead of a problem, not findings about one that occurred.
+
+
+## 2026-09-20 (article drafted)
+
+- Source: `journal/entries/2026-09-20.md`
+- Updated: `articles/claim-versus-argument.md`
+- What moved: the Sapiens discussion, the claim-versus-argument and understanding-versus-
+  source distinctions, and their connection to settlement-engine's decisions log, turned
+  into a standalone piece for publication.
+- Confidence: this is the article itself, not a pattern claim about Miguel.
