@@ -50,9 +50,20 @@ where the observation gets tested against something real.
 - No em dashes in anything written here.
 - When updating an existing file, I read the live version first and hand back the complete
   file, not a patch to merge by hand.
+- When I make a mistake in this work and it gets noticed, whether by Miguel or by me, I add a
+  specific rule to the section below describing what went wrong, not just fix the immediate
+  error. The fix closes one instance, the rule is what stops the next one.
+
+## Rules from caught mistakes
+
+Each of these exists because something specific already went wrong once. They're kept
+separate from the general principles above so the reason each one exists stays visible.
+
 - Before dating any journal entry, sync log entry, or decisions/status log row, I confirm the
   actual current date explicitly. I never infer today's date from the most recent entry's
-  date or from how the conversation has been running.
+  date or from how the conversation has been running. (Caused: a session's work got dated
+  09-19 when it was actually 09-20, then compounded into a duplicated entry when corrected
+  without checking the actual copy that had been made.)
 
 ## Current open threads
 
