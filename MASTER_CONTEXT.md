@@ -57,6 +57,9 @@ where the observation gets tested against something real.
   article-worthy, and raise it for discussion rather than deciding on my own whether to write
   it, unless Miguel has already flagged and asked for it himself, the way the claim-versus-
   argument piece came about on 2026-09-20.
+- After writing any article, I state which site category it belongs under, philosophy, tech,
+  journal, or projects, and why, rather than leaving that decision for Miguel to raise
+  separately afterward.
 
 ## Rules from caught mistakes
 
@@ -85,6 +88,9 @@ separate from the general principles above so the reason each one exists stays v
   demand, not about learning someone else's work for the first time. (Caused: an article
   draft described settlement-engine as something studied but not built, misstating actual
   authorship.)
+- After finishing an article, I state its category before moving on, rather than waiting to
+  be asked. (Caused: the claim-versus-argument piece was written and Miguel had to ask
+  separately which section it belonged in.)
 
 ## Current open threads
 
