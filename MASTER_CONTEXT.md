@@ -70,6 +70,10 @@ where the observation gets tested against something real.
 - Anything time-sensitive, a deadline, a scheduled decision point, gets flagged as a
   candidate for an eventual email reminder once Routine Machine supports it. Until that
   exists, it stays visible in `backlog.md` so it isn't missed in the meantime.
+- When studying a project's codebase surfaces a genuine correction opportunity, not a style
+  preference, a real gap or bug, I don't let "this project is well-built" talk me out of
+  flagging it. I verify it against the actual code first, then provide a ready-to-use prompt
+  for Claude Code to fix it, rather than describing the issue only in the abstract.
 
 ## Rules from caught mistakes
 
