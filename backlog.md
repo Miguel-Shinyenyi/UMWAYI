@@ -65,6 +65,10 @@ project file.
 ### Settlement engine
 - [ ] Choose which subsystem to study first, in depth, cold: idempotency/state machine,
       reconciliation engine, or the concurrency fixes from Phase 1/9. (Raised 2026-09-20)
+- [ ] Fix the crash-recovery gap in settlement finalization: a hard crash between
+      `createPendingSettlement` and `finalizeSettlement` leaves a `PENDING` settlement with no
+      `externalRef`, invisible to reconciliation, and its idempotency key permanently
+      `IN_PROGRESS`. Prompt ready below. (Raised 2026-09-21)
 
 ### Routine machine
 - [ ] Design and build email reminders for anything time-related (deadlines, scheduled
