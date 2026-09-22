@@ -35,9 +35,9 @@ project file.
       makes simplest. (Raised 2026-09-20)
 - [ ] What happens if the free-tier database goes inactive and gets suspended, whether that
       needs a keepalive or is an accepted risk. (Raised 2026-09-20)
-- [ ] Whether the two-typeface design contrast holds up on mobile, needs a real check once
-      looked at on a real device, not assumed from the design brief alone. (Raised
-      2026-09-18)
+- [ ] Whether the shepherd-based personal mark (the cursor-glyph favicon, the six-dot
+      "flock" mark on the homepage) and the bolder accent chrome actually read well once
+      seen directly, not assumed from the plan or the code alone. (Raised 2026-09-22)
 
 ### Settlement engine
 - [ ] Whether outbox and double-ledger will surface similarly real, correctable gaps once
@@ -69,6 +69,19 @@ project file.
 - [ ] Decide whether the broader hub cross-posting plan (Hashnode, dev.to, Medium, LinkedIn)
       is still intended, separate from the narrower decision already made to keep the site
       itself GitHub-Pages-only. (Raised 2026-09-20)
+- [x] Whether the two-typeface design contrast holds up on mobile. (Raised 2026-09-18)
+      Answered 2026-09-22: it didn't. Three real bugs confirmed by rendering the site at
+      375px and measuring, not guessed from CSS: header nav overflow, and one CSS line
+      (`.article-grid`'s mobile breakpoint missing `minmax(0, ...)`) causing both headline
+      and code-block overflow on article pages. Fixed same day by Claude Code, commit
+      `726e635`, independently reverified against the live pushed repo with a fresh
+      production build and a separate mobile-viewport measurement, not taken on the commit
+      message alone.
+- [x] Mobile-first redesign with a bolder accent, playful/interactive touches (daisyUI,
+      Tailwind), and a personal mark. (Raised 2026-09-22) Answered 2026-09-22: built and
+      pushed by Claude Code same day, commit `726e635`. `docs/design.md` in `miguel-site`
+      carries the full, dated reasoning, including where the build differed from the brief.
+      Visual review of the result is a separate, still-open item above.
 
 ### Settlement engine
 - [x] Choose which subsystem to study first, in depth, cold: idempotency/state machine,
