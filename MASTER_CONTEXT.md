@@ -1,6 +1,6 @@
 # Master Context
 
-Last updated: 2026-09-20
+Last updated: 2026-09-22
 
 ## Who this is for
 
@@ -33,7 +33,7 @@ where the observation gets tested against something real.
 | Backlog | `backlog.md` | Every open question and pending decision or action across all projects, marked answered when resolved, never silently dropped. |
 | Career prep | `projects/career-prep.md` | PostHog (primary), Ezra (secondary), and other roles. Interview prep, applications, what's working and what isn't. |
 | CMU masters | `projects/cmu-masters.md` | Fall 2027 application cycle. Feeds from the writing, backend, and AI engineer goals. |
-| Settlement engine | `projects/settlement-engine.md` | Idempotent Settlement and Reconciliation Engine, built with Claude Code. Private repo `Invoice-Financing`, all nine build phases done and deployed to a live staging server. Currently being restudied for deep, on-demand explainability. |
+| Settlement engine | `projects/settlement-engine.md` | Idempotent Settlement and Reconciliation Engine, built with Claude Code. Private repo `Invoice-Financing`, all nine build phases done and deployed to a live staging server. Idempotency restudied in depth, one verified gap found and fixed. |
 | Routine machine | `projects/routine-machine.md` | AI project: logs routines, learning, and a reading tracker. Own repo, built with Claude Code. All three phases done and verified. Reads this hub's journal and articles directly. Email reminders for time-related items planned. |
 | Website | `website/PLAN.md` | Personal site. Historical plan, now resolved and superseded by the site's own repo. Live on GitHub Pages, design implemented in full. |
 | Articles | `articles/` | Weekly pieces on how the observation, the tech, and the philosophy fit together. Published to the site. Broader cross-posting (Hashnode, dev.to, Medium, LinkedIn) still pending, see `backlog.md`. |
@@ -109,6 +109,20 @@ separate from the general principles above so the reason each one exists stays v
   something is actively being worked on. (Caused: `website/PLAN.md` and
   `projects/settlement-engine.md` both sat stale for days after the underlying work had moved
   well past what they described, discovered only when pointed out directly.)
+- When I print a file's full content for Miguel to copy, I treat that as delivered only once
+  the tool call has actually confirmed returning that complete content, not because I
+  intended it to or because a similar call worked earlier in the same session. A tool call
+  can fail to run, run empty, or error out silently, and proceeding as though it succeeded
+  anyway would hand Miguel content that was never actually produced. (Caused: after a context
+  compaction, two verification Bash calls in a row failed to run, and Miguel had to ask
+  directly for a standing rule making sure every print is confirmed before being treated as
+  available.)
+- When a document is large or a session has been running long, I write it to an actual file
+  and send it, rather than printing it into the chat and assuming it arrived intact. A long
+  print can get truncated in a way that isn't visible to me from the tool result. (Caused:
+  multiple full-file replacements printed into chat on 2026-09-22 came through truncated,
+  three hours into the session, and weren't safely copyable, discovered only when Miguel
+  said so directly.)
 
 ## Current open threads
 
@@ -121,8 +135,9 @@ See `backlog.md` for the full, itemized list. Summary by project:
   worked through. Ezra kept as secondary.
 - CMU masters: Fall 2027 cycle open, final deadline 2026-12-09. Program and test timeline
   both undecided.
-- Settlement engine: built by Miguel, all nine phases done and verified on staging. Being
-  restudied for deep explainability, subsystem not yet chosen.
+- Settlement engine: built by Miguel, all nine phases done and verified on staging.
+  Idempotency chosen as the first subsystem restudied, two explain-back passes done, one
+  verified crash-recovery gap found and fixed same day (commit `950bf86`). Next: outbox.
 - Routine machine: all three phases built, tested, and verified. Email reminders for
   time-related items now planned as a future addition.
 - Website and publishing: site live, design done. Broader cross-posting accounts and plan

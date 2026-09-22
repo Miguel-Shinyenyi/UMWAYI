@@ -39,6 +39,11 @@ project file.
       looked at on a real device, not assumed from the design brief alone. (Raised
       2026-09-18)
 
+### Settlement engine
+- [ ] Whether outbox and double-ledger will surface similarly real, correctable gaps once
+      studied this closely, or whether idempotency's crash gap was specific to its own
+      complexity. Not assumed either way. (Raised 2026-09-21)
+
 ### Self-observation
 - [ ] Whether the minimal-banter pattern (river walk, pool game) shows up even with people
       already known and trusted, or only with strangers. Not manufactured as a test, noticed
@@ -47,6 +52,9 @@ project file.
       drive Sapiens describes, or is itself another modern substitute. (Raised 2026-09-20)
 - [ ] How much broader the "Routine Machine as an intuitive pre-answer" insight gets as
       reading and building continue together. (Raised 2026-09-20)
+- [ ] Whether "my anxiety comes from an addiction to control everything" actually holds up
+      against a real instance, or is just the label that was closest at hand. Raised as a
+      question by Miguel himself, not concluded either way. (Raised 2026-09-22)
 
 ## Pending decisions and actions
 
@@ -63,12 +71,16 @@ project file.
       itself GitHub-Pages-only. (Raised 2026-09-20)
 
 ### Settlement engine
-- [ ] Choose which subsystem to study first, in depth, cold: idempotency/state machine,
+- [x] Choose which subsystem to study first, in depth, cold: idempotency/state machine,
       reconciliation engine, or the concurrency fixes from Phase 1/9. (Raised 2026-09-20)
-- [ ] Fix the crash-recovery gap in settlement finalization: a hard crash between
+      Answered 2026-09-21: idempotency, chosen and studied first.
+- [x] Fix the crash-recovery gap in settlement finalization: a hard crash between
       `createPendingSettlement` and `finalizeSettlement` leaves a `PENDING` settlement with no
       `externalRef`, invisible to reconciliation, and its idempotency key permanently
-      `IN_PROGRESS`. Prompt ready below. (Raised 2026-09-21)
+      `IN_PROGRESS`. (Raised 2026-09-21) Answered 2026-09-21: fixed same day, commit
+      `950bf86`, `StalePendingSettlementSweepService`, a scheduled sweep finalizing stale
+      `PENDING` settlements as `UNKNOWN` past a grace period, with unit and integration
+      tests.
 
 ### Routine machine
 - [ ] Design and build email reminders for anything time-related (deadlines, scheduled

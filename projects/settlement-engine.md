@@ -30,6 +30,16 @@ Phase 9 (load and chaos testing) found and fixed two real production-shaped gaps
 rollout-timeout false negative. Two concurrency bugs were also found and fixed back in Phase
 1, caught by Testcontainers tests before they ever reached a real environment.
 
+A third gap, separate from all of the above, was found on 2026-09-21 while restudying
+idempotency for explainability, not while building: a hard process crash between
+`createPendingSettlement` committing and `finalizeSettlement` ever running left a settlement
+permanently invisible to reconciliation and its idempotency key stuck `IN_PROGRESS` forever.
+Verified against the actual repository before being treated as real. Fixed the same day,
+commit `950bf86`, `StalePendingSettlementSweepService`, a scheduled sweep that finds stale
+`PENDING` settlements past a grace period and finalizes them as `UNKNOWN`, reusing the
+existing state-machine path rather than adding a new one. Covered by its own unit and
+integration tests.
+
 ## Why it exists
 
 A learning and portfolio project targeting exactly what fintech companies test for:
@@ -44,10 +54,28 @@ verifying he can explain each subsystem on demand, in passing or in detail, the 
 named in the 2026-09-16 journal entry, now being tested against real, complex material
 instead of a single interview-style topic.
 
+Idempotency was chosen first (2026-09-21) and has had two full explain-back passes so far.
+The first attempt named the mechanism but missed that the guarantee covers a completed
+retry, not just an in-flight one. The second, closer attempt correctly covered the atomic
+write, the storage-consistency trade-off, and the insert race, but got the finalize race's
+actual cause wrong (described as a slow rollback blocking a waiting transaction, when the
+real mechanism is a genuine cross-table deadlock between an UPDATE and an INSERT during FK
+validation) and asserted an in-progress retry reads a cached snapshot, when the code
+actually throws `SettlementInProgressException` in that case, snapshots only exist once a
+key is `COMPLETED`. Both corrections were made against the real code, not asserted from
+memory. Two comparative questions were also answered this way: whether JPA `@Version`
+optimistic locking (already used on `LedgerAccount`, confirmed absent from `IdempotencyKey`)
+could substitute for the current approach (no, it solves lost updates on an existing row,
+neither race here is a lost-update problem), and how Go and Postgres handle concurrency
+generally (Postgres's MVCC and deadlock detector are what actually drive both races; Go's
+goroutine/channel model governs in-process coordination and has no bearing on how Postgres
+locks rows, so a Go rewrite would keep both races unchanged).
+
+The site's idempotency article (`src/content/tech/idempotency-keys.md` in `miguel-site`) was
+written from this material and kept current as the fix landed.
+
 ## Next step
 
-Pick a subsystem to actually work through in depth, cold, the same method used for database
-indexing on 09-16: explain it without notes, then check where the explanation holds and
-where it breaks. Candidates, in the order they'd likely come up in an interview: the
-idempotency/settlement state machine, the reconciliation engine, or the concurrency fixes
-found during Phase 1 and Phase 9. Not yet chosen.
+Move to the outbox concept next, same method: explain it cold first, then verify against the
+real code. Reconciliation engine and the Phase 1/9 concurrency fixes remain as later
+candidates, in roughly the order they'd come up in an interview.

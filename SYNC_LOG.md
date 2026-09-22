@@ -1,118 +1,61 @@
-# Sync Log
+## 2026-09-21 (idempotency studied, crash gap found)
 
-Record of what moved from a journal entry into a project file, and why.
+- Source: `journal/entries/2026-09-21.md` ("Continued, settlement engine: idempotency")
+- Updated: `articles/idempotency-keys.md` is not a hub file, the real target was the site
+  repo directly: `src/content/tech/idempotency-keys.md` in `miguel-site`. Also
+  `backlog.md`, a Claude Code fix prompt logged there rather than fixed in passing.
+- What moved: two cold-explanation attempts and the gap between what was remembered as said
+  and what was actually said, verified against the real `SettlementService` and
+  `SettlementTransactions` code, the two concurrency races (insert race, finalize deadlock),
+  and a third, previously undocumented failure mode found while studying the first two
+  closely enough to explain them: a hard crash between `createPendingSettlement` and
+  `finalizeSettlement` leaves a settlement permanently invisible to reconciliation.
+  Confirmed against the actual repository (`SettlementRepository`'s only query) before being
+  treated as real, not assumed.
+- Confidence: the two races are established, already in the codebase and its decisions log,
+  found empirically under load per `docs/reconciliation.md`. The crash gap is a new, verified
+  finding, confirmed against real code, not yet a "pattern" in the self-observation sense,
+  this is a project finding, not a claim about Miguel.
 
-## 2026-09-16
+## 2026-09-21 (explain-back verified, gap fixed same day)
 
-- Source: `journal/entries/2026-09-16.md`
-- Updated: `projects/career-prep.md`
-- What moved: the knowing-versus-explaining gap and the retrieval test, since it's directly
-  relevant to interview performance.
-- Confidence: possible signal, not an established pattern yet.
+- Source: `journal/entries/2026-09-21.md` ("Continued, settlement engine: idempotency,
+  explain-back and versioning question")
+- Updated: `projects/settlement-engine.md`, `backlog.md`, `src/content/tech/idempotency-keys.md`
+  in `miguel-site`, `MASTER_CONTEXT.md` ("Current open threads").
+- What moved: a second explain-back pass, checked against the real code and found two
+  specific inaccuracies (a claimed in-progress snapshot read that the code doesn't do; the
+  finalize race's cause described as a slow rollback rather than the real cross-table
+  deadlock), plus two comparative questions answered against the actual domain code
+  (`@Version` present on `LedgerAccount`, absent from `IdempotencyKey`; Postgres MVCC and
+  deadlock detection versus Go's in-process concurrency model). Also recorded: the crash gap
+  found the day before was fixed the same day, commit `950bf86`,
+  `StalePendingSettlementSweepService`, verified directly against the real diff and source,
+  not assumed from the commit message alone. `backlog.md` marked both the subsystem-choice
+  and the crash-gap items answered.
+- Confidence: the two corrections are factual, checked against real code. Noting "an
+  existing pattern in a codebase is evidence about whether it applies elsewhere" is a
+  reasoning method used once, not yet claimed as an established habit of Miguel's.
 
-## 2026-09-18
+## 2026-09-22 (reading discussion, control-anxiety question, article)
 
-- Source: `journal/entries/2026-09-16.md` (investigation continued)
-- Updated: `projects/career-prep.md`
-- What moved: the test result against database indexing, the shift away from the retrieval
-  hypothesis, and the register-calibration reframe.
-- Also added: `projects/cmu-masters.md`, `projects/routine.md` as new spokes. PostHog
-  promoted to primary target in `career-prep.md`, Ezra moved to secondary, PostHog rejection
-  feedback recorded but not yet investigated.
-- Confidence: hypothesis shifting, not settled. Register calibration and self-prediction of
-  failure are candidate signals, not established patterns.
-
-## 2026-09-18 (session close)
-
-- Source: `journal/entries/2026-09-18.md`
-- Updated: `projects/routine-machine.md`, `projects/career-prep.md`, `projects/cmu-masters.md`
-- What moved: context hub gone live, PostHog/Ezra/CMU reprioritization, Routine Machine
-  scoped and documented, settlement-engine reviewed and found fully built, Routine Machine
-  docs reconciled against its real structure.
-- Confidence: factual record of work done. No pattern claims made in this entry, the two
-  open interpretive questions are left for Miguel to answer, not assumed.
-
-## 2026-09-18 (site design and publishing)
-
-- Source: `journal/entries/2026-09-18.md` (continued, later the same day)
-- Updated: nothing in `projects/`, this work is scoped entirely to the site repo's own
-  `PROJECT.md` and `docs/`.
-- What moved: real design direction chosen and documented, site documentation restructured
-  to match the settlement-engine and routine-machine pattern, "carr" clarified as Carrd and
-  found incompatible with the codebase, publishing settled on GitHub Pages only.
-- Confidence: factual record of decisions made this session, no pattern claims.
-
-
-## 2026-09-18 (site live, Phase 1 complete)
-
-- Source: `journal/entries/2026-09-18.md` (continued, site live and Phase 1 done)
-- Updated: nothing in `projects/`, this is a status confirmation, not a new decision.
-- What moved: confirmed the site is live and matches its documentation, confirmed
-  Routine Machine's Phase 1 is built, tested, and pushed, matching its documentation.
-  Independently reran the intelligence service's test suite, 8 passed. Found one minor
-  doc inconsistency (test count mismatch between PROJECT.md and testing.md) for
-  Routine Machine, not yet corrected.
-- Confidence: factual confirmation of work already done and reviewed, no pattern claims.
-
-
-## 2026-09-18 (Phase 2 confirmed)
-
-- Source: `journal/entries/2026-09-18.md` (continued, Phase 2 done)
-- Updated: `MASTER_CONTEXT.md`, correcting two stale status lines for routine-machine and
-  the website.
-- What moved: confirmed Phase 2 built, tested, and pushed, matching its documentation.
-  Independently reran the intelligence service's suite, 18 passed. Noted the recurring
-  pattern of manual end-to-end verification catching bugs the test suite alone didn't, for
-  the second phase running.
-- Confidence: factual confirmation, no pattern claims beyond noting the recurrence itself,
-  which is observed twice, not yet established.
-
-## 2026-09-19 (Phase 3 confirmed, reading tracker added)
-
-- Source: `journal/entries/2026-09-19.md`
-- Updated: `projects/routine-machine.md`, `MASTER_CONTEXT.md`.
-- What moved: confirmed Phase 3 built, tested, and pushed (fixed schedule, tasks, reading
-  log, Next.js frontend with all four views). Recorded the new reading tracker and its
-  standing rule (template line and hub-sync string change together). Recorded the corrected
-  mislabeling of settlement-engine study under Phase 1's `learning_topics` rather than
-  deep-work. Independently reran the frontend's suite (5 passed) and the intelligence
-  service's (18 passed, unchanged). Corrected `MASTER_CONTEXT.md`'s stale Phase 1/2-only
-  status line for routine-machine.
-- Confidence: factual confirmation of work done and reviewed. The proactive-fix pattern
-  (`JOIN FETCH` applied ahead of the bug) is now two data points, named as worth watching,
-  not claimed as established. No connection drawn to the 09-16 register-calibration or
-  self-prediction observations, since the entry itself states none was found.
-
-
-## 2026-09-20 (learning begins)
-
-- Source: `journal/entries/2026-09-20.md` (continued, learning begins)
-- Updated: nothing in `projects/` yet, this is the start of a session, not a finding.
-- What moved: recorded the current reading position and the eleven principles as stated, with
-  two early, tentative noticings flagged as such, not claimed as patterns.
-- Confidence: factual record of a starting point. No conclusions.
-
-## 2026-09-20 (boundary set, rules formalized)
-
-- Source: `journal/entries/2026-09-20.md` (continued, "A boundary set, on purpose" and the
-  Sapiens-discussion sections above it).
-- Updated: `MASTER_CONTEXT.md`, added to "Rules from caught mistakes".
-- What moved: the two cautions named in the entry, treat a relayed reading as Miguel's
-  current understanding rather than a confirmed statement of what the source says, and carry
-  the claim-versus-argument distinction into project documentation and status claims too, not
-  just reading. Moved because the entry itself states both are meant to carry forward beyond
-  this one session, not stay a one-off note. The Sapiens-discussion content itself (the
-  mismatch idea, the exercise-as-substitute question and its first answer) was left in the
-  journal only, no project file names it as something to feed.
-- Confidence: factual record of a decision made this session. No pattern claims, the entry
-  frames these as cautions set ahead of a problem, not findings about one that occurred.
-
-
-## 2026-09-20 (article drafted)
-
-- Source: `journal/entries/2026-09-20.md`
-- Updated: `articles/claim-versus-argument.md`
-- What moved: the Sapiens discussion, the claim-versus-argument and understanding-versus-
-  source distinctions, and their connection to settlement-engine's decisions log, turned
-  into a standalone piece for publication.
-- Confidence: this is the article itself, not a pattern claim about Miguel.
+- Source: `journal/entries/2026-09-22.md`
+- Updated: `backlog.md` (new open question added under Self-observation), `articles/`
+  (new piece, `philosophy/what-becomes-true-when-both-stay.md` in `miguel-site`),
+  `MASTER_CONTEXT.md` (new rule added to "Rules from caught mistakes" about confirming
+  large printed documents actually reached Miguel intact, plus the date bump).
+- What moved: the Sapiens Rorschach-test framing (its "Curtain of Silence" section heading
+  checked and confirmed against the actual text) and the "dialectical thinking turned
+  inward" reframe (corrected from a mishearing, "trilectical," to the real, existing term),
+  both offered by Miguel for discussion, connected to the same epistemic
+  caution first applied to a self-theory on 2026-09-20, now applied a second time. The
+  "anxiety from a need for control" statement was treated as a hypothesis with no instance
+  yet attached, not accepted or rejected, added to `backlog.md` as an open question rather
+  than resolved in the entry. Both threads fed the new philosophy article at Miguel's
+  request, using the settlement engine's `UNKNOWN` state and this week's concurrency races
+  as concrete parallels for holding something unresolved rather than forcing a premature
+  answer.
+- Confidence: the reframe and the control-anxiety statement are both explicitly left open,
+  named as hypotheses, not conclusions. Two applications of the same evidentiary caution
+  (self-confidence on 09-20, this entry on 09-22) is named as a possible signal, not an
+  established pattern.
