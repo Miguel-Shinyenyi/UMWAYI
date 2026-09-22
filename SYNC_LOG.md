@@ -59,3 +59,33 @@
   named as hypotheses, not conclusions. Two applications of the same evidentiary caution
   (self-confidence on 09-20, this entry on 09-22) is named as a possible signal, not an
   established pattern.
+
+## 2026-09-22 (personal site: mobile-first redesign and mascot reversal)
+
+- Source: `journal/entries/2026-09-22.md` ("Continued, personal site" sections)
+- Updated: `docs/design.md` in `miguel-site` (revised twice, each revision dated and reasoned
+  in its decisions log rather than silently overwritten), `backlog.md` (mobile-typeface item
+  and mobile-redesign item marked answered, the visual-review item closed out and a new
+  accessible-label question opened).
+- What moved: three reported mobile bugs (nav overflow, code/headline overflow on article
+  pages) confirmed real and root-caused to one line by rendering the live site at 375px and
+  measuring, not guessed from CSS. A Hydra-inspired playfulness request was checked directly
+  against the site's own documented design rules and named as a real conflict, not worked
+  around quietly. A borrowed mascot was declined; once Miguel gave UMWAYI's actual meaning
+  (shepherd), the personal mark was rebuilt from that and from the site's own existing
+  cursor-blink glyph rather than generic pastoral iconography. Claude Code built and pushed
+  a first, cautious version, commit `726e635`, independently reverified against the live
+  repo (fresh production build, separate mobile-viewport measurement). That version was then
+  screenshotted and looked at directly, found flat (barely visible mark, no real presence),
+  matching what Miguel said after seeing it himself. Reversed at his explicit request into a
+  full mascot and hero design; Claude Code built and pushed that too, commit `9e5210f`,
+  again independently reverified: fresh production build, a repeated mobile-overflow check
+  confirming the new illustration hadn't reintroduced the earlier bug class, and real
+  screenshots in light mode, dark mode, and with reduced motion set, checking claims from
+  Claude Code's own decisions log (a fixed hero-band color chosen after two documented
+  color-collision failures; the gather/blink animation respecting reduced motion) rather
+  than accepting them unverified.
+- Confidence: the mobile bugs, the build success, and the color/motion claims are all
+  directly verified against rendered output, not taken from commit messages or documentation
+  alone. Whether the flock marks are legible to someone seeing them with no context is
+  explicitly left open in `backlog.md`, not claimed as settled.

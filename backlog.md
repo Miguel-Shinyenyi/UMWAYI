@@ -35,9 +35,11 @@ project file.
       makes simplest. (Raised 2026-09-20)
 - [ ] What happens if the free-tier database goes inactive and gets suspended, whether that
       needs a keepalive or is an accepted risk. (Raised 2026-09-20)
-- [ ] Whether the shepherd-based personal mark (the cursor-glyph favicon, the six-dot
-      "flock" mark on the homepage) and the bolder accent chrome actually read well once
-      seen directly, not assumed from the plan or the code alone. (Raised 2026-09-22)
+- [ ] Whether the flock's teardrop marks and the mascot read clearly to someone seeing the
+      site for the first time, with no accessible-label check done yet beyond confirming the
+      shapes render visibly in light mode, dark mode, and with reduced motion set. A
+      genuinely different question from whether the design reads well, which is answered
+      below. (Raised 2026-09-22)
 
 ### Settlement engine
 - [ ] Whether outbox and double-ledger will surface similarly real, correctable gaps once
@@ -81,7 +83,19 @@ project file.
       Tailwind), and a personal mark. (Raised 2026-09-22) Answered 2026-09-22: built and
       pushed by Claude Code same day, commit `726e635`. `docs/design.md` in `miguel-site`
       carries the full, dated reasoning, including where the build differed from the brief.
-      Visual review of the result is a separate, still-open item above.
+- [x] Whether the shepherd-based personal mark and the bolder accent chrome actually read
+      well once seen directly, not assumed from the plan or the code alone. (Raised
+      2026-09-22) Answered 2026-09-22: the first cautious version (quiet six-dot mark, no
+      mascot) was seen live and read as flat, no real presence, confirmed by direct
+      screenshot review before Miguel said so himself. Reversed into a full mascot and hero
+      redesign at Miguel's explicit request, built and pushed by Claude Code, commit
+      `9e5210f`. That version was independently verified directly: a fresh production build
+      (13 pages, no errors), a repeated mobile-viewport overflow check confirming the new
+      hero illustration didn't reintroduce the earlier bug class, and real screenshots in
+      light mode, dark mode, and with reduced motion set, all read clearly with no leftover
+      color-collision issues. The design reads well. Whether its individual marks are
+      legible to a first-time viewer without context is a separate, still-open question
+      above.
 
 ### Settlement engine
 - [x] Choose which subsystem to study first, in depth, cold: idempotency/state machine,
