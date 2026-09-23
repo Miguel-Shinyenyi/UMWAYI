@@ -125,10 +125,21 @@ project file.
       (Raised 2026-09-23) Answered 2026-09-23: pushed on both sides, `miguel-site` commit
       `8066b2b`. A fresh build clones `site/` and copies all 10 pages, 10 illustrations,
       and the photo.
-- [ ] Footer email sign-up saves to Waline as a subscription request. It collects
-      addresses; nothing sends the "new article" email yet. Decide how that gets sent
-      (by hand from the Waline admin list, or later through Routine Machine's planned
-      email reminders). (Raised 2026-09-23)
+- [x] Footer email sign-up saves to Waline as a subscription request. It collects
+      addresses; nothing sends the "new article" email yet. Decide how that gets sent.
+      (Raised 2026-09-23) Answered 2026-09-23: the sign-up moves to MailerLite (account
+      2655737). Addresses land in MailerLite's subscriber list, and emails go out as
+      MailerLite campaigns. The site gets an RSS feed in the same change.
+- [ ] On MailerLite's free plan, each new-article email is sent by hand as a campaign.
+      Sending automatically from the site's RSS feed needs a paid plan (Comfort or Power).
+      Decide which, once there are subscribers to write to. (Raised 2026-09-23)
+- [ ] Turn double opt-in on or off in the MailerLite form's settings. On means each
+      subscriber confirms by email first: fewer fake addresses, and cleaner consent.
+      (Raised 2026-09-23)
+- [x] The homepage showed only three journal entries of nine. (Raised 2026-09-23)
+      Answered 2026-09-23: all nine were live at `/journal/`, but each Writing tab shows the
+      three newest and had no link to the rest. Claude Code prompt adds "All journal
+      entries (9)" style links to every tab.
 - [ ] Delete any test comments Claude Code posted to live Waline threads while checking
       "This helped" and the sign-up form, from the Waline admin page. (Raised 2026-09-23)
       Claude Code listed six in `docs/design.md`: objectId 3 ("This helped" on
@@ -136,10 +147,23 @@ project file.
       (`/miguel-site/rate-limit-probe`). It says none shows on the live site. That holds
       for the last five. For number 3, check whether it appears under the idempotency
       article's comments.
-- [ ] Create a fine-grained token scoped to `miguel-site` with Contents read and write, save
+      With the sign-up moving to MailerLite, any real addresses left under
+      `/miguel-site/subscribe` in Waline should be moved into MailerLite by hand, then
+      deleted from Waline.
+- [x] Create a fine-grained token scoped to `miguel-site` with Contents read and write, save
       it as the `SITE_DISPATCH_TOKEN` secret on UMWAYI, and add
       `.github/workflows/notify-site.yml`, so a push to `site/` rebuilds the site. Only
-      Miguel can do this. (Raised 2026-09-23)
+      Miguel can do this. (Raised 2026-09-23) Answered 2026-09-23: workflow added in commit
+      `6a38a6f`, secret set, and the whole path verified end to end, a `workflow_dispatch`
+      run on UMWAYI succeeded and the matching `repository_dispatch` (`umwayi-content`)
+      deploy on `miguel-site` completed successfully. Not done as specified: the token used
+      is Miguel's existing broad personal access token, not a fine-grained one scoped to
+      `miguel-site`, chosen deliberately by him when the narrower scope was offered. The
+      same token is also stored in cleartext in `miguel-site`'s `.git/config` remote URL.
+- [ ] Decide whether to replace `SITE_DISPATCH_TOKEN` with a fine-grained token scoped to
+      `miguel-site` with Contents read and write only, as originally intended, and whether
+      to get the same token out of `miguel-site`'s `.git/config` remote URL, where it sits
+      in cleartext. (Raised 2026-09-23)
 - [ ] Read the drafted "What I took from it" lists on all six articles and four project
       pages and correct any item that isn't what he actually took from it. (Raised
       2026-09-23)
