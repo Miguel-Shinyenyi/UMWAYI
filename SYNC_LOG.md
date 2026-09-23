@@ -153,3 +153,21 @@
 - Confidence: the scan covered every file in `site/` and the three `projects/` files the
   homepage reads. The UMWAYI repo itself is public, so the names are still visible on
   GitHub. That's a separate open question in `backlog.md`, not decided here.
+
+## 2026-09-23 (missing journal entries, sign-up moves to MailerLite)
+
+- Source: Miguel, after pushing the seven new excerpts: only three journal entries were
+  visible, and the sign-up should move from Waline to MailerLite.
+- Updated: `backlog.md`, `MASTER_CONTEXT.md` (open threads). Nothing in `site/` changed.
+- What moved: the "three of nine" report was checked before anything was changed. All nine
+  files are in `site/journals/`, and the live `/journal/` index lists all nine. The
+  homepage's Writing tabs each show only the three newest, and nothing on the homepage links
+  to the full lists. The fix, a count-bearing "All ..." link under each tab, went to Claude
+  Code. For MailerLite, the HTML-code embed was chosen over the Universal script and the
+  `ml-embedded` div. It's the option MailerLite documents for full customization, so the
+  footer keeps its current look while MailerLite's own script does the submit. On the free
+  plan, new-article emails go out by hand. Automatic sending from an RSS feed is a paid
+  feature, so the prompt adds an RSS feed now to leave either path open.
+- Confidence: the journal cause is confirmed against the live site. The MailerLite
+  endpoint couldn't be called from here (the network blocks it), so the prompt has Claude
+  Code confirm a real sign-up lands in MailerLite before calling it done.

@@ -162,3 +162,5 @@ See `backlog.md` for the full, itemized list. Summary by project:
   Content lives in this hub's `site/` folder, so the site is updated by editing markdown here.
   Hashnode, dev.to, Medium, and LinkedIn profiles now exist and are linked from the footer;
   whether articles get cross-posted to them is still undecided.
+  The footer email sign-up runs on MailerLite (account 2655737); Waline handles comments and
+  "This helped" only.
