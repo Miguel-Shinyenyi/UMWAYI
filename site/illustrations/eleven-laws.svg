@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="t d">
+<title id="t">Why is this fence here?</title>
+<desc id="d">A short fence stands alone in the open field, going nowhere. A sign on it asks why it is here. The shepherd studies it, hand on chin, before touching it.</desc>
+<rect width="800" height="450" fill="#FBF8F1"/>
+<g>
+<circle cx="700" cy="80" r="34" fill="#E8D6B8"/>
+<path d="M0 300 C160 250 300 280 420 250 C540 220 660 240 800 210 V450 H0 Z" fill="#DCE3D2"/>
+<path d="M0 370 C180 335 330 365 470 340 C600 318 700 330 800 318 V450 H0 Z" fill="#C4D1BA"/>
+
+<g stroke="#1D2420" stroke-width="3" fill="#C08A3E">
+<rect x="220" y="270" width="12" height="130" rx="3"/><rect x="340" y="270" width="12" height="130" rx="3"/><rect x="460" y="270" width="12" height="130" rx="3"/>
+<rect x="210" y="295" width="272" height="12" rx="4"/><rect x="210" y="345" width="272" height="12" rx="4"/>
+</g>
+<g transform="translate(286 200)">
+<rect x="-4" y="40" width="8" height="60" fill="#6B4423"/>
+<rect x="-96" y="0" width="192" height="46" rx="8" fill="#fff" stroke="#1D2420" stroke-width="3"/>
+<text x="0" y="29" text-anchor="middle" font-family="Karla, Helvetica, Arial, sans-serif" font-weight="700" font-size="15" fill="#1D2420" letter-spacing="1">WHY IS THIS HERE?</text>
+</g>
+<g transform="translate(640 425) scale(-0.62 0.62) translate(-392 -520)">
+<path d="M470 520 V252 a24 24 0 0 0 -48 0 v8" stroke="#6B4423" stroke-width="7" stroke-linecap="round" fill="none"/>
+<rect x="372" y="452" width="14" height="62" rx="6" fill="#6E4A33" stroke="#1D2420" stroke-width="2.5"/>
+<rect x="398" y="452" width="14" height="62" rx="6" fill="#6E4A33" stroke="#1D2420" stroke-width="2.5"/>
+<ellipse cx="378" cy="516" rx="15" ry="6" fill="#3B2A1E"/><ellipse cx="408" cy="516" rx="15" ry="6" fill="#3B2A1E"/>
+<path d="M352 332 Q390 318 428 332 L446 464 Q390 476 334 464 Z" fill="#3F5A3C" stroke="#1D2420" stroke-width="3"/>
+<path d="M354 334 L380 326 L442 442 L430 462 Z" fill="#B23A2E" stroke="#1D2420" stroke-width="2.5"/>
+<path d="M370 350 L388 343 M388 382 L407 374 M406 414 L425 406" stroke="#7A1F18" stroke-width="3"/>
+<rect x="340" y="400" width="100" height="10" rx="4" fill="#C08A3E" stroke="#1D2420" stroke-width="2.5"/>
+<rect x="381" y="312" width="16" height="16" fill="#7A4A2E"/>
+<circle cx="389" cy="286" r="34" fill="#7A4A2E" stroke="#1D2420" stroke-width="3"/>
+<circle cx="422" cy="291" r="6" fill="#7A4A2E" stroke="#1D2420" stroke-width="2.5"/>
+<path d="M356 282 Q356 248 389 248 Q423 248 423 282 Q413 262 389 262 Q365 262 356 282 Z" fill="#1D1A17"/>
+<ellipse cx="377" cy="289" rx="6" ry="7" fill="#fff" stroke="#1D2420" stroke-width="2.5"/>
+<ellipse cx="399" cy="289" rx="6" ry="7" fill="#fff" stroke="#1D2420" stroke-width="2.5"/>
+<circle cx="374" cy="286" r="3" fill="#1D2420"/><circle cx="396" cy="286" r="3" fill="#1D2420"/>
+<path d="M368 277 Q376 271 384 275 M392 271 Q400 264 408 270" stroke="#1D2420" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+<path d="M381 306 Q390 311 398 304" stroke="#1D2420" stroke-width="3" stroke-linecap="round" fill="none"/>
+<path d="M358 340 L343 374 L374 326" stroke="#3F5A3C" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<circle cx="378" cy="323" r="9" fill="#7A4A2E" stroke="#1D2420" stroke-width="2.5"/>
+<path d="M424 342 L446 374 L464 362" stroke="#3F5A3C" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<circle cx="469" cy="360" r="9" fill="#7A4A2E" stroke="#1D2420" stroke-width="2.5"/>
+</g>
+<g transform="translate(110 425) scale(0.6 0.6) translate(-171 -520)">
+<g stroke="#1D2420" stroke-width="3">
+<line x1="150" y1="498" x2="150" y2="520" stroke-width="5" stroke-linecap="round"/>
+<line x1="192" y1="498" x2="192" y2="520" stroke-width="5" stroke-linecap="round"/>
+<circle cx="152" cy="476" r="20" fill="#fff"/><circle cx="176" cy="464" r="22" fill="#fff"/><circle cx="200" cy="476" r="20" fill="#fff"/>
+<circle cx="164" cy="492" r="17" fill="#fff"/><circle cx="190" cy="492" r="17" fill="#fff"/>
+<ellipse cx="128" cy="480" rx="13" ry="15" fill="#2A2A2A"/>
+<ellipse cx="118" cy="470" rx="7" ry="4" fill="#2A2A2A" transform="rotate(-25 118 470)"/>
+</g>
+<circle cx="124" cy="478" r="2.5" fill="#fff"/>
+</g>
+
+</g>
+</svg>

@@ -51,4 +51,5 @@ naming either as an established pattern.
 
 - Whether the register-calibration read holds outside indexing, tested against other topics.
 - Whether the self-prediction-of-losing-the-audience pattern shows up outside technical
-  explanations, which would connect it to the PostHog feedback rather than keep them separate.
+  explanations, which would connect it to a past interview's feedback rather than keep them
+  separate.

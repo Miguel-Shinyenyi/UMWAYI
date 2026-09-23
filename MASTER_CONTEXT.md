@@ -68,6 +68,17 @@ where the observation gets tested against something real.
 - When I draft a "What I took from it" list, every item comes from what the piece itself
   already says. I don't add a lesson Miguel hasn't stated, and I tell him the list is a draft
   for him to correct.
+- Nothing on the site names a company Miguel applied to or interviewed with (PostHog, Ezra,
+  JUMO, and any that come later). On the site they're described in general terms, "a job
+  interview", "a lending company", never by name. His current employer, Global Link+, may be
+  named; he confirmed that on 2026-09-23. The names stay in the hub's own files, which the
+  site never publishes. The homepage's open threads read straight from `projects/` files,
+  so a bullet under "Open questions" or "Open decisions" there counts as site content.
+- Journal excerpts for the site are drawn from `journal/entries/`, never copied whole.
+  Anything private is left out: health beyond what an article has already made public, other
+  people, money, and personal patterns still under investigation. When I'm not sure whether
+  something is private, I ask before it goes into `site/`. Left private by his decision on
+  2026-09-23: the 09-20 river walk and pool game.
 - Weekly summaries are written Sunday evenings, starting 2026-09-20, the day this rule was
   introduced.
 - `backlog.md` holds every open question and pending decision or action across every

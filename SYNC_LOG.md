@@ -132,3 +132,24 @@
 - Confidence: both bugs measured at 1440, 1920, and 2560 wide. The Waline privacy claim is
   unconfirmed until Claude Code's test post shows the address stays out of the public
   response; the prompt says to stop if it doesn't.
+
+## 2026-09-23 (journal, public excerpts, and a privacy rule for the site)
+
+- Source: `journal/entries/2026-09-23.md`, and Miguel's rule that the site never names
+  companies he applied to or interviewed with.
+- Updated: `journal/entries/2026-09-23.md` (new), seven new excerpts in `site/journals/`
+  with one illustration each, `site/philosophy/what-becomes-true-when-both-stay.md` ("a
+  PostHog interview" becomes "a job interview"), `projects/career-prep.md` (an open-question
+  bullet the homepage shows publicly reworded without the company), `site/README.md` (new
+  Privacy section), `site/tools/illustrations.py`, `MASTER_CONTEXT.md` (two new
+  principles), `backlog.md`.
+- What moved: the excerpts come from 09-18 (bugs found by running the system), 09-20 (the
+  mismatch reading, the eleven laws, the dead comment service), 09-21 (the misattributed
+  Seneca line, the cold explain-back), and 09-23 (looking at the rendered page). Left out
+  on purpose: the job rejection, the target companies, and, by Miguel's decision, the river
+  walk and pool game. He kept the anxiety section in the published article and kept his
+  employer's name on the site. A scan found only two company names reaching the site: the
+  article line and the open-threads bullet, both now reworded.
+- Confidence: the scan covered every file in `site/` and the three `projects/` files the
+  homepage reads. The UMWAYI repo itself is public, so the names are still visible on
+  GitHub. That's a separate open question in `backlog.md`, not decided here.
