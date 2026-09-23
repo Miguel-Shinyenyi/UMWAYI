@@ -46,6 +46,15 @@ project file.
 - [x] The settlement-engine repo (`Invoice-Financing`) is recorded here as private, but its
       GitHub page loaded without sign-in on 2026-09-23. (Raised 2026-09-23) Answered
       2026-09-23: Miguel made it public. Linked from its project page.
+- [ ] The UMWAYI repo is public on GitHub, so `projects/career-prep.md`, several journal
+      entries, and `MASTER_CONTEXT.md` name the companies the site now keeps private. The
+      site no longer shows them, but anyone reading the repo can. Decide whether that's
+      acceptable, or whether those files, or the repo, should be private. Making the repo
+      private would break the site's build clone until it's given a read token. (Raised
+      2026-09-23)
+- [ ] Read the seven new journal excerpts in `site/journals/` (09-18 to 09-23) and correct
+      anything that isn't how he'd put it, or that he'd rather keep private. (Raised
+      2026-09-23)
 - [ ] "This helped" stops a second click per browser, not per device. Clearing site data or
       switching browsers resets it. Accept that, or change the Waline server to enforce it.
       (Raised 2026-09-23)
@@ -122,6 +131,11 @@ project file.
       email reminders). (Raised 2026-09-23)
 - [ ] Delete any test comments Claude Code posted to live Waline threads while checking
       "This helped" and the sign-up form, from the Waline admin page. (Raised 2026-09-23)
+      Claude Code listed six in `docs/design.md`: objectId 3 ("This helped" on
+      `/miguel-site/tech/idempotency-keys`), 4, 6, 7, 8 (`/miguel-site/subscribe`), and 5
+      (`/miguel-site/rate-limit-probe`). It says none shows on the live site. That holds
+      for the last five. For number 3, check whether it appears under the idempotency
+      article's comments.
 - [ ] Create a fine-grained token scoped to `miguel-site` with Contents read and write, save
       it as the `SITE_DISPATCH_TOKEN` secret on UMWAYI, and add
       `.github/workflows/notify-site.yml`, so a push to `site/` rebuilds the site. Only

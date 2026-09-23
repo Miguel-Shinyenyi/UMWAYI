@@ -344,6 +344,165 @@ SCENES["tech/idempotency-keys"] = (
 )
 
 
+# journals/bugs-found-by-running-it: every test ticked, and a bug crawls out of the running machine.
+SCENES["journals/bugs-found-by-running-it"] = (
+    "Green tests, live bug",
+    "A clipboard shows every test ticked. Beside it a running machine, marked running, has a small bug crawling out of it. The shepherd watches the machine, not the clipboard.",
+    f"""
+<g transform="translate(90 120)">
+<rect x="0" y="0" width="170" height="220" rx="10" fill="#C08A3E" stroke="{INK}" stroke-width="3"/>
+<rect x="14" y="26" width="142" height="180" rx="5" fill="#fff" stroke="{INK}" stroke-width="3"/>
+<rect x="55" y="-10" width="60" height="24" rx="7" fill="#8A8F89" stroke="{INK}" stroke-width="3"/>
+{label(85, 52, "TESTS", 13, OCHRE)}
+{''.join(f'<g transform="translate(34 {82+i*36})"><rect x="0" y="-16" width="22" height="22" rx="4" fill="{HILL2}" stroke="{INK}" stroke-width="2.5"/><path d="M4 -5 L9 1 L18 -11" stroke="{GREEN}" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="32" y="-10" width="{70-i*8}" height="8" rx="4" fill="{PAPER}" stroke="{INK}" stroke-width="1.5"/></g>' for i in range(4))}
+</g>
+<g transform="translate(330 160)">
+<rect x="0" y="0" width="200" height="170" rx="12" fill="{GREEN}" stroke="{INK}" stroke-width="3"/>
+<rect x="20" y="20" width="160" height="60" rx="6" fill="{INK}"/>
+{label(100, 57, "RUNNING", 16, OCHRE_L)}
+<circle cx="55" cy="122" r="22" fill="{OCHRE_L}" stroke="{INK}" stroke-width="3"/><circle cx="55" cy="122" r="7" fill="{INK}"/>
+<circle cx="120" cy="122" r="16" fill="{OCHRE_L}" stroke="{INK}" stroke-width="3"/><circle cx="120" cy="122" r="5" fill="{INK}"/>
+<rect x="150" y="110" width="30" height="40" rx="4" fill="{INK}"/>
+<g transform="translate(196 150) rotate(20)">
+<ellipse cx="0" cy="0" rx="16" ry="12" fill="{RED}" stroke="{INK}" stroke-width="3"/>
+<path d="M0 -12 V12" stroke="{INK}" stroke-width="2.5"/>
+<circle cx="16" cy="-2" r="6" fill="{INK}"/>
+<path d="M-8 10 L-14 20 M0 12 L0 22 M8 10 L14 20 M-8 -10 L-14 -20 M8 -10 L14 -20" stroke="{INK}" stroke-width="2.5" stroke-linecap="round"/>
+<circle cx="-6" cy="-4" r="2.5" fill="{INK}"/><circle cx="6" cy="4" r="2.5" fill="{INK}"/>
+</g>
+</g>
+{shepherd(680, 425, 0.62, flip=True)}
+""",
+)
+
+# journals/felt-before-understood: already on the path; the book lies back where it began.
+SCENES["journals/felt-before-understood"] = (
+    "Already on the path",
+    "A winding path runs across the field. The shepherd and two sheep are already well along it. Back where the path began, an open book lies on the grass.",
+    f"""
+<path d="M40 430 C140 380 200 360 300 350 C420 338 520 330 780 300" stroke="#C8B38E" stroke-width="44" fill="none" stroke-linecap="round"/>
+<path d="M40 430 C140 380 200 360 300 350 C420 338 520 330 780 300" stroke="{INK}" stroke-width="2" stroke-dasharray="3 10" fill="none" stroke-linecap="round"/>
+<g transform="translate(130 330)">
+<path d="M-60 -20 Q-30 -36 0 -20 Q30 -36 60 -20 V20 Q30 6 0 20 Q-30 6 -60 20 Z" fill="#fff" stroke="{INK}" stroke-width="3"/>
+<path d="M0 -20 V20" stroke="{INK}" stroke-width="3"/>
+<path d="M-48 -8 H-12 M-48 4 H-16 M12 -8 H48 M12 4 H44" stroke="{OCHRE}" stroke-width="3" stroke-linecap="round"/>
+</g>
+{label(130, 296, "THE WORDS, LATER", 12, OCHRE)}
+{sheep(470, 355, 0.5, flip=True)}
+{sheep(545, 348, 0.5, flip=True)}
+{shepherd(660, 340, 0.55, flip=True)}
+""",
+)
+
+# journals/eleven-laws: Chesterton's fence, standing alone in the field.
+SCENES["journals/eleven-laws"] = (
+    "Why is this fence here?",
+    "A short fence stands alone in the open field, going nowhere. A sign on it asks why it is here. The shepherd studies it, hand on chin, before touching it.",
+    f"""
+<g stroke="{INK}" stroke-width="3" fill="#C08A3E">
+<rect x="220" y="270" width="12" height="130" rx="3"/><rect x="340" y="270" width="12" height="130" rx="3"/><rect x="460" y="270" width="12" height="130" rx="3"/>
+<rect x="210" y="295" width="272" height="12" rx="4"/><rect x="210" y="345" width="272" height="12" rx="4"/>
+</g>
+<g transform="translate(286 200)">
+<rect x="-4" y="40" width="8" height="60" fill="#6B4423"/>
+<rect x="-96" y="0" width="192" height="46" rx="8" fill="#fff" stroke="{INK}" stroke-width="3"/>
+{label(0, 29, "WHY IS THIS HERE?", 15)}
+</g>
+{shepherd(640, 425, 0.62, flip=True)}
+{sheep(110, 425, 0.6)}
+""",
+)
+
+# journals/a-dead-dependency: one signpost crossed out, the flock takes the other.
+SCENES["journals/a-dead-dependency"] = (
+    "The other way",
+    "Two signposts stand at a fork in the path. The left one is grey, cracked and crossed out with a red X. The sheep head down the right path under a freshly painted sign.",
+    f"""
+<path d="M400 450 L400 360 L200 240" stroke="#C8B38E" stroke-width="40" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M400 360 L620 250" stroke="#C8B38E" stroke-width="40" fill="none" stroke-linecap="round"/>
+<g transform="translate(250 150)">
+<rect x="-4" y="30" width="8" height="90" fill="#8A8F89"/>
+<path d="M-80 0 H70 L90 22 L70 44 H-80 Z" fill="#B8B6AE" stroke="{INK}" stroke-width="3"/>
+<path d="M-40 6 L-30 22 L-44 36" stroke="{INK}" stroke-width="2" fill="none"/>
+{label(-5, 29, "ARCHIVED", 14, "#5B615B")}
+<path d="M-70 -6 L80 50 M80 -6 L-70 50" stroke="{RED}" stroke-width="6" stroke-linecap="round"/>
+</g>
+<g transform="translate(560 140)">
+<rect x="-4" y="30" width="8" height="90" fill="#6B4423"/>
+<path d="M-70 0 H80 L100 22 L80 44 H-70 Z" fill="{OCHRE_L}" stroke="{INK}" stroke-width="3"/>
+{label(10, 29, "THIS WAY", 14)}
+</g>
+{sheep(640, 330, 0.5, flip=True)}
+{sheep(560, 380, 0.55, flip=True)}
+{shepherd(150, 440, 0.55)}
+""",
+)
+
+# journals/not-senecas-line: checking the author tag with a magnifying glass.
+SCENES["journals/not-senecas-line"] = (
+    "Who said it?",
+    "A long scroll hangs open with a quote on it. Its author tag reads Seneca, followed by a question mark. The shepherd stands beside it; a large magnifying glass hovers over the tag.",
+    f"""
+<g transform="translate(160 70)">
+<rect x="0" y="20" width="320" height="250" fill="{PAPER}" stroke="{INK}" stroke-width="3"/>
+<rect x="-14" y="6" width="348" height="26" rx="13" fill="#C08A3E" stroke="{INK}" stroke-width="3"/>
+<rect x="-14" y="258" width="348" height="26" rx="13" fill="#C08A3E" stroke="{INK}" stroke-width="3"/>
+<text x="160" y="90" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="22" fill="{INK}">"Peace does not come</text>
+<text x="160" y="120" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="22" fill="{INK}">to the man who refuses</text>
+<text x="160" y="150" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="22" fill="{INK}">to declare war..."</text>
+<rect x="150" y="190" width="150" height="40" rx="8" fill="#fff" stroke="{INK}" stroke-width="3"/>
+{label(225, 216, "SENECA?", 16, RED)}
+<circle cx="225" cy="210" r="52" fill="#fff" fill-opacity=".25" stroke="{INK}" stroke-width="6"/>
+<path d="M262 247 L310 295" stroke="#6B4423" stroke-width="14" stroke-linecap="round"/>
+</g>
+{shepherd(640, 425, 0.62, flip=True)}
+""",
+)
+
+# journals/three-questions-cold: two answers filled in, the third still a question mark.
+SCENES["journals/three-questions-cold"] = (
+    "The third question",
+    "A board holds three numbered boxes: problem, mechanism, and what breaks. The first two have lines of writing in them. The third holds only a large question mark. A sheep looks up at it.",
+    f"""
+<g transform="translate(70 70)">
+<rect x="0" y="0" width="520" height="250" rx="12" fill="{INK}" stroke="{INK}" stroke-width="3"/>
+<rect x="10" y="10" width="500" height="230" rx="8" fill="#2E3732"/>
+{''.join(f'<g transform="translate({26+i*164} 30)"><rect x="0" y="0" width="148" height="190" rx="8" fill="none" stroke="{CREAM}" stroke-width="2.5" stroke-dasharray="6 6"/><circle cx="24" cy="24" r="14" fill="{OCHRE_L}" stroke="{CREAM}" stroke-width="2"/><text x="24" y="30" text-anchor="middle" font-family="Karla, Helvetica, Arial, sans-serif" font-weight="700" font-size="15" fill="{INK}">{i+1}</text>{label(74, 70, t, 12, CREAM)}' + (''.join(f'<rect x="20" y="{92+j*20}" width="{108-j*14}" height="6" rx="3" fill="{CREAM}" opacity=".8"/>' for j in range(4)) if i < 2 else f'<text x="74" y="160" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="70" fill="{OCHRE_L}">?</text>') + '</g>' for i, t in enumerate(["PROBLEM", "MECHANISM", "WHAT BREAKS"]))}
+<rect x="230" y="250" width="12" height="100" fill="#6B4423"/><rect x="278" y="250" width="12" height="100" fill="#6B4423"/>
+</g>
+{sheep(470, 425, 0.62, flip=True)}
+{shepherd(690, 425, 0.6, flip=True)}
+""",
+)
+
+# journals/looking-not-reading: a phone-width screen held against a ruler.
+SCENES["journals/looking-not-reading"] = (
+    "Measured, not assumed",
+    "A phone-sized screen stands in the field showing the shepherd and a sheep. A ruler runs along its top edge, marked 375 pixels. The shepherd stands beside it, looking.",
+    f"""
+<g transform="translate(240 60)">
+<rect x="6" y="6" width="200" height="340" rx="26" fill="{INK}"/>
+<rect x="0" y="0" width="200" height="340" rx="26" fill="{INK}" stroke="{INK}" stroke-width="3"/>
+<rect x="12" y="30" width="176" height="290" rx="8" fill="{CREAM}"/>
+<rect x="76" y="12" width="48" height="8" rx="4" fill="#4A5650"/>
+<g>
+<path d="M12 230 C70 210 130 222 188 205 V320 H12 Z" fill="{HILL1}"/>
+<path d="M12 270 C80 255 140 265 188 255 V320 H12 Z" fill="{HILL2}"/>
+{shepherd(130, 300, 0.36)}
+{sheep(60, 300, 0.35)}
+</g>
+</g>
+<g transform="translate(240 20)">
+<rect x="0" y="0" width="200" height="26" rx="3" fill="{OCHRE_L}" stroke="{INK}" stroke-width="2.5"/>
+{''.join(f'<line x1="{x}" y1="0" x2="{x}" y2="{12 if x % 50 == 0 else 7}" stroke="{INK}" stroke-width="2"/>' for x in range(10, 200, 10))}
+{label(100, 21, "375PX", 11)}
+</g>
+{shepherd(620, 425, 0.62, flip=True)}
+""",
+)
+
+
+
 if __name__ == "__main__":
     for key, (title, desc, body) in SCENES.items():
         name = key.split("/")[1] + ".svg"

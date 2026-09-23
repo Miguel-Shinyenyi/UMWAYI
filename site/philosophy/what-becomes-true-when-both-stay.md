@@ -26,7 +26,7 @@ Dialectical thinking, how my mind works?,
 it generates a position and its counter-argument at the same time. Useful when pointed
 outward. Corrosive when pointed inward, because the counter-argument doesn't sit next to the
 first position, it tries to erase it. Grateful for the past, but it cost me something real,
-failing a PostHog interview among the costs. Forgiving someone, but not reconciled with them.
+failing a job interview among the costs. Forgiving someone, but not reconciled with them.
 The old move was picking one of those as the real feeling and discarding the other as noise.
 
 The question that actually helps isn't which one is true. Both are. The question is what

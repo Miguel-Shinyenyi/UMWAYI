@@ -70,6 +70,18 @@ A `url` that starts with `/` is a page on this site; the build adds the base pat
   without scrolling sideways: one column, steps in order, no side-by-side threads. Real
   code can be wider; it scrolls inside its own panel.
 
+## Privacy
+
+- Never name a company Miguel applied to or interviewed with. Say "a job interview", "a
+  lending company", or similar. His current employer may be named.
+- Journal excerpts in `journals/` are edited from the private entries in
+  `journal/entries/`, never copied whole. Leave out anything private: health beyond what an
+  article has already made public, other people, money, and personal patterns still under
+  investigation. If unsure, ask Miguel before it goes in.
+- The homepage's open threads read from `projects/career-prep.md`,
+  `projects/cmu-masters.md`, and `projects/routine-machine.md`. Bullets under their "Open
+  questions" or "Open decisions" headings are public too, so the same rules apply there.
+
 ## Illustrations
 
 One scene per article, drawn from the article's own idea, in the reference design's style.
