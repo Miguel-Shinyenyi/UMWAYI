@@ -35,11 +35,19 @@ project file.
       makes simplest. (Raised 2026-09-20)
 - [ ] What happens if the free-tier database goes inactive and gets suspended, whether that
       needs a keepalive or is an accepted risk. (Raised 2026-09-20)
-- [ ] Whether the flock's teardrop marks and the mascot read clearly to someone seeing the
-      site for the first time, with no accessible-label check done yet beyond confirming the
-      shapes render visibly in light mode, dark mode, and with reduced motion set. A
-      genuinely different question from whether the design reads well, which is answered
-      below. (Raised 2026-09-22)
+- [x] Whether the flock's teardrop marks and the mascot read clearly to someone seeing the
+      site for the first time. (Raised 2026-09-22) Answered 2026-09-23: superseded. The full
+      redesign removed the geometric mascot and the flock entirely.
+- [ ] Whether replacing the UMWAYI method's six stages with four pillars and a four-step loop
+      on the homepage loses something real, or is a fair simplification. (Raised 2026-09-23)
+- [ ] Hashnode, LinkedIn, dev.to, and Medium links in the footer point to `#` until those
+      accounts exist. Keep the placeholders or hide them until then. (Raised 2026-09-23)
+- [ ] The settlement-engine repo (`Invoice-Financing`) is recorded here as private, but its
+      GitHub page loaded without sign-in on 2026-09-23. Confirm which it is, then decide
+      whether its project page links to it. Left unlinked until then. (Raised 2026-09-23)
+- [ ] "This helped" stops a second click per browser, not per device. Clearing site data or
+      switching browsers resets it. Accept that, or change the Waline server to enforce it.
+      (Raised 2026-09-23)
 
 ### Settlement engine
 - [ ] Whether outbox and double-ledger will surface similarly real, correctable gaps once
@@ -96,6 +104,22 @@ project file.
       color-collision issues. The design reads well. Whether its individual marks are
       legible to a first-time viewer without context is a separate, still-open question
       above.
+
+- [x] Full redesign around the illustrated shepherd, from Miguel's own spec. (Raised
+      2026-09-23) Answered 2026-09-23: built and pushed by Claude Code, commits `3b884cc` and
+      `7f4ac16`. Checked against a fresh production build (14 pages, no page-level overflow
+      at 390px). Eight gaps against the reference found and handed to Claude Code in the same
+      round as the content move below.
+- [ ] Move all site content into UMWAYI's `site/` folder and have the site build from it.
+      Content files, illustrations, profile photo, and `site/README.md` delivered
+      2026-09-23; Claude Code prompt delivered for the site side. (Raised 2026-09-23)
+- [ ] Create a fine-grained token scoped to `miguel-site` with Contents read and write, save
+      it as the `SITE_DISPATCH_TOKEN` secret on UMWAYI, and add
+      `.github/workflows/notify-site.yml`, so a push to `site/` rebuilds the site. Only
+      Miguel can do this. (Raised 2026-09-23)
+- [ ] Read the drafted "What I took from it" lists on all six articles and four project
+      pages and correct any item that isn't what he actually took from it. (Raised
+      2026-09-23)
 
 ### Settlement engine
 - [x] Choose which subsystem to study first, in depth, cold: idempotency/state machine,

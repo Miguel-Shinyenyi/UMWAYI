@@ -1,9 +1,15 @@
 ---
 title: "What Becomes True When Both Stay"
 date: 2026-09-22
+updated: 2026-09-23
 summary: "A reading about how thin the evidence for the past actually is, applied to two live self-theories, and what a real system looks like when it refuses to force a premature answer."
 draft: false
+tags: ["Sapiens", "Self-observation", "Concurrency"]
+illustration: what-becomes-true-when-both-stay.svg
+illustrationAlt: "A white sheep and a dark sheep stand in the same fold. The shepherd keeps both instead of choosing one. A red curtain hangs at the edge of the scene."
 ---
+
+## The curtain of silence
 
 Sapiens describes the evidence for prehistoric life as a Rorschach test. A burial site with
 ornaments on a skeleton might mean hierarchy. It might mean something else entirely. A
@@ -14,7 +20,9 @@ after it, but the honest version of that inquiry holds its answers loosely.
 
 That's a claim about archaeology. It turned out to be useful somewhere closer to home.
 
-**Two truths instead of one.** Dialectical thinking, how my mind works?,
+## Two truths instead of one
+
+Dialectical thinking, how my mind works?,
 it generates a position and its counter-argument at the same time. Useful when pointed
 outward. Corrosive when pointed inward, because the counter-argument doesn't sit next to the
 first position, it tries to erase it. Grateful for the past, but it cost me something real,
@@ -24,7 +32,9 @@ The old move was picking one of those as the real feeling and discarding the oth
 The question that actually helps isn't which one is true. Both are. The question is what
 becomes true if I stop forcing a choice between them.
 
-**A system that already does this.** The settlement engine I built has a state called
+## A system that already does this
+
+The settlement engine I built has a state called
 `UNKNOWN`. It's not a bug, it's a deliberate third option, used when a payment might have
 gone through or might not have, and the system genuinely doesn't have enough information yet
 to say which.
@@ -49,7 +59,9 @@ once there's enough to resolve them with. Some of them are just allowed to be tw
 once, permanently, the way gratitude and grief can both be true about the same period without
 either one cancelling the other.
 
-**Where this gets tested, not just described.** I've also been carrying a specific belief:
+## Where this gets tested, not just described
+
+I've also been carrying a specific belief:
 that my anxiety comes from a need to control everything. It's a real, documented idea in
 general, intolerance of uncertainty, anxiety tracking unpredictability rather than actual
 danger, controlling behavior as an attempt to shrink that unpredictability back down. But a
@@ -61,10 +73,16 @@ this week turned up two concurrency races, both caused by the system trying to g
 too much certainty upfront.
 
 ```
-Two requests, same key, arriving at the same instant.
-Option A: lock everything before either proceeds, force certainty immediately.
-Option B: let both proceed, let the database's unique constraint decide
-          who wins, recover the loser by reading the winner's result.
+Two requests, same key, same instant.
+
+Option A: lock everything before
+either proceeds. Force certainty
+immediately.
+
+Option B: let both proceed. The
+database's unique constraint decides
+who wins. The loser recovers by
+reading the winner's result.
 ```
 
 The actual code takes option B. Locking everything upfront to force immediate certainty is
@@ -81,3 +99,11 @@ just the label that was closest at hand when I needed one. That's not resolved i
 piece, on purpose. If forcing a system to decide before it has enough information produces a
 deadlock, forcing a belief about myself into a tidy answer before I've actually tested it
 probably isn't any more reliable. The honest state to hold it in, for now, is `UNKNOWN`.
+
+## What I took from it
+
+1. Two things can both be true about the same period. Stop asking which one is real.
+2. `UNKNOWN` is an honest state. A fast, fake certainty is worse than a slow, correct answer.
+3. Forcing certainty upfront is what caused the deadlocks. That applies to beliefs about
+   myself too.
+4. "My anxiety comes from control" stays a hypothesis until a real instance tests it.

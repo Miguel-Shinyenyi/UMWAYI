@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="t d">
+<title id="t">Weighing a claim against its argument</title>
+<desc id="d">An open book sits on one pan of a balance scale labelled claim; a small stack of numbered steps sits on the other, labelled argument. The shepherd studies the scale, hand on chin.</desc>
+<rect x="1.5" y="1.5" width="797" height="447" rx="24" fill="#FBF8F1" stroke="#1D2420" stroke-width="3"/>
+<clipPath id="panel"><rect x="3" y="3" width="794" height="444" rx="22"/></clipPath>
+<g clip-path="url(#panel)">
+<circle cx="700" cy="80" r="34" fill="#E8D6B8"/>
+<path d="M0 300 C160 250 300 280 420 250 C540 220 660 240 800 210 V450 H0 Z" fill="#DCE3D2"/>
+<path d="M0 370 C180 335 330 365 470 340 C600 318 700 330 800 318 V450 H0 Z" fill="#C4D1BA"/>
+
+<g transform="translate(150 70)">
+<rect x="175" y="290" width="70" height="16" rx="4" fill="#C08A3E" stroke="#1D2420" stroke-width="3"/>
+<rect x="203" y="80" width="14" height="212" fill="#C08A3E" stroke="#1D2420" stroke-width="3"/>
+<g transform="rotate(-7 210 90)">
+<rect x="30" y="84" width="360" height="12" rx="6" fill="#9A5B1E" stroke="#1D2420" stroke-width="3"/>
+<path d="M60 96 L30 170 M60 96 L90 170 M360 96 L330 170 M360 96 L390 170" stroke="#1D2420" stroke-width="2"/>
+<path d="M20 170 H100 Q100 190 60 190 Q20 190 20 170 Z" fill="#F3EEE3" stroke="#1D2420" stroke-width="3"/>
+<path d="M320 170 H400 Q400 190 360 190 Q320 190 320 170 Z" fill="#F3EEE3" stroke="#1D2420" stroke-width="3"/>
+<path d="M22 168 Q41 128 60 150 Q79 128 98 168 Z" fill="#fff" stroke="#1D2420" stroke-width="3"/>
+<path d="M60 150 V168 M32 152 Q42 140 54 150 M66 150 Q78 140 88 152" stroke="#1D2420" stroke-width="2" fill="none"/>
+<g stroke="#1D2420" stroke-width="2.5">
+<rect x="336" y="156" width="48" height="12" rx="2" fill="#E0A965"/>
+<rect x="342" y="144" width="36" height="12" rx="2" fill="#C4D1BA"/>
+<rect x="348" y="132" width="24" height="12" rx="2" fill="#fff"/>
+</g>
+<text x="60" y="216" text-anchor="middle" font-family="Karla, Helvetica, Arial, sans-serif" font-weight="700" font-size="13" fill="#9A5B1E" letter-spacing="1">CLAIM</text>
+<text x="360" y="216" text-anchor="middle" font-family="Karla, Helvetica, Arial, sans-serif" font-weight="700" font-size="13" fill="#9A5B1E" letter-spacing="1">ARGUMENT</text>
+</g>
+<circle cx="210" cy="82" r="10" fill="#E0A965" stroke="#1D2420" stroke-width="3"/>
+</g>
+<g transform="translate(700 430) scale(0.6 0.6) translate(-392 -520)">
+<path d="M470 520 V252 a24 24 0 0 0 -48 0 v8" stroke="#6B4423" stroke-width="7" stroke-linecap="round" fill="none"/>
+<rect x="372" y="452" width="14" height="62" rx="6" fill="#6E4A33" stroke="#1D2420" stroke-width="2.5"/>
+<rect x="398" y="452" width="14" height="62" rx="6" fill="#6E4A33" stroke="#1D2420" stroke-width="2.5"/>
+<ellipse cx="378" cy="516" rx="15" ry="6" fill="#3B2A1E"/><ellipse cx="408" cy="516" rx="15" ry="6" fill="#3B2A1E"/>
+<path d="M352 332 Q390 318 428 332 L446 464 Q390 476 334 464 Z" fill="#3F5A3C" stroke="#1D2420" stroke-width="3"/>
+<path d="M354 334 L380 326 L442 442 L430 462 Z" fill="#B23A2E" stroke="#1D2420" stroke-width="2.5"/>
+<path d="M370 350 L388 343 M388 382 L407 374 M406 414 L425 406" stroke="#7A1F18" stroke-width="3"/>
+<rect x="340" y="400" width="100" height="10" rx="4" fill="#C08A3E" stroke="#1D2420" stroke-width="2.5"/>
+<rect x="381" y="312" width="16" height="16" fill="#7A4A2E"/>
+<circle cx="389" cy="286" r="34" fill="#7A4A2E" stroke="#1D2420" stroke-width="3"/>
+<circle cx="422" cy="291" r="6" fill="#7A4A2E" stroke="#1D2420" stroke-width="2.5"/>
+<path d="M356 282 Q356 248 389 248 Q423 248 423 282 Q413 262 389 262 Q365 262 356 282 Z" fill="#1D1A17"/>
+<ellipse cx="377" cy="289" rx="6" ry="7" fill="#fff" stroke="#1D2420" stroke-width="2.5"/>
+<ellipse cx="399" cy="289" rx="6" ry="7" fill="#fff" stroke="#1D2420" stroke-width="2.5"/>
+<circle cx="374" cy="286" r="3" fill="#1D2420"/><circle cx="396" cy="286" r="3" fill="#1D2420"/>
+<path d="M368 277 Q376 271 384 275 M392 271 Q400 264 408 270" stroke="#1D2420" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+<path d="M381 306 Q390 311 398 304" stroke="#1D2420" stroke-width="3" stroke-linecap="round" fill="none"/>
+<path d="M358 340 L343 374 L374 326" stroke="#3F5A3C" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<circle cx="378" cy="323" r="9" fill="#7A4A2E" stroke="#1D2420" stroke-width="2.5"/>
+<path d="M424 342 L446 374 L464 362" stroke="#3F5A3C" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<circle cx="469" cy="360" r="9" fill="#7A4A2E" stroke="#1D2420" stroke-width="2.5"/>
+</g>
+
+</g>
+</svg>

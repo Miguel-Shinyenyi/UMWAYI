@@ -1,9 +1,15 @@
 ---
 title: "Claim, Argument, and the Discipline of Not Fooling Yourself"
 date: 2026-09-20
+updated: 2026-09-23
 summary: "What a book's rhetorical force has to do with a decisions log, and why both deserve the same scrutiny."
 draft: false
+tags: ["Reading", "Reasoning", "Documentation"]
+illustration: claim-versus-argument.svg
+illustrationAlt: "A balance scale with an open book labelled claim on one pan and a stack of numbered steps labelled argument on the other. The shepherd studies it."
 ---
+
+## The trap
 
 I did a set of exercises this morning to raise my energy, then showered, because I've learned
 I need to feel physically settled before my mind is any good to me. Only afterward, reading a
@@ -17,7 +23,7 @@ settled. Not because the evidence demanded it, but because the writing was good.
 argument and a demonstrated fact produce the same feeling of certainty in a reader. That
 feeling is not evidence. It's craft.
 
-**The distinction that actually matters**
+## The distinction that actually matters
 
 A claim is something shown to be true, checked against reality, falsifiable and unfalsified.
 An argument is something *made* to be believed, structured, sequenced, persuasive by design.
@@ -36,7 +42,7 @@ entirely possible I misread the chapter. My understanding of an idea and a verif
 that idea are not the same thing, and conflating them means any misreading I make gets
 laundered into something that looks like the author's authority instead of my own.
 
-**Where I'd already been doing this right, without naming it**
+## Where I'd already been doing this right
 
 The clearest working example of separating claim from argument that I have access to isn't
 philosophical at all. It's a settlement-engine system I built myself, with Claude Code, and
@@ -57,7 +63,7 @@ you don't look closely. Only one of them actually lets you check the reasoning i
 just trusting the confidence of the person who wrote it. That's the whole trick. Confidence is
 cheap. Showing your work is not.
 
-**What this actually looks like day to day**
+## What this looks like day to day
 
 In reading: hold two separate questions for anything persuasive. What is being claimed, and
 what is being argued for. Notice which one produced your certainty. If it's the second, the
@@ -82,7 +88,17 @@ confidence, or your own possibly-mistaken summary of something else. Most of the
 hold both kinds of belief at once, loosely, without needing to resolve which is which
 immediately. The problem only starts when you stop checking.
 
+## No tidy ending
+
 I don't have a tidy ending for this one, and I'm treating that as correct rather than
 unfinished. The whole point was to stop mistaking a well-argued position for a demonstrated
 one. Reaching a neat conclusion here would be exactly the thing I just spent this piece
 arguing against doing.
+
+## What I took from it
+
+1. Certainty from good writing feels the same as certainty from evidence. Check which one I'm
+   standing on.
+2. My own summary of a source is not the source. Mark it as mine.
+3. A decision is only checkable when its reason is written next to it, in code and in life.
+4. Not every belief needs resolving now. The problem starts when I stop checking.
