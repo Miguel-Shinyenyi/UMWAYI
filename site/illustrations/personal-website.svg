@@ -1,9 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="t d">
 <title id="t">The site, from the inside</title>
 <desc id="d">A browser window floats over the field. Inside it the shepherd leans on his crook beside a small sheep, the same scene as the homepage, drawn smaller. A thought bubble reads: in public.</desc>
-<rect x="1.5" y="1.5" width="797" height="447" rx="24" fill="#FBF8F1" stroke="#1D2420" stroke-width="3"/>
-<clipPath id="panel"><rect x="3" y="3" width="794" height="444" rx="22"/></clipPath>
-<g clip-path="url(#panel)">
+<rect width="800" height="450" fill="#FBF8F1"/>
+<g>
 <circle cx="700" cy="80" r="34" fill="#E8D6B8"/>
 <path d="M0 300 C160 250 300 280 420 250 C540 220 660 240 800 210 V450 H0 Z" fill="#DCE3D2"/>
 <path d="M0 370 C180 335 330 365 470 340 C600 318 700 330 800 318 V450 H0 Z" fill="#C4D1BA"/>

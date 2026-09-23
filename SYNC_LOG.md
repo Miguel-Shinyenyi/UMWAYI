@@ -112,3 +112,23 @@
   template, an empty duplicate comments heading). All eight went into the Claude Code prompt.
 - Confidence: the gaps are measured, not guessed. The takeaway lists are drafts in Miguel's
   voice and are marked for his review in `backlog.md`, not treated as his words yet.
+
+## 2026-09-23 (site fixes after the content move)
+
+- Source: Miguel's review of the live site after `miguel-site` commit `8066b2b`.
+- Updated: `site/links.md` (new), `site/projects/settlement-engine.md`, `site/README.md`,
+  `site/tools/illustrations.py`, all ten `site/illustrations/*.svg`, `MASTER_CONTEXT.md`,
+  `backlog.md`.
+- What moved: two layout bugs reproduced and root-caused before anything was written for
+  Claude Code. The article illustration stayed pinned left on screens wider than 1440px
+  because an unlayered `figure { margin: 0 }` reset overrides the `mx-auto` utility. The
+  takeaway list broke around inline code because each list item is a flex row, which
+  turns every text run into its own column. Both fixes were tested in the live page
+  first. The illustrations lost their own outer border, which was drawing a second frame
+  inside the site's. `Invoice-Financing` is public now and linked. The four profile
+  accounts exist now, so their URLs moved into `site/links.md` for the footer to read. The
+  footer sign-up is specified to save each address to Waline's private `mail` field only,
+  with a check that the address never comes back from the public API.
+- Confidence: both bugs measured at 1440, 1920, and 2560 wide. The Waline privacy claim is
+  unconfirmed until Claude Code's test post shows the address stays out of the public
+  response; the prompt says to stop if it doesn't.

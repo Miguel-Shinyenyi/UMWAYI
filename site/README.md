@@ -13,9 +13,10 @@ triggers a rebuild through `.github/workflows/notify-site.yml`.
 |------|------------|----------------|
 | `philosophy/*.md` | Philosophy articles | Writing tab, `/philosophy/<slug>` |
 | `tech/*.md` | Tech articles | Writing tab, `/tech/<slug>` |
-| `journal/*.md` | Edited journal excerpts (not the raw entries in `journal/entries/`) | Writing tab, `/journal/<slug>` |
+| `journals/*.md` | Edited journal excerpts (not the raw entries in `journal/entries/`) | Writing tab, `/journal/<slug>` |
 | `projects/*.md` | Project pages | Projects grid, `/projects/<slug>` |
 | `now.md` | The Now section | Homepage |
+| `links.md` | Profile links, in display order | Footer, "All articles" link |
 | `illustrations/*.svg` | One scene per article or project | Above the article body |
 | `images/profile.jpg` | Profile photo | Author line, author box, anywhere a portrait appears |
 | `tools/illustrations.py` | Generates the illustrations | Not published |
@@ -79,7 +80,14 @@ python3 site/tools/illustrations.py
 ```
 
 It rewrites every file in `illustrations/`. The shepherd and sheep are the homepage SVG's own
-shapes, reused, not redrawn.
+shapes, reused, not redrawn. The SVGs have no border of their own; the site draws the frame,
+rounded corners, and offset shadow around them.
+
+## Links
+
+`links.md` is front matter only: a `links` list of `label` and `url`, in the order the footer
+shows them. The entry with `label: "Hashnode"` is also where the homepage's "All articles on
+Hashnode" link points. Add, remove, or reorder here; the site needs no change.
 
 ## Now
 
