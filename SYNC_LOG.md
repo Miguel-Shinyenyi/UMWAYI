@@ -89,3 +89,26 @@
   directly verified against rendered output, not taken from commit messages or documentation
   alone. Whether the flock marks are legible to someone seeing them with no context is
   explicitly left open in `backlog.md`, not claimed as settled.
+
+## 2026-09-23 (site content moves into the hub)
+
+- Source: Miguel's request after the full redesign was pushed (`miguel-site` commits
+  `3b884cc`, `7f4ac16`).
+- Updated: new `site/` folder (six articles, four project pages including the new
+  `personal-website.md`, `now.md`, ten illustrations, the profile photo, `README.md`,
+  `tools/illustrations.py`), `.github/workflows/notify-site.yml`, `MASTER_CONTEXT.md`
+  (spokes table, two new principles, open threads), `backlog.md`, `website/PLAN.md`.
+  `articles/` removed; its two files were identical copies of what the site already had,
+  now kept once in `site/philosophy/`.
+- What moved: every article and project page was split into `##` sections so the site's
+  "On this page" list has something to show. Wording kept except where a bold lead-in became
+  a heading; project pages also had their status brought current. Each ends
+  with a drafted "What I took from it" list taken only from what the piece already says. The
+  three text diagrams (two in the idempotency piece, one in the both-stay piece) were
+  rewritten to one column, 40 characters or less, so they fit a phone screen. The redesign was checked against a fresh production build before any of this: no
+  page overflow at 390px, but eight gaps against the reference, confirmed by computed styles
+  and zoomed screenshots (headings in the wrong font, code panel corners, an always-on
+  underline, hovers missing on two buttons, a 2px card lift, the old favicon, a slim project
+  template, an empty duplicate comments heading). All eight went into the Claude Code prompt.
+- Confidence: the gaps are measured, not guessed. The takeaway lists are drafts in Miguel's
+  voice and are marked for his review in `backlog.md`, not treated as his words yet.

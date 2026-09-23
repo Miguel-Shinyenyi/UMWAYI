@@ -1,6 +1,6 @@
 # Master Context
 
-Last updated: 2026-09-22
+Last updated: 2026-09-23
 
 ## Who this is for
 
@@ -35,8 +35,8 @@ where the observation gets tested against something real.
 | CMU masters | `projects/cmu-masters.md` | Fall 2027 application cycle. Feeds from the writing, backend, and AI engineer goals. |
 | Settlement engine | `projects/settlement-engine.md` | Idempotent Settlement and Reconciliation Engine, built with Claude Code. Private repo `Invoice-Financing`, all nine build phases done and deployed to a live staging server. Idempotency restudied in depth, one verified gap found and fixed. |
 | Routine machine | `projects/routine-machine.md` | AI project: logs routines, learning, and a reading tracker. Own repo, built with Claude Code. All three phases done and verified. Reads this hub's journal and articles directly. Email reminders for time-related items planned. |
-| Website | `website/PLAN.md` | Personal site. Historical plan, now resolved and superseded by the site's own repo. Live on GitHub Pages, design implemented in full. |
-| Articles | `articles/` | Weekly pieces on how the observation, the tech, and the philosophy fit together. Published to the site. Broader cross-posting (Hashnode, dev.to, Medium, LinkedIn) still pending, see `backlog.md`. |
+| Website | `website/PLAN.md` | Personal site. Historical plan, resolved and superseded. The site's code lives in the `miguel-site` repo; its content lives here, in `site/`. |
+| Site content | `site/` | Everything the site shows: articles (philosophy, tech, journal), project pages, illustrations, the profile photo, the Now section. The site clones this folder at build time and rebuilds on every push that touches it. Rules for every file are in `site/README.md`. Broader cross-posting (Hashnode, dev.to, Medium, LinkedIn) still pending, see `backlog.md`. |
 
 ## Standing principles for how I (Claude) operate here
 
@@ -61,6 +61,13 @@ where the observation gets tested against something real.
 - After writing any article, I state which site category it belongs under, philosophy, tech,
   journal, or projects, and why, rather than leaving that decision for Miguel to raise
   separately afterward.
+- Site content is edited here, in `site/`, never in the `miguel-site` repo. Every new article
+  or project page follows `site/README.md`: the body starts with a `##` section, the last
+  section is `## What I took from it` as a numbered list, and it gets one illustration made
+  with `site/tools/illustrations.py` in the same delivery, not left for later.
+- When I draft a "What I took from it" list, every item comes from what the piece itself
+  already says. I don't add a lesson Miguel hasn't stated, and I tell him the list is a draft
+  for him to correct.
 - Weekly summaries are written Sunday evenings, starting 2026-09-20, the day this rule was
   introduced.
 - `backlog.md` holds every open question and pending decision or action across every
@@ -140,5 +147,6 @@ See `backlog.md` for the full, itemized list. Summary by project:
   verified crash-recovery gap found and fixed same day (commit `950bf86`). Next: outbox.
 - Routine machine: all three phases built, tested, and verified. Email reminders for
   time-related items now planned as a future addition.
-- Website and publishing: site live, design done. Broader cross-posting accounts and plan
-  still pending.
+- Website and publishing: site live, redesigned around the illustrated shepherd (2026-09-23).
+  Content moving into this hub's `site/` folder so the site is updated by editing markdown
+  here. Broader cross-posting accounts and plan still pending.
