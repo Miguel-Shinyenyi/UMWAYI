@@ -171,3 +171,17 @@
 - Confidence: the journal cause is confirmed against the live site. The MailerLite
   endpoint couldn't be called from here (the network blocks it), so the prompt has Claude
   Code confirm a real sign-up lands in MailerLite before calling it done.
+
+## 2026-09-23 (evening: all entries reachable, MailerLite live, profiles filled)
+
+- Source: `journal/entries/2026-09-23.md` ("Continued, evening").
+- Updated: `journal/entries/2026-09-23.md`, `backlog.md`.
+- What moved: `miguel-site` commits `55f0b17` and `680e833` were checked against a fresh
+  build. It has 22 pages, the counted "All ..." links under each Writing tab, and the RSS
+  feed, which is also live. Claude Code's decisions log records the sign-up tests: a zero
+  pixel difference on the footer after MailerLite loaded, a real submission that
+  succeeded, and double opt-in confirmed from the inbox. The Hashnode, Medium, and dev.to
+  profiles were filled in from text drafted here, with no company names.
+- Confidence: the links and the feed are confirmed from a build and the live feed. The
+  MailerLite results come from Claude Code's log and Miguel's inbox, not re-tested from
+  here, because this environment can't reach MailerLite.
