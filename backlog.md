@@ -133,13 +133,18 @@ project file.
 - [ ] On MailerLite's free plan, each new-article email is sent by hand as a campaign.
       Sending automatically from the site's RSS feed needs a paid plan (Comfort or Power).
       Decide which, once there are subscribers to write to. (Raised 2026-09-23)
-- [ ] Turn double opt-in on or off in the MailerLite form's settings. On means each
-      subscriber confirms by email first: fewer fake addresses, and cleaner consent.
-      (Raised 2026-09-23)
+- [x] Turn double opt-in on or off in the MailerLite form's settings. (Raised 2026-09-23)
+      Answered 2026-09-23: on, confirmed from the inbox by Miguel (`miguel-site` commit
+      `680e833`).
+- [ ] With double opt-in on, "You're on the list" is true of the list, but nobody gets an
+      email until they click the confirmation link. Decide whether the success message
+      should say "Check your inbox to confirm." (Raised 2026-09-23)
+- [ ] One test address went into the live MailerLite list twice during testing (JavaScript
+      on and off). Remove it, or keep it as a real subscriber. (Raised 2026-09-23)
 - [x] The homepage showed only three journal entries of nine. (Raised 2026-09-23)
       Answered 2026-09-23: all nine were live at `/journal/`, but each Writing tab shows the
-      three newest and had no link to the rest. Claude Code prompt adds "All journal
-      entries (9)" style links to every tab.
+      three newest and had no link to the rest. Fixed in `miguel-site` commit `55f0b17`:
+      each tab now ends with a counted link to its full list, confirmed in a fresh build.
 - [ ] Delete any test comments Claude Code posted to live Waline threads while checking
       "This helped" and the sign-up form, from the Waline admin page. (Raised 2026-09-23)
       Claude Code listed six in `docs/design.md`: objectId 3 ("This helped" on
