@@ -33,7 +33,7 @@ where the observation gets tested against something real.
 | Backlog | `backlog.md` | Every open question and pending decision or action across all projects, marked answered when resolved, never silently dropped. |
 | Career prep | `projects/career-prep.md` | PostHog (primary), Ezra (secondary), and other roles. Interview prep, applications, what's working and what isn't. |
 | CMU masters | `projects/cmu-masters.md` | Fall 2027 application cycle. Feeds from the writing, backend, and AI engineer goals. |
-| Settlement engine | `projects/settlement-engine.md` | Idempotent Settlement and Reconciliation Engine, built with Claude Code. Private repo `Invoice-Financing`, all nine build phases done and deployed to a live staging server. Idempotency restudied in depth, one verified gap found and fixed. |
+| Settlement engine | `projects/settlement-engine.md` | Idempotent Settlement and Reconciliation Engine, built with Claude Code. Public repo `Invoice-Financing` (made public 2026-09-23), all nine build phases done and deployed to a live staging server. Idempotency restudied in depth, one verified gap found and fixed. |
 | Routine machine | `projects/routine-machine.md` | AI project: logs routines, learning, and a reading tracker. Own repo, built with Claude Code. All three phases done and verified. Reads this hub's journal and articles directly. Email reminders for time-related items planned. |
 | Website | `website/PLAN.md` | Personal site. Historical plan, resolved and superseded. The site's code lives in the `miguel-site` repo; its content lives here, in `site/`. |
 | Site content | `site/` | Everything the site shows: articles (philosophy, tech, journal), project pages, illustrations, the profile photo, the Now section. The site clones this folder at build time and rebuilds on every push that touches it. Rules for every file are in `site/README.md`. Broader cross-posting (Hashnode, dev.to, Medium, LinkedIn) still pending, see `backlog.md`. |
@@ -148,5 +148,6 @@ See `backlog.md` for the full, itemized list. Summary by project:
 - Routine machine: all three phases built, tested, and verified. Email reminders for
   time-related items now planned as a future addition.
 - Website and publishing: site live, redesigned around the illustrated shepherd (2026-09-23).
-  Content moving into this hub's `site/` folder so the site is updated by editing markdown
-  here. Broader cross-posting accounts and plan still pending.
+  Content lives in this hub's `site/` folder, so the site is updated by editing markdown here.
+  Hashnode, dev.to, Medium, and LinkedIn profiles now exist and are linked from the footer;
+  whether articles get cross-posted to them is still undecided.

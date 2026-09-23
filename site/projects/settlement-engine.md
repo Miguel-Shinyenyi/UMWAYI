@@ -11,6 +11,8 @@ stack: ["Spring Boot", "PostgreSQL", "Kafka", "FastAPI", "Next.js", "Kubernetes"
 link: "/projects/settlement-engine"
 linkLabel: "Read the case study"
 links:
+  - label: "View on GitHub"
+    url: "https://github.com/Miguel-Shinyenyi/Invoice-Financing"
   - label: "Idempotency keys, under load"
     url: "/tech/idempotency-keys"
 illustration: settlement-engine.svg

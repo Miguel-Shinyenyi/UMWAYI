@@ -40,11 +40,12 @@ project file.
       redesign removed the geometric mascot and the flock entirely.
 - [ ] Whether replacing the UMWAYI method's six stages with four pillars and a four-step loop
       on the homepage loses something real, or is a fair simplification. (Raised 2026-09-23)
-- [ ] Hashnode, LinkedIn, dev.to, and Medium links in the footer point to `#` until those
-      accounts exist. Keep the placeholders or hide them until then. (Raised 2026-09-23)
-- [ ] The settlement-engine repo (`Invoice-Financing`) is recorded here as private, but its
-      GitHub page loaded without sign-in on 2026-09-23. Confirm which it is, then decide
-      whether its project page links to it. Left unlinked until then. (Raised 2026-09-23)
+- [x] Hashnode, LinkedIn, dev.to, and Medium links in the footer point to `#` until those
+      accounts exist. (Raised 2026-09-23) Answered 2026-09-23: all four accounts exist now.
+      Real URLs kept in `site/links.md`, which the footer reads.
+- [x] The settlement-engine repo (`Invoice-Financing`) is recorded here as private, but its
+      GitHub page loaded without sign-in on 2026-09-23. (Raised 2026-09-23) Answered
+      2026-09-23: Miguel made it public. Linked from its project page.
 - [ ] "This helped" stops a second click per browser, not per device. Clearing site data or
       switching browsers resets it. Accept that, or change the Waline server to enforce it.
       (Raised 2026-09-23)
@@ -74,8 +75,9 @@ project file.
       multiple times, still not started. (Raised 2026-09-16)
 
 ### Website and publishing
-- [ ] Create dev.to and Medium accounts, still don't exist. (Raised in the original site
-      plan, 2026-09-16, carried forward)
+- [x] Create dev.to and Medium accounts, still don't exist. (Raised in the original site
+      plan, 2026-09-16, carried forward) Answered 2026-09-23: both exist, along with Hashnode
+      and LinkedIn profiles.
 - [ ] Decide whether the broader hub cross-posting plan (Hashnode, dev.to, Medium, LinkedIn)
       is still intended, separate from the narrower decision already made to keep the site
       itself GitHub-Pages-only. (Raised 2026-09-20)
@@ -110,9 +112,16 @@ project file.
       `7f4ac16`. Checked against a fresh production build (14 pages, no page-level overflow
       at 390px). Eight gaps against the reference found and handed to Claude Code in the same
       round as the content move below.
-- [ ] Move all site content into UMWAYI's `site/` folder and have the site build from it.
-      Content files, illustrations, profile photo, and `site/README.md` delivered
-      2026-09-23; Claude Code prompt delivered for the site side. (Raised 2026-09-23)
+- [x] Move all site content into UMWAYI's `site/` folder and have the site build from it.
+      (Raised 2026-09-23) Answered 2026-09-23: pushed on both sides, `miguel-site` commit
+      `8066b2b`. A fresh build clones `site/` and copies all 10 pages, 10 illustrations,
+      and the photo.
+- [ ] Footer email sign-up saves to Waline as a subscription request. It collects
+      addresses; nothing sends the "new article" email yet. Decide how that gets sent
+      (by hand from the Waline admin list, or later through Routine Machine's planned
+      email reminders). (Raised 2026-09-23)
+- [ ] Delete any test comments Claude Code posted to live Waline threads while checking
+      "This helped" and the sign-up form, from the Waline admin page. (Raised 2026-09-23)
 - [ ] Create a fine-grained token scoped to `miguel-site` with Contents read and write, save
       it as the `SITE_DISPATCH_TOKEN` secret on UMWAYI, and add
       `.github/workflows/notify-site.yml`, so a push to `site/` rebuilds the site. Only

@@ -1,6 +1,7 @@
 """Article and project illustrations for the site, in the reference design's style.
 
-Style rules: 800x450 cream panel with a 3px ink outline and rounded corners, the two hills and
+Style rules: 800x450 cream panel with no outline of its own (the site draws the border,
+rounded corners and offset shadow around it, so an outline here would show twice), the two hills and
 the sun behind every scene, flat fills only, 3px ink outlines on props, Karla caps for labels,
 Fraunces italic for speech bubbles. The shepherd and sheep are the reference homepage SVG's own
 shapes, reused, never redrawn. One idea per scene, taken from the article itself.
@@ -104,9 +105,8 @@ def frame(body, title, desc):
     return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="t d">
 <title id="t">{title}</title>
 <desc id="d">{desc}</desc>
-<rect x="1.5" y="1.5" width="797" height="447" rx="24" fill="{CREAM}" stroke="{INK}" stroke-width="3"/>
-<clipPath id="panel"><rect x="3" y="3" width="794" height="444" rx="22"/></clipPath>
-<g clip-path="url(#panel)">
+<rect width="800" height="450" fill="{CREAM}"/>
+<g>
 <circle cx="700" cy="80" r="34" fill="{SUN}"/>
 <path d="M0 300 C160 250 300 280 420 250 C540 220 660 240 800 210 V450 H0 Z" fill="{HILL1}"/>
 <path d="M0 370 C180 335 330 365 470 340 C600 318 700 330 800 318 V450 H0 Z" fill="{HILL2}"/>
