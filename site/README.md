@@ -70,6 +70,15 @@ A `url` that starts with `/` is a page on this site; the build adds the base pat
   without scrolling sideways: one column, steps in order, no side-by-side threads. Real
   code can be wider; it scrolls inside its own panel.
 
+## Repetition
+
+No more than two articles, across `philosophy/`, `tech/`, and `journals/` combined, make the
+same general point, concept, or principle. Before adding a new article, check what's already
+published for the point it's making, not just its topic; two articles can cover the same
+subsystem or event from different angles without repeating the same point. If a third would
+land on a point two others already cover, fold it into one of the existing pieces, cut it, or
+find the sharper, different point the new material actually makes.
+
 ## Privacy
 
 - Never name a company Miguel applied to or interviewed with. Say "a job interview", "a

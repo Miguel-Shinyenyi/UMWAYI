@@ -76,6 +76,9 @@ written from this material and kept current as the fix landed.
 
 ## Next step
 
-Move to the outbox concept next, same method: explain it cold first, then verify against the
-real code. Reconciliation engine and the Phase 1/9 concurrency fixes remain as later
-candidates, in roughly the order they'd come up in an interview.
+Outbox and double-entry ledger restudy opened 2026-09-24, same method: explain both cold
+first, then verify against the real code (`OutboxEvent`, `OutboxWriter`, `OutboxPublisher`,
+`LedgerAccount`, `LedgerEntry`, `SettlementTransactions`, all on the `dev` branch, pulled and
+read ahead of the explain-back so nothing gets checked from memory). The explain-back itself
+hadn't happened yet as of this entry. Reconciliation engine and the Phase 1/9 concurrency
+fixes remain as later candidates, in roughly the order they'd come up in an interview.
