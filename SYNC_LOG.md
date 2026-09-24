@@ -185,3 +185,25 @@
 - Confidence: the links and the feed are confirmed from a build and the live feed. The
   MailerLite results come from Claude Code's log and Miguel's inbox, not re-tested from
   here, because this environment can't reach MailerLite.
+
+## 2026-09-24 (Sapiens discussion, concept list, outbox/ledger restudy opened, new rule)
+
+- Source: `journal/entries/2026-09-24.md`, and Miguel directly for the three additions below.
+- Updated: `journal/entries/2026-09-24.md` (new), `backlog.md` (two new items),
+  `MASTER_CONTEXT.md` (new repetition rule, open threads, last-updated date),
+  `site/README.md` (new Repetition section), `projects/settlement-engine.md` (Next step).
+- What moved: the Sapiens and concept-list discussion produced no article candidate and
+  touched no project file beyond the journal entry itself. The "23 of 24" figure from Sapiens
+  chapter 4 was checked against a secondary source before being confirmed back to him.
+  The outbox and double-entry ledger restudy was opened: the `dev` branch of
+  `Invoice-Financing` was pulled and `OutboxEvent`, `OutboxWriter`, `OutboxPublisher`,
+  `LedgerAccount`, `LedgerEntry`, and `SettlementTransactions` were read, but Miguel's own
+  cold explanation hadn't been given yet in this session, so no comparison against the code
+  has happened. Two backlog items were added at Miguel's request: encrypting
+  `journal/entries/` with git-crypt, and a Java concurrency article (application-level
+  mechanisms to failure, then OS-level handling to failure). A new standing rule was added at
+  his request: no more than two articles relay the same general point, concept, or
+  principle, written into both `site/README.md` and `MASTER_CONTEXT.md`.
+- Confidence: the Sapiens figure is confirmed against a secondary source, not the book
+  itself, which isn't available here to check directly. Everything else is a direct record
+  of what was asked and added, not inferred.

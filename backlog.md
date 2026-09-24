@@ -78,6 +78,10 @@ project file.
 
 ## Pending decisions and actions
 
+### Hub infrastructure
+- [ ] Encrypt `journal/entries/` with git-crypt, since the UMWAYI repo is public and the
+      journal is the one folder that should never be readable there. (Raised 2026-09-24)
+
 ### Career prep
 - [ ] Actually work through the PostHog rejection feedback properly, what was said, what
       was felt, what's genuinely open versus already being decided about it. Deferred
@@ -172,6 +176,10 @@ project file.
 - [ ] Read the drafted "What I took from it" lists on all six articles and four project
       pages and correct any item that isn't what he actually took from it. (Raised
       2026-09-23)
+- [ ] Study Java application-level concurrency mechanisms taken to failure (thread pools,
+      locks, `CompletableFuture`, virtual threads, where each one saturates or deadlocks),
+      then what the OS does once application-level handling is exhausted, also taken to
+      failure, and write an article on it. (Raised 2026-09-24)
 
 ### Settlement engine
 - [x] Choose which subsystem to study first, in depth, cold: idempotency/state machine,

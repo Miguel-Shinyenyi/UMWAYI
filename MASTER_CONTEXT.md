@@ -1,6 +1,6 @@
 # Master Context
 
-Last updated: 2026-09-23
+Last updated: 2026-09-24
 
 ## Who this is for
 
@@ -74,6 +74,10 @@ where the observation gets tested against something real.
   named; he confirmed that on 2026-09-23. The names stay in the hub's own files, which the
   site never publishes. The homepage's open threads read straight from `projects/` files,
   so a bullet under "Open questions" or "Open decisions" there counts as site content.
+- No more than two articles on the site relay the same general point, concept, or principle.
+  Before adding a new one, I check what's already published for the point it makes, not just
+  its topic, and say which existing articles I checked against. Same rule in
+  `site/README.md`.
 - Journal excerpts for the site are drawn from `journal/entries/`, never copied whole.
   Anything private is left out: health beyond what an article has already made public, other
   people, money, and personal patterns still under investigation. When I'm not sure whether
@@ -155,7 +159,8 @@ See `backlog.md` for the full, itemized list. Summary by project:
   both undecided.
 - Settlement engine: built by Miguel, all nine phases done and verified on staging.
   Idempotency chosen as the first subsystem restudied, two explain-back passes done, one
-  verified crash-recovery gap found and fixed same day (commit `950bf86`). Next: outbox.
+  verified crash-recovery gap found and fixed same day (commit `950bf86`). Outbox and
+  double-entry ledger restudy opened 2026-09-24, explain-back pass in progress.
 - Routine machine: all three phases built, tested, and verified. Email reminders for
   time-related items now planned as a future addition.
 - Website and publishing: site live, redesigned around the illustrated shepherd (2026-09-23).
