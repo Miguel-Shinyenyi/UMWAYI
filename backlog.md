@@ -60,9 +60,14 @@ project file.
       (Raised 2026-09-23)
 
 ### Settlement engine
-- [ ] Whether outbox and double-ledger will surface similarly real, correctable gaps once
+- [x] Whether outbox and double-ledger will surface similarly real, correctable gaps once
       studied this closely, or whether idempotency's crash gap was specific to its own
-      complexity. Not assumed either way. (Raised 2026-09-21)
+      complexity. Not assumed either way. (Raised 2026-09-21) Answered 2026-09-25: yes for
+      the ledger. `LedgerEntry` rows are written but never read anywhere in the codebase;
+      `LedgerAccount.balance` is a stored column mutated directly, with nothing checking it
+      against the sum of its own entries. The outbox held up as designed: the event write and
+      the business write share one transaction, and the publisher only marks a row published
+      after a confirmed send.
 
 ### Self-observation
 - [ ] Whether the minimal-banter pattern (river walk, pool game) shows up even with people
@@ -192,6 +197,19 @@ project file.
       `950bf86`, `StalePendingSettlementSweepService`, a scheduled sweep finalizing stale
       `PENDING` settlements as `UNKNOWN` past a grace period, with unit and integration
       tests.
+- [ ] Ledger entries are written but never read back anywhere in the codebase, so nothing
+      checks `LedgerAccount.balance` against the sum of its own entries. Found 2026-09-25
+      while restudying the ledger. Fix designed and handed to Claude Code: an `OPENING` entry
+      per account (accounts currently start with a nonzero balance and zero entries, seeded
+      directly), `ledger_entries.settlement_id` made nullable for `OPENING` rows only, a
+      `sumNetByAccountId` query, a consistency check on every `GET /accounts/{id}` that still
+      raises a 500 on mismatch, and a durable, reviewable record of the mismatch itself: a new
+      `ledger_mismatches` table, sibling to `reconciliation_mismatches` rather than a forced
+      generalization of it, with the same audited, manual-only resolve workflow. The general
+      policy this follows (detect internally, record it, require an explicit audited
+      resolution, never auto-correct) gets written into `docs/reconciliation.md` as a named
+      rule, not left implicit in what the existing mismatch handling happens to do. Not yet
+      built or verified. (Raised 2026-09-25)
 
 ### Routine machine
 - [ ] Design and build email reminders for anything time-related (deadlines, scheduled
