@@ -74,11 +74,56 @@ locks rows, so a Go rewrite would keep both races unchanged).
 The site's idempotency article (`src/content/tech/idempotency-keys.md` in `miguel-site`) was
 written from this material and kept current as the fix landed.
 
-## Next step
+## Outbox and double-entry ledger restudy (2026-09-25)
 
-Outbox and double-entry ledger restudy opened 2026-09-24, same method: explain both cold
-first, then verify against the real code (`OutboxEvent`, `OutboxWriter`, `OutboxPublisher`,
-`LedgerAccount`, `LedgerEntry`, `SettlementTransactions`, all on the `dev` branch, pulled and
-read ahead of the explain-back so nothing gets checked from memory). The explain-back itself
-hadn't happened yet as of this entry. Reconciliation engine and the Phase 1/9 concurrency
-fixes remain as later candidates, in roughly the order they'd come up in an interview.
+Explained cold, then checked against the real code on `dev`.
+
+The outbox explanation named the retry mechanism but framed the problem backward: not "sure
+you sent it, keep proof," but the opposite, without it you can never be sure whether you sent
+it, since a DB commit and a broker publish can't be one atomic operation across two systems.
+Checked against the code and it holds as designed: `createPendingSettlement` is one
+`@Transactional` method that saves the settlement and the `OutboxEvent` together, so they
+commit or roll back as one unit, and `OutboxPublisher` only marks a row published after
+blocking on the broker's ack.
+
+The ledger explanation named the right shape (debit and credit, must balance) but the check
+it described as the reason double-entry exists doesn't exist in the code. `LedgerEntry` rows
+are written correctly, one `DEBIT` and one `CREDIT` per settlement, same amount, but
+`LedgerEntryRepository` has no query beyond what `JpaRepository` gives for free, and
+`finalizeSettlement` is its only caller. `LedgerAccount.balance` is a stored column, mutated
+directly, and nothing anywhere sums the entries back and compares. A genuine gap, verified,
+not assumed: `LedgerEntryRepository` really is write-only, confirmed by reading every call
+site.
+
+A fix was designed rather than left abstract: an `OPENING` entry per account (closing a
+second gap the design surfaced, accounts start with a nonzero balance and zero entries,
+seeded directly in `load/seed-accounts.sql` with no account-creation path in `src/main`),
+`ledger_entries.settlement_id` made nullable for `OPENING` rows only (it's `NOT NULL
+REFERENCES settlements` today, and an opening entry has no settlement behind it), a
+`sumNetByAccountId` query, and a check on every `GET /accounts/{id}`.
+
+What happens on a mismatch was its own discussion. A raw 500 detects the problem but doesn't
+handle it, the discovery is lost once the request ends. `docs/reconciliation.md` already
+states the actual policy for this class of problem, just not written as a general rule:
+mismatches get manual review, never silent auto-resolution, enforced today only for
+external-gateway mismatches (`reconciliation_mismatches`, one row per settlement, found
+during a scheduled run). A ledger mismatch is found live and belongs to one account, not one
+settlement, so it gets a sibling table, `ledger_mismatches`, and the same audited resolve
+workflow (`ReconciliationController`, extended, not duplicated), rather than forcing it into
+a table shaped for a different case. `GET /accounts/{id}` still throws on a live mismatch, a
+caller must never be handed an untrusted balance, but it also opens a durable, reviewable
+record first. This also settles an open question already sitting in
+`docs/reconciliation.md`, about invoice-mismatches needing either a nullable FK on the
+existing table or a dedicated one: dedicated table, applied here first.
+
+Three forks in that design were put to Miguel rather than decided silently: opening entries
+versus a separate `openingBalance` column (he chose opening entries), a nullable
+`settlement_id` versus a synthetic settlement per account (he chose nullable), and a sibling
+mismatch table versus generalizing `reconciliation_mismatches` (he chose sibling table).
+Claude Code was also asked to write the general policy (detect-record-audit, never
+auto-resolve) into `docs/reconciliation.md` itself, not just apply it, so it reads as a
+standing rule the next mismatch case follows without re-deriving it. Handed to Claude Code as
+`claude-code-prompt-ledger-consistency-v2.md`. Not yet built or verified; see `backlog.md`.
+
+Reconciliation engine and the Phase 1/9 concurrency fixes remain as later candidates, in
+roughly the order they'd come up in an interview.

@@ -207,3 +207,49 @@
 - Confidence: the Sapiens figure is confirmed against a secondary source, not the book
   itself, which isn't available here to check directly. Everything else is a direct record
   of what was asked and added, not inferred.
+
+## 2026-09-25 (outbox/ledger explain-back, a real gap found, fix designed and handed off)
+
+- Source: Miguel's cold explanations of the outbox pattern and double-entry ledger, checked
+  against `Invoice-Financing`'s `dev` branch.
+- Updated: `backlog.md` (Settlement engine sections in both parts), `projects/settlement-
+  engine.md` (Next step replaced with the restudy's findings).
+- What moved: the outbox explanation held up once checked; `SettlementTransactions` writes
+  the settlement and the `OutboxEvent` in one transaction, and `OutboxPublisher` only marks a
+  row published after a confirmed send. The ledger explanation didn't: `LedgerEntry` rows are
+  written correctly but never read anywhere in the codebase, confirmed by checking every call
+  site of `LedgerEntryRepository`, and `LedgerAccount.balance` is a stored column mutated
+  directly with nothing checking it against the entries. A fix was designed, not just named:
+  an `OPENING` entry per account, `ledger_entries.settlement_id` made nullable for those rows,
+  a summing query, and a consistency check on the account-read endpoint. Two real forks in
+  that design (opening entries vs. a separate column; nullable settlement_id vs. a synthetic
+  settlement) were put to Miguel rather than picked silently. Delivered as
+  `claude-code-prompt-ledger-consistency.md`.
+- Confidence: every claim about the current code (write-only entries, the transactional
+  boundary, the seed script's lack of matching entries, the NOT NULL constraint) was verified
+  by reading the actual file, not inferred from the project's own status notes. The fix
+  itself is designed and not yet built or tested.
+
+## 2026-09-25 (ledger mismatch handling designed, prompt revised before anything was built)
+
+- Source: Miguel asking what actually handles a ledger mismatch once found, not just detects
+  it, and whether reconciliation should own that.
+- Updated: `backlog.md` (Settlement engine pending item revised), `projects/settlement-
+  engine.md` (Next step section extended).
+- What moved: the earlier plan (a 500 on mismatch, nothing else) was checked against
+  `docs/reconciliation.md`'s own stated policy, mismatches get manual review, never silent
+  auto-resolution, and found to only implement that policy for one case, external-gateway
+  mismatches, in a table shaped for it (`run_id`/`settlement_id` both required). A ledger
+  mismatch doesn't fit that shape (found live, not in a run; belongs to an account, not a
+  settlement), so rather than weaken that table's constraints, a sibling table with the same
+  shape and policy was proposed and confirmed with Miguel over generalizing the existing one.
+  This also resolves an open question already recorded in `docs/reconciliation.md` about
+  invoice-mismatches needing either a nullable FK or a dedicated table, same fork, same
+  answer, applied to the ledger case first. The revised prompt asks Claude Code to write the
+  general policy into `docs/reconciliation.md` itself, not just follow it, so the next
+  mismatch case doesn't have to re-derive it. Delivered as
+  `claude-code-prompt-ledger-consistency-v2.md`, replacing the version sent earlier the same
+  day before anything from it had been built.
+- Confidence: the existing policy line and the invoice-mismatch open question are both quoted
+  directly from `docs/reconciliation.md`, not paraphrased from memory. The new design is not
+  yet built or tested.
