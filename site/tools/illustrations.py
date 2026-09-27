@@ -501,6 +501,60 @@ SCENES["journals/looking-not-reading"] = (
 """,
 )
 
+# outbox-and-ledger: a locked outbox sending word to Kafka; a ledger where the
+# balance and the entries beneath it don't add up.
+SCENES["tech/outbox-and-ledger"] = (
+    "Sent, and checked",
+    "A locked outbox holds a sealed letter until it's confirmed sent to Kafka. Beside it, an open ledger shows a bold balance above a column of entries that don't add up to it, with a red mismatch mark between them. The shepherd studies the ledger.",
+    f"""
+<g transform="translate(70 160)">
+<rect x="0" y="60" width="160" height="110" rx="10" fill="#C08A3E" stroke="{INK}" stroke-width="3"/>
+<rect x="0" y="60" width="160" height="24" rx="8" fill="#B0793A" stroke="{INK}" stroke-width="3"/>
+<rect x="64" y="50" width="32" height="30" rx="6" fill="{OCHRE_L}" stroke="{INK}" stroke-width="3"/>
+<circle cx="80" cy="65" r="6" fill="{INK}"/>
+<rect x="26" y="98" width="108" height="60" rx="4" fill="#fff" stroke="{INK}" stroke-width="2.5"/>
+<circle cx="80" cy="128" r="13" fill="{RED}" stroke="{INK}" stroke-width="2"/>
+{label(80, 195, "OUTBOX", 13, OCHRE)}
+</g>
+<path d="M250 250 Q320 220 385 232" stroke="{INK}" stroke-width="3" fill="none" stroke-dasharray="7 7"/>
+<path d="M378 224 L398 232 L378 242 Z" fill="{INK}"/>
+{label(320, 200, "KAFKA", 12)}
+<g transform="translate(420 90)">
+<rect x="0" y="0" width="290" height="270" rx="10" fill="#fff" stroke="{INK}" stroke-width="3"/>
+<line x1="0" y1="70" x2="290" y2="70" stroke="{INK}" stroke-width="2.5"/>
+{label(145, 46, "BALANCE 500", 17, OCHRE)}
+<g stroke="{INK}" stroke-width="3" fill="{HILL2}">
+<rect x="30" y="100" width="230" height="10" rx="4"/><rect x="30" y="130" width="230" height="10" rx="4"/>
+<rect x="30" y="160" width="230" height="10" rx="4"/>
+</g>
+{label(145, 92, "ENTRIES", 12, INK)}
+<circle cx="145" cy="220" r="24" fill="#fff" stroke="{RED}" stroke-width="4"/>
+<text x="145" y="230" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="30" fill="{RED}">&#8800;</text>
+</g>
+{shepherd(660, 420, 0.6, flip=True)}
+{sheep(150, 425, 0.68, flip=True)}
+""",
+)
+
+# a-mind-that-lies-to-you-too: the shepherd faces a mirror whose reflection
+# holds its own staff and points back, unprompted.
+SCENES["philosophy/a-mind-that-lies-to-you-too"] = (
+    "The reflection points back",
+    "The shepherd stands before a standing mirror, one hand raised in question. The reflection inside holds its own staff and points a finger back out at him, instead of mirroring the pose. A sheep watches from the side.",
+    f"""
+<g transform="translate(400 55)">
+<path d="M40 0 Q0 0 0 80 V300 Q0 380 40 380 H210 Q250 380 250 300 V80 Q250 0 210 0 Z" fill="#E7E0D2" stroke="{INK}" stroke-width="4"/>
+<path d="M56 20 Q26 20 26 84 V296 Q26 360 56 360 H194 Q224 360 224 296 V84 Q224 20 194 20 Z" fill="#D9E6E8" stroke="{INK}" stroke-width="3"/>
+{shepherd(125, 355, 0.5)}
+<path d="M96 260 L58 230" stroke="{INK}" stroke-width="6" stroke-linecap="round"/>
+<circle cx="52" cy="225" r="7" fill="{INK}"/>
+</g>
+{shepherd(190, 425, 0.62, flip=True)}
+{sheep(660, 425, 0.68)}
+{bubble(60, 40, 220, 54, "Why so sure?", 19)}
+""",
+)
+
 
 
 if __name__ == "__main__":

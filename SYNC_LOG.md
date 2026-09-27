@@ -253,3 +253,26 @@
 - Confidence: the existing policy line and the invoice-mismatch open question are both quoted
   directly from `docs/reconciliation.md`, not paraphrased from memory. The new design is not
   yet built or tested.
+
+## 2026-09-27 (ledger fix verified by reading it, two articles written and built)
+
+- Source: `journal/entries/2026-09-27.md`, Miguel's decision on how to structure the week's
+  articles.
+- Updated: `journal/entries/2026-09-27.md` (new), `backlog.md` (ledger-consistency item
+  closed), `site/tech/outbox-and-ledger.md` (new), `site/philosophy/a-mind-that-lies-to-you-
+  too.md` (new), `site/tools/illustrations.py` (two new scenes).
+- What moved: `Invoice-Financing`'s `dev` branch (`b3d3b33`) was read directly against the
+  spec handed to Claude Code, migrations, service, controller, exception handling, and the
+  `docs/reconciliation.md` update, since this sandbox has no route to Maven Central and can't
+  run the real suite. Everything matched; two additions weren't asked for (a zero-amount
+  account needs no `OPENING` row; the docs note the check only fires on a read). The two
+  articles were then written from the week's actual material, per Miguel's call: outbox and
+  ledger stay one tech piece rather than split, and the Sapiens reading folds in with the
+  four-pairs concept list as one philosophy piece, code kept sparse there and central in the
+  tech piece. Both new illustrations were generated and screenshotted before delivery. The
+  whole site was built locally against this checkout (`UMWAYI_PATH` override in
+  `sync-content.mjs`) and both new pages were rendered through `astro preview` and
+  screenshotted, not just built, real page checks, not a source read.
+- Confidence: the code-level check of the ledger fix is thorough but not a substitute for
+  the real test suite, that gap is stated plainly, not implied away. The build and the two
+  new pages are confirmed by an actual local render.

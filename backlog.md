@@ -197,7 +197,7 @@ project file.
       `950bf86`, `StalePendingSettlementSweepService`, a scheduled sweep finalizing stale
       `PENDING` settlements as `UNKNOWN` past a grace period, with unit and integration
       tests.
-- [ ] Ledger entries are written but never read back anywhere in the codebase, so nothing
+- [x] Ledger entries are written but never read back anywhere in the codebase, so nothing
       checks `LedgerAccount.balance` against the sum of its own entries. Found 2026-09-25
       while restudying the ledger. Fix designed and handed to Claude Code: an `OPENING` entry
       per account (accounts currently start with a nonzero balance and zero entries, seeded
@@ -208,8 +208,16 @@ project file.
       generalization of it, with the same audited, manual-only resolve workflow. The general
       policy this follows (detect internally, record it, require an explicit audited
       resolution, never auto-correct) gets written into `docs/reconciliation.md` as a named
-      rule, not left implicit in what the existing mismatch handling happens to do. Not yet
-      built or verified. (Raised 2026-09-25)
+      rule, not left implicit in what the existing mismatch handling happens to do. Answered
+      2026-09-27: built, merged to `dev` (`b3d3b33`), and checked line by line against the
+      spec (migrations, service, controller, docs) since this sandbox can't reach Maven
+      Central to run the real suite itself. Everything matched, plus two things not asked
+      for: a zero-opening-amount account correctly gets no row, and an honest note that the
+      check only fires on `GET /accounts/{id}`, so an account nobody reads stays unchecked.
+      Claude Code's own decisions log records a real end-to-end run against local dev data
+      (46 confirmed settlements, one hand-edited balance caught and resolved). Running the
+      actual Maven test suite is still worth doing once, but not blocking on it given the
+      code-level agreement. (Raised 2026-09-25)
 
 ### Routine machine
 - [ ] Design and build email reminders for anything time-related (deadlines, scheduled
