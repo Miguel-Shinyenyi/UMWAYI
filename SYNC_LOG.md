@@ -343,3 +343,31 @@
   the hex dump showed the header was correct, so the check was wrong, not the encryption.
   Known and deliberate: the pre-`446d3b5` commits still contain the old wording in those
   three files, Miguel decided against a second rewrite to purge it.
+
+
+## 2026-09-30 (cross-post pipeline run for real, two of four platforms turned out viable)
+
+- Source: Miguel asking to trigger the cross-posting pipeline, and the run's actual results.
+- Updated: `scripts/cross-post.mjs` (dev.to throttle and retry, honest Hashnode error),
+  `docs/cross-post-setup.md` (Hashnode and LinkedIn sections corrected), `backlog.md`,
+  `SYNC_LOG.md`. `SITE_BASE_URL` set as a repo variable.
+- What moved: preconditions were checked before firing rather than after. `SITE_BASE_URL` was
+  missing and the script refuses to publish without a canonical link, so the run would have
+  failed immediately; it was set first. The blast radius was stated up front, 14 immediately
+  public posts across three platforms with no dry-run switch, and Miguel chose to run the lot
+  rather than validate on one article. Two possible side effects were checked and cleared
+  beforehand: the workflow's commit-back cannot loop, because it pushes with `GITHUB_TOKEN`
+  and marks the commit `[skip ci]`, and the new `crossposted:` frontmatter cannot break the
+  site build, because the collection schema is a plain `z.object` and Zod strips unknown keys.
+  The run then published 2 of 14 and failed the rest for three unrelated reasons: dev.to
+  rate-limiting (a real script bug, no gap between creations, now fixed with a minimum gap
+  plus a bounded retry on `429` only), Hashnode's free GraphQL API having been retired on
+  2026-05-13 in favour of a paid Pro plan (not a bug, and not the field-name problem that was
+  flagged, which was never even reached), and a malformed `LINKEDIN_AUTHOR_URN` missing its
+  `urn:li:person:` prefix (a secret value, so Miguel's to fix).
+- Confidence: the two live posts were confirmed with a real request returning 200, not taken
+  from the workflow log. Hashnode's retirement is quoted from their own changelog entry, found
+  by following the 301 the script tripped on, not inferred from the failure. The LinkedIn
+  cause is read off the error naming `/author` specifically, which distinguishes it from an
+  expired token or a missing scope. The Hashnode field names remain untested either way, and
+  the setup doc now says so rather than implying they were the problem.

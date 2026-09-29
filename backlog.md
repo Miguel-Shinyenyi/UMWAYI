@@ -162,6 +162,34 @@ project file.
       script's field names come from a community writeup and are flagged in the setup
       doc as worth checking, or testing against a throwaway draft, before the first real
       run.
+
+      First real run 2026-09-30, and the four-platform plan did not survive it. Of 14
+      intended posts, 2 landed: both `site/tech/` articles on dev.to, live and verified,
+      recorded in frontmatter by commit `691e1ac` so a retry cannot double-post them. The
+      other 12 failed for three unrelated reasons, worth keeping separate because only one
+      is a code bug:
+      - dev.to rate-limits article creation to about one per 30s, and the script fired all
+        six back-to-back with no gap, so four got `429`. Fixed 2026-09-30: a minimum gap
+        between creations plus a bounded retry on `429` only.
+      - Hashnode failed on all six, and not for the reason that was flagged. Its free
+        GraphQL API was retired on 2026-05-13 and every query and mutation now needs a paid
+        Pro plan; `gql.hashnode.com` 301s to the announcement, which is why the script got
+        HTML. The field-name worry was never reached, so it is still untested rather than
+        disproved. This is a spending decision, not a fix.
+      - LinkedIn failed on both tech articles with `403 ACCESS_DENIED` naming `/author`,
+        which means `LINKEDIN_AUTHOR_URN` is not in the required `urn:li:person:<id>` form.
+        The token and its scopes are fine; only the secret's value is wrong.
+- [ ] Decide whether Hashnode is worth a paid Pro plan purely to keep it in the cross-post
+      pipeline, given Medium is already out and that would leave dev.to and LinkedIn as the
+      only free platforms. Their changelog also advertises an "MCP connect" feature for
+      read/write access to posts, which may or may not be a free alternative route; not
+      verified. Until this is decided, `HASHNODE_TOKEN` should be unset so the script skips
+      Hashnode cleanly instead of failing every run. (Raised 2026-09-30)
+- [ ] Fix `LINKEDIN_AUTHOR_URN` to the full `urn:li:person:<sub>` form, re-checking `sub`
+      via `/v2/userinfo` as `docs/cross-post-setup.md` describes. Only Miguel can do this,
+      it is a secret value. (Raised 2026-09-30)
+- [ ] Re-run the cross-post workflow for the four articles that were rate-limited, once the
+      throttle fix is in. (Raised 2026-09-30)
 - [x] Whether the two-typeface design contrast holds up on mobile. (Raised 2026-09-18)
       Answered 2026-09-22: it didn't. Three real bugs confirmed by rendering the site at
       375px and measuring, not guessed from CSS: header nav overflow, and one CSS line

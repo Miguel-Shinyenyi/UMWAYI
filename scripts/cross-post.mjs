@@ -54,8 +54,20 @@ function canonicalUrl(category, slug) {
   return `${SITE_BASE_URL.replace(/\/$/, "")}/${category}/${slug}/`;
 }
 
-async function publishToDevTo({ title, summary, bodyMarkdown, tags, canonical }) {
-  const res = await fetch("https://dev.to/api/articles", {
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+// dev.to rate-limits article creation to roughly one per 30s. The first run of this script
+// posted two articles and then 429'd on the remaining four, because it fired them
+// back-to-back with no gap. Two defences, since either alone is not enough: hold a minimum
+// gap between creations so the limit is normally never reached, and still retry on a 429 in
+// case the limit is stricter than we think or the account is busy elsewhere.
+const DEVTO_MIN_GAP_MS = 31000;
+const DEVTO_RETRY_WAIT_MS = 35000;
+const DEVTO_MAX_ATTEMPTS = 3;
+let devtoLastPostAt = 0;
+
+async function devtoCreate(bodyMarkdown, { title, summary, tags, canonical }) {
+  return fetch("https://dev.to/api/articles", {
     method: "POST",
     headers: {
       "api-key": DEVTO_API_KEY,
@@ -72,10 +84,30 @@ async function publishToDevTo({ title, summary, bodyMarkdown, tags, canonical })
       },
     }),
   });
-  const text = await res.text();
-  if (!res.ok) throw new Error(`dev.to ${res.status}: ${text}`);
-  const json = JSON.parse(text);
-  return json.url;
+}
+
+async function publishToDevTo({ title, summary, bodyMarkdown, tags, canonical }) {
+  let lastError;
+  for (let attempt = 1; attempt <= DEVTO_MAX_ATTEMPTS; attempt++) {
+    const since = Date.now() - devtoLastPostAt;
+    if (devtoLastPostAt && since < DEVTO_MIN_GAP_MS) {
+      await sleep(DEVTO_MIN_GAP_MS - since);
+    }
+
+    const res = await devtoCreate(bodyMarkdown, { title, summary, tags, canonical });
+    const text = await res.text();
+    devtoLastPostAt = Date.now();
+
+    if (res.ok) return JSON.parse(text).url;
+
+    lastError = `dev.to ${res.status}: ${text}`;
+    // Only a 429 is worth retrying. Anything else (bad tag, duplicate title, bad key) will
+    // fail again identically, and retrying it just delays the rest of the queue.
+    if (res.status !== 429 || attempt === DEVTO_MAX_ATTEMPTS) break;
+    console.log(`dev.to rate-limited on "${title}", waiting ${DEVTO_RETRY_WAIT_MS / 1000}s (attempt ${attempt} of ${DEVTO_MAX_ATTEMPTS})`);
+    await sleep(DEVTO_RETRY_WAIT_MS);
+  }
+  throw new Error(lastError);
 }
 
 async function hashnodePublicationId() {
@@ -92,7 +124,19 @@ async function hashnodePublicationId() {
   try {
     json = JSON.parse(text);
   } catch {
-    throw new Error(`Hashnode publication lookup returned non-JSON: ${text.slice(0, 300)}`);
+    // This is what a retired endpoint looks like from here: gql.hashnode.com 301s to an
+    // announcement page, so we get HTML back instead of GraphQL. Say that plainly rather
+    // than dumping 300 characters of Next.js markup into the log, which is what the first
+    // run did and which told us nothing.
+    const looksLikeHtml = /^\s*(<!DOCTYPE|<html)/i.test(text);
+    throw new Error(
+      looksLikeHtml
+        ? "Hashnode returned HTML, not GraphQL. Free GraphQL API access was retired on 2026-05-13; " +
+          "every query and mutation now needs a Pro plan on the publication " +
+          "(https://hashnode.com/changelog/2026-05-13-graphql-api-paid-access). " +
+          "Until Pro is active, unset the HASHNODE_TOKEN secret so this is skipped cleanly instead of failing every run."
+        : `Hashnode publication lookup returned non-JSON: ${text.slice(0, 300)}`
+    );
   }
   if (json.errors) throw new Error(`Hashnode publication lookup: ${JSON.stringify(json.errors)}`);
   const pub = json.data?.me?.publications?.edges?.[0]?.node;
@@ -100,13 +144,15 @@ async function hashnodePublicationId() {
   return pub.id;
 }
 
-// NOTE: field names below match Hashnode's community-documented publishPost mutation
-// as of late 2024 (title, publicationId, contentMarkdown, tags as {slug,name} objects
-// capped at 5, originalArticleURL for canonical attribution). I could not reach
-// https://apidocs.hashnode.com/ directly to verify the current, exact schema before
-// writing this. Before the first real run, load that page yourself (or run this once
-// against a throwaway draft) and adjust field names here if the API rejects the request,
-// the error will name the invalid field.
+// NOTE: these field names are still UNVERIFIED against a real response, and the 2026-09-29
+// run did not test them. It never got that far: the publication lookup above failed first,
+// because Hashnode retired free GraphQL API access on 2026-05-13 and now requires a Pro
+// plan for queries as well as mutations. So the original worry (wrong field names, taken
+// from a community writeup) was never the blocker, and is also still not ruled out.
+// If Pro is ever enabled, expect to verify these against
+// https://apidocs.hashnode.com/ on the first real attempt: title, publicationId,
+// contentMarkdown, tags as {slug,name} objects capped at 5, originalArticleURL for the
+// canonical. A rejected request names the offending field.
 async function publishToHashnode({ title, bodyMarkdown, tags, canonical }) {
   const publicationId = await hashnodePublicationId();
   const res = await fetch("https://gql.hashnode.com", {

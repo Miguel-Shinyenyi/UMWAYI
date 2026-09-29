@@ -20,19 +20,36 @@ per platform except LinkedIn, which needs repeating roughly every 60 days.
 2. Generate a key.
 3. GitHub secret: `DEVTO_API_KEY`.
 
-## Hashnode
+## Hashnode: needs a paid Pro plan
 
-1. Go to Hashnode → Account Settings → Developer → Personal Access Tokens, generate one.
+**A token alone is not enough, so the steps that were here before could not have worked.**
+Confirmed by the 2026-09-29 run: all six attempts failed, because `gql.hashnode.com` now
+301-redirects to an announcement page and the script received HTML instead of GraphQL.
+
+Hashnode [retired free GraphQL API access on
+2026-05-13](https://hashnode.com/changelog/2026-05-13-graphql-api-paid-access). Their
+wording: "Every API request, queries and mutations, now requires a Pro plan on your
+publication," and "Reads used to be free. They aren't anymore." Their stated reason is
+scraping and spam abuse. Pricing is seat-based and upgrading is self-serve from the blog
+dashboard's Billing page; the publication is allow-listed automatically on checkout.
+
+So this is a spending decision, not a bug to fix.
+
+**Until Pro is active: leave `HASHNODE_TOKEN` unset**, the same way `MEDIUM_TOKEN` is left
+unset below. The script then skips Hashnode cleanly instead of failing on every article and
+marking every run red. If the secret already exists, delete it.
+
+**If you do go Pro:**
+
+1. Hashnode → Account Settings → Developer → Personal Access Tokens, generate one.
 2. GitHub secret: `HASHNODE_TOKEN`.
-3. `HASHNODE_PUBLICATION_ID` is optional: the script looks it up automatically on first
-   run if you skip it. Set it only if you have more than one Hashnode publication and
-   need to pick a specific one (the automatic lookup takes the first one it finds).
-4. Before the first real run: I could not reach Hashnode's own API docs page
-   (`apidocs.hashnode.com`) from where this was written, so the exact field names in
-   `scripts/cross-post.mjs`'s `publishToHashnode` function are based on a community
-   writeup, not the official reference. Worth a quick check against the real docs, or a
-   test run against a throwaway draft article, before trusting it on real content. If a
-   field name is wrong, Hashnode's error message will name it.
+3. `HASHNODE_PUBLICATION_ID` is optional: the script looks it up automatically if you skip
+   it. Set it only if you have more than one publication and need a specific one (the
+   lookup takes the first it finds).
+4. Expect to verify field names on the first attempt. The ones in `publishToHashnode` come
+   from a community writeup, not the official reference, and the 2026-09-29 run never
+   reached them, it failed at the publication lookup first. So they are still untested, and
+   `apidocs.hashnode.com` is worth checking. A rejected request names the offending field.
 
 ## Medium: not available right now
 
@@ -103,6 +120,20 @@ Getting a token (do this now, and again every ~60 days):
    GitHub secret: `LINKEDIN_AUTHOR_URN`. This changes each time you redo the flow only if
    `sub` itself changes, which it normally won't once the same LinkedIn account is used,
    but it costs nothing to re-check it against the new token each time.
+
+   **Store the full URN, not the bare id.** The value must be exactly
+   `urn:li:person:<sub>`, prefix included. The script passes this secret straight through as
+   the post's `author` field, so a bare `<sub>` is rejected. This is what happened on the
+   2026-09-29 run: both LinkedIn posts failed with
+
+   ```
+   403 ACCESS_DENIED: Field Value validation failed in REQUEST_BODY:
+   Data Processing Exception while processing fields [/author]
+   ```
+
+   Note the error names `/author`, not the token or a scope, which is how you tell this
+   apart from an expired token (401) or a missing product/scope (403 on `/v2/userinfo`).
+   Re-run the `/v2/userinfo` call above, then set the secret to the `urn:li:person:` form.
 
 When the token expires, the workflow's LinkedIn step returns a 401 with a message
 pointing back to this section. Redo steps 1 to 4 above (the app itself doesn't need
