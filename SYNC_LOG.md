@@ -313,3 +313,33 @@
   first real run. Nothing has been executed yet: the git-crypt steps need Claude Code's
   local push access, and the workflow files need Miguel to add them and the platform
   secrets before anything actually runs.
+
+## 2026-09-30 (journal history purged and encrypted, executed)
+
+- Source: the git-crypt runbook, run against the real repo with push access, plus two scope
+  decisions Miguel made mid-run.
+- Updated: UMWAYI's entire history (rewritten), `.gitattributes` (new), `backlog.md`,
+  `MASTER_CONTEXT.md`, `SYNC_LOG.md`.
+- What moved: the runbook was executed rather than handed on, and two things were caught by
+  checking instead of following it literally. First, its step 1 precondition ("confirm the
+  working tree is clean") actually failed: four files, the whole cross-posting pipeline,
+  existed only in the working tree and in no commit anywhere, and the runbook's final step
+  (`rm -rf` the clone) would have destroyed them. They were committed first (`33a63f6`).
+  Second, the runbook scoped the strip to `journal/entries/`, but `journal/weekly-summaries/`
+  held the same private material, so the filter was widened at Miguel's decision before
+  anything was pushed. A real bug in the runbook was also fixed: its restore step `cp`s into
+  a directory that filter-repo has just deleted, with no `mkdir -p`, so it would have failed
+  or silently restored nothing. History went 39 commits to 32; both paths are gone from every
+  commit and object; the content is back, encrypted; `journal/TEMPLATE.md` stays plaintext as
+  a blank scaffold. Afterwards, three public hub files were found to still name the private
+  situations; their current text is generalised to point at the encrypted entry, and
+  `MASTER_CONTEXT.md`'s rule was rewritten so a private item is never restated in a public
+  file, including as a note about what was withheld.
+- Confidence: verified, not assumed at each step. Ciphertext confirmed from
+  `raw.githubusercontent.com`, not only from a local commit; all ten files confirmed to
+  decrypt byte-identical to their pre-rewrite originals; the fork count confirmed zero via
+  the GitHub API, which is what makes the rewrite actually effective. One of my own checks
+  produced a false "FAIL" on the git-crypt header (grep stopped at the leading null byte);
+  the hex dump showed the header was correct, so the check was wrong, not the encryption.
+  Known and deliberate: the pre-`446d3b5` commits still contain the old wording in those
+  three files, Miguel decided against a second rewrite to purge it.

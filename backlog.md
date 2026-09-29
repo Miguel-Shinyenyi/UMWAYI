@@ -98,10 +98,33 @@ project file.
       sessions: Miguel chose to store the exported git-crypt key as a file in this
       claude.ai Project rather than re-attaching it each session, which trades "only
       git-crypt keyholders can read this" for "whoever can open this Project can", a
-      trade he made deliberately, not a default I picked. Still open: anyone who already
-      cloned or forked UMWAYI before the rewrite keeps the old plaintext history on their
-      own machine; the rewrite only closes the canonical GitHub repo and future clones,
-      worth checking the repo's fork network before treating this as fully closed.
+      trade he made deliberately, not a default I picked.
+
+      Executed 2026-09-30, not just planned. Scope was widened mid-run, before the
+      force-push: the plan covered `journal/entries/` only, but
+      `journal/weekly-summaries/` holds the same class of content, including the two
+      personal situations recorded as private in the 2026-09-20 entry, so stripping only
+      `entries/` would have left that readable. Miguel chose to widen. History went from
+      39 commits to 32 (six journal-only commits became empty and were pruned), both
+      paths are absent from every commit and every git object, and the current content was
+      re-added encrypted, verified as ciphertext from `raw.githubusercontent.com`, not just
+      from a local commit. `journal/TEMPLATE.md` stays plaintext on purpose: a blank
+      scaffold, no personal content. The full round trip was checked, all ten files
+      decrypt byte-identical to their pre-rewrite originals.
+
+      The fork question is answered: the repo had zero forks and `network_count` 0 at the
+      time of the rewrite, so no one else holds the old plaintext history. Backups that do
+      hold it are local only (`~/umwayi-mirror-backup-20260930`,
+      `~/umwayi-journal-backup-20260930`) and must never be pushed anywhere public.
+
+      Decided and deliberately not fixed: `backlog.md`, `MASTER_CONTEXT.md` and
+      `SYNC_LOG.md` named those two situations, and all three stay public. Their current
+      text is generalised and now points to the encrypted entry, and
+      `MASTER_CONTEXT.md`'s rule was rewritten so it can't recur, a private item is never
+      restated in a public file, including as a note about what was withheld. The earlier
+      wording remains in commits before `446d3b5`. Purging it would have needed a second
+      `filter-repo` pass and force-push; Miguel decided against that on 2026-09-30, so the
+      old commits keep it. Not an oversight.
 
 ### Career prep
 - [ ] Actually work through the PostHog rejection feedback properly, what was said, what
