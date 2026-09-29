@@ -84,8 +84,23 @@ project file.
 ## Pending decisions and actions
 
 ### Hub infrastructure
-- [ ] Encrypt `journal/entries/` with git-crypt, since the UMWAYI repo is public and the
+- [x] Encrypt `journal/entries/` with git-crypt, since the UMWAYI repo is public and the
       journal is the one folder that should never be readable there. (Raised 2026-09-24)
+      Answered 2026-09-29: git-crypt alone wouldn't have done it, since it only encrypts
+      commits made after it's turned on and years of plaintext entries were already
+      public in history. Miguel decided to rewrite history first (`git filter-repo`
+      dropping `journal/entries/` from every past commit, then a force-push), then
+      re-add the current entries fresh under git-crypt so they're encrypted from that
+      point on. Full step-by-step handed to Claude Code as
+      `claude-code-prompt-git-crypt.md`, since it needs local push access this hub
+      doesn't have. For my own ability to decrypt and read journal entries in future
+      sessions: Miguel chose to store the exported git-crypt key as a file in this
+      claude.ai Project rather than re-attaching it each session, which trades "only
+      git-crypt keyholders can read this" for "whoever can open this Project can", a
+      trade he made deliberately, not a default I picked. Still open: anyone who already
+      cloned or forked UMWAYI before the rewrite keeps the old plaintext history on their
+      own machine; the rewrite only closes the canonical GitHub repo and future clones,
+      worth checking the repo's fork network before treating this as fully closed.
 
 ### Career prep
 - [ ] Actually work through the PostHog rejection feedback properly, what was said, what
@@ -96,9 +111,33 @@ project file.
 - [x] Create dev.to and Medium accounts, still don't exist. (Raised in the original site
       plan, 2026-09-16, carried forward) Answered 2026-09-23: both exist, along with Hashnode
       and LinkedIn profiles.
-- [ ] Decide whether the broader hub cross-posting plan (Hashnode, dev.to, Medium, LinkedIn)
+- [x] Decide whether the broader hub cross-posting plan (Hashnode, dev.to, Medium, LinkedIn)
       is still intended, separate from the narrower decision already made to keep the site
-      itself GitHub-Pages-only. (Raised 2026-09-20)
+      itself GitHub-Pages-only. (Raised 2026-09-20) Answered 2026-09-29: yes. A GitHub
+      Actions workflow (`cross-post.yml` + `scripts/cross-post.mjs`) posts every non-draft
+      `site/tech/` and `site/philosophy/` article to dev.to, Hashnode, and Medium as a
+      full cross-post with a canonical link back to the site, and posts a TL;DR (the
+      article's `summary` field) plus a link to LinkedIn for `site/tech/` articles only,
+      journal excerpts stay off all four platforms on purpose, personal-voice content
+      duplicated onto professional-audience platforms is a different call than an argued
+      piece, and Miguel chose the narrower scope when asked. Idempotent via a
+      `crossposted:` frontmatter block per article, so re-runs only fill in what's
+      missing. Correction, 2026-09-29: Medium was first described here as deprecated but
+      still functional, that was wrong. Medium stopped issuing new integration tokens
+      entirely as of a report dated 2026-09-24, and Miguel's Medium account is new, so
+      there's currently no way to get a token at all, not just a fragile one. Medium is
+      out of the pipeline for now, not best-effort; `MEDIUM_TOKEN` stays unset and the
+      script skips it cleanly. LinkedIn's personal-posting token still expires roughly
+      every 60 days with no refresh mechanism, confirmed and unchanged; Miguel chose to
+      run it anyway, on the condition that a failure there surfaces loudly (a failed
+      workflow run) rather than silently skipping the post, dev.to and Hashnode results
+      still get committed either way. Setup steps for every secret this needs, including
+      the recurring LinkedIn re-auth, are in `docs/cross-post-setup.md`. Hashnode's
+      official API field list
+      (`apidocs.hashnode.com`) couldn't be reached from here to verify against; the
+      script's field names come from a community writeup and are flagged in the setup
+      doc as worth checking, or testing against a throwaway draft, before the first real
+      run.
 - [x] Whether the two-typeface design contrast holds up on mobile. (Raised 2026-09-18)
       Answered 2026-09-22: it didn't. Three real bugs confirmed by rendering the site at
       375px and measuring, not guessed from CSS: header nav overflow, and one CSS line

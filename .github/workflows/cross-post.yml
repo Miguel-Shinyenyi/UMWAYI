@@ -1,0 +1,73 @@
+# Save as .github/workflows/cross-post.yml in UMWAYI.
+# Cross-posts new site/tech/ and site/philosophy/ articles to dev.to and Hashnode (full
+# article, canonical link back to the site), and posts a TL;DR + link to LinkedIn for
+# site/tech/ articles only. Medium is wired in but currently inert: Medium stopped
+# issuing new integration tokens as of 2026-09-29 and there's no MEDIUM_TOKEN secret to
+# give it, so it's skipped every run. See scripts/cross-post.mjs for the logic and
+# docs/cross-post-setup.md for the secrets this needs and how to get each one.
+#
+# Idempotent: each article's frontmatter records which platforms it's already been
+# posted to (`crossposted:`), so re-running only fills in what's missing, it never
+# double-posts. LinkedIn is best-effort: a failure there fails this workflow run (so
+# it's never silently missed) but never blocks dev.to/Hashnode, which are committed
+# first regardless of what happens after.
+
+name: Cross-post articles
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "site/tech/**"
+      - "site/philosophy/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  cross-post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install script dependencies
+        working-directory: scripts
+        run: npm install
+
+      - name: Run cross-post script
+        id: crosspost
+        continue-on-error: true
+        working-directory: .
+        env:
+          SITE_BASE_URL: ${{ vars.SITE_BASE_URL }}
+          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
+          HASHNODE_TOKEN: ${{ secrets.HASHNODE_TOKEN }}
+          HASHNODE_PUBLICATION_ID: ${{ secrets.HASHNODE_PUBLICATION_ID }}
+          MEDIUM_TOKEN: ${{ secrets.MEDIUM_TOKEN }}
+          LINKEDIN_TOKEN: ${{ secrets.LINKEDIN_TOKEN }}
+          LINKEDIN_AUTHOR_URN: ${{ secrets.LINKEDIN_AUTHOR_URN }}
+        run: node --experimental-vm-modules scripts/cross-post.mjs
+
+      - name: Commit any newly cross-posted links
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain site/tech site/philosophy)" ]; then
+            git add site/tech site/philosophy
+            git commit -m "Record cross-post links [skip ci]"
+            git push
+          else
+            echo "No frontmatter changes to commit."
+          fi
+
+      - name: Fail the run if any platform errored
+        if: steps.crosspost.outcome == 'failure'
+        run: |
+          echo "Cross-post script reported at least one failure. Check the 'Run cross-post script' step's log and the job summary above."
+          exit 1

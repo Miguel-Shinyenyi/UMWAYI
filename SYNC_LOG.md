@@ -276,3 +276,39 @@
 - Confidence: the code-level check of the ledger fix is thorough but not a substitute for
   the real test suite, that gap is stated plainly, not implied away. The build and the two
   new pages are confirmed by an actual local render.
+
+## 2026-09-29 (git-crypt design and cross-posting pipeline)
+
+- Source: Miguel's request to enforce git-crypt on the journal with continued decrypt
+  access for me, and to build automated cross-posting to dev.to, Medium, Hashnode, and
+  LinkedIn.
+- Updated: `backlog.md` (two items closed: the git-crypt item and the cross-posting-plan
+  item). New files handed to Miguel, not yet in the repo: `claude-code-prompt-git-
+  crypt.md` (for Claude Code to run locally, since it needs push access this hub
+  doesn't have), `.github/workflows/cross-post.yml`, `scripts/cross-post.mjs`,
+  `scripts/package.json`, `docs/cross-post-setup.md`.
+- What moved: git-crypt alone doesn't hide already-public history, so the plan is a
+  history rewrite (`git filter-repo` dropping `journal/entries/` from every past commit,
+  then re-adding the current entries fresh under git-crypt) rather than just turning
+  git-crypt on. Four real forks were surfaced to Miguel rather than decided silently:
+  history rewrite vs. a private repo vs. leaving history as is; where the decrypt key
+  persists across my sessions; which site categories get cross-posted; and whether to
+  run Medium/LinkedIn at all given Medium's deprecated API and LinkedIn's ~60-day token
+  expiry. Miguel chose the history rewrite, storing the exported key as a file in this
+  claude.ai Project, philosophy-and-tech-only for cross-posting, and running both
+  platforms as best-effort with loud (not silent) failure. Medium then turned out to be
+  unreachable outright, not just fragile, see Confidence below; LinkedIn's best-effort
+  design stands as decided.
+- Confidence: the design is sound and grounded in confirmed API behavior for dev.to and
+  LinkedIn (`w_member_social` is self-service; personal tokens expire ~60 days with no
+  refresh). Medium was wrong in the first pass: described here as deprecated but
+  functional, then corrected the same day after Miguel couldn't find an integration-token
+  option at all. A recheck found Medium stopped issuing new tokens entirely as of a
+  report dated 2026-09-24, five days before this; his account is new, so there's no path
+  to a token right now. Medium is out of the pipeline until that changes, `MEDIUM_TOKEN`
+  stays unset and the script skips it cleanly. Hashnode's exact field schema couldn't be
+  verified against the official docs from this sandbox (a fetch to `apidocs.hashnode.com`
+  failed), so it's built from a community writeup and flagged for a check before the
+  first real run. Nothing has been executed yet: the git-crypt steps need Claude Code's
+  local push access, and the workflow files need Miguel to add them and the platform
+  secrets before anything actually runs.
