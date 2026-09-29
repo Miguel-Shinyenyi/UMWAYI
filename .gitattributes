@@ -1,0 +1,8 @@
+# journal/ holds private content and is encrypted with git-crypt. The repo is public, so
+# these paths must never be committed in plaintext. Decrypting needs the exported key
+# (git-crypt unlock ~/umwayi-journal.key); without it these files read as binary.
+#
+# journal/TEMPLATE.md is deliberately NOT encrypted: it is a blank scaffold with no
+# personal content, and it documents the entry format.
+journal/entries/** filter=git-crypt diff=git-crypt
+journal/weekly-summaries/** filter=git-crypt diff=git-crypt
