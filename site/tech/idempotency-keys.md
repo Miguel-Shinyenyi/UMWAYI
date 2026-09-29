@@ -1,12 +1,20 @@
 ---
-title: "Idempotency keys, under load"
-date: 2026-09-21
-updated: 2026-09-23
-summary: "What an idempotency key actually guarantees in a real settlement system, the two concurrency races that show up under load, and a gap that studying it surfaced, then closed."
+title: 'Idempotency keys, under load'
+date: 2026-09-21T00:00:00.000Z
+updated: 2026-09-23T00:00:00.000Z
+summary: >-
+  What an idempotency key actually guarantees in a real settlement system, the
+  two concurrency races that show up under load, and a gap that studying it
+  surfaced, then closed.
 draft: false
-tags: ["Spring Boot", "PostgreSQL", "Concurrency"]
+tags:
+  - Spring Boot
+  - PostgreSQL
+  - Concurrency
 illustration: idempotency-keys.svg
-illustrationAlt: "A shepherd stops a second sheep tagged 42 at the gate."
+illustrationAlt: A shepherd stops a second sheep tagged 42 at the gate.
+crossposted:
+  devto: 'https://dev.to/miguel_shinyenyi_e2291c8c/idempotency-keys-under-load-1a2c'
 ---
 
 ## The textbook version

@@ -1,11 +1,23 @@
 ---
-title: "The Outbox Held, the Ledger Didn't"
-date: 2026-09-25
-summary: "What actually breaks without a transactional outbox, why a ledger nobody reads back isn't really double-entry, and what happens once you decide never to auto-correct money."
+title: 'The Outbox Held, the Ledger Didn''t'
+date: 2026-09-25T00:00:00.000Z
+summary: >-
+  What actually breaks without a transactional outbox, why a ledger nobody reads
+  back isn't really double-entry, and what happens once you decide never to
+  auto-correct money.
 draft: false
-tags: ["Spring Boot", "PostgreSQL", "Kafka", "Concurrency"]
+tags:
+  - Spring Boot
+  - PostgreSQL
+  - Kafka
+  - Concurrency
 illustration: outbox-and-ledger.svg
-illustrationAlt: "The shepherd checks a sealed letter against a ledger with two columns, one much shorter than the other."
+illustrationAlt: >-
+  The shepherd checks a sealed letter against a ledger with two columns, one
+  much shorter than the other.
+crossposted:
+  devto: >-
+    https://dev.to/miguel_shinyenyi_e2291c8c/the-outbox-held-the-ledger-didnt-k7g
 ---
 
 ## Explain it cold, then check
