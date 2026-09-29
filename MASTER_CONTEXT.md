@@ -81,8 +81,10 @@ where the observation gets tested against something real.
 - Journal excerpts for the site are drawn from `journal/entries/`, never copied whole.
   Anything private is left out: health beyond what an article has already made public, other
   people, money, and personal patterns still under investigation. When I'm not sure whether
-  something is private, I ask before it goes into `site/`. Left private by his decision on
-  2026-09-23: the 09-20 river walk and pool game.
+  something is private, I ask before it goes into `site/`. Anything he decides to keep private
+  is recorded in the relevant entry in `journal/entries/` (encrypted), never restated in this
+  file or any other public one, including as a note about what was withheld. Naming the
+  withheld item here would publish the thing the decision was meant to protect.
 - Weekly summaries are written Sunday evenings, starting 2026-09-20, the day this rule was
   introduced.
 - `backlog.md` holds every open question and pending decision or action across every

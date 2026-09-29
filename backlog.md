@@ -70,9 +70,10 @@ project file.
       after a confirmed send.
 
 ### Self-observation
-- [ ] Whether the minimal-banter pattern (river walk, pool game) shows up even with people
-      already known and trusted, or only with strangers. Not manufactured as a test, noticed
-      when it naturally comes up. (Raised 2026-09-20)
+- [ ] Whether the minimal-banter pattern shows up even with people already known and trusted,
+      or only with strangers. The specific occasions it was noticed on are in the 2026-09-20
+      entry in `journal/entries/` (encrypted), not repeated here, since this file is public.
+      Not manufactured as a test, noticed when it naturally comes up. (Raised 2026-09-20)
 - [ ] Whether this morning's structured exercise genuinely satisfies the ancestral-movement
       drive Sapiens describes, or is itself another modern substitute. (Raised 2026-09-20)
 - [ ] How much broader the "Routine Machine as an intuitive pre-answer" insight gets as

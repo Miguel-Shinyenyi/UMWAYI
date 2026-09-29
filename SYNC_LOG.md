@@ -146,8 +146,9 @@
 - What moved: the excerpts come from 09-18 (bugs found by running the system), 09-20 (the
   mismatch reading, the eleven laws, the dead comment service), 09-21 (the misattributed
   Seneca line, the cold explain-back), and 09-23 (looking at the rendered page). Left out
-  on purpose: the job rejection, the target companies, and, by Miguel's decision, the river
-  walk and pool game. He kept the anxiety section in the published article and kept his
+  on purpose: the job rejection, the target companies, and two personal situations Miguel
+  chose to keep private, identified in the 2026-09-20 entry in `journal/entries/` (encrypted)
+  rather than named here. He kept the anxiety section in the published article and kept his
   employer's name on the site. A scan found only two company names reaching the site: the
   article line and the open-threads bullet, both now reworded.
 - Confidence: the scan covered every file in `site/` and the three `projects/` files the
