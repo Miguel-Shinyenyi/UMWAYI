@@ -1,11 +1,20 @@
 ---
-title: "A Mind That Lies to You Too"
-date: 2026-09-24
-summary: "Sapiens on the trade that let us out-think evolution, and why the same tool needs checking on yourself, not just on the world."
+title: A Mind That Lies to You Too
+date: 2026-09-24T00:00:00.000Z
+summary: >-
+  Sapiens on the trade that let us out-think evolution, and why the same tool
+  needs checking on yourself, not just on the world.
 draft: false
-tags: ["Sapiens", "Cognitive bias", "Self-observation"]
+tags:
+  - Sapiens
+  - Cognitive bias
+  - Self-observation
 illustration: a-mind-that-lies-to-you-too.svg
-illustrationAlt: "The shepherd studies a mirror. The reflection holds a second staff and points back."
+illustrationAlt: >-
+  The shepherd studies a mirror. The reflection holds a second staff and points
+  back.
+crossposted:
+  devto: 'https://dev.to/miguel_shinyenyi_e2291c8c/a-mind-that-lies-to-you-too-1h69'
 ---
 
 ## What sapiens traded time for

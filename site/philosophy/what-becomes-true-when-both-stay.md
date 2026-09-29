@@ -1,12 +1,23 @@
 ---
-title: "What Becomes True When Both Stay"
-date: 2026-09-22
-updated: 2026-09-23
-summary: "A reading about how thin the evidence for the past actually is, applied to two live self-theories, and what a real system looks like when it refuses to force a premature answer."
+title: What Becomes True When Both Stay
+date: 2026-09-22T00:00:00.000Z
+updated: 2026-09-23T00:00:00.000Z
+summary: >-
+  A reading about how thin the evidence for the past actually is, applied to two
+  live self-theories, and what a real system looks like when it refuses to force
+  a premature answer.
 draft: false
-tags: ["Sapiens", "Self-observation", "Concurrency"]
+tags:
+  - Sapiens
+  - Self-observation
+  - Concurrency
 illustration: what-becomes-true-when-both-stay.svg
-illustrationAlt: "A white sheep and a dark sheep stand in the same fold. The shepherd keeps both instead of choosing one. A red curtain hangs at the edge of the scene."
+illustrationAlt: >-
+  A white sheep and a dark sheep stand in the same fold. The shepherd keeps both
+  instead of choosing one. A red curtain hangs at the edge of the scene.
+crossposted:
+  devto: >-
+    https://dev.to/miguel_shinyenyi_e2291c8c/what-becomes-true-when-both-stay-11k2
 ---
 
 ## The curtain of silence

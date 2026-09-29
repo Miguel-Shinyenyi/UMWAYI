@@ -1,12 +1,21 @@
 ---
-title: "Knowing and being able to explain are not the same skill"
-date: 2026-09-16
-updated: 2026-09-23
-summary: "Why fluent reproduction of an idea can hide a gap in your ability to reconstruct it from first principles."
+title: Knowing and being able to explain are not the same skill
+date: 2026-09-16T00:00:00.000Z
+updated: 2026-09-23T00:00:00.000Z
+summary: >-
+  Why fluent reproduction of an idea can hide a gap in your ability to
+  reconstruct it from first principles.
 draft: false
-tags: ["Learning", "First principles"]
+tags:
+  - Learning
+  - First principles
 illustration: knowing-vs-explaining.svg
-illustrationAlt: "The shepherd at an easel. A finished diagram is on the left half of the board; the right half, where he has to draw it himself, holds only a question mark."
+illustrationAlt: >-
+  The shepherd at an easel. A finished diagram is on the left half of the board;
+  the right half, where he has to draw it himself, holds only a question mark.
+crossposted:
+  devto: >-
+    https://dev.to/miguel_shinyenyi_e2291c8c/knowing-and-being-able-to-explain-are-not-the-same-skill-4bng
 ---
 
 ## Two different skills

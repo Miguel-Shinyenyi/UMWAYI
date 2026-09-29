@@ -1,12 +1,22 @@
 ---
-title: "Claim, Argument, and the Discipline of Not Fooling Yourself"
-date: 2026-09-20
-updated: 2026-09-23
-summary: "What a book's rhetorical force has to do with a decisions log, and why both deserve the same scrutiny."
+title: 'Claim, Argument, and the Discipline of Not Fooling Yourself'
+date: 2026-09-20T00:00:00.000Z
+updated: 2026-09-23T00:00:00.000Z
+summary: >-
+  What a book's rhetorical force has to do with a decisions log, and why both
+  deserve the same scrutiny.
 draft: false
-tags: ["Reading", "Reasoning", "Documentation"]
+tags:
+  - Reading
+  - Reasoning
+  - Documentation
 illustration: claim-versus-argument.svg
-illustrationAlt: "A balance scale with an open book labelled claim on one pan and a stack of numbered steps labelled argument on the other. The shepherd studies it."
+illustrationAlt: >-
+  A balance scale with an open book labelled claim on one pan and a stack of
+  numbered steps labelled argument on the other. The shepherd studies it.
+crossposted:
+  devto: >-
+    https://dev.to/miguel_shinyenyi_e2291c8c/claim-argument-and-the-discipline-of-not-fooling-yourself-33nm
 ---
 
 ## The trap
