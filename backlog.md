@@ -185,11 +185,20 @@ project file.
       read/write access to posts, which may or may not be a free alternative route; not
       verified. Until this is decided, `HASHNODE_TOKEN` should be unset so the script skips
       Hashnode cleanly instead of failing every run. (Raised 2026-09-30)
-- [ ] Fix `LINKEDIN_AUTHOR_URN` to the full `urn:li:person:<sub>` form, re-checking `sub`
+- [x] Fix `LINKEDIN_AUTHOR_URN` to the full `urn:li:person:<sub>` form, re-checking `sub`
       via `/v2/userinfo` as `docs/cross-post-setup.md` describes. Only Miguel can do this,
-      it is a secret value. (Raised 2026-09-30)
-- [ ] Re-run the cross-post workflow for the four articles that were rate-limited, once the
-      throttle fix is in. (Raised 2026-09-30)
+      it is a secret value. (Raised 2026-09-30) Answered 2026-09-30: fixed by Miguel, and
+      both tech articles posted to LinkedIn on the next run. The diagnosis held exactly: the
+      token and its scopes were never the problem, the same token works unchanged, it was
+      only the URN's form. Reading which field the `403` named, `/author`, is what separated
+      this from an expired token or a missing product scope.
+- [x] Re-run the cross-post workflow for the four articles that were rate-limited, once the
+      throttle fix is in. (Raised 2026-09-30) Answered 2026-09-30: all four posted, zero
+      `429`s, and the run took about 90s, matching the three 31s gaps the throttle inserts.
+      The two already-published articles were skipped rather than reposted, so the
+      `crossposted:` idempotency works. dev.to is now 6 of 6, LinkedIn 2 of 2 (tech only, by
+      design). Hashnode is the only failing platform, and only because of the paid-plan
+      change, not a bug.
 - [x] Whether the two-typeface design contrast holds up on mobile. (Raised 2026-09-18)
       Answered 2026-09-22: it didn't. Three real bugs confirmed by rendering the site at
       375px and measuring, not guessed from CSS: header nav overflow, and one CSS line

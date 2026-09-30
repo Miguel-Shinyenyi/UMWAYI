@@ -371,3 +371,25 @@
   cause is read off the error naming `/author` specifically, which distinguishes it from an
   expired token or a missing scope. The Hashnode field names remain untested either way, and
   the setup doc now says so rather than implying they were the problem.
+
+
+## 2026-09-30 (cross-posting complete on both viable platforms)
+
+- Source: Miguel fixing the `LINKEDIN_AUTHOR_URN` secret, and the two runs that followed the
+  throttle fix.
+- Updated: `backlog.md` (both 2026-09-30 action items closed), `SYNC_LOG.md`.
+- What moved: the throttle fix was confirmed by behaviour, not assumed from the code, the
+  re-run posted all four previously rate-limited articles with zero `429`s and took about 90s,
+  which matches the three 31s gaps it inserts. Idempotency was confirmed the same way: the two
+  already-published articles were skipped rather than reposted, and the final run skipped
+  dev.to entirely. Miguel then fixed the LinkedIn URN and both tech articles posted. Final
+  state: dev.to 6 of 6, LinkedIn 2 of 2 (tech only, by design), Hashnode 0 of 6 behind its
+  paid plan, Medium skipped with no token. The workflow still reports red, and that is now
+  expected rather than wrong, every remaining failure is the Hashnode paywall.
+- Confidence: every one of the six dev.to posts was confirmed live with a real request
+  returning 200, not read from the workflow log, and the LinkedIn successes are recorded in
+  each article's own frontmatter. The LinkedIn diagnosis is now proven rather than plausible:
+  the same token and scopes work unchanged once only the URN's form was corrected, which is
+  what reading the `/author` field name off the `403` had predicted. Still untested, and still
+  stated as such: Hashnode's field names, since no run has ever got past its publication
+  lookup.
