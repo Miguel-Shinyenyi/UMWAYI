@@ -15,6 +15,7 @@ illustration: idempotency-keys.svg
 illustrationAlt: A shepherd stops a second sheep tagged 42 at the gate.
 crossposted:
   devto: 'https://dev.to/miguel_shinyenyi_e2291c8c/idempotency-keys-under-load-1a2c'
+  linkedin: 'urn:li:share:7510957159002636289'
 ---
 
 ## The textbook version

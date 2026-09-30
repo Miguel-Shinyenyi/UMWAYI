@@ -18,6 +18,7 @@ illustrationAlt: >-
 crossposted:
   devto: >-
     https://dev.to/miguel_shinyenyi_e2291c8c/the-outbox-held-the-ledger-didnt-k7g
+  linkedin: 'urn:li:share:7510957161519448065'
 ---
 
 ## Explain it cold, then check
