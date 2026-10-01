@@ -179,12 +179,23 @@ project file.
       - LinkedIn failed on both tech articles with `403 ACCESS_DENIED` naming `/author`,
         which means `LINKEDIN_AUTHOR_URN` is not in the required `urn:li:person:<id>` form.
         The token and its scopes are fine; only the secret's value is wrong.
-- [ ] Decide whether Hashnode is worth a paid Pro plan purely to keep it in the cross-post
+- [x] Decide whether Hashnode is worth a paid Pro plan purely to keep it in the cross-post
       pipeline, given Medium is already out and that would leave dev.to and LinkedIn as the
       only free platforms. Their changelog also advertises an "MCP connect" feature for
       read/write access to posts, which may or may not be a free alternative route; not
       verified. Until this is decided, `HASHNODE_TOKEN` should be unset so the script skips
-      Hashnode cleanly instead of failing every run. (Raised 2026-09-30)
+      Hashnode cleanly instead of failing every run. (Raised 2026-09-30) Answered 2026-10-01:
+      no, not worth paying for. dev.to and LinkedIn already work for free; paying to keep one
+      leg of a plan that started as "if possible" running isn't worth it on its own. Hashnode
+      is parked here as a future problem, worth revisiting only if the unverified "MCP
+      connect" route turns out to be a free way back in. The homepage's "All articles on
+      Hashnode" link now points to dev.to instead (`index.astro`'s lookup switched from the
+      `Hashnode` label to `dev.to`), and the Hashnode entry was removed from the footer's
+      profile list (`site/links.md`). The Hashnode account itself is untouched, nothing was
+      deleted there. `HASHNODE_TOKEN` should stay unset in the workflow's secrets (it already
+      should be, per the previous entry), since the script otherwise has no platform left to
+      try for that article and would log nothing rather than fail, which is the quiet way for
+      this decision to stay correct without a secret to remember to touch again.
 - [x] Fix `LINKEDIN_AUTHOR_URN` to the full `urn:li:person:<sub>` form, re-checking `sub`
       via `/v2/userinfo` as `docs/cross-post-setup.md` describes. Only Miguel can do this,
       it is a secret value. (Raised 2026-09-30) Answered 2026-09-30: fixed by Miguel, and

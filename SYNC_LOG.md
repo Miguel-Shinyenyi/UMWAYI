@@ -393,3 +393,22 @@
   what reading the `/author` field name off the `403` had predicted. Still untested, and still
   stated as such: Hashnode's field names, since no run has ever got past its publication
   lookup.
+
+## 2026-10-01 (CV confirmed live, Hashnode dropped from the site)
+
+- Source: Miguel confirming the CV push and deciding Hashnode isn't worth paying for.
+- Updated: `backlog.md` (Hashnode-pipeline item closed), `site/links.md` (Hashnode entry
+  removed), `journal/entries/2026-10-01.md` (new). `index.astro` in `miguel-site` needs
+  its Hashnode-label lookup switched to `dev.to` to match.
+- What moved: re-cloned both repos fresh and verified the CV addition end to end rather
+  than trusting the push message, the file exists at `site/files/Miguel_Shinyenyi_CV.pdf`,
+  the sync script copies it, a local build produces a valid 2-page PDF at
+  `dist/files/Miguel_Shinyenyi_CV.pdf`, and a running `astro preview` serves it at a real
+  200, with "Résumé (PDF)" showing first in the footer. Separately, Miguel decided Hashnode
+  isn't worth its Pro plan just to stay in the cross-post pipeline (dev.to and LinkedIn
+  already work for free, Medium was already out), so the homepage's "All articles on
+  Hashnode" link moves to dev.to and Hashnode drops out of the footer's profile list. The
+  Hashnode account itself is untouched.
+- Confidence: the CV confirmation is a real build and a real HTTP 200, not a push message
+  taken on faith. The Hashnode change is content-only on the UMWAYI side (done here); the
+  matching `index.astro` edit in `miguel-site` is written up but not yet applied anywhere.
