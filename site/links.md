@@ -2,8 +2,6 @@
 links:
   - label: "Résumé (PDF)"
     url: "/files/Miguel_Shinyenyi_CV.pdf"
-  - label: "Hashnode"
-    url: "https://hashnode.com/@amwayi"
   - label: "GitHub"
     url: "https://github.com/Miguel-Shinyenyi"
   - label: "LinkedIn"
