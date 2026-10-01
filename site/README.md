@@ -19,6 +19,7 @@ triggers a rebuild through `.github/workflows/notify-site.yml`.
 | `links.md` | Profile links, in display order | Footer, "All articles" link |
 | `illustrations/*.svg` | One scene per article or project | Above the article body |
 | `images/profile.jpg` | Profile photo | Author line, author box, anywhere a portrait appears |
+| `files/*` | Downloadable files (CV, etc.) | Linked wherever referenced, e.g. the footer |
 | `tools/illustrations.py` | Generates the illustrations | Not published |
 
 The file name is the URL slug. Keep it lowercase with hyphens.

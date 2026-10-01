@@ -1,5 +1,7 @@
 ---
 links:
+  - label: "Résumé (PDF)"
+    url: "/files/Miguel_Shinyenyi_CV.pdf"
   - label: "Hashnode"
     url: "https://hashnode.com/@amwayi"
   - label: "GitHub"
