@@ -557,6 +557,58 @@ SCENES["philosophy/a-mind-that-lies-to-you-too"] = (
 
 
 
+# more-copies-is-not-a-better-life: a tall bar of wheat copies beside a short bar of free hours.
+SCENES["philosophy/more-copies-is-not-a-better-life"] = (
+    "More copies is not a better life",
+    "The shepherd stands before a wooden sign with two bars. The left bar, labelled copies, is tall and topped with wheat. The right bar, labelled free hours, is short. A sheep looks up at the taller bar.",
+    f"""
+<g transform="translate(250 60)">
+<rect x="40" y="290" width="14" height="76" fill="#C08A3E" stroke="{INK}" stroke-width="3"/>
+<rect x="266" y="290" width="14" height="76" fill="#C08A3E" stroke="{INK}" stroke-width="3"/>
+<rect x="0" y="0" width="320" height="300" rx="10" fill="{PAPER}" stroke="{INK}" stroke-width="4"/>
+<line x1="30" y1="250" x2="290" y2="250" stroke="{INK}" stroke-width="3"/>
+<rect x="64" y="60" width="80" height="190" fill="{OCHRE_L}" stroke="{INK}" stroke-width="3"/>
+<rect x="186" y="190" width="80" height="60" fill="{HILL2}" stroke="{INK}" stroke-width="3"/>
+<g stroke="{INK}" stroke-width="2.5" stroke-linecap="round" fill="none">
+<path d="M84 60 V26 M104 60 V16 M124 60 V28"/>
+<path d="M84 44 L76 36 M84 36 L92 28 M104 34 L96 26 M104 26 L112 18 M124 46 L116 38 M124 38 L132 30"/>
+</g>
+<g fill="{OCHRE_L}" stroke="{INK}" stroke-width="2">
+<ellipse cx="84" cy="22" rx="5" ry="9"/><ellipse cx="104" cy="12" rx="5" ry="9"/><ellipse cx="124" cy="24" rx="5" ry="9"/>
+<ellipse cx="73" cy="36" rx="4" ry="7" transform="rotate(-35 73 36)"/><ellipse cx="95" cy="26" rx="4" ry="7" transform="rotate(35 95 26)"/>
+<ellipse cx="115" cy="16" rx="4" ry="7" transform="rotate(35 115 16)"/><ellipse cx="135" cy="28" rx="4" ry="7" transform="rotate(35 135 28)"/>
+</g>
+{label(104, 276, "COPIES", 13, OCHRE)}
+{label(226, 276, "FREE HOURS", 13, OCHRE)}
+</g>
+{shepherd(640, 425, 0.62, flip=True)}
+{sheep(160, 425, 0.72)}
+{bubble(40, 70, 200, 54, "Which one counts?", 19)}
+""",
+)
+
+# what-the-reconciler-cant-see: a lantern lights the sheep that carry a reference; the rest stand in the dark.
+SCENES["tech/what-the-reconciler-cant-see"] = (
+    "What the reconciler cannot see",
+    "The shepherd holds a lantern whose light covers three sheep wearing REF tags. Two sheep stand just outside the light, tagged with question marks, and the shepherd does not see them.",
+    f"""
+<path d="M560 330 L215 255 L215 450 L560 450 Z" fill="#FFF3C9" opacity=".75"/>
+<path d="M560 330 L215 255 L215 450 L560 450 Z" fill="none" stroke="{OCHRE_L}" stroke-width="2" stroke-dasharray="6 8"/>
+<rect x="0" y="0" width="215" height="450" fill="{INK}" opacity=".18"/>
+{sheep(290, 425, 0.62, flip=True, tag="REF")}
+{sheep(395, 425, 0.62, flip=True, tag="REF")}
+{sheep(500, 425, 0.62, flip=True, tag="REF")}
+<g opacity=".8">
+{sheep(60, 425, 0.62, flip=True, wool="#8E8A82", face="#4A4540", tag="?")}
+{sheep(160, 425, 0.62, flip=True, wool="#8E8A82", face="#4A4540", tag="?")}
+</g>
+{shepherd(690, 425, 0.68, flip=True)}
+<line x1="636" y1="316" x2="566" y2="338" stroke="#6B4423" stroke-width="5" stroke-linecap="round"/>
+<rect x="540" y="326" width="26" height="34" rx="5" fill="{OCHRE_L}" stroke="{INK}" stroke-width="3"/>
+{bubble(300, 60, 240, 56, "Only what has a ref", 19)}
+""",
+)
+
 if __name__ == "__main__":
     for key, (title, desc, body) in SCENES.items():
         name = key.split("/")[1] + ".svg"

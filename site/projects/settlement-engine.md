@@ -1,54 +1,169 @@
----
-title: "Settlement Engine"
-date: 2026-09-20
-updated: 2026-09-23
-summary: "A live, deployed idempotent settlement and reconciliation engine, all nine build phases complete."
-draft: false
-status: "Deployed to staging"
-statusVariant: success
-category: "Fintech backend"
-stack: ["Spring Boot", "PostgreSQL", "Kafka", "FastAPI", "Next.js", "Kubernetes", "OpenTelemetry"]
-link: "/projects/settlement-engine"
-linkLabel: "Read the case study"
-links:
-  - label: "View on GitHub"
-    url: "https://github.com/Miguel-Shinyenyi/Invoice-Financing"
-  - label: "Idempotency keys, under load"
-    url: "/tech/idempotency-keys"
-illustration: settlement-engine.svg
-illustrationAlt: "Sheep pass one at a time through a narrow gate marked exactly once, beside a ledger listing the five settlement states."
----
+# Settlement Engine
 
 ## What it is
 
-A monorepo project: Java Spring Boot for the core services, PostgreSQL for storage, Kafka for
-event flow, Python/FastAPI for fraud detection, Next.js for the front end, Docker and
-Kubernetes for deployment, and Prometheus, Grafana, and OpenTelemetry for observability.
+An Idempotent Settlement and Reconciliation Engine, invoice financing as the first
+application on top of it. Built by Miguel with Claude Code. The core guarantees exactly-once
+money movement on top of a network that only guarantees at-least-once delivery: every
+settlement request is idempotent, every settlement has an explicit state (`PENDING`,
+`CONFIRMED`, `FAILED`, `UNKNOWN`, `REVERSED`), and a reconciliation process catches drift
+between the ledger and external reality rather than assuming success.
 
-## What it's really about
+## Stack
 
-The application layer is invoice financing, but the actual subject is correctness under
-failure: guaranteeing a settlement executes exactly once on top of a network that only
-guarantees at-least-once delivery, with every settlement carrying an explicit state
-(`PENDING`, `CONFIRMED`, `FAILED`, `UNKNOWN`, `REVERSED`) and a reconciliation process that
-catches drift against external reality instead of assuming success.
+Monorepo. Spring Boot (Java) backend, PostgreSQL, Redis, Kafka, Python/FastAPI fraud
+detection service, Next.js frontend, Docker and Kubernetes, GitHub Actions CI/CD,
+Prometheus/Grafana/OpenTelemetry observability. Deployed on a self-hosted bare-metal server
+(k3s), not AWS, despite AWS being in the original planned stack.
 
-## Where it stands
+## Status
 
-All nine planned build phases are done, deployed, and verified end to end on a live staging
-server. Load and chaos testing in the final phase found and fixed two real gaps in gateway
-failure handling and deadlock-retry exhaustion, alongside earlier concurrency bugs caught by
-integration tests before they ever reached a real environment.
+All nine build phases done, deployed, and verified end to end on staging. Not a design, a
+working system: every merge to `dev` deploys automatically to staging
+(`107.155.122.29`, no public DNS yet). A public `/app/about` page, no login required, walks
+through the real build history, phase by phase, including the actual bugs hit and fixed,
+sourced directly from `PROJECT.md`'s status log and every `docs/*.md` decisions log, not a
+separate writeup.
 
-## What I'm doing with it now
+Phase 9 (load and chaos testing) found and fixed two real production-shaped gaps:
+`SettlementService`'s handling of gateway failures and deadlock-retry exhaustion, plus a CI
+rollout-timeout false negative. Two concurrency bugs were also found and fixed back in Phase
+1, caught by Testcontainers tests before they ever reached a real environment.
 
-Not building further, restudying. Having built it doesn't guarantee being able to explain it
-cold, under interview pressure, and that gap is worth closing deliberately rather than
-assuming it isn't there. The first subsystem studied, idempotency, surfaced a real
-crash-recovery gap, fixed the same day. Outbox is next.
+A third gap, separate from all of the above, was found on 2026-09-21 while restudying
+idempotency for explainability, not while building: a hard process crash between
+`createPendingSettlement` committing and `finalizeSettlement` ever running left a settlement
+permanently invisible to reconciliation and its idempotency key stuck `IN_PROGRESS` forever.
+Verified against the actual repository before being treated as real. Fixed the same day,
+commit `950bf86`, `StalePendingSettlementSweepService`, a scheduled sweep that finds stale
+`PENDING` settlements past a grace period and finalizes them as `UNKNOWN`, reusing the
+existing state-machine path rather than adding a new one. Covered by its own unit and
+integration tests.
 
-## What I took from it
+## Why it exists
 
-1. Explicit states beat assumed success. `UNKNOWN` is a real answer.
-2. Load and chaos tests find bugs design review doesn't.
-3. Building something and being able to explain it cold are two different achievements.
+A learning and portfolio project targeting exactly what fintech companies test for:
+idempotency, state machines for uncertain outcomes, reconciliation against external systems,
+distributed consistency, access control, observability, and CI/CD for a real production
+system, not a toy one.
+
+## What's actually being restudied
+
+Miguel built this himself. The current work isn't learning it for the first time, it's
+verifying he can explain each subsystem on demand, in passing or in detail, the same gap
+named in the 2026-09-16 journal entry, now being tested against real, complex material
+instead of a single interview-style topic.
+
+Idempotency was chosen first (2026-09-21) and has had two full explain-back passes so far.
+The first attempt named the mechanism but missed that the guarantee covers a completed
+retry, not just an in-flight one. The second, closer attempt correctly covered the atomic
+write, the storage-consistency trade-off, and the insert race, but got the finalize race's
+actual cause wrong (described as a slow rollback blocking a waiting transaction, when the
+real mechanism is a genuine cross-table deadlock between an UPDATE and an INSERT during FK
+validation) and asserted an in-progress retry reads a cached snapshot, when the code
+actually throws `SettlementInProgressException` in that case, snapshots only exist once a
+key is `COMPLETED`. Both corrections were made against the real code, not asserted from
+memory. Two comparative questions were also answered this way: whether JPA `@Version`
+optimistic locking (already used on `LedgerAccount`, confirmed absent from `IdempotencyKey`)
+could substitute for the current approach (no, it solves lost updates on an existing row,
+neither race here is a lost-update problem), and how Go and Postgres handle concurrency
+generally (Postgres's MVCC and deadlock detector are what actually drive both races; Go's
+goroutine/channel model governs in-process coordination and has no bearing on how Postgres
+locks rows, so a Go rewrite would keep both races unchanged).
+
+The site's idempotency article (`src/content/tech/idempotency-keys.md` in `miguel-site`) was
+written from this material and kept current as the fix landed.
+
+## Outbox and double-entry ledger restudy (2026-09-25)
+
+Explained cold, then checked against the real code on `dev`.
+
+The outbox explanation named the retry mechanism but framed the problem backward: not "sure
+you sent it, keep proof," but the opposite, without it you can never be sure whether you sent
+it, since a DB commit and a broker publish can't be one atomic operation across two systems.
+Checked against the code and it holds as designed: `createPendingSettlement` is one
+`@Transactional` method that saves the settlement and the `OutboxEvent` together, so they
+commit or roll back as one unit, and `OutboxPublisher` only marks a row published after
+blocking on the broker's ack.
+
+The ledger explanation named the right shape (debit and credit, must balance) but the check
+it described as the reason double-entry exists doesn't exist in the code. `LedgerEntry` rows
+are written correctly, one `DEBIT` and one `CREDIT` per settlement, same amount, but
+`LedgerEntryRepository` has no query beyond what `JpaRepository` gives for free, and
+`finalizeSettlement` is its only caller. `LedgerAccount.balance` is a stored column, mutated
+directly, and nothing anywhere sums the entries back and compares. A genuine gap, verified,
+not assumed: `LedgerEntryRepository` really is write-only, confirmed by reading every call
+site.
+
+A fix was designed rather than left abstract: an `OPENING` entry per account (closing a
+second gap the design surfaced, accounts start with a nonzero balance and zero entries,
+seeded directly in `load/seed-accounts.sql` with no account-creation path in `src/main`),
+`ledger_entries.settlement_id` made nullable for `OPENING` rows only (it's `NOT NULL
+REFERENCES settlements` today, and an opening entry has no settlement behind it), a
+`sumNetByAccountId` query, and a check on every `GET /accounts/{id}`.
+
+What happens on a mismatch was its own discussion. A raw 500 detects the problem but doesn't
+handle it, the discovery is lost once the request ends. `docs/reconciliation.md` already
+states the actual policy for this class of problem, just not written as a general rule:
+mismatches get manual review, never silent auto-resolution, enforced today only for
+external-gateway mismatches (`reconciliation_mismatches`, one row per settlement, found
+during a scheduled run). A ledger mismatch is found live and belongs to one account, not one
+settlement, so it gets a sibling table, `ledger_mismatches`, and the same audited resolve
+workflow (`ReconciliationController`, extended, not duplicated), rather than forcing it into
+a table shaped for a different case. `GET /accounts/{id}` still throws on a live mismatch, a
+caller must never be handed an untrusted balance, but it also opens a durable, reviewable
+record first. This also settles an open question already sitting in
+`docs/reconciliation.md`, about invoice-mismatches needing either a nullable FK on the
+existing table or a dedicated one: dedicated table, applied here first.
+
+Three forks in that design were put to Miguel rather than decided silently: opening entries
+versus a separate `openingBalance` column (he chose opening entries), a nullable
+`settlement_id` versus a synthetic settlement per account (he chose nullable), and a sibling
+mismatch table versus generalizing `reconciliation_mismatches` (he chose sibling table).
+Claude Code was also asked to write the general policy (detect-record-audit, never
+auto-resolve) into `docs/reconciliation.md` itself, not just apply it, so it reads as a
+standing rule the next mismatch case follows without re-deriving it. Handed to Claude Code as
+`claude-code-prompt-ledger-consistency-v2.md`. Built and merged to `dev` (`b3d3b33`), then checked
+line by line against the spec on 2026-09-27 (see `backlog.md`).
+
+## Reconciliation engine restudy (explained 2026-10-02, checked against `dev` and recorded 2026-10-09)
+
+Explained cold first, then checked against `ReconciliationService`, `ReconciliationScheduler`,
+`ReconciliationController` and `docs/reconciliation.md`.
+
+The cold explanation was right about purpose: reconciliation is the last resort for what the
+system cannot settle on its own, and a person is the end of the chain. It was wrong in three
+places, and the check turned up a fourth problem that was not asked about.
+
+- UNKNOWN does not go straight to a person. `runOnce` loads every settlement that has an
+  external reference and compares it to the external record. An UNKNOWN settlement whose
+  record agrees on amount and currency is settled automatically by `autoResolveUnknown`,
+  through the same `finalizeSettlement` the original request uses. A person is needed only
+  when the two sides contradict (amount, currency or status differ), or when no external
+  record exists after the grace period (300 seconds by default). Evidence that fills a gap is
+  applied by the system. Evidence that conflicts waits for a person.
+- Nobody is alerted. `reconciliation.mismatch_found` is published but has no consumer, and no
+  Prometheus rule covers mismatches. A mismatch is seen only if someone opens the page.
+- Resolving a mismatch records a reason and an audit row. It does not change the settlement or
+  the ledger. No endpoint corrects data, and nothing ever moves a settlement to `REVERSED`.
+  Today a person editing the database is the only correction path, which skips the state
+  machine, the ledger entries and the outbox event.
+- Not asked, found anyway: the candidate query is `findByExternalRefIsNotNull()`, so an
+  UNKNOWN settlement with no reference never reaches reconciliation. A gateway exception, an
+  exhausted finalize retry budget and the stale-pending sweep all produce one. The money may
+  have moved at the external system with the engine never learning the reference. Already
+  named in `docs/reconciliation.md`'s open questions, re-confirmed here against the code.
+
+Also noted: a scheduler runs the check every 60 seconds whether or not anything went wrong,
+and each run loads every settlement that has ever had a reference, with no window or paging.
+
+Open design question, not decided: who carries out a correction. Recommendation given
+2026-10-09: the person decides, the engine executes it through an audited path (an adjustment
+ledger entry, a reverse transition), not a hand edit. Tracked in `backlog.md`.
+
+Written up as `site/tech/what-the-reconciler-cant-see.md` (2026-10-09).
+
+A full rewrite of the UI, with a public sandbox that runs the real engine and shows every
+gap above as it is, was specified on 2026-10-09 as a Claude Code prompt. Not built yet.
+
+The Phase 1 and Phase 9 concurrency fixes are the next restudy topic.

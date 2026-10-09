@@ -68,6 +68,32 @@ project file.
       against the sum of its own entries. The outbox held up as designed: the event write and
       the business write share one transaction, and the publisher only marks a row published
       after a confirmed send.
+- [ ] Who carries out a correction after a mismatch is resolved: a person editing the
+      database directly, which is the only path today (no endpoint corrects data, and nothing
+      moves a settlement to `REVERSED`), or a person deciding and the engine executing it
+      through an audited adjustment entry and a reverse transition. A direct edit skips the
+      state machine, the ledger entries and the outbox event. Recommendation given
+      2026-10-09: the person decides, the engine executes. Not yet decided by Miguel.
+      (Raised 2026-10-02)
+- [ ] How an UNKNOWN settlement with no external reference gets recovered. Reconciliation
+      only loads settlements where `externalRef` is not null, so a gateway exception, an
+      exhausted finalize retry budget and the stale-pending sweep all leave settlements that
+      reconciliation can never see, with no mismatch opened for them. Two fixes are already
+      named in `docs/reconciliation.md`: ask the external system what it received for this
+      settlement, or match on amount, date and account. Neither is built. Re-confirmed
+      against the code 2026-10-02. (Raised in the project's own docs; added here 2026-10-02)
+- [ ] Whether a reconciliation mismatch should alert a person. `reconciliation.mismatch_found`
+      has no consumer and no Prometheus rule covers mismatches, so one is seen only if
+      someone opens the reconciliation page. Options: a consumer on the topic, or an alert
+      rule on the open-mismatch count. (Raised 2026-10-02)
+- [ ] Whether a resolved settlement mismatch whose disagreement persists reopens on the next
+      run. `flagMismatch` only skips a settlement that already has an `OPEN` row, so by
+      reading it the answer is yes, but it has not been run. The ledger-mismatch version of
+      this loop is documented and verified. (Raised 2026-10-09)
+- [ ] Whether the reconciliation candidate query needs a time window or paging. Each run
+      loads every settlement that has ever had a reference and checks each one against the
+      external side, every 60 seconds. Fine at the current size, worth revisiting before
+      real volume. (Raised 2026-10-09)
 
 ### Self-observation
 - [ ] Whether the minimal-banter pattern shows up even with people already known and trusted,
@@ -125,6 +151,9 @@ project file.
       wording remains in commits before `446d3b5`. Purging it would have needed a second
       `filter-repo` pass and force-push; Miguel decided against that on 2026-09-30, so the
       old commits keep it. Not an oversight.
+- [ ] Weekly summaries are written on request, not on a schedule, and one went missing once
+      already. `2026-09-21-to-2026-09-27` exists. `2026-09-28-to-2026-10-04` does not yet.
+      Decide whether to schedule them. (Raised 2026-10-09)
 
 ### Career prep
 - [ ] Actually work through the PostHog rejection feedback properly, what was said, what
@@ -296,6 +325,16 @@ project file.
       locks, `CompletableFuture`, virtual threads, where each one saturates or deadlocks),
       then what the OS does once application-level handling is exhausted, also taken to
       failure, and write an article on it. (Raised 2026-09-24)
+- [ ] Read the two articles drafted 2026-10-09 (`philosophy/more-copies-is-not-a-better-life.md`,
+      `tech/what-the-reconciler-cant-see.md`) and their takeaway lists, and correct anything
+      that isn't what he actually took from it. Pushing them triggers cross-posting to dev.to,
+      and to LinkedIn for the tech one. The tech article leaves the correction-path question
+      undecided on purpose, update it once that is decided. (Raised 2026-10-09)
+- [ ] Open the two sources the philosophy article cites for skeletal health after farming
+      (a 2011 paper on stature and robusticity across the agricultural transition, and the
+      review "Foraging to Farming Transition: Global Health Impacts, Trends, and Variation"),
+      and tighten that paragraph to what they actually say. Both pages refused to load on
+      2026-10-09, so only their existence was confirmed. (Raised 2026-10-09)
 
 ### Settlement engine
 - [x] Choose which subsystem to study first, in depth, cold: idempotency/state machine,
@@ -329,6 +368,21 @@ project file.
       (46 confirmed settlements, one hand-edited balance caught and resolved). Running the
       actual Maven test suite is still worth doing once, but not blocking on it given the
       code-level agreement. (Raised 2026-09-25)
+- [x] Restudy the reconciliation engine cold. (Raised 2026-09-27) Answered 2026-10-02 and
+      recorded 2026-10-09: explained from memory, then checked against the code. UNKNOWN with
+      an external reference is auto-resolved by `autoResolveUnknown`, only contradictions go
+      to a person, nothing alerts that person, and resolving a mismatch records a decision
+      without changing data. Found beyond what was asked: settlements stuck UNKNOWN with no
+      reference are invisible to reconciliation. All four are tracked as open questions above.
+- [ ] Run `claude-code-prompt-lab-ui.md` in Claude Code on a branch off `dev` and check the
+      result against a real build and real screenshots, the way the ledger work was checked.
+      It is a full UI rewrite with a public sandbox that runs the real engine, so the safety
+      rules in the prompt (separate stack, rate limits, a startup guard) need testing, not
+      just reading. (Raised 2026-10-09)
+- [ ] Decide where the public Lab sandbox is hosted. Not the shared staging server:
+      `docs/testing.md` already rules out load there. The prompt writes compose and
+      Kubernetes files but applies nothing. (Raised 2026-10-09)
+- [ ] Restudy next: the Phase 1 and Phase 9 concurrency fixes. (Raised 2026-09-27)
 
 ### Routine machine
 - [ ] Design and build email reminders for anything time-related (deadlines, scheduled

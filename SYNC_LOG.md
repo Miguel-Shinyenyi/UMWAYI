@@ -412,3 +412,31 @@
 - Confidence: the CV confirmation is a real build and a real HTTP 200, not a push message
   taken on faith. The Hashnode change is content-only on the UMWAYI side (done here); the
   matching `index.astro` edit in `miguel-site` is written up but not yet applied anywhere.
+
+## 2026-10-02 (journal, weekly summary) and 2026-10-09 (reconciliation restudy, UI prompt, two articles)
+
+- Source: the 2026-10-02 journal entry and the 2026-09-21 to 2026-09-27 weekly summary, both
+  pushed without a log entry. Then Miguel's reconciliation explain-back (2026-10-02 evening),
+  his answer on the correction path, and the 2026-10-09 requests: a full UI rewrite prompt, a
+  journal entry, and two articles.
+- Updated: `journal/entries/2026-10-09.md` (new), `backlog.md` (eleven new open items, one closed
+  restudy item), `projects/settlement-engine.md` (new reconciliation restudy section, and the
+  ledger-consistency line corrected from "not yet built or verified" to built and verified),
+  `site/philosophy/more-copies-is-not-a-better-life.md` and
+  `site/tech/what-the-reconciler-cant-see.md` (new), `site/tools/illustrations.py` and two new
+  illustrations in `site/illustrations/`.
+- What moved: reconciliation was explained cold, then checked against the code on `dev`. The
+  check corrected the explanation in three places (UNKNOWN with a reference is auto-resolved,
+  nobody is alerted, resolving does not change data) and found a fourth problem not asked
+  about (settlements stuck UNKNOWN with no reference are invisible to reconciliation). A UI
+  rewrite prompt was written for Claude Code, grounded in the real frontend, load test,
+  observability and seed files, with six known gaps the UI must show and not fix. The Lab
+  design came from three choices Miguel made: real engine in a sandbox, Lab public, staging
+  data behind login. Both articles built against the real site code and looked at at phone and
+  desktop width.
+- Confidence: the reconciliation findings are from reading the code, not from running it. One
+  is stated as read-only: that a resolved settlement mismatch reopens on the next run. The UI
+  prompt has not been run. The philosophy article's two skeletal-health sources were not
+  opened (one page errored, one rate-limited), so only their existence is confirmed. An earlier
+  reply on 2026-10-02 said UNKNOWN gets auto-resolved without the condition that it needs an
+  external reference, corrected on 2026-10-09.
