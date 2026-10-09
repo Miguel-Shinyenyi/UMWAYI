@@ -1,10 +1,10 @@
 ---
 title: What the Reconciler Can't See
-date: 2026-10-09
+date: 2026-10-09T00:00:00.000Z
 summary: >-
-  Reconciliation fills gaps with evidence and hands conflicts to a person. But it
-  only checks what its query returns, nobody is told when it finds a problem, and
-  resolving a mismatch fixes nothing.
+  Reconciliation fills gaps with evidence and hands conflicts to a person. But
+  it only checks what its query returns, nobody is told when it finds a problem,
+  and resolving a mismatch fixes nothing.
 draft: false
 tags:
   - Spring Boot
@@ -15,6 +15,9 @@ illustration: what-the-reconciler-cant-see.svg
 illustrationAlt: >-
   The shepherd holds a lantern. Its light covers three sheep wearing REF tags.
   Two sheep stand outside the light, tagged with question marks.
+crossposted:
+  devto: 'https://dev.to/miguel_shinyenyi_e2291c8c/what-the-reconciler-cant-see-469g'
+  linkedin: 'urn:li:share:7514325185685106688'
 ---
 
 ## Explain it cold, then check

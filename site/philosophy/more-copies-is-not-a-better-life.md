@@ -1,6 +1,6 @@
 ---
 title: More Copies Is Not a Better Life
-date: 2026-10-09
+date: 2026-10-09T00:00:00.000Z
 summary: >-
   Sapiens on why farming made the average life harder while the number of people
   went up, and where a comparison to companies holds and where it stops.
@@ -14,6 +14,9 @@ illustrationAlt: >-
   The shepherd stands beside a sign with two bars. The tall bar, topped with
   wheat, is labelled copies. The short bar is labelled free hours. A sheep looks
   on.
+crossposted:
+  devto: >-
+    https://dev.to/miguel_shinyenyi_e2291c8c/more-copies-is-not-a-better-life-559c
 ---
 
 ## The claim, as I understand it
