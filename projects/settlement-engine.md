@@ -123,7 +123,47 @@ mismatch table versus generalizing `reconciliation_mismatches` (he chose sibling
 Claude Code was also asked to write the general policy (detect-record-audit, never
 auto-resolve) into `docs/reconciliation.md` itself, not just apply it, so it reads as a
 standing rule the next mismatch case follows without re-deriving it. Handed to Claude Code as
-`claude-code-prompt-ledger-consistency-v2.md`. Not yet built or verified; see `backlog.md`.
+`claude-code-prompt-ledger-consistency-v2.md`. Built and merged to `dev` (`b3d3b33`), then checked
+line by line against the spec on 2026-09-27 (see `backlog.md`).
 
-Reconciliation engine and the Phase 1/9 concurrency fixes remain as later candidates, in
-roughly the order they'd come up in an interview.
+## Reconciliation engine restudy (explained 2026-10-02, checked against `dev` and recorded 2026-10-09)
+
+Explained cold first, then checked against `ReconciliationService`, `ReconciliationScheduler`,
+`ReconciliationController` and `docs/reconciliation.md`.
+
+The cold explanation was right about purpose: reconciliation is the last resort for what the
+system cannot settle on its own, and a person is the end of the chain. It was wrong in three
+places, and the check turned up a fourth problem that was not asked about.
+
+- UNKNOWN does not go straight to a person. `runOnce` loads every settlement that has an
+  external reference and compares it to the external record. An UNKNOWN settlement whose
+  record agrees on amount and currency is settled automatically by `autoResolveUnknown`,
+  through the same `finalizeSettlement` the original request uses. A person is needed only
+  when the two sides contradict (amount, currency or status differ), or when no external
+  record exists after the grace period (300 seconds by default). Evidence that fills a gap is
+  applied by the system. Evidence that conflicts waits for a person.
+- Nobody is alerted. `reconciliation.mismatch_found` is published but has no consumer, and no
+  Prometheus rule covers mismatches. A mismatch is seen only if someone opens the page.
+- Resolving a mismatch records a reason and an audit row. It does not change the settlement or
+  the ledger. No endpoint corrects data, and nothing ever moves a settlement to `REVERSED`.
+  Today a person editing the database is the only correction path, which skips the state
+  machine, the ledger entries and the outbox event.
+- Not asked, found anyway: the candidate query is `findByExternalRefIsNotNull()`, so an
+  UNKNOWN settlement with no reference never reaches reconciliation. A gateway exception, an
+  exhausted finalize retry budget and the stale-pending sweep all produce one. The money may
+  have moved at the external system with the engine never learning the reference. Already
+  named in `docs/reconciliation.md`'s open questions, re-confirmed here against the code.
+
+Also noted: a scheduler runs the check every 60 seconds whether or not anything went wrong,
+and each run loads every settlement that has ever had a reference, with no window or paging.
+
+Open design question, not decided: who carries out a correction. Recommendation given
+2026-10-09: the person decides, the engine executes it through an audited path (an adjustment
+ledger entry, a reverse transition), not a hand edit. Tracked in `backlog.md`.
+
+Written up as `site/tech/what-the-reconciler-cant-see.md` (2026-10-09).
+
+A full rewrite of the UI, with a public sandbox that runs the real engine and shows every
+gap above as it is, was specified on 2026-10-09 as a Claude Code prompt. Not built yet.
+
+The Phase 1 and Phase 9 concurrency fixes are the next restudy topic.
