@@ -38,6 +38,7 @@ Checked 2026-10-14, from the repositories' own pages. Counts change.
 | modelcontextprotocol/java-sdk | Java 17+ | Java backend skills. Labels show what maintainers want. Tests need Docker and npx. | The `good first issue` items each have two to five pull requests. `needs repro` and `needs confirmation` issues have none. |
 | supabase-community/supabase-kt | Kotlin Multiplatform | Official Kotlin client for Supabase. Auth, JWT and Ktor on the JVM match the backend work. Maintainer replies and merges small pull requests in days. | One issue in progress (#415). Contribution rules include an AI policy: do not rely on AI for logic code. Default branch is `master`. |
 | PostHog/posthog-android | Kotlin (JVM and Android) | The Java server SDK now lives in `posthog-server` here. Feature flags, HTTP and tests match backend work. Outside contributors merge `posthog-server` PRs in 3 to 8 days. | One issue in progress (#577). Has an `AI_POLICY.md` and an `AGENTS.md`: disclose AI help in the PR, prove the change works, do not paste AI output into issues. Public API needs an agreed issue first. |
+| spring-projects/spring-ai | Java (Spring) | The MCP annotation support moved into `mcp/mcp-annotations`. Reactive tool methods and the MCP Java SDK match backend work. Contribution rules accept AI-assisted work with human accountability and require a DCO sign-off. | One item in progress (#4542, verification of PR #6932). Crowded: four PRs for one issue. |
 | mclenhard/mcp-evals | TypeScript | Eval runner for MCP tools. | Dormant. Last commit June 2025. Dropped. |
 | crystaldba/postgres-mcp | Python | Postgres MCP server. Weaker language match. | Low priority. |
 | modelcontextprotocol/servers | TypeScript | Reference servers only. | Skip |
@@ -54,6 +55,7 @@ evidence for how long the process takes.
 | 3 | modelcontextprotocol/java-sdk #882 | Reproduction | Comment posted 2026-10-14: reproduced the exact timeout message on 1.1.0, 1.1.4 and 2.0.1 against a stub server. Named the server replies that cause it (initialize answered with an empty body, or notifications/initialized answered with an SSE stream that sends no data event). Asked the reporter for `curl -i` output of both requests and whether a proxy sits between. Asked the maintainers whether a client fix would be welcome. Labelled `needs repro`, no pull request, no assignee. | If no reply by 2026-10-21, one follow-up only with new information. Open a pull request only if a maintainer says a client fix is wanted. | Reporter and maintainers | 2026-10-14 |
 | 4 (over the limit of three) | supabase-community/supabase-kt #415 | Design proposal | Comment posted 2026-10-15 (https://github.com/supabase-community/supabase-kt/issues/415#issuecomment-6165902586). Research found that `Auth#getClaims()` (PR #1141, merged 2026-02-06) already covers the core. The comment lists what a backend still lacks and asks five design questions. Labelled `enhancement` and `help wanted`, no assignee, no pull request. | If no reply by 2026-10-22, one follow-up only with new information. No code until the maintainer answers. The maintainer discourages AI for logic code, so Miguel writes or fully understands every line. | Maintainer | 2026-10-15 |
 | 5 (over the limit of three) | PostHog/posthog-android #577 | API proposal | Comment posted 2026-10-15 (https://github.com/PostHog/posthog-android/issues/577#issuecomment-6166156307). `getRemoteConfigPayload` exists in Node.js and Python but not in `posthog-server`, and no sdk-spec defines it, so CONTRIBUTING requires an agreed API shape first. The comment proposes `getRemoteConfigPayload(key: String): Any?` on `PostHogInterface` and asks four questions. Labelled `enhancement`, `feature/feature-flags`, `server`. No assignee, no pull request. | If no reply by 2026-10-22, one follow-up only with new information. No code until a maintainer agrees on the shape. A prototype may be built locally; it stays local until then. | Maintainers | 2026-10-15 |
+| 6 (over the limit of three) | spring-projects/spring-ai #4542, PR #6932 | Verification of others' PRs | Comment posted 2026-10-15 on PR #6932 (https://github.com/spring-projects/spring-ai/pull/6932#issuecomment-6166871010), the PR a maintainer chose on 2026-09-14. Tested both open fixes (#6932, #6830) against Spring AI 2.0.1. Both fix the report; #6932 passes style and all 1376 tests and #6830 does not. Both break `Flux` with `generateOutputSchema = true` and drop received elements on a mid-stream error. PR has no review, no assignee, label `status: waiting-for-triage`. | If no reply by 2026-10-22, one follow-up only with new information. Do not open a competing PR. Watch whether #6932 merges and whether a backport to 2.0.x or 1.1.x is discussed. | Maintainers | 2026-10-15 |
 
 Looked at and set aside on 2026-10-14:
 
@@ -223,6 +225,35 @@ Looked at and set aside on 2026-10-14:
 - Lesson: check the contribution rules before the code. Here the rules (agree the API shape in an issue first, and
   the AGENTS.md instruction to draft the issue text) set the whole sequence.
 
+### spring-projects/spring-ai #4542: Flux return from async MCP tools returns only the first element
+
+- Status 2026-10-15: verification done, comment posted on PR #6932
+  (https://github.com/spring-projects/spring-ai/pull/6932#issuecomment-6166871010). No competing PR was
+  written. Decided with Miguel to verify rather than add a fourth fix.
+- Files, in `open-source/spring-ai/4542/`: `notes.md` (PR map, maintainer statements, design options, toolchain,
+  rules), `results.md` (13-tool matrix per PR, module tests, limits), `review-comment.md` (the posted text, 263
+  words), `reproduction/` (Spring AI 2.0.1 repro and saved outputs), `reproduction-1.1.8/`, `evidence/`.
+- PR map: #6932 (jimantidote, open, 2026-09-07), #6830 (ssj2005, open, 2026-08-21), #6158 (closed 2026-09-14 in favour of
+  #6932 by a maintainer), #4672 (closed 2025-10-20 with no explanation). The issue's own list missed #6830.
+- Where the fix belongs: `spring-projects/spring-ai`, module `mcp/mcp-annotations`. The community repository
+  says it graduated and is no longer maintained. The bug is on `main`, `2.0.x`, the `v2.0.1` tag and in
+  community library 0.9.0 (1.1.x). The PRs target `main` only.
+- Results: the bug reproduces on 2.0.1 and on 1.1.8. #6932 passes format, checkstyle and all 1376 module tests.
+  #6830 fails format and checkstyle, and 5 existing tests fail because they were not updated. At runtime both give
+  identical output on 13 cases, repeated twice.
+- Findings in both PRs: `Flux<T>` with `generateOutputSchema = true` now returns `isError=true`; elements received
+  before a mid-stream error are dropped; a slow Flux now waits for completion. Both fix the empty `Flux`, which
+  got no response before. `Mono` and `Mono<List>` are unchanged.
+- Open design question, put to the maintainers in the comment: one content item per element (both PRs) or one JSON
+  array item like `Mono<List<T>>` (what #4672 did).
+- Toolchain: the build needs JDK 17. `brew install --cask temurin@17` failed on a sudo prompt, so JDK 17 was
+  installed with `brew install openjdk@17` (OpenJDK 17.0.20.1, left in place). The 460 MB of clones and worktrees
+  were deleted after posting. Small repro and log folders remain in `~/src/spring-ai-4542-*`.
+- Not verified: `isError` and `_meta` on single `Flux<CallToolResult>` elements, the sync server, the fix on `2.0.x`
+  and `1.1.x`, and any machine other than this Mac.
+- Lesson: read the whole PR list first, including the timeline. The issue named three attempts and missed an open
+  one (#6830). A maintainer had already picked one PR, which settled where a contribution was useful.
+
 ## Articles
 
 One article per merged pull request, written after the merge or a substantive review. No more
@@ -246,6 +277,7 @@ closed, and how a differential test finds the cases a hand-written test misses.
 | 2026-10-14 | No pull request until the thread is read in a browser, existing pull requests are searched and a maintainer has answered. | #470 was opened before the issue was accepted and duplicated #459. It was closed the same day. |
 | 2026-10-15 | supabase-kt #415 started as a fourth issue, above the limit of three. | Miguel chose to post the comment. All three slots were waiting on maintainers, so no build work was displaced. Revisit the limit (see open questions). |
 | 2026-10-15 | posthog-android #577 started as a fifth issue, above the limit of three. | Miguel chose to post the comment. All earlier slots were waiting on maintainers, so no build work was displaced. The limit needs a decision (see open questions). |
+| 2026-10-15 | spring-ai #4542 worked as verification of PR #6932, not as a fix, and counted as a sixth item. | Three PRs already existed for the issue and a maintainer had chosen one. Evidence on an existing PR helps more than a fourth fix (see the verification kind in the process doc). |
 
 ## Open questions
 
@@ -256,7 +288,7 @@ closed, and how a differential test finds the cases a hand-written test misses.
   and queueing reproduce; the reported NIO2 hang does not. Waiting on the reporter for details.
 - Whether #882 is worth a reproduction. Answered 2026-10-14: yes, the exact timeout message reproduces on
   three versions. Waiting on the reporter for `curl -i` output.
-- Whether to raise the limit of three issues in flight, or retire a slot. #415 and #577 make five, and all five wait
+- Whether to raise the limit of three issues in flight, or retire a slot. #415, #577 and the #4542 verification make six, and all six wait
   on maintainers. Decide before starting build work on another issue.
 - Whether the maintainer of supabase-kt wants the verifier in `auth-kt` or a new module, and where the Ktor and
   Spring modules should live. Asked in the #415 comment. If no reply by 2026-10-22, ask once more.
@@ -267,3 +299,5 @@ closed, and how a differential test finds the cases a hand-written test misses.
   dates will answer it.
 - Whether the posthog-android maintainers agree on the `getRemoteConfigPayload` shape, and how a missing personal API
   key and API errors should behave. Asked in the #577 comment. If no reply by 2026-10-22, ask once more.
+- Whether the spring-ai maintainers want one content item per `Flux` element or one JSON array, and whether a fix is
+  backported to 2.0.x and the 1.1.x line. Asked in the #6932 comment. If no reply by 2026-10-22, ask once more.
