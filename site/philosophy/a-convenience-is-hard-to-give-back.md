@@ -1,6 +1,6 @@
 ---
 title: A Convenience Is Hard to Give Back
-date: 2026-10-14
+date: 2026-10-14T00:00:00.000Z
 summary: >-
   Sapiens on the luxury trap, and a retry in code that shows the same shape: a
   small step that helps, then work you cannot stop doing.
@@ -14,6 +14,9 @@ illustrationAlt: >-
   The shepherd stands at a one-way sign with an arrow. Past it, a stack of
   crates labelled callers stands beside a sheep. The shepherd asks if he can
   take the retry back.
+crossposted:
+  devto: >-
+    https://dev.to/miguel_shinyenyi_e2291c8c/a-convenience-is-hard-to-give-back-1ico
 ---
 
 ## The claim, as I understand it
