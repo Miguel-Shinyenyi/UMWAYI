@@ -15,7 +15,8 @@ project file.
 
 ### CMU masters
 - [ ] Which program: MSCS, MSAII, or MSE. Changes the statement of purpose entirely.
-      (Raised 2026-09-18)
+      (Raised 2026-09-18) Update 2026-10-13: Miguel named MSIT as an application he will
+      make. Not yet confirmed whether it replaces the programs listed or is one of several.
 
 ### Routine machine
 - [ ] Exact target durations per schedule block, no duration was specified when the
@@ -86,10 +87,13 @@ project file.
       has no consumer and no Prometheus rule covers mismatches, so one is seen only if
       someone opens the reconciliation page. Options: a consumer on the topic, or an alert
       rule on the open-mismatch count. (Raised 2026-10-02)
-- [ ] Whether a resolved settlement mismatch whose disagreement persists reopens on the next
+- [x] Whether a resolved settlement mismatch whose disagreement persists reopens on the next
       run. `flagMismatch` only skips a settlement that already has an `OPEN` row, so by
       reading it the answer is yes, but it has not been run. The ledger-mismatch version of
-      this loop is documented and verified. (Raised 2026-10-09)
+      this loop is documented and verified. (Raised 2026-10-09) Answered 2026-10-13: yes.
+      `docs/mcp.md` records it observed live in the Lab: after a resolve, the next
+      reconciliation run opened a new mismatch with a new id for the same settlement. Seen by
+      Claude Code in the repo's own docs, not rerun here.
 - [ ] Whether the reconciliation candidate query needs a time window or paging. Each run
       loads every settlement that has ever had a reference and checks each one against the
       external side, every 60 seconds. Fine at the current size, worth revisiting before
@@ -152,8 +156,25 @@ project file.
       `filter-repo` pass and force-push; Miguel decided against that on 2026-09-30, so the
       old commits keep it. Not an oversight.
 - [ ] Weekly summaries are written on request, not on a schedule, and one went missing once
-      already. `2026-09-21-to-2026-09-27` exists. `2026-09-28-to-2026-10-04` does not yet.
-      Decide whether to schedule them. (Raised 2026-10-09)
+      already. `2026-09-21-to-2026-09-27` and `2026-09-28-to-2026-10-04` exist (the second
+      pushed 2026-10-09). `2026-10-05-to-2026-10-11` does not yet. Decide whether to schedule
+      them. (Raised 2026-10-09)
+
+- [ ] Review and push the agent-practice changes from 2026-10-13: `docs/agent-practices.md`
+      and the `MASTER_CONTEXT.md` rules (this repo), a root `CLAUDE.md` for this repo, and a
+      root `CLAUDE.md` in each of Invoice-Financing (`dev`), Routine Machine (`main`) and
+      miguel-site (`main`), plus a user-level `~/.claude/CLAUDE.md` on Miguel's machine. A
+      `CLAUDE.md` is read at the start of every Claude Code task, so read each one before
+      merging. (Raised 2026-10-13)
+- [ ] Measure whether the practices help: count corrections needed after each Claude Code run
+      (late patches, missed requirements, claims that turn out unverified) and compare with
+      the Lab prompt, which needed one late patch. Not measured yet. (Raised 2026-10-13)
+- [ ] Decide on pruning the hub. `backlog.md` (about 400 lines) and `SYNC_LOG.md` (about 440)
+      only grow, because the rule is to never delete a line. Option: move closed items and old
+      entries to an archive file in the same repo, so nothing is deleted and less is read each
+      session. Also whether the site rules in `MASTER_CONTEXT.md` should become a pointer to
+      `site/README.md`, since both hold them. Both change a standing rule, so neither is
+      applied. (Raised 2026-10-13)
 
 ### Career prep
 - [ ] Actually work through the PostHog rejection feedback properly, what was said, what
@@ -161,6 +182,13 @@ project file.
       multiple times, still not started. (Raised 2026-09-16)
 
 ### Website and publishing
+- [ ] Journal excerpt publication is on hold, by Miguel's decision on 2026-10-11. None
+      written. If it resumes, the 2026-10-01 entry was the only one that made a point no
+      published piece already covers. (Raised 2026-10-11)
+- [ ] The luxury trap (Sapiens, Part Two) is a possible philosophy article. Before writing,
+      check it against `more-copies-is-not-a-better-life` and the other published pieces,
+      because the repetition rule allows two per point and the trap overlaps with the
+      measure-versus-welfare point. Raise it, do not write it unasked. (Raised 2026-10-13)
 - [x] Create dev.to and Medium accounts, still don't exist. (Raised in the original site
       plan, 2026-09-16, carried forward) Answered 2026-09-23: both exist, along with Hashnode
       and LinkedIn profiles.
@@ -374,11 +402,18 @@ project file.
       to a person, nothing alerts that person, and resolving a mismatch records a decision
       without changing data. Found beyond what was asked: settlements stuck UNKNOWN with no
       reference are invisible to reconciliation. All four are tracked as open questions above.
-- [ ] Run `claude-code-prompt-lab-ui.md` in Claude Code on a branch off `dev` and check the
+- [x] Run `claude-code-prompt-lab-ui.md` in Claude Code on a branch off `dev` and check the
       result against a real build and real screenshots, the way the ledger work was checked.
       It is a full UI rewrite with a public sandbox that runs the real engine, so the safety
       rules in the prompt (separate stack, rate limits, a startup guard) need testing, not
-      just reading. (Raised 2026-10-09)
+      just reading. (Raised 2026-10-09) Answered 2026-10-13: built and merged to `dev` on
+      2026-10-09 (PR #1). `docs/lab.md` records the Java suite, a full `docker compose` run,
+      a Playwright pass at 375px and 1280px, and one real load run at the caps. It lists two
+      things not verified: streaming through a real Ingress and a from-scratch image build.
+      Not independently re-run here. An Apple-style restyle merged on 2026-10-13.
+- [ ] Look at the Lab and the MCP server's evals with fresh eyes, as a user would: open the
+      Lab, read `docs/mcp.md`, and check the 7 of 7 first scored run (results file under
+      `mcp-server/evals/results/`) against what the cases actually test. (Raised 2026-10-13)
 - [ ] Decide where the public Lab sandbox is hosted. Not the shared staging server:
       `docs/testing.md` already rules out load there. The prompt writes compose and
       Kubernetes files but applies nothing. (Raised 2026-10-09)

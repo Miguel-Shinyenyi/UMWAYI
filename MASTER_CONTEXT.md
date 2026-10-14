@@ -1,6 +1,6 @@
 # Master Context
 
-Last updated: 2026-09-24
+Last updated: 2026-10-13
 
 ## Who this is for
 
@@ -33,7 +33,7 @@ where the observation gets tested against something real.
 | Backlog | `backlog.md` | Every open question and pending decision or action across all projects, marked answered when resolved, never silently dropped. |
 | Career prep | `projects/career-prep.md` | PostHog (primary), Ezra (secondary), and other roles. Interview prep, applications, what's working and what isn't. |
 | CMU masters | `projects/cmu-masters.md` | Fall 2027 application cycle. Feeds from the writing, backend, and AI engineer goals. |
-| Settlement engine | `projects/settlement-engine.md` | Idempotent Settlement and Reconciliation Engine, built with Claude Code. Public repo `Invoice-Financing` (made public 2026-09-23), all nine build phases done and deployed to a live staging server. Idempotency restudied in depth, one verified gap found and fixed. |
+| Settlement engine | `projects/settlement-engine.md` | Idempotent Settlement and Reconciliation Engine, built with Claude Code. Public repo `Invoice-Financing` (made public 2026-09-23), all nine build phases done and deployed to a live staging server. Idempotency and reconciliation restudied in depth, one verified gap found and fixed. A public Lab sandbox and an MCP server over it are built and merged to `dev` (2026-10-09 to 2026-10-13). |
 | Routine machine | `projects/routine-machine.md` | AI project: logs routines, learning, and a reading tracker. Own repo, built with Claude Code. All three phases done and verified. Reads this hub's journal and articles directly. Email reminders for time-related items planned. |
 | Website | `website/PLAN.md` | Personal site. Historical plan, resolved and superseded. The site's code lives in the `miguel-site` repo; its content lives here, in `site/`. |
 | Site content | `site/` | Everything the site shows: articles (philosophy, tech, journal), project pages, illustrations, the profile photo, the Now section. The site clones this folder at build time and rebuilds on every push that touches it. Rules for every file are in `site/README.md`. Broader cross-posting (Hashnode, dev.to, Medium, LinkedIn) still pending, see `backlog.md`. |
@@ -94,6 +94,17 @@ where the observation gets tested against something real.
 - Anything time-sensitive, a deadline, a scheduled decision point, gets flagged as a
   candidate for an eventual email reminder once Routine Machine supports it. Until that
   exists, it stays visible in `backlog.md` so it isn't missed in the meantime.
+- Every file I hand over is labelled with its repo, its exact path, and whether it is new or a
+  full replacement of an existing file. Text to be appended says which file and where. A file
+  with no stated destination is not delivered. (Asked for by Miguel on 2026-10-13, after the
+  replacement below.)
+- The working practices in `docs/agent-practices.md` (trigger, structure, steering, pruning,
+  verification first) apply to every project, not one. Each repo has its own `CLAUDE.md`, and
+  a shared one sits at user level.
+- Prompts for Claude Code follow the template in `docs/agent-practices.md`: acceptance checks
+  first, only the files the task needs in "read first", and staged phases with a gate after
+  each once a prompt has more than three parts. Before a prompt is handed over, I check it
+  against what the finished thing must cover, not only against what was asked.
 - When studying a project's codebase surfaces a genuine correction opportunity, not a style
   preference, a real gap or bug, I don't let "this project is well-built" talk me out of
   flagging it. I verify it against the actual code first, then provide a ready-to-use prompt
@@ -148,6 +159,13 @@ separate from the general principles above so the reason each one exists stays v
   three hours into the session, and weren't safely copyable, discovered only when Miguel
   said so directly.)
 
+- Before handing over a file that goes into a build (anything under `site/`), I run the build
+  with that file in place, and I keep the live file's front matter. A file's shape is part of
+  its content. (Caused: on 2026-10-09 I handed back a replacement for
+  `site/projects/settlement-engine.md` with no front matter. The site build rejected it and
+  neither new article went live until Miguel restored the front matter, `bd822f7`. Found on
+  2026-10-11 by checking the push.)
+
 ## Current open threads
 
 See `backlog.md` for the full, itemized list. Summary by project:
@@ -162,12 +180,15 @@ See `backlog.md` for the full, itemized list. Summary by project:
 - Settlement engine: built by Miguel, all nine phases done and verified on staging.
   Idempotency chosen as the first subsystem restudied, two explain-back passes done, one
   verified crash-recovery gap found and fixed same day (commit `950bf86`). Outbox and
-  double-entry ledger restudy opened 2026-09-24, explain-back pass in progress.
+  ledger, then reconciliation, restudied and checked against the code. A public Lab sandbox
+  and an MCP server over it are merged to `dev`. Open: where the Lab is hosted, and who
+  carries out a correction after a mismatch is resolved.
 - Routine machine: all three phases built, tested, and verified. Email reminders for
   time-related items now planned as a future addition.
 - Website and publishing: site live, redesigned around the illustrated shepherd (2026-09-23).
   Content lives in this hub's `site/` folder, so the site is updated by editing markdown here.
   Hashnode, dev.to, Medium, and LinkedIn profiles now exist and are linked from the footer;
-  whether articles get cross-posted to them is still undecided.
+  cross-posting is live to dev.to and LinkedIn (technical pieces only on LinkedIn). Hashnode
+  (needs a paid plan) and Medium (issues no tokens) are not in use. Journal excerpt publication is on hold.
   The footer email sign-up runs on MailerLite (account 2655737); Waline handles comments and
   "This helped" only.

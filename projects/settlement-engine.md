@@ -163,7 +163,29 @@ ledger entry, a reverse transition), not a hand edit. Tracked in `backlog.md`.
 
 Written up as `site/tech/what-the-reconciler-cant-see.md` (2026-10-09).
 
-A full rewrite of the UI, with a public sandbox that runs the real engine and shows every
-gap above as it is, was specified on 2026-10-09 as a Claude Code prompt. Not built yet.
+## Lab sandbox and MCP server (built 2026-10-09 to 2026-10-13)
+
+The UI rewrite specified on 2026-10-09 was built and merged to `dev` the same day (PR #1).
+It is a Lab: a sandbox stack that runs the real engine on its own database, Kafka, fraud
+service, Jaeger, Prometheus and Alertmanager, and shows each of the six known gaps as it is.
+Faults are injected only at the engine's boundaries. Time is compressed (reconciliation and the
+stale sweep every 5 seconds). `docs/lab.md` records what was verified: the Java suite, the
+whole stack run with `docker compose`, a Playwright pass at 375px and 1280px, and one real
+load run at the caps (all invariants passed, 4.7 percent of settlements ended UNKNOWN through
+the retry fallback). It also lists what was not verified: streaming through a real Ingress and
+a from-scratch image build. An Apple-style restyle of the dashboard and the Lab was merged on
+2026-10-13. Not independently checked here, taken from the repo's own docs.
+
+An MCP server over the Lab (`mcp-server/`, merged 2026-10-13) lets an agent read the engine's
+settlements, ledger checks, reconciliation state and state machines. It has ten read tools and
+three write tools that are off unless an environment flag is set, and it refuses to start
+unless the target answers as a Lab, never reaching staging. `docs/mcp.md` records 110 unit and
+34 integration tests, and seven evals graded on exact answers from the seed, with a first
+scored run of 7 of 7 through the `claude` command line. Those numbers come from the repo's own
+docs and results file. They were not rerun here. The server was built to give an agent a real
+way to use the engine, and to measure whether it uses it correctly.
+
+Still open: the Lab is not hosted anywhere public (see `backlog.md`), and the correction path
+above is undecided.
 
 The Phase 1 and Phase 9 concurrency fixes are the next restudy topic.

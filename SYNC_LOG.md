@@ -440,3 +440,17 @@
   opened (one page errored, one rate-limited), so only their existence is confirmed. An earlier
   reply on 2026-10-02 said UNKNOWN gets auto-resolved without the condition that it needs an
   external reference, corrected on 2026-10-09.
+
+## 2026-10-11 (push checked, one site build failure traced to a file I handed over)
+
+- Source: Miguel asking to check the 2026-10-09 push, then confirming a fix and a hold.
+- Updated: `journal/entries/2026-10-11.md` (new), `projects/settlement-engine.md` (hub copy, pushed as `410b28d`), `SYNC_LOG.md`.
+- What moved: the hub was cloned fresh and every file from the 2026-10-09 delivery was compared with what landed. All matched apart from date formats, line wraps and trailing newlines. The site's project page for the settlement engine had been replaced by me without its front matter. The site build rejected it against the project collection schema, which explains why neither new article went live until the front matter was restored (`bd822f7`). Reproduced both ways with a real build. The hub's own project file was separately stale and is now updated. Journal excerpt publication was put on hold by Miguel.
+- Confidence: the build failure and the fix are reproduced, not inferred. The live site state is Miguel's word, not checked from here.
+
+## 2026-10-13 (MCP server merged, practices recorded, journal caught up)
+
+- Source: Miguel's report of the day, plus a check of the Invoice-Financing `dev` branch.
+- Updated: `journal/entries/2026-10-13.md` (new), `docs/agent-practices.md` (new), `MASTER_CONTEXT.md` (new rules, stale status lines corrected), `backlog.md`, `projects/settlement-engine.md`, `SYNC_LOG.md`. New `CLAUDE.md` files handed over, not yet in any repo: this hub, Invoice-Financing, Routine Machine, miguel-site, and a user-level one for Miguel's machine, so the practices apply to every project.
+- What moved: the Lab UI and an MCP server over it are merged to `dev` (`badc0d4` on 2026-10-09, `e4ffadf` on 2026-10-13). The backlog items for running the Lab prompt and for the mismatch reopen loop are closed, the second on the strength of an observation recorded in the repo's own `docs/mcp.md`. A set of working practices (trigger, structure, steering, pruning, verification first) was mapped against what already exists and added where missing. One new rule was added to `MASTER_CONTEXT.md` from a caught mistake. Stale lines in `MASTER_CONTEXT.md` about cross-posting and the settlement engine were corrected.
+- Confidence: the MCP and Lab numbers (13 tools, 110 unit tests, 34 integration tests, 7 of 7 evals, the load run) are read from the repo's docs and results file, not rerun here. The practices are Miguel's notes from videos, recorded as his understanding. Whether they improve outcomes is not measured. A way to measure it is in `backlog.md`.
