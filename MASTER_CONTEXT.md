@@ -1,6 +1,6 @@
 # Master Context
 
-Last updated: 2026-10-13
+Last updated: 2026-10-14
 
 ## Who this is for
 
@@ -35,6 +35,7 @@ where the observation gets tested against something real.
 | CMU masters | `projects/cmu-masters.md` | Fall 2027 application cycle. Feeds from the writing, backend, and AI engineer goals. |
 | Settlement engine | `projects/settlement-engine.md` | Idempotent Settlement and Reconciliation Engine, built with Claude Code. Public repo `Invoice-Financing` (made public 2026-09-23), all nine build phases done and deployed to a live staging server. Idempotency and reconciliation restudied in depth, one verified gap found and fixed. A public Lab sandbox and an MCP server over it are built and merged to `dev` (2026-10-09 to 2026-10-13). |
 | Routine machine | `projects/routine-machine.md` | AI project: logs routines, learning, and a reading tracker. Own repo, built with Claude Code. All three phases done and verified. Reads this hub's journal and articles directly. Email reminders for time-related items planned. |
+| Open source | `projects/open-source.md` | Open source issues matched to his path (MCP servers first), worked one at a time, each recorded with its verification, and an article per merged pull request. Started 2026-10-14. |
 | Website | `website/PLAN.md` | Personal site. Historical plan, resolved and superseded. The site's code lives in the `miguel-site` repo; its content lives here, in `site/`. |
 | Site content | `site/` | Everything the site shows: articles (philosophy, tech, journal), project pages, illustrations, the profile photo, the Now section. The site clones this folder at build time and rebuilds on every push that touches it. Rules for every file are in `site/README.md`. Broader cross-posting (Hashnode, dev.to, Medium, LinkedIn) still pending, see `backlog.md`. |
 
@@ -58,6 +59,10 @@ where the observation gets tested against something real.
   article-worthy, and raise it for discussion rather than deciding on my own whether to write
   it, unless Miguel has already flagged and asked for it himself, the way the claim-versus-
   argument piece came about on 2026-09-20.
+- Open source work follows each project's own CONTRIBUTING file. I build and verify the fix
+  here, then hand over a patch and the text for the issue and the pull request. Miguel reads
+  every line, understands it, and opens the pull request himself. I do not claim a fix works
+  beyond what was run, and I say which checks could not run.
 - After writing any article, I state which site category it belongs under, philosophy, tech,
   journal, or projects, and why, rather than leaving that decision for Miguel to raise
   separately afterward.
@@ -183,6 +188,9 @@ See `backlog.md` for the full, itemized list. Summary by project:
   ledger, then reconciliation, restudied and checked against the code. A public Lab sandbox
   and an MCP server over it are merged to `dev`. Open: where the Lab is hosted, and who
   carries out a correction after a mismatch is resolved.
+- Open source: started 2026-10-14. First issue is supabase/mcp #457 (SQL check splits on
+  semicolons inside strings). Fix and tests are built and verified, waiting on a maintainer to
+  accept the issue before a pull request. See `projects/open-source.md`.
 - Routine machine: all three phases built, tested, and verified. Email reminders for
   time-related items now planned as a future addition.
 - Website and publishing: site live, redesigned around the illustrated shepherd (2026-09-23).
