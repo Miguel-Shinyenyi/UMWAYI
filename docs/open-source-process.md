@@ -94,6 +94,9 @@ These come from mistakes already made in this project.
   linked pull requests. A pull request (#459) already fixed half of it.
 - Search for pull requests by issue number. Five of the first shortlist were already taken,
   assigned to a maintainer, or not code in the repository.
+- Reread the reporter's own post before asking them for details. On 2026-10-14 the comment on
+  java-sdk #859 asked for setup details the reporter had already written, and the reproduction
+  missed the one that mattered (a tool calling back into the same connector).
 - Build the test inputs from the grammar the code defends against. The first fix for #457 was
   tested on 200,000 generated statements, none of which were code strings after `DO` or
   `CREATE FUNCTION ... AS`. Those pass silently with that fix. A reviewer found them.
@@ -102,8 +105,10 @@ These come from mistakes already made in this project.
 
 ## Limits
 
-- At most six issues in flight (raised from three by Miguel on 2026-10-14). Most of them wait
-  for a maintainer at any time. Build work happens on one or two at once.
+- No cap on issues in flight. Miguel lifted it on 2026-10-14 (it went from three to six to none the
+  same day): open source is a numbers game, and he will keep trying more places until a
+  contribution lands. Most issues wait for a maintainer at any time. The practical limit is
+  review time, since each line goes through Miguel before it goes upstream.
 - Miguel reads and understands every line before anything goes upstream.
 
 ## What to record per issue

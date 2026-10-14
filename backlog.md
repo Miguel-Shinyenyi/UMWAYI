@@ -197,10 +197,21 @@ project file.
 - [ ] Journal excerpt publication is on hold, by Miguel's decision on 2026-10-11. None
       written. If it resumes, the 2026-10-01 entry was the only one that made a point no
       published piece already covers. (Raised 2026-10-11)
-- [ ] The luxury trap (Sapiens, Part Two) is a possible philosophy article. Before writing,
+- [x] The luxury trap (Sapiens, Part Two) is a possible philosophy article. Before writing,
       check it against `more-copies-is-not-a-better-life` and the other published pieces,
       because the repetition rule allows two per point and the trap overlaps with the
       measure-versus-welfare point. Raise it, do not write it unasked. (Raised 2026-10-13)
+      Answered 2026-10-14: Miguel asked for it. Written as `philosophy/a-convenience-is-hard-to-give-back`,
+      with a different point from the measure-versus-welfare piece (why a step is not undone once the cost
+      shows). Code example run before it was written; site build passed.
+- [ ] Possible next article, raise only: the AI hype and fundamentals thread (software as a side effect
+      of learning). Check the published pieces first, and note that the video's claims are Miguel's
+      reading, not checked against the video. Not written. (Raised 2026-10-14)
+- [ ] Next book: "Algorithms Are Not Enough" by Herbert L. Roitblat. Not started. Update `site/now.md`
+      `reading` only when he starts it. (Raised 2026-10-14)
+- [ ] Optional: run the two-week test of whether AI tools save hours or raise expectations: log hours and
+      output per day with and without the tool. Named in the new article as untested. (Raised 2026-10-13,
+      repeated in the 2026-10-14 article)
 - [x] Create dev.to and Medium accounts, still don't exist. (Raised in the original site
       plan, 2026-09-16, carried forward) Answered 2026-09-23: both exist, along with Hashnode
       and LinkedIn profiles.
@@ -429,7 +440,8 @@ project file.
 - [ ] Decide where the public Lab sandbox is hosted. Not the shared staging server:
       `docs/testing.md` already rules out load there. The prompt writes compose and
       Kubernetes files but applies nothing. (Raised 2026-10-09)
-- [ ] Restudy next: the Phase 1 and Phase 9 concurrency fixes. (Raised 2026-09-27)
+- [ ] Restudy next: the Phase 1 and Phase 9 concurrency fixes. (Raised 2026-09-27) In progress
+      2026-10-14: cold questions set, waiting for Miguel's explanation before checking the code.
 
 ### Routine machine
 - [ ] Design and build email reminders for anything time-related (deadlines, scheduled
@@ -444,6 +456,16 @@ project file.
       evidence only. (Raised 2026-10-14)
 - [ ] Test supabase/mcp #459 against the real PostgreSQL parser and comment only if it finds
       something. (Raised 2026-10-14)
+- [ ] Test hexproof-dev's rule on #457 (dollar-quoted body after `=`, `||`, `(`, `,`, `VALUES` is data,
+      after `DO`, `AS`, `EXECUTE` is code), including single-quoted code strings. Comment only with
+      new evidence. (Raised 2026-10-14)
+- [ ] Second java-sdk #859 reproduction: a tool that calls back into the same Tomcat connector, NIO2,
+      small and default `maxThreads`, plain and TLS. The reporter had already described this setup.
+      Then one short correcting comment. (Raised 2026-10-14)
+- [ ] Optional: edit the posted #882 comment so it says the same 20 second timeout, with the exact
+      message in most runs, instead of the exact error on all three versions. (Raised 2026-10-14)
+- [ ] Fix the board wording on spring-ai PR #6932: no maintainer chose it. Done in the 2026-10-14
+      replacement of `projects/open-source.md`. (Raised 2026-10-14)
 - [x] Build a minimal embedded-Tomcat reproduction for java-sdk #859 and post the result on the
       issue. (Raised 2026-10-14) Done 2026-10-14: comment posted, hang not reproduced, thread
       blocking and queueing confirmed.

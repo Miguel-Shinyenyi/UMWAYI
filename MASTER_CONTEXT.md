@@ -64,7 +64,7 @@ where the observation gets tested against something real.
   the text for the issue and the pull request. Miguel reads every line, understands it, and
   posts and opens pull requests himself. I do not claim a fix works beyond what was run, and I
   say which checks could not run. Contributions include reproductions and reviews, not only
-  fixes. Waiting is part of the work, so up to six issues run at once.
+  fixes. Waiting is part of the work, and open source is a numbers game, so there is no cap on issues in flight (Miguel, 2026-10-14).
 - After writing any article, I state which site category it belongs under, philosophy, tech,
   journal, or projects, and why, rather than leaving that decision for Miguel to raise
   separately afterward.
@@ -182,6 +182,11 @@ separate from the general principles above so the reason each one exists stays v
   warning about. Miguel's Claude Code found both. A follow-up shortlist built from issue titles
   was also all taken or not code in that repository. Pull request #470 was opened and closed
   the same day.)
+- Before asking a reporter for details, I reread their post, and I check my reproduction against
+  the setup they described. (Caused: on 2026-10-14 the java-sdk #859 comment asked for details the
+  reporter had written, and the reproduction used a separate stub instead of a tool calling back
+  into the same Tomcat connector. A summary of what I verified also said "a maintainer chose" a
+  pull request on evidence that only showed a maintainer mentioning another one.)
 
 ## Current open threads
 
@@ -200,10 +205,11 @@ See `backlog.md` for the full, itemized list. Summary by project:
   ledger, then reconciliation, restudied and checked against the code. A public Lab sandbox
   and an MCP server over it are merged to `dev`. Open: where the Lab is hosted, and who
   carries out a correction after a mismatch is resolved.
-- Open source: started 2026-10-14. Board of up to six issues in `projects/open-source.md`,
+- Open source: started 2026-10-14. Board of issues, no cap, in `projects/open-source.md`,
   process and evidence in `docs/open-source-process.md`. supabase/mcp #457 is waiting on the
   maintainers after pull request #470 was closed (another contributor's #459 covers half).
-  Two java-sdk reproductions are next.
+  Six issues are posted and waiting on maintainers. Next: a second #859 reproduction (tool
+  calling back into the same connector) and a test of the #457 dollar-quote rule.
 - Routine machine: all three phases built, tested, and verified. Email reminders for
   time-related items now planned as a future addition.
 - Website and publishing: site live, redesigned around the illustrated shepherd (2026-09-23).

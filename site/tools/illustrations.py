@@ -609,6 +609,33 @@ SCENES["tech/what-the-reconciler-cant-see"] = (
 """,
 )
 
+
+# a-convenience-is-hard-to-give-back: a one-way sign, and callers stacked up on the far side.
+SCENES["philosophy/a-convenience-is-hard-to-give-back"] = (
+    "A convenience is hard to give back",
+    "The shepherd stands at a one-way sign with an arrow. Past it, a stack of crates labelled callers stands beside a sheep. The shepherd asks if he can take the retry back.",
+    f"""
+<g transform="translate(330 70)">
+<rect x="96" y="150" width="14" height="150" fill="#C08A3E" stroke="{INK}" stroke-width="3"/>
+<rect x="0" y="40" width="206" height="110" rx="10" fill="{PAPER}" stroke="{INK}" stroke-width="4"/>
+<path d="M28 95 H150 M150 95 L128 72 M150 95 L128 118" fill="none" stroke="{INK}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+{label(103, 140, "ONE WAY", 13, OCHRE)}
+</g>
+<g transform="translate(520 270)">
+<rect x="0" y="80" width="120" height="76" fill="{OCHRE_L}" stroke="{INK}" stroke-width="3"/>
+<rect x="124" y="80" width="120" height="76" fill="{OCHRE_L}" stroke="{INK}" stroke-width="3"/>
+<rect x="62" y="4" width="120" height="76" fill="{OCHRE_L}" stroke="{INK}" stroke-width="3"/>
+{label(60, 124, "CALLERS", 12, INK)}
+{label(184, 124, "CALLERS", 12, INK)}
+{label(122, 48, "CALLERS", 12, INK)}
+</g>
+{shepherd(150, 425, 0.62)}
+{sheep(455, 425, 0.62, flip=True)}
+{bubble(40, 70, 230, 54, "Can we take the retry back?", 18)}
+""",
+)
+
+
 if __name__ == "__main__":
     for key, (title, desc, body) in SCENES.items():
         name = key.split("/")[1] + ".svg"
