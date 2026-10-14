@@ -482,3 +482,10 @@
 - Updated: `open-source/supabase-kt/415/` (new: `notes.md`, `issue-comment.md`), `projects/open-source.md` (board slot 4, targets, issue log, decisions, open questions), `backlog.md`, `SYNC_LOG.md`.
 - What moved: the research found that `Auth#getClaims()` (PR #1141, merged 2026-02-06) already provides signature and expiry verification, so the comment proposes a narrower plan and asks five design questions. The comment was posted by Miguel's account on 2026-10-15. No code was written and no pull request was opened. The contribution rules include an AI policy that discourages AI for logic code.
 - Confidence: the findings come from reading the repository, the issue and pull request threads, the Supabase documentation (three pages cited in `notes.md`) and the Spring starter source. Nothing was built or run. The documentation does not name a default signing type for new projects.
+
+## 2026-10-15 (posthog-android #577 researched, comment posted)
+
+- Source: Miguel's request to work PostHog/posthog-android issue #577 (remote config payload in the Java server SDK), then to post the comment and record it.
+- Updated: `open-source/posthog-android/577/` (new: `notes.md`, `issue-comment.md`), `projects/open-source.md` (board slot 5, targets, issue log, decisions, open questions), `backlog.md`, `SYNC_LOG.md`.
+- What moved: the research found that `getRemoteConfigPayload` exists in Node.js and Python but not in `posthog-server`, that no published spec defines it, and that CONTRIBUTING and AGENTS.md require an agreed API shape in the issue before any code. The comment proposes the signature and asks four questions. It was posted by Miguel's account on 2026-10-15. No code was written and no pull request was opened. The repo has an AI policy that asks for disclosure in the PR and for the contributor to own and test the change.
+- Confidence: the findings come from reading both SDKs' source, the sdk-specs repo, the posthog-server code, three merged pull requests and the contribution files. Nothing was built or run, and the real endpoint was not called, so the response shape is taken from Node's source comment.

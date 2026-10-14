@@ -37,6 +37,7 @@ Checked 2026-10-14, from the repositories' own pages. Counts change.
 | supabase/mcp | TypeScript | Official MCP server for a Postgres platform. SQL, tests, tool safety. 75 open issues, 64 open pull requests. | Crowded. One issue in progress (#457). Most easy-looking issues are taken or not code here. |
 | modelcontextprotocol/java-sdk | Java 17+ | Java backend skills. Labels show what maintainers want. Tests need Docker and npx. | The `good first issue` items each have two to five pull requests. `needs repro` and `needs confirmation` issues have none. |
 | supabase-community/supabase-kt | Kotlin Multiplatform | Official Kotlin client for Supabase. Auth, JWT and Ktor on the JVM match the backend work. Maintainer replies and merges small pull requests in days. | One issue in progress (#415). Contribution rules include an AI policy: do not rely on AI for logic code. Default branch is `master`. |
+| PostHog/posthog-android | Kotlin (JVM and Android) | The Java server SDK now lives in `posthog-server` here. Feature flags, HTTP and tests match backend work. Outside contributors merge `posthog-server` PRs in 3 to 8 days. | One issue in progress (#577). Has an `AI_POLICY.md` and an `AGENTS.md`: disclose AI help in the PR, prove the change works, do not paste AI output into issues. Public API needs an agreed issue first. |
 | mclenhard/mcp-evals | TypeScript | Eval runner for MCP tools. | Dormant. Last commit June 2025. Dropped. |
 | crystaldba/postgres-mcp | Python | Postgres MCP server. Weaker language match. | Low priority. |
 | modelcontextprotocol/servers | TypeScript | Reference servers only. | Skip |
@@ -52,6 +53,7 @@ evidence for how long the process takes.
 | 2 | modelcontextprotocol/java-sdk #859 | Reproduction | Comment posted 2026-10-14: confirmed that a `tools/call` blocks a Tomcat worker and that requests queue (maxThreads 2, six calls finish in pairs), on 2.0.0 and 2.0.1, NIO and NIO2. The reported NIO2 hang did not reproduce. Asked the reporter for how the tool is wired and a thread dump. Labelled `needs confirmation`, no pull request, no assignee. | If no reply by 2026-10-21, one follow-up only with new information. Do not open a pull request: a maintainer called it an architecture limit. | Reporter and maintainers | 2026-10-14 |
 | 3 | modelcontextprotocol/java-sdk #882 | Reproduction | Comment posted 2026-10-14: reproduced the exact timeout message on 1.1.0, 1.1.4 and 2.0.1 against a stub server. Named the server replies that cause it (initialize answered with an empty body, or notifications/initialized answered with an SSE stream that sends no data event). Asked the reporter for `curl -i` output of both requests and whether a proxy sits between. Asked the maintainers whether a client fix would be welcome. Labelled `needs repro`, no pull request, no assignee. | If no reply by 2026-10-21, one follow-up only with new information. Open a pull request only if a maintainer says a client fix is wanted. | Reporter and maintainers | 2026-10-14 |
 | 4 (over the limit of three) | supabase-community/supabase-kt #415 | Design proposal | Comment posted 2026-10-15 (https://github.com/supabase-community/supabase-kt/issues/415#issuecomment-6165902586). Research found that `Auth#getClaims()` (PR #1141, merged 2026-02-06) already covers the core. The comment lists what a backend still lacks and asks five design questions. Labelled `enhancement` and `help wanted`, no assignee, no pull request. | If no reply by 2026-10-22, one follow-up only with new information. No code until the maintainer answers. The maintainer discourages AI for logic code, so Miguel writes or fully understands every line. | Maintainer | 2026-10-15 |
+| 5 (over the limit of three) | PostHog/posthog-android #577 | API proposal | Comment posted 2026-10-15 (https://github.com/PostHog/posthog-android/issues/577#issuecomment-6166156307). `getRemoteConfigPayload` exists in Node.js and Python but not in `posthog-server`, and no sdk-spec defines it, so CONTRIBUTING requires an agreed API shape first. The comment proposes `getRemoteConfigPayload(key: String): Any?` on `PostHogInterface` and asks four questions. Labelled `enhancement`, `feature/feature-flags`, `server`. No assignee, no pull request. | If no reply by 2026-10-22, one follow-up only with new information. No code until a maintainer agrees on the shape. A prototype may be built locally; it stays local until then. | Maintainers | 2026-10-15 |
 
 Looked at and set aside on 2026-10-14:
 
@@ -190,6 +192,37 @@ Looked at and set aside on 2026-10-14:
 - Lesson: read the code on the main branch before proposing a feature from an old issue. Here the core was
   added two years after the issue.
 
+### PostHog/posthog-android #577: remote config payload in the Java server SDK
+
+- Status 2026-10-15: research done, comment posted
+  (https://github.com/PostHog/posthog-android/issues/577#issuecomment-6166156307). No code written, no
+  fork branch, no pull request.
+- Files, in `open-source/posthog-android/577/`: `notes.md` (Node.js and Python implementations, spec check,
+  how `posthog-server` calls the API, three merged external PRs, contribution rules, AI policy),
+  `issue-comment.md` (the posted text, 193 words). The fork is at `~/src/posthog-android` (default branch `main`).
+- The request: `getRemoteConfigPayload` exists in Node.js and Python and not in `posthog-server`. A maintainer
+  clarified the issue is about that method, not the `/$token/config` endpoint.
+- How Node.js and Python do it: `GET /api/projects/@current/feature_flags/{key}/remote_config?token={projectToken}`
+  with the personal API key as bearer. They differ on a missing personal key: Node throws, Python logs and returns
+  nothing. Node decodes a double-encoded string payload.
+- No spec defines the method. The sdk-specs "Remote Config" spec is the client `/config` bootstrap, and the
+  compliance audits call this method unrelated to it. So an agreed API shape is required before any
+  implementation.
+- Proposal in the comment: `getRemoteConfigPayload(key: String): Any?` on the sealed `PostHogInterface`, using the
+  existing `personalApiKey`, a new method on the internal `PostHogApi` next to `localEvaluation`, errors logged and
+  returned as `null`. Four questions: name and signature, missing key (log or throw), whether API errors should
+  reach the caller, and whether an sdk-specs entry is wanted first.
+- Rules found: public API changes need an issue and maintainer agreement; run `make api`; add a changeset with
+  `pnpm changeset`; the PR template has an Agent context section. A maintainer required verified commit
+  signatures on PR #834. `make testJava` runs only the core tests; server tests need
+  `./gradlew :posthog-server:test`.
+- Three merged external `posthog-server` PRs for reference: #834 (3 days), #805 (7 days, 13 reviews, flagged for
+  public API without agreement), #795 (8 days, by the author of #577).
+- Not verified: nothing was built or run. The real endpoint was never called, so the response shape comes from
+  Node's source comment. The Go, Ruby and C# implementations and the SDK guidelines page were not read.
+- Lesson: check the contribution rules before the code. Here the rules (agree the API shape in an issue first, and
+  the AGENTS.md instruction to draft the issue text) set the whole sequence.
+
 ## Articles
 
 One article per merged pull request, written after the merge or a substantive review. No more
@@ -212,6 +245,7 @@ closed, and how a differential test finds the cases a hand-written test misses.
 | 2026-10-14 | Contributions include reproductions, verification of other people's pull requests and docs, not only fixes. | The evidence shows fixes on popular issues are crowded and reproductions are not. |
 | 2026-10-14 | No pull request until the thread is read in a browser, existing pull requests are searched and a maintainer has answered. | #470 was opened before the issue was accepted and duplicated #459. It was closed the same day. |
 | 2026-10-15 | supabase-kt #415 started as a fourth issue, above the limit of three. | Miguel chose to post the comment. All three slots were waiting on maintainers, so no build work was displaced. Revisit the limit (see open questions). |
+| 2026-10-15 | posthog-android #577 started as a fifth issue, above the limit of three. | Miguel chose to post the comment. All earlier slots were waiting on maintainers, so no build work was displaced. The limit needs a decision (see open questions). |
 
 ## Open questions
 
@@ -222,7 +256,7 @@ closed, and how a differential test finds the cases a hand-written test misses.
   and queueing reproduce; the reported NIO2 hang does not. Waiting on the reporter for details.
 - Whether #882 is worth a reproduction. Answered 2026-10-14: yes, the exact timeout message reproduces on
   three versions. Waiting on the reporter for `curl -i` output.
-- Whether to raise the limit of three issues in flight, or retire a slot. #415 makes four, and all four wait
+- Whether to raise the limit of three issues in flight, or retire a slot. #415 and #577 make five, and all five wait
   on maintainers. Decide before starting build work on another issue.
 - Whether the maintainer of supabase-kt wants the verifier in `auth-kt` or a new module, and where the Ktor and
   Spring modules should live. Asked in the #415 comment. If no reply by 2026-10-22, ask once more.
@@ -231,3 +265,5 @@ closed, and how a differential test finds the cases a hand-written test misses.
   need a different venue.
 - How long a first maintainer reply takes in practice across these repositories. The board
   dates will answer it.
+- Whether the posthog-android maintainers agree on the `getRemoteConfigPayload` shape, and how a missing personal API
+  key and API errors should behave. Asked in the #577 comment. If no reply by 2026-10-22, ask once more.
