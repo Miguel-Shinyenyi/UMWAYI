@@ -1,0 +1,16 @@
+variant=matrix-pr6932-round1 annotations-jar=~/src/spring-ai-wt/fix6932-on-2.0.1/mcp/mcp-annotations/target/spring-ai-mcp-annotations-2.0.1.jar
+13:50:40.862 [HttpClient-1-Worker-0] INFO io.modelcontextprotocol.client.LifecycleInitializer -- Server response with Protocol: 2025-11-25, Capabilities: ServerCapabilities[completions=CompletionCapabilities[], experimental=null, logging=null, prompts=PromptCapabilities[listChanged=false], resources=ResourceCapabilities[subscribe=false, listChanged=false], tools=ToolCapabilities[listChanged=false]], Info: Implementation[name=repro-4542, title=null, version=1.0.0, description=null, icons=null, websiteUrl=null] and Instructions null
+TOOLS [flux-0, flux-1, flux-3, flux-calltoolresult, flux-error-after-2, flux-large, flux-nulls, flux-slow, flux-structured, mono-list, mono-string, mono-structured]
+CALL tool=flux-0 result=OK elapsedMs=23 isError=false contentItems=0 structuredContent=null content=[]
+CALL tool=flux-1 result=OK elapsedMs=11 isError=false contentItems=1 structuredContent=null content=["only"]
+CALL tool=flux-3 result=OK elapsedMs=4 isError=false contentItems=3 structuredContent=null content=["item-1", "item-2", "item-3"]
+CALL tool=flux-error-after-2 result=OK elapsedMs=3 isError=true contentItems=1 structuredContent=null content=["Error invoking method: boom"]
+CALL tool=flux-nulls result=OK elapsedMs=3 isError=true contentItems=1 structuredContent=null content=["Error invoking method: The iterator returned a null value"]
+CALL tool=flux-slow result=OK elapsedMs=1514 isError=false contentItems=3 structuredContent=null content=["tick-1", "tick-2", "tick-3"]
+CALL tool=flux-large result=OK elapsedMs=149 isError=false contentItems=10000 structuredContent=null content=["item-1", "item-2", "item-3", "item-4", ...]
+CALL tool=flux-calltoolresult result=OK elapsedMs=4 isError=false contentItems=3 structuredContent=null content=["r1", "r2", "r3"]
+CALL tool=mono-string result=OK elapsedMs=3 isError=false contentItems=1 structuredContent=null content=["single"]
+CALL tool=mono-list result=OK elapsedMs=4 isError=false contentItems=1 structuredContent=null content=["["item-1","item-2","item-3"]"]
+CALL tool=list-plain result=NOT-REGISTERED
+CALL tool=flux-structured result=OK elapsedMs=5 isError=true contentItems=1 structuredContent=null content=["Response missing structured content which is expected when calling tool with non...(99 chars)"]
+CALL tool=mono-structured result=OK elapsedMs=4 isError=false contentItems=1 structuredContent={name=Ada, age=36} content=["{"name":"Ada","age":36}"]

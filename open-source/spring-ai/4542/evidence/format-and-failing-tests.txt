@@ -1,0 +1,18 @@
+Format check (CI mode) per variant
+fix6932-on-2.0.1     BUILD SUCCESS
+pr6932-head          BUILD SUCCESS
+fix6830-on-2.0.1     FAILED: spring-ai-mcp-annotations: Formatting violations found in the following files:
+pr6830-head          FAILED: spring-ai-mcp-annotations: Formatting violations found in the following files:
+
+Checkstyle on #6830 (fix6830-on-2.0.1), first 4 of 15 errors:
+[ERROR] fix6830-on-2.0.1/mcp/mcp-annotations/src/main/java/org/springframework/ai/mcp/annotation/method/tool/AbstractAsyncMcpToolMethodCallback.java:110: Line has leading space characters; indentation
+[ERROR] fix6830-on-2.0.1/mcp/mcp-annotations/src/main/java/org/springframework/ai/mcp/annotation/method/tool/AbstractAsyncMcpToolMethodCallback.java:111: Line has leading space characters; indentation
+[ERROR] fix6830-on-2.0.1/mcp/mcp-annotations/src/main/java/org/springframework/ai/mcp/annotation/method/tool/AbstractAsyncMcpToolMethodCallback.java:112: Line has leading space characters; indentation
+[ERROR] fix6830-on-2.0.1/mcp/mcp-annotations/src/main/java/org/springframework/ai/mcp/annotation/method/tool/AbstractAsyncMcpToolMethodCallback.java:113: Line has leading space characters; indentation
+
+Failing existing tests on #6830 with -Ddisable.checks=true:
+AsyncMcpToolMethodCallbackTests.testMultipleFluxTool:485->lambda$testMultipleFluxTool$20:482 
+AsyncStatelessMcpToolMethodCallbackTests.testMultipleFluxTool:506->lambda$testMultipleFluxTool$20:503 
+AsyncMcpToolProviderTests.testGetToolSpecificationsWithFluxHandling:542->lambda$testGetToolSpecificationsWithFluxHandlin
+AsyncMcpToolProviderTests.testToolWithFluxReturnType:958 
+AsyncStatelessMcpToolProviderTests.testGetToolSpecificationsWithFluxHandling:538->lambda$testGetToolSpecificationsWithFl

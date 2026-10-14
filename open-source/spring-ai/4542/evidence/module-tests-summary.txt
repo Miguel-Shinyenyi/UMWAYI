@@ -1,0 +1,6 @@
+Module test and style results, spring-ai mcp/mcp-annotations, JDK 17.0.20.1, read 2026-10-14
+base-2.0.1           Tests run: 1376, Failures: 0, Errors: 0, Skipped: 2
+fix6932-on-2.0.1     Tests run: 1376, Failures: 0, Errors: 0, Skipped: 2
+pr6932-head          Tests run: 1376, Failures: 0, Errors: 0, Skipped: 2
+fix6830-on-2.0.1     checks-disabled: Tests run: 1376, Failures: 5, Errors: 0, Skipped: 2
+pr6830-head          checks-disabled: Tests run: 1376, Failures: 5, Errors: 0, Skipped: 2

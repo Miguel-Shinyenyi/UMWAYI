@@ -1,0 +1,8 @@
+variant=baseline-1.1.8 annotations-jar=~/.m2/repository/org/springframework/ai/spring-ai-mcp-annotations/1.1.8/spring-ai-mcp-annotations-1.1.8.jar
+~/.m2/repository/org/springaicommunity/mcp-annotations/0.9.0/mcp-annotations-0.9.0.jar
+13:53:46.152 [HttpClient-1-Worker-0] INFO io.modelcontextprotocol.client.LifecycleInitializer -- Server response with Protocol: 2025-11-25, Capabilities: ServerCapabilities[completions=CompletionCapabilities[], experimental=null, logging=null, prompts=PromptCapabilities[listChanged=false], resources=ResourceCapabilities[subscribe=false, listChanged=false], tools=ToolCapabilities[listChanged=false]], Info: Implementation[name=repro-4542, title=null, version=1.0.0] and Instructions null
+TOOLS [flux-0, flux-1, flux-3, flux-calltoolresult, flux-error-after-2, flux-large, flux-nulls, flux-slow, flux-structured, mono-list, mono-string, mono-structured]
+CALL tool=flux-3 result=OK elapsedMs=41 isError=false contentItems=1 structuredContent=null content=["item-1"]
+CALL tool=flux-1 result=OK elapsedMs=5 isError=false contentItems=1 structuredContent=null content=["only"]
+CALL tool=mono-list result=OK elapsedMs=6 isError=false contentItems=1 structuredContent=null content=["["item-1","item-2","item-3"]"]
+CALL tool=list-plain result=NOT-REGISTERED
