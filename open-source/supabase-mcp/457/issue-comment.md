@@ -1,11 +1,21 @@
-Thanks for the detailed report. I reproduced both false positives against main: isUpdateWithoutWhere and checkDestructiveQuery split on every ";" before quotes are considered.
+Adding evidence on the second half of this issue, the `checkDestructiveQuery` false positive on `'done; delete later'`. #459 covers the UPDATE half only.
 
-CONTRIBUTING asks for an accepted issue before a PR, so I have not opened one. Could a maintainer confirm this is accepted and that you are happy for me to send a fix?
+I prototyped a quote-aware split for `checkDestructiveQuery` locally (not a PR) and compared it with main by calling `isDestructiveSql` directly. It fixes these, which main flags:
 
-What I would change, in destructive-sql.ts only:
-- One shared split that ignores ";" inside single-quoted strings (including '' and E'...' backslash escapes) and double-quoted identifiers.
-- Dollar-quoted bodies keep splitting as today, so a DELETE inside a function body is still seen.
-- A statement that contains EXECUTE is also checked as plain fragments, so EXECUTE 'SELECT 1; DROP TABLE films' still warns.
-- An unterminated quote falls back to the current plain split, so the check fails closed.
+```sql
+insert into t (k, v) values ('r3', 'done; delete later');
+select f('ok; delete later');
+```
 
-New tests go in destructive-sql.test.ts. They cover the reporter's cases, doubled quotes, E-strings, real statements after a quoted semicolon, unterminated quotes and the EXECUTE case.
+But once single-quoted strings are treated as opaque, these pass silently, and main flags all of them:
+
+```sql
+DO 'begin perform 1; drop table films; end'
+CREATE FUNCTION f() RETURNS void AS 'begin; delete from films; end' LANGUAGE plpgsql
+```
+
+I special-cased `EXECUTE '...; DROP TABLE films'` so it stays flagged, but that was not enough. `DO` and `CREATE FUNCTION ... AS` take a code string in the same way. So a fix needs a rule for when a string is code (after `DO`, `EXECUTE`, `AS`, possibly others) and when it is data, or a real parser, and the choice changes what gets confirmed. Which direction would the maintainers prefer?
+
+Once this is accepted and #459 has merged, I can send a follow-up PR for this half that builds on #459's lexer instead of adding a second one.
+
+Verification: direct calls to the exported functions with vitest on Node. Nothing was run against a database or the hosted server.

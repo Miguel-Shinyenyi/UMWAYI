@@ -42,8 +42,23 @@ Checked 2026-10-14, from the repositories' own pages. Counts change.
 
 ### supabase/mcp #457: destructive-SQL check splits on semicolons inside string literals
 
-- Status 2026-10-14: fix and tests built and verified. Waiting for a maintainer to accept the
-  issue before a pull request is opened.
+- Status 2026-10-14: Miguel opened pull request #470 (https://github.com/supabase/mcp/pull/470)
+  from the fork branch `fix/destructive-sql-quoted-semicolons`, before a maintainer accepted
+  the issue. It is open with no reviews or comments. See the correction below before it is
+  reviewed.
+- Correction 2026-10-14, found after reading the issue thread: pull request #459 (by another
+  contributor, reviewer-approved, not yet merged) already fixes the `UPDATE ... WHERE` half and
+  leaves `checkDestructiveQuery` open on purpose. #470 overlaps it and is weaker on that half:
+  it misses `UPDATE t SET note = E'it\'s done; see where it failed'` and the nested-comment
+  cases that #459 now catches. Its `checkDestructiveQuery` half is unsafe: `DO 'begin perform
+  1; drop table films; end'` and `CREATE FUNCTION f() ... AS 'begin; delete from films; end'`
+  are flagged on main and pass silently on #470, because only `EXECUTE` was special-cased. The
+  200,000-statement run below did not generate those shapes. #470 should not merge as it
+  stands.
+- Update 2026-10-14: #470 closed by Miguel with a note. The refined comment from
+  `issue-comment.md` is posted on #457 (https://github.com/supabase/mcp/issues/457#issuecomment-6163066401).
+  It asks the maintainers which direction they want for the `checkDestructiveQuery` half and
+  offers a follow-up pull request once #457 is accepted and #459 has merged. Waiting on a reply.
 - Files, in `open-source/supabase-mcp/457/`: `quote-aware-split.patch` (apply to a fork of
   supabase/mcp), `issue-comment.md` (posted on the issue first), `pull-request.md` (the title
   and description, used after acceptance).
