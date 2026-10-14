@@ -102,8 +102,8 @@ These come from mistakes already made in this project.
 
 ## Limits
 
-- At most three issues in flight. One being built, one waiting for a maintainer, one in
-  review or being scouted.
+- At most six issues in flight (raised from three by Miguel on 2026-10-14). Most of them wait
+  for a maintainer at any time. Build work happens on one or two at once.
 - Miguel reads and understands every line before anything goes upstream.
 
 ## What to record per issue

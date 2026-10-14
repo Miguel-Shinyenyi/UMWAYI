@@ -1,6 +1,6 @@
 # supabase-kt #415: Supabase Auth in a custom backend
 
-Research notes, read on 2026-10-14 and 2026-10-15. Source repo: supabase-community/supabase-kt, default branch
+Research notes, read on 2026-10-14. Source repo: supabase-community/supabase-kt, default branch
 `master`, read at commit `752d8999` (2026-10-08). Fork cloned to `~/src/supabase-kt`. Nothing was posted to GitHub.
 
 ## Acceptance checks (written first)
@@ -79,7 +79,7 @@ What `getClaims` does **not** do (read from the code, not run):
 - No EdDSA. The Supabase docs list EdDSA as "Coming soon" (A3).
 - No Ktor or Spring Boot integration.
 
-## A3: Supabase facts (documentation read 2026-10-15)
+## A3: Supabase facts (documentation read 2026-10-14)
 
 Sources: https://supabase.com/docs/guides/auth/jwts, https://supabase.com/docs/guides/auth/signing-keys,
 https://supabase.com/docs/guides/auth/jwt-fields.
@@ -105,7 +105,7 @@ https://supabase.com/docs/guides/auth/jwt-fields.
   `email`, `phone`. Optional: `app_metadata`, `user_metadata`, `amr`, `jti`, `nbf`. `ref` only in anon and service-role
   tokens. The page's own anon and service-role examples omit some "required" claims, unexplained.
 
-## A4: htmx-supabase-spring-boot-starter (tschuehly), read 2026-10-15
+## A4: htmx-supabase-spring-boot-starter (tschuehly), read 2026-10-14
 
 Last push 2025-12-16, 52 stars, not archived. Verification is `security/SupabaseJwtVerifier.kt`, built in
 `SupabaseAutoConfiguration.kt` line 80 as `JWT.require(Algorithm.HMAC256(jwtSecret)).build()` with `com.auth0:java-jwt`

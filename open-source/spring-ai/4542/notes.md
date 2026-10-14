@@ -1,6 +1,6 @@
 # spring-ai #4542: Flux return from async MCP tools returns only the first element
 
-Research notes, read on 2026-10-15 from GitHub pages and the API. Nothing was posted to GitHub. No code was run in Stage 1.
+Research notes, read on 2026-10-14 from GitHub pages and the API. Nothing was posted to GitHub. No code was run in Stage 1.
 
 ## Acceptance checks (written first)
 

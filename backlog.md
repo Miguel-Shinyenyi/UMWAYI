@@ -451,13 +451,13 @@ project file.
       2026-10-14: reproduced the exact timeout message, comment posted.
 - [ ] Follow up once on java-sdk #859 and #882 if there is no reply by 2026-10-21, only with new
       information. (Raised 2026-10-14)
-- [ ] Follow up once on supabase-kt #415 if there is no reply by 2026-10-22, only with new
-      information. No code until the maintainer answers. (Raised 2026-10-15)
-- [ ] Follow up once on posthog-android #577 if there is no reply by 2026-10-22, only with new
-      information. No code until a maintainer agrees on the API shape. (Raised 2026-10-15)
-- [ ] Follow up once on spring-ai PR #6932 if there is no reply by 2026-10-22, only with new
+- [ ] Follow up once on supabase-kt #415 if there is no reply by 2026-10-21, only with new
+      information. No code until the maintainer answers. (Raised 2026-10-14)
+- [ ] Follow up once on posthog-android #577 if there is no reply by 2026-10-21, only with new
+      information. No code until a maintainer agrees on the API shape. (Raised 2026-10-14)
+- [ ] Follow up once on spring-ai PR #6932 if there is no reply by 2026-10-21, only with new
       information. Watch whether it merges and whether a backport to 2.0.x or 1.1.x is discussed.
-      (Raised 2026-10-15)
+      (Raised 2026-10-14)
 - [ ] Write one article per merged pull request. First candidate, only after something is
       merged or substantively reviewed: why splitting SQL on `;` fails and how to make a safety
       check fail closed. Check the published articles first. (Raised 2026-10-14)

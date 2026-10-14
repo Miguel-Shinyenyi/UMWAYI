@@ -64,7 +64,7 @@ where the observation gets tested against something real.
   the text for the issue and the pull request. Miguel reads every line, understands it, and
   posts and opens pull requests himself. I do not claim a fix works beyond what was run, and I
   say which checks could not run. Contributions include reproductions and reviews, not only
-  fixes. Waiting is part of the work, so up to three issues run at once.
+  fixes. Waiting is part of the work, so up to six issues run at once.
 - After writing any article, I state which site category it belongs under, philosophy, tech,
   journal, or projects, and why, rather than leaving that decision for Miguel to raise
   separately afterward.
@@ -200,7 +200,7 @@ See `backlog.md` for the full, itemized list. Summary by project:
   ledger, then reconciliation, restudied and checked against the code. A public Lab sandbox
   and an MCP server over it are merged to `dev`. Open: where the Lab is hosted, and who
   carries out a correction after a mismatch is resolved.
-- Open source: started 2026-10-14. Board of up to three issues in `projects/open-source.md`,
+- Open source: started 2026-10-14. Board of up to six issues in `projects/open-source.md`,
   process and evidence in `docs/open-source-process.md`. supabase/mcp #457 is waiting on the
   maintainers after pull request #470 was closed (another contributor's #459 covers half).
   Two java-sdk reproductions are next.

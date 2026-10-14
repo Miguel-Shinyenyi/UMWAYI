@@ -1,6 +1,6 @@
 # posthog-android #577: remote config payload in the Java server SDK
 
-Research notes, read on 2026-10-15. Source repo: PostHog/posthog-android, default branch `main`, read at commit `d9004788`.
+Research notes, read on 2026-10-14. Source repo: PostHog/posthog-android, default branch `main`, read at commit `d9004788`.
 Fork cloned to `~/src/posthog-android`. Nothing was posted to GitHub. No code was written in Stage 1.
 
 ## Acceptance checks (written first)
@@ -25,7 +25,7 @@ Stage 3: C1 no em dashes in the new hub files. C2 UMWAYI main equals origin/main
   and an unrelated internal `PostHogApi.remoteConfig()` that calls the client `/array/<token>/config` endpoint.
 - No published spec defines the method. So CONTRIBUTING requires an agreed API shape in the issue before any implementation.
   AGENTS.md says the same: for an external contributor with no agreed issue and no spec, stop and draft the issue text.
-- The issue author, phillram, also authored the merged `posthog-server` fix #795. The issue has no assignee and no linked PR as of 2026-10-15.
+- The issue author, phillram, also authored the merged `posthog-server` fix #795. The issue has no assignee and no linked PR as of 2026-10-14.
   Check #577 again before starting any code.
 
 ## A1: Node.js and Python implementations
