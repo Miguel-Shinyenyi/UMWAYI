@@ -36,6 +36,7 @@ Checked 2026-10-14, from the repositories' own pages. Counts change.
 |---|---|---|---|
 | supabase/mcp | TypeScript | Official MCP server for a Postgres platform. SQL, tests, tool safety. 75 open issues, 64 open pull requests. | Crowded. One issue in progress (#457). Most easy-looking issues are taken or not code here. |
 | modelcontextprotocol/java-sdk | Java 17+ | Java backend skills. Labels show what maintainers want. Tests need Docker and npx. | The `good first issue` items each have two to five pull requests. `needs repro` and `needs confirmation` issues have none. |
+| supabase-community/supabase-kt | Kotlin Multiplatform | Official Kotlin client for Supabase. Auth, JWT and Ktor on the JVM match the backend work. Maintainer replies and merges small pull requests in days. | One issue in progress (#415). Contribution rules include an AI policy: do not rely on AI for logic code. Default branch is `master`. |
 | mclenhard/mcp-evals | TypeScript | Eval runner for MCP tools. | Dormant. Last commit June 2025. Dropped. |
 | crystaldba/postgres-mcp | Python | Postgres MCP server. Weaker language match. | Low priority. |
 | modelcontextprotocol/servers | TypeScript | Reference servers only. | Skip |
@@ -50,6 +51,7 @@ evidence for how long the process takes.
 | 1 | supabase/mcp #457 (second half) | Fix, after #459 | Waiting. Comment posted 2026-10-14 asking which direction the maintainers want. | If no reply by 2026-10-21, one follow-up with new evidence only. Meanwhile test #459 against the real PostgreSQL parser and comment only if it finds something. | Maintainers | 2026-10-14 |
 | 2 | modelcontextprotocol/java-sdk #859 | Reproduction | Comment posted 2026-10-14: confirmed that a `tools/call` blocks a Tomcat worker and that requests queue (maxThreads 2, six calls finish in pairs), on 2.0.0 and 2.0.1, NIO and NIO2. The reported NIO2 hang did not reproduce. Asked the reporter for how the tool is wired and a thread dump. Labelled `needs confirmation`, no pull request, no assignee. | If no reply by 2026-10-21, one follow-up only with new information. Do not open a pull request: a maintainer called it an architecture limit. | Reporter and maintainers | 2026-10-14 |
 | 3 | modelcontextprotocol/java-sdk #882 | Reproduction | Comment posted 2026-10-14: reproduced the exact timeout message on 1.1.0, 1.1.4 and 2.0.1 against a stub server. Named the server replies that cause it (initialize answered with an empty body, or notifications/initialized answered with an SSE stream that sends no data event). Asked the reporter for `curl -i` output of both requests and whether a proxy sits between. Asked the maintainers whether a client fix would be welcome. Labelled `needs repro`, no pull request, no assignee. | If no reply by 2026-10-21, one follow-up only with new information. Open a pull request only if a maintainer says a client fix is wanted. | Reporter and maintainers | 2026-10-14 |
+| 4 (over the limit of three) | supabase-community/supabase-kt #415 | Design proposal | Comment posted 2026-10-15 (https://github.com/supabase-community/supabase-kt/issues/415#issuecomment-6165902586). Research found that `Auth#getClaims()` (PR #1141, merged 2026-02-06) already covers the core. The comment lists what a backend still lacks and asks five design questions. Labelled `enhancement` and `help wanted`, no assignee, no pull request. | If no reply by 2026-10-22, one follow-up only with new information. No code until the maintainer answers. The maintainer discourages AI for logic code, so Miguel writes or fully understands every line. | Maintainer | 2026-10-15 |
 
 Looked at and set aside on 2026-10-14:
 
@@ -160,6 +162,34 @@ Looked at and set aside on 2026-10-14:
   `'map'` in most runs and `'source(MonoDeferContextual)'` in some. Count the exact message only
   when the operator name matches.
 
+### supabase-community/supabase-kt #415: modules for Supabase Auth in a custom backend
+
+- Status 2026-10-15: research done, comment posted
+  (https://github.com/supabase-community/supabase-kt/issues/415#issuecomment-6165902586). No code
+  written, no fork branch, no pull request.
+- Files, in `open-source/supabase-kt/415/`: `notes.md` (repo layout, existing JWT code, Supabase facts with
+  cited pages, the Spring starter, three merged external pull requests, contribution rules, module table),
+  `issue-comment.md` (the posted text, 229 words). The fork is at `~/src/supabase-kt` (default branch `master`).
+- Finding that changed the plan: `Auth#getClaims()` already exists (PR #1141, opened 2026-01-15, merged
+  2026-02-06). It verifies RS256 and ES256 against the project JWKS with a 10 minute cache, and HS256 through
+  the Auth server. The issue is from January 2024 and its thread stopped on 2024-01-11.
+- What a backend still lacks: verification needs a `SupabaseClient` with the Auth plugin; no `aud`, `iss` or
+  `nbf` check; HS256 costs a network call per token; no Ktor or Spring Boot glue.
+- Proposal in the comment: a client-free verifier, then a Ktor `Authentication` provider, then a Spring Boot
+  starter. Five questions: where the verifier lives, which targets, JWKS in the core or pluggable, whether the
+  glue goes in `supabase-kt-plugins` (the `plugins/` folder now holds only stubs that point there), and whether
+  each step is its own pull request.
+- Contribution rules: pull requests go to `master`, 4 spaces, no star imports, `detektAll` in CI, no pull
+  request template. AI policy: "Please don't exclusively rely on AI to generate code. If using AI, double check
+  your code. Generally I wouldn't recommend using AI for logic code."
+- The docs do not name a default signing type for new projects. They call ES256 "recommended".
+- Three merged external pull requests for reference: #1395 (13 days), #1405 (5 days), #1352 (4 days). All
+  small bug fixes with a test.
+- Not verified: nothing was built or run. The Gradle build, the behaviour of `getClaims`, and the claim that it
+  skips `aud` and `iss` checks come from reading the source.
+- Lesson: read the code on the main branch before proposing a feature from an old issue. Here the core was
+  added two years after the issue.
+
 ## Articles
 
 One article per merged pull request, written after the merge or a substantive review. No more
@@ -181,14 +211,21 @@ closed, and how a differential test finds the cases a hand-written test misses.
 | 2026-10-14 | Up to three issues in flight at once, one per slot on the board. | Waiting is long. Parallel slots keep work moving without more than Miguel can review. |
 | 2026-10-14 | Contributions include reproductions, verification of other people's pull requests and docs, not only fixes. | The evidence shows fixes on popular issues are crowded and reproductions are not. |
 | 2026-10-14 | No pull request until the thread is read in a browser, existing pull requests are searched and a maintainer has answered. | #470 was opened before the issue was accepted and duplicated #459. It was closed the same day. |
+| 2026-10-15 | supabase-kt #415 started as a fourth issue, above the limit of three. | Miguel chose to post the comment. All three slots were waiting on maintainers, so no build work was displaced. Revisit the limit (see open questions). |
 
 ## Open questions
 
 - Whether the maintainers accept a follow-up for the second half of #457, and which direction
   they prefer (a rule for when a quoted string is code, or a real parser). If no reply by
   2026-10-21, ask once more with new evidence, then leave it.
-- Whether #859 can be reproduced outside the reporter's setup.
-- Whether #882 is worth a reproduction.
+- Whether #859 can be reproduced outside the reporter's setup. Answered 2026-10-14: the thread-blocking
+  and queueing reproduce; the reported NIO2 hang does not. Waiting on the reporter for details.
+- Whether #882 is worth a reproduction. Answered 2026-10-14: yes, the exact timeout message reproduces on
+  three versions. Waiting on the reporter for `curl -i` output.
+- Whether to raise the limit of three issues in flight, or retire a slot. #415 makes four, and all four wait
+  on maintainers. Decide before starting build work on another issue.
+- Whether the maintainer of supabase-kt wants the verifier in `auth-kt` or a new module, and where the Ktor and
+  Spring modules should live. Asked in the #415 comment. If no reply by 2026-10-22, ask once more.
 - Whether the MCP server in Invoice-Financing should offer its read-only gate to
   supabase/mcp #361 as a design reference. #361 is not code in that repository, so this may
   need a different venue.

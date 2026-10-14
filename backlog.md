@@ -451,6 +451,8 @@ project file.
       2026-10-14: reproduced the exact timeout message, comment posted.
 - [ ] Follow up once on java-sdk #859 and #882 if there is no reply by 2026-10-21, only with new
       information. (Raised 2026-10-14)
+- [ ] Follow up once on supabase-kt #415 if there is no reply by 2026-10-22, only with new
+      information. No code until the maintainer answers. (Raised 2026-10-15)
 - [ ] Write one article per merged pull request. First candidate, only after something is
       merged or substantively reviewed: why splitting SQL on `;` fails and how to make a safety
       check fail closed. Check the published articles first. (Raised 2026-10-14)

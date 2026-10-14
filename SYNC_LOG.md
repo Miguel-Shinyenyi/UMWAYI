@@ -475,3 +475,10 @@
 - Updated: `open-source/java-sdk/859/` and `open-source/java-sdk/882/` (new: `results.md`, `issue-comment.md`, `reproduction/`), `projects/open-source.md` (board slots 2 and 3, issue log), `backlog.md`, `SYNC_LOG.md`.
 - What moved: #859 confirmed that a servlet `tools/call` blocks a Tomcat worker and that requests queue, on SDK 2.0.0 and 2.0.1, NIO and NIO2. The reported NIO2 hang did not reproduce. #882 reproduced the exact timeout message on 1.1.0, 1.1.4 and 2.0.1 against a stub server and named the server replies that cause it. Both comments were posted by Miguel's account on 2026-10-14. No pull request was opened.
 - Confidence: results come from 60 runs (859) and 252 results (882), all saved under `reproduction/out/`, on one machine over loopback. The reporters' own servers were not available, so the cause of the 859 hang and the server behind 882 are unknown. The comments ask for those details.
+
+## 2026-10-15 (supabase-kt #415 researched, comment posted)
+
+- Source: Miguel's request to work supabase-community/supabase-kt issue #415 (Supabase Auth in a custom backend), then to post the comment and record it.
+- Updated: `open-source/supabase-kt/415/` (new: `notes.md`, `issue-comment.md`), `projects/open-source.md` (board slot 4, targets, issue log, decisions, open questions), `backlog.md`, `SYNC_LOG.md`.
+- What moved: the research found that `Auth#getClaims()` (PR #1141, merged 2026-02-06) already provides signature and expiry verification, so the comment proposes a narrower plan and asks five design questions. The comment was posted by Miguel's account on 2026-10-15. No code was written and no pull request was opened. The contribution rules include an AI policy that discourages AI for logic code.
+- Confidence: the findings come from reading the repository, the issue and pull request threads, the Supabase documentation (three pages cited in `notes.md`) and the Spring starter source. Nothing was built or run. The documentation does not name a default signing type for new projects.
