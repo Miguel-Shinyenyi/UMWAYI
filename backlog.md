@@ -444,9 +444,13 @@ project file.
       evidence only. (Raised 2026-10-14)
 - [ ] Test supabase/mcp #459 against the real PostgreSQL parser and comment only if it finds
       something. (Raised 2026-10-14)
-- [ ] Build a minimal embedded-Tomcat reproduction for java-sdk #859 and post the result on the
-      issue. (Raised 2026-10-14)
-- [ ] Read java-sdk #882 and decide if it is worth a reproduction. (Raised 2026-10-14)
+- [x] Build a minimal embedded-Tomcat reproduction for java-sdk #859 and post the result on the
+      issue. (Raised 2026-10-14) Done 2026-10-14: comment posted, hang not reproduced, thread
+      blocking and queueing confirmed.
+- [x] Read java-sdk #882 and decide if it is worth a reproduction. (Raised 2026-10-14) Done
+      2026-10-14: reproduced the exact timeout message, comment posted.
+- [ ] Follow up once on java-sdk #859 and #882 if there is no reply by 2026-10-21, only with new
+      information. (Raised 2026-10-14)
 - [ ] Write one article per merged pull request. First candidate, only after something is
       merged or substantively reviewed: why splitting SQL on `;` fails and how to make a safety
       check fail closed. Check the published articles first. (Raised 2026-10-14)

@@ -48,8 +48,8 @@ evidence for how long the process takes.
 | Slot | Repository and issue | Kind | State | Next action | Waiting on | Since |
 |---|---|---|---|---|---|---|
 | 1 | supabase/mcp #457 (second half) | Fix, after #459 | Waiting. Comment posted 2026-10-14 asking which direction the maintainers want. | If no reply by 2026-10-21, one follow-up with new evidence only. Meanwhile test #459 against the real PostgreSQL parser and comment only if it finds something. | Maintainers | 2026-10-14 |
-| 2 | modelcontextprotocol/java-sdk #859 | Reproduction | Scouted 2026-10-14, not started. Labelled `needs confirmation`. No pull request, no assignee. A maintainer called it an architecture limit. A second user reports a hang on Tomcat NIO2. | Build a minimal embedded-Tomcat reproduction with an async tool. Post the result on the issue. | Nobody | 2026-10-14 |
-| 3 | modelcontextprotocol/java-sdk #882 | Reproduction | Candidate. Labelled `needs repro`, no comments. Not read yet. | Read the issue and decide. | Nobody | 2026-10-14 |
+| 2 | modelcontextprotocol/java-sdk #859 | Reproduction | Comment posted 2026-10-14: confirmed that a `tools/call` blocks a Tomcat worker and that requests queue (maxThreads 2, six calls finish in pairs), on 2.0.0 and 2.0.1, NIO and NIO2. The reported NIO2 hang did not reproduce. Asked the reporter for how the tool is wired and a thread dump. Labelled `needs confirmation`, no pull request, no assignee. | If no reply by 2026-10-21, one follow-up only with new information. Do not open a pull request: a maintainer called it an architecture limit. | Reporter and maintainers | 2026-10-14 |
+| 3 | modelcontextprotocol/java-sdk #882 | Reproduction | Comment posted 2026-10-14: reproduced the exact timeout message on 1.1.0, 1.1.4 and 2.0.1 against a stub server. Named the server replies that cause it (initialize answered with an empty body, or notifications/initialized answered with an SSE stream that sends no data event). Asked the reporter for `curl -i` output of both requests and whether a proxy sits between. Asked the maintainers whether a client fix would be welcome. Labelled `needs repro`, no pull request, no assignee. | If no reply by 2026-10-21, one follow-up only with new information. Open a pull request only if a maintainer says a client fix is wanted. | Reporter and maintainers | 2026-10-14 |
 
 Looked at and set aside on 2026-10-14:
 
@@ -118,6 +118,47 @@ Looked at and set aside on 2026-10-14:
   code here. See the checks in `docs/open-source-process.md`.
 - Dates to fill in as they happen: first maintainer reply to the comment on #457: ___.
   Review of #459 merged: ___.
+
+### modelcontextprotocol/java-sdk #859: servlet transports call `block()` on the request thread
+
+- Status 2026-10-14: reproduction built and run, comment posted
+  (https://github.com/modelcontextprotocol/java-sdk/issues/859#issuecomment-6165245669). No pull
+  request.
+- Files, in `open-source/java-sdk/859/`: `results.md` (tables and evidence), `issue-comment.md`
+  (the posted text), `reproduction/` (a standalone Maven project, `./run-matrix.sh`, logs in `out/`).
+- Setup: released artifacts `io.modelcontextprotocol.sdk:mcp` 2.0.0 and 2.0.1 (2.0.1 is the latest,
+  published 2026-08-19), embedded Tomcat 11.0.27, NIO and NIO2 connectors, Java 21.0.5, 3 runs each.
+- Confirmed: a `tools/call` holds a Tomcat worker in `Mono.block` for the whole tool call
+  (`HttpServletStreamableServerTransportProvider.doPost`, line 536 in 2.0.1, 526 in 2.0.0). With
+  `maxThreads=2` and six concurrent 2 second calls, the calls finish in pairs at about 2, 4 and 6
+  seconds.
+- Not reproduced: the NIO2 hang with `HttpClient.sendAsync` and `Mono.fromFuture`. It returned in about
+  150 ms on both connectors and versions. Not tested: stateless and SSE servlet transports, Jetty,
+  Undertow, TLS, a slow external endpoint, a tool that calls back into the same Tomcat.
+
+### modelcontextprotocol/java-sdk #882: HttpClientStreamableHttpTransport times out on initialize()
+
+- Status 2026-10-14: reproduction built and run, comment posted
+  (https://github.com/modelcontextprotocol/java-sdk/issues/882#issuecomment-6165246178). No pull
+  request.
+- Files, in `open-source/java-sdk/882/`: `results.md` (matrix and source notes), `issue-comment.md`,
+  `reproduction/` (`./run-matrix.sh`, about 12 minutes).
+- Setup: SDK 1.1.0 (the reporter's version), 1.1.4 and 2.0.1, a stub server answering `initialize` and
+  `notifications/initialized` in 27 ways, 3 runs per version, 252 results.
+- Reproduced: the exact message (`Client failed to initialize by explicit API call`, caused by
+  `Did not observe any item or terminal signal within 20000ms in 'map'`) on all three versions when
+  the server answers `initialize` with an empty body, an SSE event with empty data or nothing, or
+  answers `notifications/initialized` with a `200 text/event-stream` that sends no data event or with
+  nothing. `401`, `404`, `500`, `302` and `text/plain` fail within 40 ms. The query string is not the cause.
+- Cause in the source: `LifecycleInitializer` puts a 20 s `.timeout` after `.map` (lines 284 to 285 in
+  1.1.0). `HttpClientStreamableHttpTransport.sendMessage` completes only for an empty body or 202, an
+  SSE event with data, or a JSON body. A 200 SSE response with no data event neither completes nor fails.
+- Not known: which of these the reporter's server does. The comment asks for `curl -i` output.
+  It also asks whether the maintainers would welcome a client fix (fail the send when the stream ends
+  without a data event). No change is made before they answer.
+- Lesson: the 20 s request timeout and the 20 s initialization timeout race, so the message names
+  `'map'` in most runs and `'source(MonoDeferContextual)'` in some. Count the exact message only
+  when the operator name matches.
 
 ## Articles
 
