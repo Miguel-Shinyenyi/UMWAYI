@@ -1,0 +1,60 @@
+run1	RESULT sdk=2.0.0 connector=nio scenario=control maxThreads=200 outcome=pass elapsedMs=203 detail=tool=fast text=fast-ok callMs=26
+run2	RESULT sdk=2.0.0 connector=nio scenario=control maxThreads=200 outcome=pass elapsedMs=197 detail=tool=fast text=fast-ok callMs=28
+run3	RESULT sdk=2.0.0 connector=nio scenario=control maxThreads=200 outcome=pass elapsedMs=213 detail=tool=fast text=fast-ok callMs=32
+run1	RESULT sdk=2.0.0 connector=nio scenario=slow maxThreads=200 outcome=pass elapsedMs=2233 detail=tool=slow text=slow-ok callMs=2056
+run2	RESULT sdk=2.0.0 connector=nio scenario=slow maxThreads=200 outcome=pass elapsedMs=2230 detail=tool=slow text=slow-ok callMs=2059
+run3	RESULT sdk=2.0.0 connector=nio scenario=slow maxThreads=200 outcome=pass elapsedMs=2232 detail=tool=slow text=slow-ok callMs=2038
+run1	RESULT sdk=2.0.0 connector=nio scenario=saturate maxThreads=2 outcome=pass elapsedMs=6263 detail=slowToolMs=2000 completionMsSorted=[2057, 2057, 4049, 4052, 6059, 6059]
+run2	RESULT sdk=2.0.0 connector=nio scenario=saturate maxThreads=2 outcome=pass elapsedMs=6256 detail=slowToolMs=2000 completionMsSorted=[2037, 2038, 4033, 4034, 6038, 6042]
+run3	RESULT sdk=2.0.0 connector=nio scenario=saturate maxThreads=2 outcome=pass elapsedMs=6260 detail=slowToolMs=2000 completionMsSorted=[2056, 2056, 4049, 4049, 6068, 6068]
+run1	RESULT sdk=2.0.0 connector=nio scenario=async-http maxThreads=200 outcome=pass elapsedMs=323 detail=tool=async-http text=async-http-ok:stub callMs=157
+run2	RESULT sdk=2.0.0 connector=nio scenario=async-http maxThreads=200 outcome=pass elapsedMs=323 detail=tool=async-http text=async-http-ok:stub callMs=156
+run3	RESULT sdk=2.0.0 connector=nio scenario=async-http maxThreads=200 outcome=pass elapsedMs=321 detail=tool=async-http text=async-http-ok:stub callMs=155
+run1	RESULT sdk=2.0.0 connector=nio scenario=sync-http maxThreads=200 outcome=pass elapsedMs=321 detail=tool=sync-http text=sync-http-ok:stub callMs=155
+run2	RESULT sdk=2.0.0 connector=nio scenario=sync-http maxThreads=200 outcome=pass elapsedMs=328 detail=tool=sync-http text=sync-http-ok:stub callMs=146
+run3	RESULT sdk=2.0.0 connector=nio scenario=sync-http maxThreads=200 outcome=pass elapsedMs=326 detail=tool=sync-http text=sync-http-ok:stub callMs=159
+run1	RESULT sdk=2.0.0 connector=nio2 scenario=control maxThreads=200 outcome=pass elapsedMs=202 detail=tool=fast text=fast-ok callMs=29
+run2	RESULT sdk=2.0.0 connector=nio2 scenario=control maxThreads=200 outcome=pass elapsedMs=192 detail=tool=fast text=fast-ok callMs=24
+run3	RESULT sdk=2.0.0 connector=nio2 scenario=control maxThreads=200 outcome=pass elapsedMs=197 detail=tool=fast text=fast-ok callMs=23
+run1	RESULT sdk=2.0.0 connector=nio2 scenario=slow maxThreads=200 outcome=pass elapsedMs=2215 detail=tool=slow text=slow-ok callMs=2047
+run2	RESULT sdk=2.0.0 connector=nio2 scenario=slow maxThreads=200 outcome=pass elapsedMs=2259 detail=tool=slow text=slow-ok callMs=2051
+run3	RESULT sdk=2.0.0 connector=nio2 scenario=slow maxThreads=200 outcome=pass elapsedMs=2268 detail=tool=slow text=slow-ok callMs=2050
+run1	RESULT sdk=2.0.0 connector=nio2 scenario=saturate maxThreads=2 outcome=pass elapsedMs=6247 detail=slowToolMs=2000 completionMsSorted=[2044, 2044, 4042, 4042, 6050, 6050]
+run2	RESULT sdk=2.0.0 connector=nio2 scenario=saturate maxThreads=2 outcome=pass elapsedMs=6326 detail=slowToolMs=2000 completionMsSorted=[2085, 2085, 4102, 4102, 6124, 6124]
+run3	RESULT sdk=2.0.0 connector=nio2 scenario=saturate maxThreads=2 outcome=pass elapsedMs=6318 detail=slowToolMs=2000 completionMsSorted=[2060, 2060, 4061, 4061, 6074, 6074]
+run1	RESULT sdk=2.0.0 connector=nio2 scenario=async-http maxThreads=200 outcome=pass elapsedMs=322 detail=tool=async-http text=async-http-ok:stub callMs=151
+run2	RESULT sdk=2.0.0 connector=nio2 scenario=async-http maxThreads=200 outcome=pass elapsedMs=367 detail=tool=async-http text=async-http-ok:stub callMs=160
+run3	RESULT sdk=2.0.0 connector=nio2 scenario=async-http maxThreads=200 outcome=pass elapsedMs=358 detail=tool=async-http text=async-http-ok:stub callMs=157
+run1	RESULT sdk=2.0.0 connector=nio2 scenario=sync-http maxThreads=200 outcome=pass elapsedMs=427 detail=tool=sync-http text=sync-http-ok:stub callMs=172
+run2	RESULT sdk=2.0.0 connector=nio2 scenario=sync-http maxThreads=200 outcome=pass elapsedMs=398 detail=tool=sync-http text=sync-http-ok:stub callMs=218
+run3	RESULT sdk=2.0.0 connector=nio2 scenario=sync-http maxThreads=200 outcome=pass elapsedMs=332 detail=tool=sync-http text=sync-http-ok:stub callMs=148
+run1	RESULT sdk=2.0.1 connector=nio scenario=control maxThreads=200 outcome=pass elapsedMs=202 detail=tool=fast text=fast-ok callMs=25
+run2	RESULT sdk=2.0.1 connector=nio scenario=control maxThreads=200 outcome=pass elapsedMs=217 detail=tool=fast text=fast-ok callMs=28
+run3	RESULT sdk=2.0.1 connector=nio scenario=control maxThreads=200 outcome=pass elapsedMs=199 detail=tool=fast text=fast-ok callMs=24
+run1	RESULT sdk=2.0.1 connector=nio scenario=slow maxThreads=200 outcome=pass elapsedMs=2243 detail=tool=slow text=slow-ok callMs=2056
+run2	RESULT sdk=2.0.1 connector=nio scenario=slow maxThreads=200 outcome=pass elapsedMs=2222 detail=tool=slow text=slow-ok callMs=2047
+run3	RESULT sdk=2.0.1 connector=nio scenario=slow maxThreads=200 outcome=pass elapsedMs=2226 detail=tool=slow text=slow-ok callMs=2053
+run1	RESULT sdk=2.0.1 connector=nio scenario=saturate maxThreads=2 outcome=pass elapsedMs=6280 detail=slowToolMs=2000 completionMsSorted=[2066, 2066, 4060, 4061, 6070, 6070]
+run2	RESULT sdk=2.0.1 connector=nio scenario=saturate maxThreads=2 outcome=pass elapsedMs=6266 detail=slowToolMs=2000 completionMsSorted=[2038, 2038, 4035, 4037, 6040, 6043]
+run3	RESULT sdk=2.0.1 connector=nio scenario=saturate maxThreads=2 outcome=pass elapsedMs=6263 detail=slowToolMs=2000 completionMsSorted=[2055, 2055, 4050, 4050, 6058, 6059]
+run1	RESULT sdk=2.0.1 connector=nio scenario=async-http maxThreads=200 outcome=pass elapsedMs=323 detail=tool=async-http text=async-http-ok:stub callMs=152
+run2	RESULT sdk=2.0.1 connector=nio scenario=async-http maxThreads=200 outcome=pass elapsedMs=316 detail=tool=async-http text=async-http-ok:stub callMs=144
+run3	RESULT sdk=2.0.1 connector=nio scenario=async-http maxThreads=200 outcome=pass elapsedMs=324 detail=tool=async-http text=async-http-ok:stub callMs=145
+run1	RESULT sdk=2.0.1 connector=nio scenario=sync-http maxThreads=200 outcome=pass elapsedMs=327 detail=tool=sync-http text=sync-http-ok:stub callMs=154
+run2	RESULT sdk=2.0.1 connector=nio scenario=sync-http maxThreads=200 outcome=pass elapsedMs=394 detail=tool=sync-http text=sync-http-ok:stub callMs=155
+run3	RESULT sdk=2.0.1 connector=nio scenario=sync-http maxThreads=200 outcome=pass elapsedMs=332 detail=tool=sync-http text=sync-http-ok:stub callMs=159
+run1	RESULT sdk=2.0.1 connector=nio2 scenario=control maxThreads=200 outcome=pass elapsedMs=203 detail=tool=fast text=fast-ok callMs=30
+run2	RESULT sdk=2.0.1 connector=nio2 scenario=control maxThreads=200 outcome=pass elapsedMs=215 detail=tool=fast text=fast-ok callMs=23
+run3	RESULT sdk=2.0.1 connector=nio2 scenario=control maxThreads=200 outcome=pass elapsedMs=206 detail=tool=fast text=fast-ok callMs=27
+run1	RESULT sdk=2.0.1 connector=nio2 scenario=slow maxThreads=200 outcome=pass elapsedMs=2203 detail=tool=slow text=slow-ok callMs=2037
+run2	RESULT sdk=2.0.1 connector=nio2 scenario=slow maxThreads=200 outcome=pass elapsedMs=2230 detail=tool=slow text=slow-ok callMs=2056
+run3	RESULT sdk=2.0.1 connector=nio2 scenario=slow maxThreads=200 outcome=pass elapsedMs=2228 detail=tool=slow text=slow-ok callMs=2061
+run1	RESULT sdk=2.0.1 connector=nio2 scenario=saturate maxThreads=2 outcome=pass elapsedMs=6250 detail=slowToolMs=2000 completionMsSorted=[2029, 2029, 4032, 4032, 6039, 6041]
+run2	RESULT sdk=2.0.1 connector=nio2 scenario=saturate maxThreads=2 outcome=pass elapsedMs=6263 detail=slowToolMs=2000 completionMsSorted=[2057, 2057, 4051, 4052, 6062, 6062]
+run3	RESULT sdk=2.0.1 connector=nio2 scenario=saturate maxThreads=2 outcome=pass elapsedMs=6269 detail=slowToolMs=2000 completionMsSorted=[2055, 2055, 4054, 4054, 6065, 6065]
+run1	RESULT sdk=2.0.1 connector=nio2 scenario=async-http maxThreads=200 outcome=pass elapsedMs=355 detail=tool=async-http text=async-http-ok:stub callMs=160
+run2	RESULT sdk=2.0.1 connector=nio2 scenario=async-http maxThreads=200 outcome=pass elapsedMs=372 detail=tool=async-http text=async-http-ok:stub callMs=195
+run3	RESULT sdk=2.0.1 connector=nio2 scenario=async-http maxThreads=200 outcome=pass elapsedMs=324 detail=tool=async-http text=async-http-ok:stub callMs=150
+run1	RESULT sdk=2.0.1 connector=nio2 scenario=sync-http maxThreads=200 outcome=pass elapsedMs=325 detail=tool=sync-http text=sync-http-ok:stub callMs=157
+run2	RESULT sdk=2.0.1 connector=nio2 scenario=sync-http maxThreads=200 outcome=pass elapsedMs=316 detail=tool=sync-http text=sync-http-ok:stub callMs=147
+run3	RESULT sdk=2.0.1 connector=nio2 scenario=sync-http maxThreads=200 outcome=pass elapsedMs=324 detail=tool=sync-http text=sync-http-ok:stub callMs=152

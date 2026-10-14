@@ -1,0 +1,9 @@
+Oct 14, 2026 11:53:05 AM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["http-nio-auto-1"]
+Oct 14, 2026 11:53:05 AM org.apache.catalina.core.StandardService startInternal
+INFO: Starting service [Tomcat]
+Oct 14, 2026 11:53:05 AM org.apache.catalina.core.StandardEngine startInternal
+INFO: Starting Servlet engine: [Apache Tomcat/11.0.27]
+Oct 14, 2026 11:53:05 AM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["http-nio-auto-1-49457"]
+RESULT sdk=2.0.0 connector=nio scenario=control maxThreads=200 outcome=pass elapsedMs=203 detail=tool=fast text=fast-ok callMs=26

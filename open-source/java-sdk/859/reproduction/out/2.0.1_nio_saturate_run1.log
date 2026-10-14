@@ -1,0 +1,69 @@
+Oct 14, 2026 11:54:53 AM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["http-nio-auto-1"]
+Oct 14, 2026 11:54:53 AM org.apache.catalina.core.StandardService startInternal
+INFO: Starting service [Tomcat]
+Oct 14, 2026 11:54:53 AM org.apache.catalina.core.StandardEngine startInternal
+INFO: Starting Servlet engine: [Apache Tomcat/11.0.27]
+Oct 14, 2026 11:54:53 AM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["http-nio-auto-1-49701"]
+DUMP-BEGIN saturation-0.5s
+THREAD http-nio-auto-1-exec-1 state=WAITING
+    at java.base@21.0.5/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@21.0.5/java.util.concurrent.locks.LockSupport.park(LockSupport.java:221)
+    at java.base@21.0.5/java.util.concurrent.locks.AbstractQueuedSynchronizer.acquire(AbstractQueuedSynchronizer.java:754)
+    at java.base@21.0.5/java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireSharedInterruptibly(AbstractQueuedSynchronizer.java:1099)
+    at java.base@21.0.5/java.util.concurrent.CountDownLatch.await(CountDownLatch.java:230)
+    at app//reactor.core.publisher.BlockingSingleSubscriber.blockingGet(BlockingSingleSubscriber.java:91)
+    at app//reactor.core.publisher.Mono.block(Mono.java:1779)
+    at app//io.modelcontextprotocol.server.transport.HttpServletStreamableServerTransportProvider.doPost(HttpServletStreamableServerTransportProvider.java:536)
+    at app//jakarta.servlet.http.HttpServlet.service(HttpServlet.java:649)
+    at app//jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+    at app//org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:132)
+    at app//org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:164)
+    at app//org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77)
+    at app//org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+    at app//org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+    at app//org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:86)
+    at app//org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:71)
+    at app//org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:347)
+    at app//org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:411)
+    at app//org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:71)
+    at app//org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:1308)
+    at app//org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:2202)
+    at app//org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:74)
+    at app//org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:947)
+    at app//org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:481)
+    at app//org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:74)
+    at java.base@21.0.5/java.lang.Thread.runWith(Thread.java:1596)
+    at java.base@21.0.5/java.lang.Thread.run(Thread.java:1583)
+THREAD http-nio-auto-1-exec-2 state=WAITING
+    at java.base@21.0.5/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@21.0.5/java.util.concurrent.locks.LockSupport.park(LockSupport.java:221)
+    at java.base@21.0.5/java.util.concurrent.locks.AbstractQueuedSynchronizer.acquire(AbstractQueuedSynchronizer.java:754)
+    at java.base@21.0.5/java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireSharedInterruptibly(AbstractQueuedSynchronizer.java:1099)
+    at java.base@21.0.5/java.util.concurrent.CountDownLatch.await(CountDownLatch.java:230)
+    at app//reactor.core.publisher.BlockingSingleSubscriber.blockingGet(BlockingSingleSubscriber.java:91)
+    at app//reactor.core.publisher.Mono.block(Mono.java:1779)
+    at app//io.modelcontextprotocol.server.transport.HttpServletStreamableServerTransportProvider.doPost(HttpServletStreamableServerTransportProvider.java:536)
+    at app//jakarta.servlet.http.HttpServlet.service(HttpServlet.java:649)
+    at app//jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+    at app//org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:132)
+    at app//org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:164)
+    at app//org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77)
+    at app//org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+    at app//org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+    at app//org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:86)
+    at app//org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:71)
+    at app//org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:347)
+    at app//org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:411)
+    at app//org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:71)
+    at app//org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:1308)
+    at app//org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:2202)
+    at app//org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:74)
+    at app//org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:947)
+    at app//org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:481)
+    at app//org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:74)
+    at java.base@21.0.5/java.lang.Thread.runWith(Thread.java:1596)
+    at java.base@21.0.5/java.lang.Thread.run(Thread.java:1583)
+DUMP-END saturation-0.5s
+RESULT sdk=2.0.1 connector=nio scenario=saturate maxThreads=2 outcome=pass elapsedMs=6280 detail=slowToolMs=2000 completionMsSorted=[2066, 2066, 4060, 4061, 6070, 6070]
