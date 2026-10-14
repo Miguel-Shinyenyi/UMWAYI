@@ -100,12 +100,16 @@ project file.
       real volume. (Raised 2026-10-09)
 
 ### Open source
-- [ ] Whether the maintainers of supabase/mcp accept issue #457. Their CONTRIBUTING.md asks
-      for an accepted issue before a pull request. (Raised 2026-10-14)
-- [ ] Whether mclenhard/mcp-evals is still maintained, before any work goes there.
-      (Raised 2026-10-14)
-- [ ] Which modelcontextprotocol/java-sdk issue to take. The issue list could not be read from
-      the tools used here. (Raised 2026-10-14)
+- [ ] Whether the maintainers want a follow-up for the second half of supabase/mcp #457, and
+      which direction (a rule for code strings, or a real parser). Comment posted
+      2026-10-14. (Raised 2026-10-14)
+- [x] Whether mclenhard/mcp-evals is still maintained. Answered 2026-10-14: last commit June
+      2025, dormant, dropped.
+- [x] Which modelcontextprotocol/java-sdk issue to take. Answered 2026-10-14: the good first
+      issues each have two to five pull requests. Two reproductions chosen instead (#859,
+      #882), see the board in `projects/open-source.md`.
+- [ ] How long a first maintainer reply and a review take across these repositories. The board
+      dates will show it. (Raised 2026-10-14)
 
 ### Self-observation
 - [ ] Whether the minimal-banter pattern shows up even with people already known and trusted,
@@ -436,14 +440,16 @@ project file.
       wording, now that Phase 3 is done. Cosmetic, low priority. (Raised 2026-09-19)
 
 ### Open source
-- [ ] Post the prepared comment on supabase/mcp #457 offering a fix, then open the pull request
-      from a fork once a maintainer accepts. Patch, comment and pull request text are in
-      `open-source/supabase-mcp/457/`. See `projects/open-source.md`. (Raised 2026-10-14)
-- [ ] Work the next issues one at a time: #361, #395, #381, #311, #392 in supabase/mcp, then a
-      java-sdk issue. Record each in `projects/open-source.md`. (Raised 2026-10-14)
-- [ ] Write one article per merged pull request. First candidate: why splitting SQL on `;`
-      fails and how to make a safety check fail closed. Check the published articles first.
-      (Raised 2026-10-14)
+- [ ] On 2026-10-21, check #457 for a maintainer reply. If none, one follow-up with new
+      evidence only. (Raised 2026-10-14)
+- [ ] Test supabase/mcp #459 against the real PostgreSQL parser and comment only if it finds
+      something. (Raised 2026-10-14)
+- [ ] Build a minimal embedded-Tomcat reproduction for java-sdk #859 and post the result on the
+      issue. (Raised 2026-10-14)
+- [ ] Read java-sdk #882 and decide if it is worth a reproduction. (Raised 2026-10-14)
+- [ ] Write one article per merged pull request. First candidate, only after something is
+      merged or substantively reviewed: why splitting SQL on `;` fails and how to make a safety
+      check fail closed. Check the published articles first. (Raised 2026-10-14)
 - [ ] Check `projects/career-prep.md`, which mentions a tailored CV and cover letter for a
       Supabase support role, against Miguel's current applications before any article names
       that company. (Raised 2026-10-14)

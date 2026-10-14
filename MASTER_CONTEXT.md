@@ -59,10 +59,12 @@ where the observation gets tested against something real.
   article-worthy, and raise it for discussion rather than deciding on my own whether to write
   it, unless Miguel has already flagged and asked for it himself, the way the claim-versus-
   argument piece came about on 2026-09-20.
-- Open source work follows each project's own CONTRIBUTING file. I build and verify the fix
-  here, then hand over a patch and the text for the issue and the pull request. Miguel reads
-  every line, understands it, and opens the pull request himself. I do not claim a fix works
-  beyond what was run, and I say which checks could not run.
+- Open source work follows each project's own CONTRIBUTING file and the process in
+  `docs/open-source-process.md`. I build and verify the fix here, then hand over a patch and
+  the text for the issue and the pull request. Miguel reads every line, understands it, and
+  posts and opens pull requests himself. I do not claim a fix works beyond what was run, and I
+  say which checks could not run. Contributions include reproductions and reviews, not only
+  fixes. Waiting is part of the work, so up to three issues run at once.
 - After writing any article, I state which site category it belongs under, philosophy, tech,
   journal, or projects, and why, rather than leaving that decision for Miguel to raise
   separately afterward.
@@ -170,6 +172,16 @@ separate from the general principles above so the reason each one exists stays v
   `site/projects/settlement-engine.md` with no front matter. The site build rejected it and
   neither new article went live until Miguel restored the front matter, `bd822f7`. Found on
   2026-10-11 by checking the push.)
+- Before building a fix for an open source issue, I read the live thread in a browser, search
+  the open pull requests by issue number, and check labels, assignees and whether the reporter
+  offered a fix. A summary tool saying "no linked pull requests" is not that check. I also
+  build verification inputs from the grammar the code defends against, and use a real parser as
+  the oracle where one exists. (Caused: on 2026-10-14 I built a fix for supabase/mcp #457 while
+  pull request #459 already fixed half of it, and tested it on 200,000 generated statements
+  that never included `DO` or `CREATE FUNCTION` code strings, which that fix silently stopped
+  warning about. Miguel's Claude Code found both. A follow-up shortlist built from issue titles
+  was also all taken or not code in that repository. Pull request #470 was opened and closed
+  the same day.)
 
 ## Current open threads
 
@@ -188,9 +200,10 @@ See `backlog.md` for the full, itemized list. Summary by project:
   ledger, then reconciliation, restudied and checked against the code. A public Lab sandbox
   and an MCP server over it are merged to `dev`. Open: where the Lab is hosted, and who
   carries out a correction after a mismatch is resolved.
-- Open source: started 2026-10-14. First issue is supabase/mcp #457 (SQL check splits on
-  semicolons inside strings). Fix and tests are built and verified, waiting on a maintainer to
-  accept the issue before a pull request. See `projects/open-source.md`.
+- Open source: started 2026-10-14. Board of up to three issues in `projects/open-source.md`,
+  process and evidence in `docs/open-source-process.md`. supabase/mcp #457 is waiting on the
+  maintainers after pull request #470 was closed (another contributor's #459 covers half).
+  Two java-sdk reproductions are next.
 - Routine machine: all three phases built, tested, and verified. Email reminders for
   time-related items now planned as a future addition.
 - Website and publishing: site live, redesigned around the illustrated shepherd (2026-09-23).

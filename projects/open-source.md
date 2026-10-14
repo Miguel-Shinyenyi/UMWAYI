@@ -5,18 +5,14 @@ Postgres, Java and TypeScript backends, evals), works them one at a time, record
 and writes an article when a pull request merges. The work is public evidence of the skills
 named in `MASTER_CONTEXT.md`, built on real code that other people maintain.
 
-## How an issue gets worked
+## How contributions work
 
-1. Pick an issue. Read the project's `CONTRIBUTING.md` first and follow it.
-2. Check the issue is real and open: no existing pull request, no one assigned.
-3. Ask the maintainers on the issue before coding if the project requires an accepted issue.
-4. Reproduce the bug against the real code. Write the failing test first.
-5. Fix it. Run the project's own tests, type check and lint. Compare old and new behavior on
-   many generated inputs when the change touches safety checks.
-6. Verify on a clean clone with the patch applied.
-7. Claude hands over a patch and the text for the issue comment and the pull request. Miguel
-   pushes the pull request from his own fork. Miguel reviews and understands every line first.
-8. Record the result here. After a merge, decide on an article.
+Contributing is communication over weeks, not a fix delivered once. The full loop, the
+evidence behind it and the checks to run before building are in `docs/open-source-process.md`.
+Short version: scout the live thread, check for existing pull requests, ask the maintainers,
+wait while working a different issue, build and prove, open a small pull request, answer review
+within a day, record every date. At most three issues run at once. Claude builds and verifies.
+Miguel reads and understands every line and is the one who posts and opens pull requests.
 
 ## Project rules learned so far
 
@@ -24,7 +20,13 @@ named in `MASTER_CONTEXT.md`, built on real code that other people maintain.
   behavior. AI-assisted work is welcome, but a human reviews it and the pull request
   description includes verification steps and evidence. Use pnpm, run `pnpm build` once before
   the server tests (they import a built workspace package), and create an empty
-  `packages/mcp-server-supabase/.env.local` for unit tests.
+  `packages/mcp-server-supabase/.env.local` for unit tests. The pull request template asks
+  for a "How to Review" reading path and a Verification section with evidence.
+- modelcontextprotocol/java-sdk: agree scope in an issue first for anything non-trivial. Pull
+  requests opened without that may be ignored or closed. Do not take an assigned issue. Add
+  commits instead of force-pushing. A human stays accountable for AI-assisted work. Labels
+  such as `ready for work`, `needs repro` and `needs confirmation` say what the maintainers
+  want next.
 
 ## Targets
 
@@ -32,11 +34,36 @@ Checked 2026-10-14, from the repositories' own pages. Counts change.
 
 | Repository | Language | Why it fits | Status |
 |---|---|---|---|
-| supabase/mcp | TypeScript | Official MCP server for a Postgres platform. SQL, tests, tool safety. 75 open issues. | Active, first issue in progress |
-| modelcontextprotocol/java-sdk | Java 17+ | Java backend skills. 142 open issues. Tests need Docker and npx. | Issue list not read yet |
-| mclenhard/mcp-evals | TypeScript | Eval runner for MCP tools. Matches the Invoice-Financing evals. 7 open issues, small. | Check the repo is still active first |
-| crystaldba/postgres-mcp | Python | Postgres MCP server. Weaker language match. | Low priority |
+| supabase/mcp | TypeScript | Official MCP server for a Postgres platform. SQL, tests, tool safety. 75 open issues, 64 open pull requests. | Crowded. One issue in progress (#457). Most easy-looking issues are taken or not code here. |
+| modelcontextprotocol/java-sdk | Java 17+ | Java backend skills. Labels show what maintainers want. Tests need Docker and npx. | The `good first issue` items each have two to five pull requests. `needs repro` and `needs confirmation` issues have none. |
+| mclenhard/mcp-evals | TypeScript | Eval runner for MCP tools. | Dormant. Last commit June 2025. Dropped. |
+| crystaldba/postgres-mcp | Python | Postgres MCP server. Weaker language match. | Low priority. |
 | modelcontextprotocol/servers | TypeScript | Reference servers only. | Skip |
+
+## Pipeline board
+
+Three slots. Update the state and the dates every time something changes. Dates here are the
+evidence for how long the process takes.
+
+| Slot | Repository and issue | Kind | State | Next action | Waiting on | Since |
+|---|---|---|---|---|---|---|
+| 1 | supabase/mcp #457 (second half) | Fix, after #459 | Waiting. Comment posted 2026-10-14 asking which direction the maintainers want. | If no reply by 2026-10-21, one follow-up with new evidence only. Meanwhile test #459 against the real PostgreSQL parser and comment only if it finds something. | Maintainers | 2026-10-14 |
+| 2 | modelcontextprotocol/java-sdk #859 | Reproduction | Scouted 2026-10-14, not started. Labelled `needs confirmation`. No pull request, no assignee. A maintainer called it an architecture limit. A second user reports a hang on Tomcat NIO2. | Build a minimal embedded-Tomcat reproduction with an async tool. Post the result on the issue. | Nobody | 2026-10-14 |
+| 3 | modelcontextprotocol/java-sdk #882 | Reproduction | Candidate. Labelled `needs repro`, no comments. Not read yet. | Read the issue and decide. | Nobody | 2026-10-14 |
+
+Looked at and set aside on 2026-10-14:
+
+| Issue | Why not |
+|---|---|
+| supabase/mcp #395 | Two pull requests already open (#396, #397). |
+| supabase/mcp #381 | Pull request #382 already open. |
+| supabase/mcp #392 | Pull request #393 already open. |
+| supabase/mcp #311 | A maintainer explained the cause and plans a fix with structured output (#316). |
+| supabase/mcp #361 | The plugin settings page, not code in this repository. |
+| supabase/mcp #442 | The migration bootstrap runs server side in the Management API. The repository has no such SQL. |
+| supabase/mcp #241 | Needs an API change. A maintainer forwarded it internally. |
+| supabase/mcp #318 | Maintainers keep it open on purpose while they ship elicitation. |
+| java-sdk #1067, #303, #293, #257 | Between one and five pull requests each. |
 
 ## Issue log
 
@@ -83,9 +110,14 @@ Checked 2026-10-14, from the repositories' own pages. Counts change.
   involving `EXECUTE` and quotes, which is the safe direction.
 - Not verified: behavior against a live Supabase project. The `index.test.ts` failure was not
   run with network access.
-- Shortlist for the next issues in the same repo: #361 read-only mode, #395 `list_tables`
-  default schema differs from its docs, #381 `list_tables` primary key ordering, #311
-  `execute_sql` backslash escaping in PL/pgSQL, #392 Edge Function filenames on Windows.
+- What was learned, 2026-10-14: the issue page showed no linked pull requests, but #459 already
+  fixed half of it. The 200,000-statement check never generated `DO '...'` or
+  `CREATE FUNCTION ... AS '...'` bodies, so a flaw that silences warnings for them went
+  unseen. The reviewer of #459 used the real PostgreSQL parser as the oracle. The first
+  shortlist of follow-up issues was built from titles and every item turned out taken or not
+  code here. See the checks in `docs/open-source-process.md`.
+- Dates to fill in as they happen: first maintainer reply to the comment on #457: ___.
+  Review of #459 merged: ___.
 
 ## Articles
 
@@ -105,13 +137,19 @@ closed, and how a differential test finds the cases a hand-written test misses.
 | 2026-10-14 | First issue: supabase/mcp #457. | Small, clear tests, matches SQL and safety-gate experience. |
 | 2026-10-14 | Tracker lives in this file. | One place per project, like the others. |
 | 2026-10-14 | One article per merged pull request. | Keeps articles tied to finished work. |
+| 2026-10-14 | Up to three issues in flight at once, one per slot on the board. | Waiting is long. Parallel slots keep work moving without more than Miguel can review. |
+| 2026-10-14 | Contributions include reproductions, verification of other people's pull requests and docs, not only fixes. | The evidence shows fixes on popular issues are crowded and reproductions are not. |
+| 2026-10-14 | No pull request until the thread is read in a browser, existing pull requests are searched and a maintainer has answered. | #470 was opened before the issue was accepted and duplicated #459. It was closed the same day. |
 
 ## Open questions
 
-- Whether the maintainers accept #457. If there is no reply in about a week, ask once more, then
-  move to the next issue.
-- Which java-sdk issue to take. The issue list was blocked from the tools used here. Miguel
-  opens the Issues tab and picks.
-- Whether mcp-evals is still maintained.
+- Whether the maintainers accept a follow-up for the second half of #457, and which direction
+  they prefer (a rule for when a quoted string is code, or a real parser). If no reply by
+  2026-10-21, ask once more with new evidence, then leave it.
+- Whether #859 can be reproduced outside the reporter's setup.
+- Whether #882 is worth a reproduction.
 - Whether the MCP server in Invoice-Financing should offer its read-only gate to
-  supabase/mcp #361 as a design reference.
+  supabase/mcp #361 as a design reference. #361 is not code in that repository, so this may
+  need a different venue.
+- How long a first maintainer reply takes in practice across these repositories. The board
+  dates will answer it.
