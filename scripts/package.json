@@ -4,5 +4,9 @@
   "type": "module",
   "dependencies": {
     "gray-matter": "^4.0.3"
+  },
+  "scripts": {
+    "substack": "node substack-post.mjs",
+    "test": "node --test test/substack-convert.test.mjs"
   }
 }
