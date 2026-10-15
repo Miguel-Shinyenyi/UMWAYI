@@ -8,6 +8,8 @@ links:
     url: "https://www.linkedin.com/in/miguel-shinyenyi/"
   - label: "dev.to"
     url: "https://dev.to/miguel_shinyenyi_e2291c8c"
+  - label: "Substack"
+    url: "https://shinyenyi.substack.com"
   - label: "Medium"
     url: "https://medium.com/@miguelshinyenyi"
 ---
