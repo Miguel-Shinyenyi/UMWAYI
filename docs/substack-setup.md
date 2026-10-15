@@ -59,7 +59,7 @@ Publish the articles in `site/philosophy/` and `site/tech/` to Miguel's Substack
 
 All 10 articles in `site/philosophy/` and `site/tech/` are published on `https://shinyenyi.substack.com`. The first (`you-cannot-stop-what-arrives`) went through B8. The other nine went through B9, one at a time, 60 seconds apart, oldest first, no errors. A check of each post's record afterwards showed `is_published: true`, `should_send_email: false`, `email_sent_at: null` and a public page that answers 200. The publication had no subscribers at the time. Substack builds the post URL from the article title, so a few URLs differ from the site's file names. The record file holds each real URL.
 
-Two throwaway posts and one test tag (`testtag`) were made during discovery. Delete them on Substack's Posts page if they are still there.
+The discovery throwaways (two test drafts, one test post and the tag `testtag`) were deleted afterwards.
 
 ## Gates
 
@@ -172,7 +172,7 @@ A failed run can leave a draft behind. Delete stray drafts on Substack's Posts p
 | Extra PUT fields | `audience_before_archived`, `syndicate_voiceover_to_rss`, `syndicate_to_section_id`, `should_syndicate_to_other_feed`, `explicit`, `podcast_episode_number`, `podcast_season_number`, `podcast_episode_type`, `hide_from_feed`, `write_comment_permissions`, `default_comment_sort`, `should_send_email`, `meter_type`, `account_based_meter_type`, `cover_image`, `search_engine_title`, `search_engine_description` | Sent by the publish dialog's save. |
 | Image upload | Not yet observed. | Needs an image added in the editor. |
 
-### A2: body format (observed 2026-10-15 in a second throwaway draft, 220572877)
+### A2: body format (observed 2026-10-15 in a test draft)
 
 `draft_body` is a ProseMirror document serialised as a JSON string. Node and mark names, as the editor wrote them:
 
@@ -224,9 +224,7 @@ Finding: automation is not explicitly forbidden. It is not explicitly allowed ei
 
 ### Other
 
-- A throwaway draft, id 220569393, exists in the publication (test body text, no title). Delete it only when Miguel asks.
-- The publish dialog was driven to "Publish now" with email off while an observer blocked any publish-like request. Nothing went live. After a reload the publication shows 0 published posts and 1 draft (220569393).
-- 2026-10-15: the throwaway post was published with email off (draft 220569393, `https://shinyenyi.substack.com/p/throwaway-test-post`). The server shows `should_send_email: false` and `email_sent_at: null`. The publication has no subscribers.
-- 2026-10-15, second round: the post was unpublished, then republished with email off while a logger saved each write request to browser storage. The publish call was captured (see table). The republished post keeps its first `post_date` (17:42:38Z). The Posts list shows 0 emails/subs for it.
-- Second throwaway draft 220572877 ("Second throwaway draft") holds the test content, one image and one tag `testtag`. It is unpublished.
-- Open: the code block language strings, whether the image request needs more fields, and the tag's effect on a published post. B7 needs the same capture from the script's own request and a comparison with this one.
+- The discovery throwaways (two test drafts, one test post and the tag `testtag`) were deleted from Substack on 2026-10-15.
+- Publishing a draft from the editor with the email switch off sent `PUT` (with `should_send_email: false`), then `GET .../prepublish`, then `POST .../publish` with `{"send":false,"saved_segment_id":null}`. The server then showed `is_published: true` and `email_sent_at: null`.
+- A republished post keeps its first `post_date`.
+- Confirmed by the first `--draft` run: the code block language string `java` is accepted and kept, and the image request works with `{image, postId}`.
