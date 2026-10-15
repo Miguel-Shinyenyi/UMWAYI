@@ -636,6 +636,30 @@ SCENES["philosophy/a-convenience-is-hard-to-give-back"] = (
 )
 
 
+# you-cannot-stop-what-arrives: a status board with three states; only the honest one is marked.
+SCENES["philosophy/you-cannot-stop-what-arrives"] = (
+    "You cannot stop what arrives",
+    "A wooden status board lists three states: confirmed, failed and unknown. Only the unknown row is filled in and ticked. A sheep tagged with a question mark waits on the left, and the shepherd stands on the right.",
+    f"""
+<g transform="translate(250 70)">
+<rect x="40" y="220" width="14" height="76" fill="#C08A3E" stroke="{INK}" stroke-width="3"/>
+<rect x="246" y="220" width="14" height="76" fill="#C08A3E" stroke="{INK}" stroke-width="3"/>
+<rect x="0" y="0" width="300" height="230" rx="10" fill="{PAPER}" stroke="{INK}" stroke-width="4"/>
+<rect x="24" y="22" width="252" height="54" rx="6" fill="none" stroke="{INK}" stroke-width="3"/>
+<rect x="24" y="88" width="252" height="54" rx="6" fill="none" stroke="{INK}" stroke-width="3"/>
+<rect x="24" y="154" width="252" height="54" rx="6" fill="{OCHRE_L}" stroke="{INK}" stroke-width="3"/>
+{label(150, 56, "CONFIRMED", 15, INK)}
+{label(150, 122, "FAILED", 15, INK)}
+{label(150, 188, "UNKNOWN", 15, INK)}
+<path d="M236 180 L246 192 L264 168" fill="none" stroke="{INK}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+{shepherd(650, 425, 0.62, flip=True)}
+{sheep(150, 425, 0.72, tag="?")}
+{bubble(30, 70, 200, 54, "Unknown, for now.", 19)}
+""",
+)
+
+
 if __name__ == "__main__":
     for key, (title, desc, body) in SCENES.items():
         name = key.split("/")[1] + ".svg"
