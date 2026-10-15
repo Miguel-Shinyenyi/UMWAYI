@@ -1,11 +1,23 @@
 ---
-title: "You Cannot Stop What Arrives"
-date: 2026-10-15
-summary: "I cannot choose which thoughts show up, only what I do with them. My settlement engine has the same limit, and its worst bug came from refusing to decide."
+title: You Cannot Stop What Arrives
+date: 2026-10-15T00:00:00.000Z
+summary: >-
+  I cannot choose which thoughts show up, only what I do with them. My
+  settlement engine has the same limit, and its worst bug came from refusing to
+  decide.
 draft: false
-tags: ["Philosophy", "Systems thinking", "Java", "VisionQuest"]
+tags:
+  - Philosophy
+  - Systems thinking
+  - Java
+  - VisionQuest
 illustration: you-cannot-stop-what-arrives.svg
-illustrationAlt: "A status board lists confirmed, failed and unknown. Only unknown is filled in and ticked, while a sheep tagged with a question mark waits and the shepherd looks on."
+illustrationAlt: >-
+  A status board lists confirmed, failed and unknown. Only unknown is filled in
+  and ticked, while a sheep tagged with a question mark waits and the shepherd
+  looks on.
+crossposted:
+  devto: 'https://dev.to/miguel_shinyenyi_e2291c8c/you-cannot-stop-what-arrives-co8'
 ---
 
 ## What I notice
