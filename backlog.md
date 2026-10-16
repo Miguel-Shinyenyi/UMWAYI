@@ -194,6 +194,28 @@ project file.
       multiple times, still not started. (Raised 2026-09-16)
 
 ### Website and publishing
+- [x] PostHog analytics on the site. Done 2026-10-15: `miguel-site` pull request #2 merged (a1f7bed). Pageviews,
+      autocapture, rage and dead clicks, web vitals, exception capture, heatmaps, session replay and eight
+      custom events, with replay masking all inputs, both comment widgets and the newsletter form. Do Not
+      Track and Global Privacy Control are honoured. The key is read from `PUBLIC_POSTHOG_KEY` and is not in
+      the repo. (Raised 2026-10-15)
+- [ ] Add the consent banner and a privacy page. Until then the live site sets cookies, keeps a localStorage
+      identifier and records sessions with no notice to visitors. Miguel chose full analytics first and consent
+      later on 2026-10-15. Note from the build: PostHog's `cookieless_mode: 'on_reject'` captures nothing until
+      a visitor accepts or declines, so counting without cookies before a choice is not possible as first
+      planned. Still open: whether the privacy text names the vendor. (Raised 2026-10-15)
+- [ ] Confirm one pageview and one custom event in PostHog Live events from a real browser (a scripted
+      browser cannot show it, because PostHog filters out bots), and that the deployed site sends events.
+      (Raised 2026-10-15)
+- [ ] `npm run check:mobile` fails on article and project pages, 378px against 375px. It fails the same way
+      with analytics off, so it predates the analytics work. Needs its own pass. (Raised 2026-10-15)
+- [x] Publish every philosophy and tech article to Substack from a local script. Done 2026-10-15: all 10 are on
+      shinyenyi.substack.com, published with no email (the publication had no subscribers at the time). Script
+      `scripts/substack-post.mjs`, record `scripts/substack-posted.json`, doc `docs/substack-setup.md`. The
+      endpoints are undocumented and can change. Substack's terms do not name this use; breach can end the
+      account. (Raised 2026-10-15)
+- [ ] After each new article, run `npm run substack` from `scripts/` and commit the record. Renew the cookie
+      when the script exits with code 2. (Raised 2026-10-15)
 - [ ] Journal excerpt publication is on hold, by Miguel's decision on 2026-10-11. None
       written. If it resumes, the 2026-10-01 entry was the only one that made a point no
       published piece already covers. (Raised 2026-10-11)
@@ -440,8 +462,18 @@ project file.
 - [ ] Decide where the public Lab sandbox is hosted. Not the shared staging server:
       `docs/testing.md` already rules out load there. The prompt writes compose and
       Kubernetes files but applies nothing. (Raised 2026-10-09)
-- [ ] Restudy next: the Phase 1 and Phase 9 concurrency fixes. (Raised 2026-09-27) In progress
-      2026-10-14: cold questions set, waiting for Miguel's explanation before checking the code.
+- [ ] Restudy next: the Phase 1 and Phase 9 concurrency fixes. (Raised 2026-09-27) Cold test run
+      2026-10-15: no recall of Phase 1, Phase 9 or what `finalizeWithRetry` retries. The crash question was
+      answered UNKNOWN fixed by reconciliation; the code says PENDING, fixed by the stale-pending sweep
+      (60 s schedule, 300 s grace), not by reconciliation. Answers explained in the 2026-10-15 reply.
+      Next: ask the four questions again in a later session, with no notes.
+- [ ] MCP and agents study, decided 2026-10-15 as the new tilt of the restudy, anchored in the engine's own
+      `mcp-server/` (10 read tools, 3 write tools behind `MCP_ALLOW_WRITES`, evals). Six modules: client and
+      server architecture and transports; tool discovery and schema design; context (resources, prompts,
+      token cost); security (write gates, personas, prompt injection, remote auth); an agent loop
+      orchestrating several servers (database, API, files, DevOps); deployment and evals. Same method:
+      Miguel explains cold, Claude checks against the code. Spec details to be checked against the
+      current MCP specification before teaching. Nothing built yet. (Raised 2026-10-15)
 
 ### Routine machine
 - [ ] Design and build email reminders for anything time-related (deadlines, scheduled
@@ -459,6 +491,9 @@ project file.
 - [ ] Test hexproof-dev's rule on #457 (dollar-quoted body after `=`, `||`, `(`, `,`, `VALUES` is data,
       after `DO`, `AS`, `EXECUTE` is code), including single-quoted code strings. Comment only with
       new evidence. (Raised 2026-10-14)
+- [ ] supabase-kt #415: post the follow-up to the maintainer's five answers (core multiplatform or not, module
+      name and path, start now or after the refactors, RS256 and ES256 first). No code until those are
+      answered. Decide who writes the core: the repo discourages AI for logic code. (Raised 2026-10-15)
 - [ ] Second java-sdk #859 reproduction: a tool that calls back into the same Tomcat connector, NIO2,
       small and default `maxThreads`, plain and TLS. The reporter had already described this setup.
       Then one short correcting comment. (Raised 2026-10-14)

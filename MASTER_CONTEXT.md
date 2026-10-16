@@ -187,6 +187,10 @@ separate from the general principles above so the reason each one exists stays v
   reporter had written, and the reproduction used a separate stub instead of a tool calling back
   into the same Tomcat connector. A summary of what I verified also said "a maintainer chose" a
   pull request on evidence that only showed a maintainer mentioning another one.)
+- When a prompt names a library option or behaviour, I say it is unverified and tell the agent to check it
+  against the current docs. (Caused: on 2026-10-15 the PostHog prompt asked for cookieless counting before
+  consent. The agent checked the docs and found that PostHog's cookieless mode captures nothing until a
+  visitor accepts or declines, so the plan could not work as I wrote it.)
 
 ## Current open threads
 
@@ -204,11 +208,13 @@ See `backlog.md` for the full, itemized list. Summary by project:
   verified crash-recovery gap found and fixed same day (commit `950bf86`). Outbox and
   ledger, then reconciliation, restudied and checked against the code. A public Lab sandbox
   and an MCP server over it are merged to `dev`. Open: where the Lab is hosted, and who
-  carries out a correction after a mismatch is resolved.
+  carries out a correction after a mismatch is resolved. From 2026-10-15 the restudy tilts toward MCP and
+  agents, anchored in the engine's own MCP server; the Phase 1 and Phase 9 concurrency fixes stay on the
+  list after a first cold test with no recall.
 - Open source: started 2026-10-14. Board of issues, no cap, in `projects/open-source.md`,
   process and evidence in `docs/open-source-process.md`. supabase/mcp #457 is waiting on the
   maintainers after pull request #470 was closed (another contributor's #459 covers half).
-  Six issues are posted and waiting on maintainers. Next: a second #859 reproduction (tool
+  Six issues are posted; supabase-kt #415 has a maintainer reply and a follow-up drafted, the rest wait. Next: a second #859 reproduction (tool
   calling back into the same connector) and a test of the #457 dollar-quote rule.
 - Routine machine: all three phases built, tested, and verified. Email reminders for
   time-related items now planned as a future addition.
@@ -217,5 +223,8 @@ See `backlog.md` for the full, itemized list. Summary by project:
   Hashnode, dev.to, Medium, and LinkedIn profiles now exist and are linked from the footer;
   cross-posting is live to dev.to and LinkedIn (technical pieces only on LinkedIn). Hashnode
   (needs a paid plan) and Medium (issues no tokens) are not in use. Journal excerpt publication is on hold.
+  Built 2026-10-15: PostHog analytics on the site, live without a consent banner (the banner and a privacy
+  page are still to build), and a local script that published all 10 philosophy and tech articles to
+  Substack with no email to subscribers.
   The footer email sign-up runs on MailerLite (account 2655737); Waline handles comments and
   "This helped" only.
