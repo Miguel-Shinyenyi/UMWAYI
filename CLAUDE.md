@@ -8,6 +8,7 @@ Claude Code reads this file at the start of every task. Practices that apply to 
 2. `docs/agent-practices.md` if the task is a Claude Code prompt or a working-practice change.
 3. `site/README.md` if the task touches `site/`.
 4. Only the project file for the project you are touching, under `projects/`.
+5. `docs/understanding-first.md` and `docs/engineering-concerns.md` when you design, review or write code.
 
 ## Rules that already apply
 
@@ -18,6 +19,7 @@ Claude Code reads this file at the start of every task. Practices that apply to 
 - When you replace a file that already exists, start from the live file. Keep its front matter. Hand back the whole file.
 - No em dashes in anything written here.
 - Do not push unless the task says so.
+- Solve the problem as the person states it. Do not draft, follow up or audit before you are asked.
 
 ## Every file you hand over
 

@@ -484,20 +484,20 @@ project file.
       wording, now that Phase 3 is done. Cosmetic, low priority. (Raised 2026-09-19)
 
 ### Open source
-- [ ] On 2026-10-21, check #457 for a maintainer reply. If none, one follow-up with new
-      evidence only. (Raised 2026-10-14)
+- [x] On 2026-10-21, check #457 for a maintainer reply. If none, one follow-up with new
+      evidence only. (Raised 2026-10-14) Answered 2026-10-16: no scheduled follow-up. Act only when the thread raises something already solved.
 - [ ] Test supabase/mcp #459 against the real PostgreSQL parser and comment only if it finds
       something. (Raised 2026-10-14)
 - [ ] Test hexproof-dev's rule on #457 (dollar-quoted body after `=`, `||`, `(`, `,`, `VALUES` is data,
       after `DO`, `AS`, `EXECUTE` is code), including single-quoted code strings. Comment only with
       new evidence. (Raised 2026-10-14)
-- [ ] supabase-kt #415: post the follow-up to the maintainer's five answers (core multiplatform or not, module
+- [x] supabase-kt #415: post the follow-up to the maintainer's five answers (core multiplatform or not, module
       name and path, start now or after the refactors, RS256 and ES256 first). No code until those are
-      answered. Decide who writes the core: the repo discourages AI for logic code. (Raised 2026-10-15)
+      answered. Decide who writes the core: the repo discourages AI for logic code. (Raised 2026-10-15) Answered 2026-10-16: Miguel posted the follow-up on 2026-10-15. No reply yet. Who writes the core is still open.
 - [ ] Second java-sdk #859 reproduction: a tool that calls back into the same Tomcat connector, NIO2,
       small and default `maxThreads`, plain and TLS. The reporter had already described this setup.
-      Then one short correcting comment. (Raised 2026-10-14)
-- [ ] Optional: edit the posted #882 comment so it says the same 20 second timeout, with the exact
+      A correcting comment only if the thread raises it. Do not start unprompted. (Raised 2026-10-14)
+- [x] Optional: edit the posted #882 comment so it says the same 20 second timeout, with the exact
       message in most runs, instead of the exact error on all three versions. (Raised 2026-10-14)
 - [ ] Fix the board wording on spring-ai PR #6932: no maintainer chose it. Done in the 2026-10-14
       replacement of `projects/open-source.md`. (Raised 2026-10-14)
@@ -506,15 +506,28 @@ project file.
       blocking and queueing confirmed.
 - [x] Read java-sdk #882 and decide if it is worth a reproduction. (Raised 2026-10-14) Done
       2026-10-14: reproduced the exact timeout message, comment posted.
-- [ ] Follow up once on java-sdk #859 and #882 if there is no reply by 2026-10-21, only with new
-      information. (Raised 2026-10-14)
-- [ ] Follow up once on supabase-kt #415 if there is no reply by 2026-10-21, only with new
-      information. No code until the maintainer answers. (Raised 2026-10-14)
-- [ ] Follow up once on posthog-android #577 if there is no reply by 2026-10-21, only with new
-      information. No code until a maintainer agrees on the API shape. (Raised 2026-10-14)
-- [ ] Follow up once on spring-ai PR #6932 if there is no reply by 2026-10-21, only with new
+- [x] Follow up once on java-sdk #859 and #882 if there is no reply by 2026-10-21, only with new
+      information. (Raised 2026-10-14) Answered 2026-10-16: replaced by the rule of no follow-up until the thread raises something already solved.
+- [x] Follow up once on supabase-kt #415 if there is no reply by 2026-10-21, only with new
+      information. No code until the maintainer answers. (Raised 2026-10-14) Answered 2026-10-16: replaced by the rule of no follow-up until the thread raises something already solved.
+- [x] Follow up once on posthog-android #577 if there is no reply by 2026-10-21, only with new
+      information. No code until a maintainer agrees on the API shape. (Raised 2026-10-14) Answered 2026-10-16: replaced by the rule of no follow-up until the thread raises something already solved.
+- [x] Follow up once on spring-ai PR #6932 if there is no reply by 2026-10-21, only with new
       information. Watch whether it merges and whether a backport to 2.0.x or 1.1.x is discussed.
-      (Raised 2026-10-14)
+      (Raised 2026-10-14) Answered 2026-10-16: replaced by the rule of no follow-up until the thread raises something already solved.
+- [ ] Add `docs/engineering-concerns.md` and `docs/understanding-first.md` to every project: one concerns record
+      per project (59 rows, answer and reason), and a link from each `CLAUDE.md` and `PROJECT.md`. A project
+      is audited only when Miguel asks. (Raised 2026-10-16)
+- [x] java-sdk #882: compare the reporter's answer with the comment. (Raised 2026-10-16) Answered 2026-10-16: cause
+      family matches, the `text/plain` claim differs from my results and is unproven, and the comment missed the goal.
+      See `projects/open-source.md`.
+- [x] Add the goal-first and no-preemption rules to the Claude Code prompt template in `docs/agent-practices.md`.
+      (Raised 2026-10-16) Done 2026-10-16.
+- [ ] Review the draft article `site/philosophy/stay-close-behind-the-code.md` (draft: true, so it stays off the
+      lists, but the site still builds its page). Decide when to publish. The article's claims about hype and
+      overwhelm are Miguel's own notes, unchecked. (Raised 2026-10-16)
+- [ ] Routine machine: run the slow-down reminders prompt in Claude Code, after the docs are saved. Needs the
+      stage 1 gate answered. (Raised 2026-10-16)
 - [ ] Write one article per merged pull request. First candidate, only after something is
       merged or substantively reviewed: why splitting SQL on `;` fails and how to make a safety
       check fail closed. Check the published articles first. (Raised 2026-10-14)

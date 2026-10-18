@@ -1,6 +1,6 @@
 # Master Context
 
-Last updated: 2026-10-14
+Last updated: 2026-10-16
 
 ## Who this is for
 
@@ -105,6 +105,11 @@ where the observation gets tested against something real.
   full replacement of an existing file. Text to be appended says which file and where. A file
   with no stated destination is not delivered. (Asked for by Miguel on 2026-10-13, after the
   replacement below.)
+- Two rule files apply to every current and future project: `docs/understanding-first.md` (how to
+  work: stay close behind AI output, check output against the goal, the eight failure modes, slow
+  down during hype, solve the other person's stated problem, do not act before being asked) and
+  `docs/engineering-concerns.md` (the 59 backend concepts, each answered applies, not applicable
+  or deferred, with a reason). Miguel's decision, 2026-10-16. A project is audited only when he asks.
 - The working practices in `docs/agent-practices.md` (trigger, structure, steering, pruning,
   verification first) apply to every project, not one. Each repo has its own `CLAUDE.md`, and
   a shared one sits at user level.
@@ -192,6 +197,12 @@ separate from the general principles above so the reason each one exists stays v
   consent. The agent checked the docs and found that PostHog's cookieless mode captures nothing until a
   visitor accepts or declines, so the plan could not work as I wrote it.)
 
+- I solve the problem the other person states, in their words, and I do not act ahead of what was
+  asked. No follow-up drafts, extra reproductions or audits until Miguel asks or a thread raises
+  something already solved. (Caused: on java-sdk #882 the comment led with my method, the reporter
+  closed the issue with an answer to their own problem, and Miguel told me the aim was to solve his
+  problem, not the one I thought he had. He asked for this as a general rule on 2026-10-16.)
+
 ## Current open threads
 
 See `backlog.md` for the full, itemized list. Summary by project:
@@ -214,7 +225,7 @@ See `backlog.md` for the full, itemized list. Summary by project:
 - Open source: started 2026-10-14. Board of issues, no cap, in `projects/open-source.md`,
   process and evidence in `docs/open-source-process.md`. supabase/mcp #457 is waiting on the
   maintainers after pull request #470 was closed (another contributor's #459 covers half).
-  Six issues are posted; supabase-kt #415 has a maintainer reply and a follow-up drafted, the rest wait. Next: a second #859 reproduction (tool
+  Six issues are posted; java-sdk #882 is closed by the reporter, supabase-kt #415 has Miguel's follow-up and no reply yet, the rest wait. No follow-ups are drafted ahead of a reply. Next: a second #859 reproduction (tool
   calling back into the same connector) and a test of the #457 dollar-quote rule.
 - Routine machine: all three phases built, tested, and verified. Email reminders for
   time-related items now planned as a future addition.

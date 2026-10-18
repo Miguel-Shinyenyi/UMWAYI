@@ -62,8 +62,9 @@ Every issue moves through these states. Record the state and the date in the boa
 3. Ask. If the project requires an accepted issue, or the change is not trivial, comment on
    the issue first. State the problem, what you found, what you would change, and ask which
    direction the maintainers prefer. Do not open a pull request yet.
-4. Wait. Work another issue. Follow up once after about seven days, and only with new
-   information. Do not ping repeatedly.
+4. Wait. Work another issue. Do not follow up, and do not draft a follow-up, until the thread
+   raises something that Claude has already solved. Then step in with that. A silent thread is
+   not a reason to write again.
 5. Build. Reproduce first. Write the failing test. Fix. Run the project's own tests, type
    check and lint.
 6. Prove. Verify on a clean clone. Where a real parser or reference implementation exists,
@@ -75,6 +76,24 @@ Every issue moves through these states. Record the state and the date in the boa
    unrelated, with evidence.
 9. Close. After a merge, record it and decide on an article. After a close without merge,
    record why and what was learned.
+
+## The goal comes first
+
+Added 2026-10-16. On java-sdk #882 the reporter closed the issue with an answer, and the
+answer showed that the comment had gone after the wrong thing. The comment led with a method
+(a matrix of 27 server replies). The reporter wanted their own problem solved.
+
+Rules:
+
+- Before any comment, write one sentence: what is this person trying to get done? Use their
+  words, from their post, not a problem Claude finds more interesting.
+- The comment opens with that goal and what helps them reach it. Method and evidence come after.
+- Ask only for what the reporter has not already given.
+- Do not act ahead of the thread. No follow-up drafts, no second comments and no extra
+  reproductions until a maintainer or the reporter raises something that was already solved
+  here. Miguel decides when to start new work.
+- When a thread closes with an answer, compare the answer with what was suggested, and record
+  where it differs.
 
 ## Kinds of contribution
 

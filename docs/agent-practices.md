@@ -47,7 +47,7 @@ The user-level file works only for Claude Code on Miguel's own machine. For work
 ### The prompt template
 
 A Claude Code prompt contains, in this order:
-1. Goal and the reason for it, in two or three sentences.
+1. Goal and the reason for it, in two or three sentences. The goal is the other person's problem as they stated it, in one sentence, not a problem Claude prefers.
 2. Decisions already made, so the agent does not reopen them.
 3. Read first: only the files for this task.
 4. Acceptance checks: the commands and observable results that prove each stage is done, written before the work.
@@ -60,6 +60,8 @@ A Claude Code prompt contains, in this order:
 - Before handing over a prompt, check it against what the finished thing must cover, not only against what was asked.
 - Before handing over a file that goes into a build (anything under `site/`), run the build with the file in place. A file's shape, such as front matter, is part of its content.
 - Every file handed over states its repo, its exact path, and whether it is new or a full replacement. Text to append says which file and where.
+- Do not act ahead of the request: no drafts, follow-ups or audits nobody asked for. Added 2026-10-16. See `docs/understanding-first.md`.
+- The 59 concepts in `docs/engineering-concerns.md` are considered in every project design, with an answer per concept.
 
 ## Decisions log
 
@@ -70,6 +72,7 @@ A Claude Code prompt contains, in this order:
 | 2026-10-13 | Acceptance checks come first in every prompt | Verification first: the checks define done before any code exists |
 | 2026-10-13 | Pruning is raised as an open decision, not applied | It conflicts with the rule to never delete a backlog line |
 | 2026-10-13 | The practices apply to every project, with a shared user-level file and one `CLAUDE.md` per repo | Miguel asked for it. Rules written once at user level stop each repo drifting, and each repo keeps its own routing |
+| 2026-10-16 | Goal first and no preemptive work are rules for every prompt and comment | Miguel, after java-sdk #882 closed with an answer the comment had missed |
 | 2026-10-13 | Every handed-over file states repo, path and new or replacement | A replacement without front matter broke a site build on 2026-10-09 
 
 ## Open questions

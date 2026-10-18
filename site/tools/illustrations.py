@@ -660,6 +660,30 @@ SCENES["philosophy/you-cannot-stop-what-arrives"] = (
 )
 
 
+# stay-close-behind-the-code: the shepherd stops the work to check that two numbers agree.
+SCENES["philosophy/stay-close-behind-the-code"] = (
+    "Stay close behind the code",
+    "A sheep tagged code waits at a gate. The shepherd holds up a hand beside a board that reads stored 120.00, ledger 120.00 and a tick. A speech bubble says check first.",
+    f"""
+<g transform="translate(470 70)">
+<rect x="40" y="200" width="14" height="96" fill="#C08A3E" stroke="{INK}" stroke-width="3"/>
+<rect x="206" y="200" width="14" height="96" fill="#C08A3E" stroke="{INK}" stroke-width="3"/>
+<rect x="0" y="0" width="260" height="210" rx="10" fill="{PAPER}" stroke="{INK}" stroke-width="4"/>
+<rect x="20" y="20" width="220" height="48" rx="6" fill="none" stroke="{INK}" stroke-width="3"/>
+<rect x="20" y="80" width="220" height="48" rx="6" fill="none" stroke="{INK}" stroke-width="3"/>
+<rect x="20" y="140" width="220" height="48" rx="6" fill="{OCHRE_L}" stroke="{INK}" stroke-width="3"/>
+{label(130, 50, "STORED  120.00", 15, INK)}
+{label(130, 110, "LEDGER  120.00", 15, INK)}
+{label(104, 170, "MATCH", 15, INK)}
+<path d="M178 166 L188 178 L206 154" fill="none" stroke="{INK}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+{shepherd_raised(390, 425, 0.62, flip=True)}
+{sheep(130, 425, 0.72, tag="CODE")}
+{bubble(240, 150, 170, 54, "Check first.", 22, tail="right")}
+""",
+)
+
+
 if __name__ == "__main__":
     for key, (title, desc, body) in SCENES.items():
         name = key.split("/")[1] + ".svg"
