@@ -40,6 +40,17 @@ The third step is the hard one, because I cannot measure "what I meant" until I 
 
 If I only write code, I should ask who I am helping.
 
+## The cycle I follow
+
+Every step I take goes round the same cycle.
+
+1. Understand things as they are, not as I want them to be.
+2. Let AI write the code for what I understood is needed.
+3. Check that the output matches what I meant.
+4. Weigh the consequences before I act. Every action has some. I want the change to do more good than harm, and I want to know how to undo it.
+
+Then I start again with the next step. The first step is the hard one. When I want something to be true, I read the code as if it already were. The ledger check below exists because a system cannot afford that wish.
+
 ## A check that stops the work
 
 My settlement engine has a check that makes the work stop. Each account stores a balance, and each account has ledger entries. The two must agree. This is the service that compares them:
@@ -98,11 +109,13 @@ These are the names I use. Each has a sign and a remedy.
 
 This list is a draft for me to correct.
 
-1. The little work I do each day is what matters. Hype does not change that.
-2. Protect my energy. Do not chase the volume.
-3. When there is so much to do that I do nothing, I pick the smallest next piece and finish it.
-4. Hyped code carries fear and desperation. Code I understand carries good feelings, and those take time.
-5. Let AI write the code, and stay close behind it.
-6. Understand the people first. Then write. Then stop and check the output against what I meant.
-7. Build checks that make the work stop and ascertain, like the ledger check.
-8. Name the failure mode when I notice it, and apply its remedy.
+1. Understand things as they are before I change them. Then let AI write what I understood is needed.
+2. Every action has consequences. I weigh them and know how to undo the change before I ship it.
+3. The little work I do each day is what matters. Hype does not change that.
+4. Protect my energy. Do not chase the volume.
+5. When there is so much to do that I do nothing, I pick the smallest next piece and finish it.
+6. Hyped code carries fear and desperation. Code I understand carries good feelings, and those take time.
+7. Let AI write the code, and stay close behind it.
+8. Understand the people first. Then write. Then stop and check the output against what I meant.
+9. Build checks that make the work stop and ascertain, like the ledger check.
+10. Name the failure mode when I notice it, and apply its remedy.

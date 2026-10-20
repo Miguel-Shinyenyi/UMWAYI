@@ -61,7 +61,7 @@ A Claude Code prompt contains, in this order:
 - Before handing over a file that goes into a build (anything under `site/`), run the build with the file in place. A file's shape, such as front matter, is part of its content.
 - Every file handed over states its repo, its exact path, and whether it is new or a full replacement. Text to append says which file and where.
 - Do not act ahead of the request: no drafts, follow-ups or audits nobody asked for. Added 2026-10-16. See `docs/understanding-first.md`.
-- The 59 concepts in `docs/engineering-concerns.md` are considered in every project design, with an answer per concept.
+- The 111 concepts in `docs/engineering-concerns.md` are considered in every project design, with an answer per concept.
 
 ## Decisions log
 

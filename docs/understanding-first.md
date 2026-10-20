@@ -12,6 +12,17 @@ Rules for every project. They apply to code you write and code an AI writes. Sou
 - Patterns, constants and outliers only show up when you give them time.
 - If you only write code, ask who you are helping.
 
+## The cycle of every step
+
+Added 2026-10-19, in Miguel's words: understand things as they are, not as you want them to be. Then let AI code what you understood is needed. That leads to an intervention with more good than harm, because every action has consequences. Every step goes round this cycle.
+
+1. Understand. Read the code, the data and the people as they are now. Write down what you found, including what you wish were different but is not.
+2. Decide what is needed. One sentence, from what you found, not from what you hoped to find.
+3. Let AI write it, and stay close behind it.
+4. Check the output against the sentence.
+5. Weigh the consequences before you ship. Name who or what the change affects, what it could break, and how you would undo it. Ship only when the good outweighs the harm.
+6. Go back to step 1 for the next step.
+
 ## Hard rules
 
 1. Do not accept AI output you cannot explain. If you cannot explain it, stop and read it before the next prompt.
@@ -25,6 +36,8 @@ Rules for every project. They apply to code you write and code an AI writes. Sou
 9. The goal is to solve the other person's problem as they state it, not the problem you think they have. Read their words first. Lead with their goal.
 10. Do not act before you are asked. No drafts, follow-ups or audits nobody requested. When a thread raises something you already solved, step in then and help.
 11. When there is so much to do that you do nothing, stop planning the whole. Pick the smallest next piece, finish it today and log it.
+12. Before any change, record what is true now, as it is. A plan built on what you want to be true is the Assumption failure mode.
+13. Every change states its likely consequences and how to undo it. No change ships without both.
 
 ## Failure modes
 

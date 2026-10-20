@@ -1,6 +1,6 @@
 # Engineering concerns
 
-Added 2026-10-16. A list of 59 backend concepts, taken from a handwritten list Miguel shared. It is a hard rule for every current and future coding project: each concept is considered, and the answer is written down.
+Added 2026-10-16 with concepts 1 to 59, extended on 2026-10-19 with 60 to 111. A list of 111 backend concepts, taken from a handwritten list Miguel shared. It is a hard rule for every current and future coding project: each concept is considered, and the answer is written down.
 
 ## The rule
 
@@ -14,7 +14,7 @@ Added 2026-10-16. A list of 59 backend concepts, taken from a handwritten list M
 5. When a concept causes a real fault, the fault is recorded against its number, with the date and the fix.
 6. An answer of "applies" must point at evidence: a test, a doc or a config. A claim without evidence stays "deferred".
 
-## The 59 concepts, each as a question
+## The 111 concepts, each as a question
 
 ### Traffic and edges
 
@@ -93,15 +93,85 @@ Added 2026-10-16. A list of 59 backend concepts, taken from a handwritten list M
 42. Garbage collection: what do pauses and heap size look like under load?
 43. Thread safety: which objects are shared between threads, and are they safe to share?
 
-### Scale
+### Scale and performance
 
 45. Autoscaling: what number triggers a new instance, and what limits the growth?
 46. Horizontal scaling: can a second instance run without breaking the first?
 47. Vertical scaling: what is the largest single machine we would accept, and what is the limit after it?
+91. Latency: how long does a typical request take, measured where the user sits?
+92. Throughput: how many requests or jobs per second can it handle before it degrades?
+93. P99 latency: how slow is the slowest 1 in 100 requests, and is that written as a target?
+94. Tail latency: which dependency makes the slowest requests slow, and does one slow call hold up a whole page?
+
+### Observability and reliability targets
+
+60. Distributed tracing: can one request be followed across every service it touches?
+61. Metrics: which counters, gauges and timers exist, and who reads them?
+62. Alerts: what wakes someone, and is every alert something a person can act on?
+63. SLOs: what level of service is promised, in numbers?
+64. SLIs: which measurement proves the SLO is met?
+65. Error budgets: how much failure is allowed before new work stops for reliability work?
+66. Observability: can we answer a new question about production without shipping new code?
+
+### Security
+
+67. Secrets management: where do secrets live, who can read them, and how are they rotated?
+68. IAM: which person or service can do what, and is it the least they need?
+69. OAuth: which flows are used, and are tokens stored and refreshed safely?
+70. JWT rotation: how are signing keys rotated, and how long does a stolen token work?
+71. TLS: is every connection that leaves a machine encrypted, with valid certificates?
+72. Encryption at rest: which stored data is encrypted, and who holds the key?
+73. Encryption in transit: does data stay encrypted between our own services too?
+74. WAF: what filters malicious requests before they reach the app?
+75. DDoS protection: what absorbs a flood of traffic, and what does it cost us?
+76. CORS: which origins may call the API from a browser, and is the list as short as it can be?
+77. CSRF: can another site make a signed-in user's browser change something here?
+78. SQL injection: is every query parameterised, including dynamic sorting and filters?
+79. XSS: is every piece of user text escaped where it is shown?
+80. SSRF: can a user make the server fetch a URL of their choosing, including internal ones?
+
+### Change, recovery and cost
+
+81. Database migrations: does every schema change run forward safely on live data?
+82. Schema versioning: which version of the schema is live, and can old code read it during a rollout?
+83. Disaster recovery: if the whole environment is lost, how long until we are back, and with how much data lost?
+84. Backups: when was a restore last tested, not only a backup taken?
+85. Failover: what takes over when the primary fails, and has the switch been tried?
+86. Multi-region deployment: does any user or law require more than one region?
+87. Chaos engineering: which failures have we caused on purpose to see what happens?
+88. Cost optimization: what does one user or one job cost to serve, and what is the largest line?
+89. Cold starts: how slow is the first request after idle, and does a user ever feel it?
+90. Serverless limits: which time, memory or connection limits could a function hit?
+
+### Networking and protocols
+
+95. Network partitions: what does each service do when it cannot reach another?
+96. Clock skew: which logic depends on two machines agreeing on the time?
+97. DNS: what happens when a name stops resolving or resolves to an old address?
+98. TCP vs UDP: does each connection need ordered, reliable delivery, or speed?
+99. HTTP/2 and HTTP/3: does the client and proxy support them, and does it matter here?
+100. gRPC: would a typed, binary contract between services help, or is JSON over HTTP enough?
+101. Webhooks: are incoming webhooks verified, idempotent and retried safely; are outgoing ones signed?
+
+### Versioning, build and infrastructure
+
+102. API versioning: how does an old client keep working when the API changes?
+103. Semantic versioning: do version numbers tell users which changes break them?
+104. Infrastructure as code: can the whole environment be rebuilt from files in a repo?
+105. Terraform: if used, where does its state live, and who can apply it?
+106. Helm charts: if Kubernetes is used, are its manifests packaged and versioned?
+107. Build caching: how long does a clean build take, and is the cache safe to trust?
+108. Dependency hell: are versions pinned, updates reviewed, and conflicts visible?
+
+### Incidents
+
+109. Production incidents: how is an incident declared, and who leads it?
+110. On-call: who is reachable when something breaks, and what do they need to fix it?
+111. Postmortems: after an incident, is the cause written down without blame, with actions that get done?
 
 ## Record format
 
-Put this table in each project's design doc.
+Put this table in each project's design doc, one row per concept, 1 to 111.
 
 ```
 | # | Concept | Answer | Reason and evidence | Date |
@@ -112,5 +182,5 @@ Put this table in each project's design doc.
 ## Link to the other rules
 
 - `docs/understanding-first.md` says how to work: stay close to the code, check the output against the goal.
-- This file says what to consider: the 59 concepts.
+- This file says what to consider: the 111 concepts.
 - A concept that was considered and recorded counts as understood. A concept that was skipped counts as a risk.

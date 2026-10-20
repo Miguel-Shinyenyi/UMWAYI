@@ -194,6 +194,8 @@ project file.
       multiple times, still not started. (Raised 2026-09-16)
 
 ### Website and publishing
+- [ ] Apply the RSS page patch to `miguel-site` `main`: the footer "RSS" link opened raw XML. Built and
+      checked in Chromium on 2026-10-19, not yet applied. (Raised 2026-10-19)
 - [x] PostHog analytics on the site. Done 2026-10-15: `miguel-site` pull request #2 merged (a1f7bed). Pageviews,
       autocapture, rage and dead clicks, web vitals, exception capture, heatmaps, session replay and eight
       custom events, with replay masking all inputs, both comment widgets and the newsletter form. Do Not
@@ -476,6 +478,15 @@ project file.
       current MCP specification before teaching. Nothing built yet. (Raised 2026-10-15)
 
 ### Routine machine
+- [ ] Run the staged routine-machine prompt of 2026-10-19 in Claude Code. Stage 1 reads and reports only;
+      each later stage waits for Miguel's answer. (Raised 2026-10-19)
+- [ ] Before any hosted use: user-scoped API routes must take the user from the signed session, not from
+      a request field. Stage 2 of that prompt. (Raised 2026-10-19)
+- [ ] Merge Phases 10 to 12 into `main` once reviewed. They sit on their own branches. (Raised 2026-10-19)
+- [ ] Later, not in the current prompt: cloud hosting and file storage, CI/CD, Kubernetes, caching. Each
+      gets a concerns-record answer first. (Raised 2026-10-19)
+- [ ] Decide whether Routine Machine moves from tracking work toward producing it (an artifact with checks
+      and approval). Claude's assessment is in the 2026-10-19 reply; Miguel decides. (Raised 2026-10-19)
 - [ ] Design and build email reminders for anything time-related (deadlines, scheduled
       decision points) once Routine Machine can support it. (Raised 2026-09-20)
 - [ ] Fix `PROJECT.md`'s "Current phase" line, currently just reads "five" with no
@@ -516,7 +527,7 @@ project file.
       information. Watch whether it merges and whether a backport to 2.0.x or 1.1.x is discussed.
       (Raised 2026-10-14) Answered 2026-10-16: replaced by the rule of no follow-up until the thread raises something already solved.
 - [ ] Add `docs/engineering-concerns.md` and `docs/understanding-first.md` to every project: one concerns record
-      per project (59 rows, answer and reason), and a link from each `CLAUDE.md` and `PROJECT.md`. A project
+      per project (111 rows since 2026-10-19, answer and reason), and a link from each `CLAUDE.md` and `PROJECT.md`. A project
       is audited only when Miguel asks. (Raised 2026-10-16)
 - [x] java-sdk #882: compare the reporter's answer with the comment. (Raised 2026-10-16) Answered 2026-10-16: cause
       family matches, the `text/plain` claim differs from my results and is unproven, and the comment missed the goal.
@@ -526,8 +537,9 @@ project file.
 - [ ] Review the draft article `site/philosophy/stay-close-behind-the-code.md` (draft: true, so it stays off the
       lists, but the site still builds its page). Decide when to publish. The article's claims about hype and
       overwhelm are Miguel's own notes, unchecked. (Raised 2026-10-16)
-- [ ] Routine machine: run the slow-down reminders prompt in Claude Code, after the docs are saved. Needs the
-      stage 1 gate answered. (Raised 2026-10-16)
+- [x] Routine machine: run the slow-down reminders prompt in Claude Code, after the docs are saved. Needs the
+      stage 1 gate answered. (Raised 2026-10-16) Answered 2026-10-19: not run. Replaced by the staged routine-machine prompt of 2026-10-19,
+      which includes the reminders.
 - [ ] Write one article per merged pull request. First candidate, only after something is
       merged or substantively reviewed: why splitting SQL on `;` fails and how to make a safety
       check fail closed. Check the published articles first. (Raised 2026-10-14)
