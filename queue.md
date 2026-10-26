@@ -38,8 +38,8 @@ Order inside each group follows the brief's table. "Packet" says what makes the 
 | ID | Task | Status | Notes and gate |
 |---|---|---|---|
 | R-01 | Does the workflow already use one core agent delegating to a single agent? | done 2026-10-26 | No `.claude/agents` folder in any of the four repositories. The pattern runs by hand: this project hands a prompt to Claude Code. The queue adds the missing packet fields. The photo's 34-file agent tree is more than this needs. |
-| R-02 | Check design status, update the reference design, regenerate PDF and slide counterparts | queued | Prompt 8, stage 1 reads and reports. Updates wait on D-1. |
-| R-03 | Fix pointer and interaction defects, sweep for similar ones, write fixes as `.md` | queued | Prompt 8. Likely cause: Tailwind 4 gives buttons the default cursor, and the only custom pointer rule is `.pick label`. Verify, do not assume. |
+| R-02 | Check design status, update the reference design, regenerate PDF and slide counterparts | in progress | Prompt 8 stage 1 done: `docs/fixes/design-status.md`. The reports were merged into the branch `access-control-per-user-scope`, not `main` (PR #10); a pull request to `main` is needed. `compare.mjs` does not run as documented and never signs in. Reference updates wait on D-1. |
+| R-03 | Fix pointer and interaction defects, sweep for similar ones, write fixes as `.md` | in progress | Report written (`docs/fixes/interaction-defects.md`). Fixes are stage 2, after your approval. Prompt 8. Likely cause: Tailwind 4 gives buttons the default cursor, and the only custom pointer rule is `.pick label`. Verify, do not assume. |
 | R-04 | Component-by-component redesign so actions are seen and felt | held | D-1 and D-5. |
 | R-05 | Profile menu: username plus essential items only | held | D-1 and D-3. |
 | R-06 | Role clarity: cohort admins see only the cohort page, learners see both | queued | Prompt 8, stage 1 maps today's roles (the backend has USER and OWNER only; organisation admins are a table, not a role). Changes wait on D-1. |
@@ -63,7 +63,7 @@ Order inside each group follows the brief's table. "Packet" says what makes the 
 
 | ID | Task | Status | Notes and gate |
 |---|---|---|---|
-| R-10 | Update the investor pack locally, regenerate PDFs and slides | queued | The pack is local and git-ignored, so Claude Code on your machine does it. Needs D-1 and D-2 first. |
+| R-10 | Update the investor pack locally, regenerate PDFs and slides | in progress | First pass done 2026-10-26 in `routine-machine/investor-pack/`: facts updated (all twelve phases on `main`, access control, operations, CI), banners on the files that wait on D-1 and D-2, first hire added, new `13-strategy-update-2026-10-20.md`. PDFs and slides not regenerated. The positioning rewrite waits on D-1 and D-2. |
 | R-11 | Read the strategy update, queue the pivot tasks | done 2026-10-26 | Read. Pivot tasks are R-31 to R-38. |
 | R-12 | Pricing from cost, time, margin and value | queued | The strategy update says the budget is unvalidated and prices come after scoping. Start with the unit-economics list in its section 8. |
 | R-13 | Check the legality of redirecting roadmap.sh and similar repositories | queued | Read each repository's licence text. Facts and sources only; not legal advice. |
