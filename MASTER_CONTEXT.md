@@ -1,6 +1,6 @@
 # Master Context
 
-Last updated: 2026-10-26
+Last updated: 2026-10-26 (queue, pruning list, strategy update)
 
 ## Who this is for
 
@@ -30,7 +30,8 @@ where the observation gets tested against something real.
 |---|---|---|
 | Journal | `journal/entries/` | Daily observation. Weather check-in, then whatever the entry needs. |
 | Weekly summaries | `journal/weekly-summaries/` | What the week's entries actually showed, not a highlight reel. Written Sunday evenings. |
-| Backlog | `backlog.md` | Every open question and pending decision or action across all projects, marked answered when resolved, never silently dropped. |
+| Queue | `queue.md` | The one list of open work. One task at a time, each with goal, context, acceptance checks and where the outcome is recorded. Decisions waiting for you are in section D. |
+| Backlog | `backlog.md` | The history. Every line stays; open lines are marked `[>]` with their queue id. |
 | Career prep | `projects/career-prep.md` | PostHog (primary), Ezra (secondary), and other roles. Interview prep, applications, what's working and what isn't. |
 | CMU masters | `projects/cmu-masters.md` | Fall 2027 application cycle. Feeds from the writing, backend, and AI engineer goals. |
 | Settlement engine | `projects/settlement-engine.md` | Idempotent Settlement and Reconciliation Engine, built with Claude Code. Public repo `Invoice-Financing` (made public 2026-09-23), all nine build phases done and deployed to a live staging server. Idempotency and reconciliation restudied in depth, one verified gap found and fixed. A public Lab sandbox and an MCP server over it are built and merged to `dev` (2026-10-09 to 2026-10-13). |
@@ -98,6 +99,7 @@ where the observation gets tested against something real.
   project. I add to it as new ones come up in any conversation, not just at the end of a
   session, and I mark an item answered with the date and a one-line resolution when it's
   resolved, I never delete a line or leave it silently unmarked.
+  (From 2026-10-26 open items live in `queue.md`. `backlog.md` is the history, and the rule about never dropping a line still holds.)
 - Anything time-sensitive, a deadline, a scheduled decision point, gets flagged as a
   candidate for an eventual email reminder once Routine Machine supports it. Until that
   exists, it stays visible in `backlog.md` so it isn't missed in the meantime.
@@ -121,6 +123,10 @@ where the observation gets tested against something real.
   preference, a real gap or bug, I don't let "this project is well-built" talk me out of
   flagging it. I verify it against the actual code first, then provide a ready-to-use prompt
   for Claude Code to fix it, rather than describing the issue only in the abstract.
+
+- `queue.md` is the list of open work (from 2026-10-26). Before I queue a brief or a prompt I check it against the business goal and against the plan, refine it, and put conflicts to Miguel as decisions in section D. I do not treat a prompt as a command. Tasks go one at a time, design first, then code, then the tasks that keep the investor pack current. I plan at most 60% of the daily and weekly cap Miguel gives me, because other projects share it.
+- I never prune, archive, close or drop anything without Miguel's approval. Candidate text in context files is listed in `docs/pruning-candidates.md` with evidence and waits for a yes, item by item.
+- Business figures, prospect names and details about team members go only in the encrypted journal, never in public hub files. (Miguel's brief of 2026-10-26 and the strategy update were summarised in `journal/entries/2026-10-26.md`.)
 
 ## Rules from caught mistakes
 
@@ -230,7 +236,7 @@ See `backlog.md` for the full, itemized list. Summary by project:
   maintainers after pull request #470 was closed (another contributor's #459 covers half).
   Six issues are posted; java-sdk #882 is closed by the reporter, supabase-kt #415 has Miguel's follow-up and no reply yet, the rest wait. No follow-ups are drafted ahead of a reply. Next: a second #859 reproduction (tool
   calling back into the same connector) and a test of the #457 dollar-quote rule.
-- Routine machine: Phases 1 to 12 are on `main` (2026-10-26, `da5640f`). Staged prompts of 2026-10-19 run through
+- Routine machine: direction under review (strategy update of 2026-10-20 points to an organisation tool for skills-to-work programmes; decision D-1 in `queue.md`). Phases 1 to 12 are on `main` (2026-10-26, `da5640f`). Staged prompts of 2026-10-19 run through
   Prompt 7 (access control, observability with an owner-only `/watchtower`, API docs, repository standard, CI green,
   understanding-first reminders, the 111-row concerns record). Open: Prompt 5 parts 4 to 6 not seen in commits; whether
   Phase 4 stays gated; whether the app moves from tracking toward producing work. Email reminders remain a future

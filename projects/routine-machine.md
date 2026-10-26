@@ -43,6 +43,14 @@ Checked against the repo (`main` at da5640f, 2026-10-26). Detail is in the repo'
 Phases 9 to 12 are on `main` (pull request #9, 2026-10-26). After Phase 12, work moved to the
 hardening items below, run as staged Claude Code prompts.
 
+## Direction under review (2026-10-26)
+
+A strategy update dated 2026-10-20 moves the commercial aim from learner consistency toward an organisation
+tool for skills-to-employment programmes: candidate pipeline, follow-ups, intervention log, placement status
+and outcome reports, with AI only as a drafting aid under human review. The operating plan, the brief and
+the update disagree in places. The decisions are in `queue.md` (D-1 to D-7). The business figures and
+prospects are in the encrypted journal and the local investor pack, not here.
+
 ## Hardening since 2026-10-19
 
 - Per-user scoping and access control: every user-scoped route takes the user from the signed token,
