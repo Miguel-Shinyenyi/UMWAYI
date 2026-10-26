@@ -1,11 +1,25 @@
 ---
-title: "My First Agentic System Is a Folder of Files"
-date: 2026-10-26
-summary: "The UMWAYI hub is plain markdown that an AI reads before it works. It holds the rules, the log and the backlog, and it changes how every other project of mine gets built."
+title: My First Agentic System Is a Folder of Files
+date: 2026-10-26T00:00:00.000Z
+summary: >-
+  The UMWAYI hub is plain markdown that an AI reads before it works. It holds
+  the rules, the log and the backlog, and it changes how every other project of
+  mine gets built.
 draft: false
-tags: ["AI", "Documentation", "Engineering", "Claude Code"]
+tags:
+  - AI
+  - Documentation
+  - Engineering
+  - Claude Code
 illustration: my-first-agentic-system-is-a-folder.svg
-illustrationAlt: "A board lists three files: master context, sync log and backlog. The first is highlighted. A sheep tagged AI waits on the left and the shepherd on the right says read first."
+illustrationAlt: >-
+  A board lists three files: master context, sync log and backlog. The first is
+  highlighted. A sheep tagged AI waits on the left and the shepherd on the right
+  says read first.
+crossposted:
+  devto: >-
+    https://dev.to/miguel_shinyenyi_e2291c8c/my-first-agentic-system-is-a-folder-of-files-gj4
+  linkedin: 'urn:li:share:7520441854748880897'
 ---
 
 ## What it is
