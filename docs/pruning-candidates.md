@@ -4,7 +4,7 @@ Created 2026-10-26. Nothing here has been changed. Each item waits for your appr
 
 Why this list exists: files that Claude Code reads at the start of every task cost reading time on every task. Text that duplicates another file, repeats history, or goes stale adds cost and risks two files disagreeing.
 
-How to answer: for each ID say approve, keep, or change. I then hand over the replacement file in full, as usual. Nothing is deleted; cut text moves to an archive file unless you say otherwise.
+How to answer: for each ID say approve, keep, or change. I then hand over the replacement file in full, as usual. Nothing is deleted. Cut text moves to `archive/` (or to a history file inside the same repository) under the rules in `archive/README.md`: byte-for-byte, a pointer left behind, a row in `archive/INDEX.md` with a checksum and the commit that holds the original.
 
 ## Read at the start of every task (highest value)
 
@@ -43,4 +43,24 @@ How to answer: for each ID say approve, keep, or change. I then hand over the re
 
 ## Conflicts with standing rules
 
-P-13 and P-14 change the rule "never delete a line". They move lines, so no line is lost. The rule text still needs your approval to change from "never delete" to "never lose; archive instead".
+P-13 and P-14 change the rule "never delete a line" to "never lose a line; archive it with a trace". You asked for that on 2026-10-26. MASTER_CONTEXT.md carries the new wording.
+
+## Outcome (2026-10-26)
+
+You approved the list. Every move is a row in `archive/INDEX.md`.
+
+| Item | Result | Archive ID |
+|---|---|---|
+| P-01 | Moved to `docs/status-log.md` in routine-machine | A-001 |
+| P-02 | Moved; pointer to `queue.md` | A-002 |
+| P-03 | Each cause cut to one line; full text moved | A-003 |
+| P-04 | Moved the two rules that `site/README.md` repeats (editing in `site/`, two articles per point). Kept the company-name, category, takeaways and journal-excerpt rules, because the README lacks parts of them. This differs from the list above. | A-004 |
+| P-05 | Five spokes rows shortened; originals moved | A-005 |
+| P-06 | Reduced to one sentence; full rule moved | A-006 |
+| P-07 | Four bullets and the handover section moved; one summary line left | A-007 |
+| P-08 | Four sections moved; pointers left | A-008 |
+| P-09 | Five of seven rows moved; routing and pruning rows kept | A-009 |
+| P-10, P-11, P-12 | Kept, as recommended | none |
+| P-13 | 57 answered blocks moved | A-010 |
+| P-14 | 396 lines of entries before 2026-10-01 moved | A-011 |
+| P-15 | Seven items marked answered, then moved with P-13 | A-010 |

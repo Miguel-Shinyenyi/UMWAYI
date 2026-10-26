@@ -34,11 +34,11 @@ where the observation gets tested against something real.
 | Backlog | `backlog.md` | The history. Every line stays; open lines are marked `[>]` with their queue id. |
 | Career prep | `projects/career-prep.md` | PostHog (primary), Ezra (secondary), and other roles. Interview prep, applications, what's working and what isn't. |
 | CMU masters | `projects/cmu-masters.md` | Fall 2027 application cycle. Feeds from the writing, backend, and AI engineer goals. |
-| Settlement engine | `projects/settlement-engine.md` | Idempotent Settlement and Reconciliation Engine, built with Claude Code. Public repo `Invoice-Financing` (made public 2026-09-23), all nine build phases done and deployed to a live staging server. Idempotency and reconciliation restudied in depth, one verified gap found and fixed. A public Lab sandbox and an MCP server over it are built and merged to `dev` (2026-10-09 to 2026-10-13). |
-| Routine machine | `projects/routine-machine.md` | AI project against hype culture: routines, learning, reading notes, a credit ledger, savings and training cohorts. Own repo, built with Claude Code. Phases 1 to 12 built and on `main` (pull request #9, 2026-10-26), with access control, observability, API docs, consent-first analytics (parts 1 to 3 seen), CI and the 111-row concerns record. |
-| Open source | `projects/open-source.md` | Open source issues matched to his path (MCP servers first), worked one at a time, each recorded with its verification, and an article per merged pull request. Started 2026-10-14. |
-| Website | `website/PLAN.md` | Personal site. Historical plan, resolved and superseded. The site's code lives in the `miguel-site` repo; its content lives here, in `site/`. |
-| Site content | `site/` | Everything the site shows: articles (philosophy, tech, journal), project pages, illustrations, the profile photo, the Now section. The site clones this folder at build time and rebuilds on every push that touches it. Rules for every file are in `site/README.md`. Broader cross-posting (Hashnode, dev.to, Medium, LinkedIn) still pending, see `backlog.md`. |
+| Settlement engine | `projects/settlement-engine.md` | Idempotent Settlement and Reconciliation Engine, public repo `Invoice-Financing`. Nine phases done, live on staging, Lab and MCP server on `dev`. |
+| Routine machine | `projects/routine-machine.md` | Routines, learning, reading notes, credit ledger, savings and cohorts. Own repo. Phases 1 to 12 on `main`. Direction under review (`queue.md` D-1). |
+| Open source | `projects/open-source.md` | Open source issues worked one at a time, each recorded with its verification. Started 2026-10-14. |
+| Website | `website/PLAN.md` | Historical plan, superseded. Site code is in `miguel-site`, content in `site/`. |
+| Site content | `site/` | Everything the site shows. Rebuilds on every push that touches it. Rules in `site/README.md`. |
 
 ## Standing principles for how I (Claude) operate here
 
@@ -60,19 +60,11 @@ where the observation gets tested against something real.
   article-worthy, and raise it for discussion rather than deciding on my own whether to write
   it, unless Miguel has already flagged and asked for it himself, the way the claim-versus-
   argument piece came about on 2026-09-20.
-- Open source work follows each project's own CONTRIBUTING file and the process in
-  `docs/open-source-process.md`. I build and verify the fix here, then hand over a patch and
-  the text for the issue and the pull request. Miguel reads every line, understands it, and
-  posts and opens pull requests himself. I do not claim a fix works beyond what was run, and I
-  say which checks could not run. Contributions include reproductions and reviews, not only
-  fixes. Waiting is part of the work, and open source is a numbers game, so there is no cap on issues in flight (Miguel, 2026-10-14).
+- Open source work follows each project's CONTRIBUTING file and `docs/open-source-process.md`. Miguel reads every line and posts and opens pull requests himself. I do not claim a fix works beyond what was run. Full rule archived as A-006.
 - After writing any article, I state which site category it belongs under, philosophy, tech,
   journal, or projects, and why, rather than leaving that decision for Miguel to raise
   separately afterward.
-- Site content is edited here, in `site/`, never in the `miguel-site` repo. Every new article
-  or project page follows `site/README.md`: the body starts with a `##` section, the last
-  section is `## What I took from it` as a numbered list, and it gets one illustration made
-  with `site/tools/illustrations.py` in the same delivery, not left for later.
+- Site rules (edit only in `site/`, article structure, one illustration per article, the limit of two articles per point) are in `site/README.md`. When I add an article I name the existing articles I checked against. Detail archived as A-004.
 - When I draft a "What I took from it" list, every item comes from what the piece itself
   already says. I don't add a lesson Miguel hasn't stated, and I tell him the list is a draft
   for him to correct.
@@ -82,10 +74,6 @@ where the observation gets tested against something real.
   named; he confirmed that on 2026-09-23. The names stay in the hub's own files, which the
   site never publishes. The homepage's open threads read straight from `projects/` files,
   so a bullet under "Open questions" or "Open decisions" there counts as site content.
-- No more than two articles on the site relay the same general point, concept, or principle.
-  Before adding a new one, I check what's already published for the point it makes, not just
-  its topic, and say which existing articles I checked against. Same rule in
-  `site/README.md`.
 - Journal excerpts for the site are drawn from `journal/entries/`, never copied whole.
   Anything private is left out: health beyond what an article has already made public, other
   people, money, and personal patterns still under investigation. When I'm not sure whether
@@ -125,7 +113,7 @@ where the observation gets tested against something real.
   for Claude Code to fix it, rather than describing the issue only in the abstract.
 
 - `queue.md` is the list of open work (from 2026-10-26). Before I queue a brief or a prompt I check it against the business goal and against the plan, refine it, and put conflicts to Miguel as decisions in section D. I do not treat a prompt as a command. Tasks go one at a time, design first, then code, then the tasks that keep the investor pack current. I plan at most 60% of the daily and weekly cap Miguel gives me, because other projects share it.
-- I never prune, archive, close or drop anything without Miguel's approval. Candidate text in context files is listed in `docs/pruning-candidates.md` with evidence and waits for a yes, item by item.
+- I never prune, archive, close or drop anything without Miguel's approval. Pruning means moving to `archive/`, never deleting: every move is recorded in `archive/INDEX.md` with a checksum and the commit that holds the original, and leaves a pointer behind (Miguel, 2026-10-26: do not lose data, keep it traceable and usable). Candidate text in context files is listed in `docs/pruning-candidates.md` with evidence and waits for a yes, item by item.
 - Business figures, prospect names and details about team members go only in the encrypted journal, never in public hub files. (Miguel's brief of 2026-10-26 and the strategy update were summarised in `journal/entries/2026-10-26.md`.)
 
 ## Rules from caught mistakes
@@ -135,16 +123,12 @@ separate from the general principles above so the reason each one exists stays v
 
 - Before dating any journal entry, sync log entry, or decisions/status log row, I confirm the
   actual current date explicitly. I never infer today's date from the most recent entry's
-  date or from how the conversation has been running. (Caused: a session's work got dated
-  09-19 when it was actually 09-20, then compounded into a duplicated entry when corrected
-  without checking the actual copy that had been made.)
+  date or from how the conversation has been running. (Caused: a wrong date on a journal entry. Detail: A-003.)
 - When Miguel relays or summarizes an idea from something he's reading, I record it and treat
   it as his own current understanding, not as a confirmed statement of what the source
   actually says, unless he says otherwise. A summary can be a misreading, and treating it as
   settled fact about the source would bury that possibility instead of leaving room to check
-  it. (Caused: a paraphrase of Sapiens got flatly attributed to Harari in the journal, before
-  Miguel pointed out he might have misunderstood the material, which is itself part of what
-  this whole practice is meant to catch.)
+  it. (Caused: a paraphrase of Sapiens recorded as what Harari said. Detail: A-003.)
 - The distinction between a claim and an argument, and between an understanding and a
   verified source, carries forward into how future reading gets taken in and how projects get
   handled, not just noted once in the entry where it came up and dropped. This applies to
@@ -152,102 +136,39 @@ separate from the general principles above so the reason each one exists stays v
   claim is also a claim, and gets the same scrutiny a book's argument does.
 - Settlement-engine is a system Miguel built himself, with Claude Code, not one he merely
   found or inherited. Restudying it is about verifying his own ability to explain it on
-  demand, not about learning someone else's work for the first time. (Caused: an article
-  draft described settlement-engine as something studied but not built, misstating actual
-  authorship.)
+  demand, not about learning someone else's work for the first time. (Caused: an article misstated who built the settlement engine. Detail: A-003.)
 - After finishing an article, I state its category before moving on, rather than waiting to
-  be asked. (Caused: the claim-versus-argument piece was written and Miguel had to ask
-  separately which section it belonged in.)
+  be asked. (Caused: a piece was written without saying which section it belonged in. Detail: A-003.)
 - I check project-status claims in the hub against reality periodically, not just when
-  something is actively being worked on. (Caused: `website/PLAN.md` and
-  `projects/settlement-engine.md` both sat stale for days after the underlying work had moved
-  well past what they described, discovered only when pointed out directly.)
+  something is actively being worked on. (Caused: two project files sat stale for days. Detail: A-003.)
 - When I print a file's full content for Miguel to copy, I treat that as delivered only once
   the tool call has actually confirmed returning that complete content, not because I
   intended it to or because a similar call worked earlier in the same session. A tool call
   can fail to run, run empty, or error out silently, and proceeding as though it succeeded
-  anyway would hand Miguel content that was never actually produced. (Caused: after a context
-  compaction, two verification Bash calls in a row failed to run, and Miguel had to ask
-  directly for a standing rule making sure every print is confirmed before being treated as
-  available.)
+  anyway would hand Miguel content that was never actually produced. (Caused: two verification calls failed after a context compaction. Detail: A-003.)
 - When a document is large or a session has been running long, I write it to an actual file
   and send it, rather than printing it into the chat and assuming it arrived intact. A long
-  print can get truncated in a way that isn't visible to me from the tool result. (Caused:
-  multiple full-file replacements printed into chat on 2026-09-22 came through truncated,
-  three hours into the session, and weren't safely copyable, discovered only when Miguel
-  said so directly.)
+  print can get truncated in a way that isn't visible to me from the tool result. (Caused: full-file replacements came through truncated in chat. Detail: A-003.)
 
 - Before handing over a file that goes into a build (anything under `site/`), I run the build
   with that file in place, and I keep the live file's front matter. A file's shape is part of
-  its content. (Caused: on 2026-10-09 I handed back a replacement for
-  `site/projects/settlement-engine.md` with no front matter. The site build rejected it and
-  neither new article went live until Miguel restored the front matter, `bd822f7`. Found on
-  2026-10-11 by checking the push.)
+  its content. (Caused: a site file handed over without front matter broke the build on 2026-10-09, commit `bd822f7`. Detail: A-003.)
 - Before building a fix for an open source issue, I read the live thread in a browser, search
   the open pull requests by issue number, and check labels, assignees and whether the reporter
   offered a fix. A summary tool saying "no linked pull requests" is not that check. I also
   build verification inputs from the grammar the code defends against, and use a real parser as
-  the oracle where one exists. (Caused: on 2026-10-14 I built a fix for supabase/mcp #457 while
-  pull request #459 already fixed half of it, and tested it on 200,000 generated statements
-  that never included `DO` or `CREATE FUNCTION` code strings, which that fix silently stopped
-  warning about. Miguel's Claude Code found both. A follow-up shortlist built from issue titles
-  was also all taken or not code in that repository. Pull request #470 was opened and closed
-  the same day.)
+  the oracle where one exists. (Caused: a fix built on 2026-10-14 for supabase/mcp #457 overlapped pull request #459. Detail: A-003.)
 - Before asking a reporter for details, I reread their post, and I check my reproduction against
-  the setup they described. (Caused: on 2026-10-14 the java-sdk #859 comment asked for details the
-  reporter had written, and the reproduction used a separate stub instead of a tool calling back
-  into the same Tomcat connector. A summary of what I verified also said "a maintainer chose" a
-  pull request on evidence that only showed a maintainer mentioning another one.)
+  the setup they described. (Caused: the java-sdk #859 comment asked for details the reporter had already written. Detail: A-003.)
 - When a prompt names a library option or behaviour, I say it is unverified and tell the agent to check it
-  against the current docs. (Caused: on 2026-10-15 the PostHog prompt asked for cookieless counting before
-  consent. The agent checked the docs and found that PostHog's cookieless mode captures nothing until a
-  visitor accepts or declines, so the plan could not work as I wrote it.)
+  against the current docs. (Caused: the PostHog prompt asked for cookieless counting before consent, which PostHog does not allow. Detail: A-003.)
 
 - I solve the problem the other person states, in their words, and I do not act ahead of what was
   asked. No follow-up drafts, extra reproductions or audits until Miguel asks or a thread raises
-  something already solved. (Caused: on java-sdk #882 the comment led with my method, the reporter
-  closed the issue with an answer to their own problem, and Miguel told me the aim was to solve his
-  problem, not the one I thought he had. He asked for this as a general rule on 2026-10-16.)
+  something already solved. (Caused: the java-sdk #882 comment led with my method, not the reporter's problem. Detail: A-003.)
 - After each handover I name the destination again in the file name or the note, and on the next sync I check where it
-  landed. (Caused: on 2026-10-19 the hub file `projects/routine-machine.md` was applied to `site/projects/routine-machine.md`,
-  commit `1282a25`. The public page then held hub-only text until found on 2026-10-26.)
+  landed. (Caused: a hub file was applied to the public site page, commit `1282a25`. Detail: A-003.)
 
 ## Current open threads
 
-See `backlog.md` for the full, itemized list. Summary by project:
-
-- Journaling practice: active. First entry tested the knowing-versus-explaining hypothesis
-  against a real technical topic. Result: the hypothesis didn't hold for that topic. See
-  `journal/entries/2026-09-16.md` and `projects/career-prep.md` for the full shift.
-- Career prep: PostHog is now the primary target. Rejection feedback recorded but still not
-  worked through. Ezra kept as secondary.
-- CMU masters: Fall 2027 cycle open, final deadline 2026-12-09. Program and test timeline
-  both undecided.
-- Settlement engine: built by Miguel, all nine phases done and verified on staging.
-  Idempotency chosen as the first subsystem restudied, two explain-back passes done, one
-  verified crash-recovery gap found and fixed same day (commit `950bf86`). Outbox and
-  ledger, then reconciliation, restudied and checked against the code. A public Lab sandbox
-  and an MCP server over it are merged to `dev`. Open: where the Lab is hosted, and who
-  carries out a correction after a mismatch is resolved. From 2026-10-15 the restudy tilts toward MCP and
-  agents, anchored in the engine's own MCP server; the Phase 1 and Phase 9 concurrency fixes stay on the
-  list after a first cold test with no recall.
-- Open source: started 2026-10-14. Board of issues, no cap, in `projects/open-source.md`,
-  process and evidence in `docs/open-source-process.md`. supabase/mcp #457 is waiting on the
-  maintainers after pull request #470 was closed (another contributor's #459 covers half).
-  Six issues are posted; java-sdk #882 is closed by the reporter, supabase-kt #415 has Miguel's follow-up and no reply yet, the rest wait. No follow-ups are drafted ahead of a reply. Next: a second #859 reproduction (tool
-  calling back into the same connector) and a test of the #457 dollar-quote rule.
-- Routine machine: direction under review (strategy update of 2026-10-20 points to an organisation tool for skills-to-work programmes; decision D-1 in `queue.md`). Phases 1 to 12 are on `main` (2026-10-26, `da5640f`). Staged prompts of 2026-10-19 run through
-  Prompt 7 (access control, observability with an owner-only `/watchtower`, API docs, repository standard, CI green,
-  understanding-first reminders, the 111-row concerns record). Open: Prompt 5 parts 4 to 6 not seen in commits; whether
-  Phase 4 stays gated; whether the app moves from tracking toward producing work. Email reminders remain a future
-  addition.
-- Website and publishing: site live, redesigned around the illustrated shepherd (2026-09-23).
-  Content lives in this hub's `site/` folder, so the site is updated by editing markdown here.
-  Hashnode, dev.to, Medium, and LinkedIn profiles now exist and are linked from the footer;
-  cross-posting is live to dev.to and LinkedIn (technical pieces only on LinkedIn). Hashnode
-  (needs a paid plan) and Medium (issues no tokens) are not in use. Journal excerpt publication is on hold.
-  Published 2026-10-26: the articles "Stay Close Behind the Code" (philosophy) and "My First Agentic System Is a Folder of Files" (tech). Built 2026-10-15: PostHog analytics on the site, live without a consent banner (the banner and a privacy
-  page are still to build), and a local script that published all 10 philosophy and tech articles to
-  Substack with no email to subscribers.
-  The footer email sign-up runs on MailerLite (account 2655737); Waline handles comments and
-  "This helped" only.
+Open work is in `queue.md`. Answered and older items are in `backlog.md`. Per-project state is in each file under `projects/`. The previous summary is archived as A-002 (`archive/INDEX.md`).

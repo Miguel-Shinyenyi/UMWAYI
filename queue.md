@@ -92,7 +92,7 @@ Rule from the update: if the first five interviews show no repeated problem, no 
 
 ## P. Pruning, awaiting your approval
 
-Nothing is pruned until you approve each item. The list, with line counts and evidence, is in `docs/pruning-candidates.md`. Status for every P item: awaiting approval.
+You approved the list on 2026-10-26 ("lets go with your recommendation"). Done: P-01 to P-09, P-13, P-14, P-15, each recorded in `archive/INDEX.md` (A-001 to A-011). Kept by decision: P-10, P-11, P-12. The list, with evidence, is in `docs/pruning-candidates.md`. Run `python3 archive/verify.py` to recheck the checksums.
 
 ## H. Hub items, converted from `backlog.md`
 
@@ -104,14 +104,14 @@ IDs match the `(H-nnn)` mark on the line in `backlog.md`. "Yours" means only you
 | H-002 | Which CMU program: MSCS, MSAII, MSE or MSIT | CMU | yours |
 | H-003 | Target durations per schedule block | Routine Machine | queued |
 | H-004 | Does the weekly schedule layout need tuning once lived with | Routine Machine | queued |
-| H-005 | Poll hub-sync on a schedule or trigger by hand | Routine Machine | proposed close |
-| H-006 | Could a moved or renamed file be double-counted by hub-sync | Routine Machine | proposed close |
+| H-005 | Poll hub-sync on a schedule or trigger by hand | Routine Machine | closed 2026-10-26 |
+| H-006 | Could a moved or renamed file be double-counted by hub-sync | Routine Machine | closed 2026-10-26 |
 | H-007 | Does the Board view call the backend or the intelligence service | Routine Machine | queued |
 | H-008 | Chart types for the Reports view, once real data exists | Routine Machine | held |
 | H-009 | Waline free-tier database: Postgres or MongoDB | Site | queued |
 | H-010 | Waline database suspension: keepalive or accepted risk | Site | queued |
 | H-011 | Four pillars and a four-step loop on the homepage: loss or fair simplification | Site | yours |
-| H-012 | Public repo names companies the site keeps private | Site | proposed close |
+| H-012 | Public repo names companies the site keeps private | Site | closed 2026-10-26 |
 | H-013 | Read the seven journal excerpts in site/journals | Site | yours |
 | H-014 | "This helped" limits one click per browser, not per device | Site | queued |
 | H-015 | Who carries out a correction after a mismatch is resolved | Settlement engine | yours |
@@ -125,7 +125,7 @@ IDs match the `(H-nnn)` mark on the line in `backlog.md`. "Yours" means only you
 | H-023 | How far the "Routine Machine as an intuitive pre-answer" insight reaches | Self | yours |
 | H-024 | Does "anxiety comes from addiction to control" hold against a real instance | Self | yours |
 | H-025 | Weekly summaries: on request only, one went missing before | Hub | queued |
-| H-026 | Review and push the 2026-10-13 agent-practice changes | Hub | proposed close |
+| H-026 | Review and push the 2026-10-13 agent-practice changes | Hub | closed 2026-10-26 |
 | H-027 | Measure whether the agent practices help (corrections per run) | Hub | queued |
 | H-028 | Decide on pruning the hub (archive closed items and old log entries) | Hub | awaiting approval |
 | H-029 | Journal gaps 10-20, 10-22, 10-23, 10-24 | Hub | yours |
@@ -136,7 +136,7 @@ IDs match the `(H-nnn)` mark on the line in `backlog.md`. "Yours" means only you
 | H-034 | Consent banner and privacy page on the site | Site | queued |
 | H-035 | Confirm one pageview and one event in PostHog Live from a real browser | Site | queued |
 | H-036 | check:mobile fails 378px against 375px | Site | queued |
-| H-037 | After each article run npm run substack and commit the record | Site | proposed close |
+| H-037 | After each article run npm run substack and commit the record | Site | closed 2026-10-26 |
 | H-038 | Journal excerpt publication on hold | Site | held |
 | H-039 | Possible next article: AI hype and fundamentals | Site | held |
 | H-040 | Next book: Algorithms Are Not Enough | Reading | held |
@@ -161,19 +161,19 @@ IDs match the `(H-nnn)` mark on the line in `backlog.md`. "Yours" means only you
 | H-059 | Cloud hosting, storage, CI/CD, Kubernetes, caching: concerns answer first | Routine Machine | held |
 | H-060 | Does Routine Machine move from tracking toward producing work | Routine Machine | yours |
 | H-061 | Email reminders for time-related items | Routine Machine | held |
-| H-062 | PROJECT.md "Current phase" line reads only "five" | Routine Machine | proposed close |
+| H-062 | PROJECT.md "Current phase" line reads only "five" | Routine Machine | closed 2026-10-26 |
 | H-063 | docs/testing.md stale "Open questions" wording | Routine Machine | queued |
 | H-064 | Test supabase/mcp #459 against the real PostgreSQL parser | Open source | held |
 | H-065 | Test the dollar-quote rule on #457 | Open source | held |
 | H-066 | Second java-sdk #859 reproduction | Open source | held |
-| H-067 | Board wording on spring-ai PR #6932 | Open source | proposed close |
+| H-067 | Board wording on spring-ai PR #6932 | Open source | closed 2026-10-26 |
 | H-068 | Concerns record and understanding-first in every project | Hub | queued |
 | H-069 | One article per merged pull request | Open source | held |
 | H-070 | Check career-prep against current applications before any article names a company | Open source | yours |
 
-### Proposed closes and the evidence
+### Closes and the evidence
 
-Each stays open until you say yes.
+Closed 2026-10-26 with your approval. The lines are in `archive/backlog/answered-2026-10-26.md`.
 
 - H-005: `docs/hub-sync.md` says it polls every 15 minutes (`hub-sync.poll-interval-ms`).
 - H-006: `docs/hub-sync.md` decisions log, 2026-10-17: dedupe by content sha, so a renamed file is not counted twice.

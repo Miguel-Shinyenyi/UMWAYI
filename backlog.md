@@ -11,6 +11,8 @@ An open line is marked `[>]` and carries its queue id, for example `(H-012)`. A 
 into `queue.md` first. When an item is resolved, mark it `[x]` here with "Answered YYYY-MM-DD:" and the
 evidence, as before.
 
+Answered lines were moved to `archive/backlog/answered-2026-10-26.md` on 2026-10-26 (A-010 in `archive/INDEX.md`). Search that file for an old id or phrase.
+
 ## Open questions
 
 ### Career prep
@@ -28,9 +30,6 @@ evidence, as before.
       schedule was designed. (Raised 2026-09-18)
 - [>] (H-004) Whether the weekly schedule layout needs adjusting once actually lived with. Expected
       to need tuning, not a sign anything was wrong. (Raised 2026-09-18)
-- [>] (H-005) Poll hub-sync on a schedule, or trigger it manually. (Raised 2026-09-18)
-- [>] (H-006) Whether a moved or renamed file in UMWAYI could get double-counted by hub-sync, needs
-      a real check once used, not assumed away. (Raised 2026-09-18)
 - [>] (H-007) Whether the Board view talks to the backend directly or through the intelligence
       service for materializing today's tasks. (Raised 2026-09-19)
 - [>] (H-008) Exact chart types for the Reports view, deliberately deferred until real data exists
@@ -41,23 +40,8 @@ evidence, as before.
       makes simplest. (Raised 2026-09-20)
 - [>] (H-010) What happens if the free-tier database goes inactive and gets suspended, whether that
       needs a keepalive or is an accepted risk. (Raised 2026-09-20)
-- [x] Whether the flock's teardrop marks and the mascot read clearly to someone seeing the
-      site for the first time. (Raised 2026-09-22) Answered 2026-09-23: superseded. The full
-      redesign removed the geometric mascot and the flock entirely.
 - [>] (H-011) Whether replacing the UMWAYI method's six stages with four pillars and a four-step loop
       on the homepage loses something real, or is a fair simplification. (Raised 2026-09-23)
-- [x] Hashnode, LinkedIn, dev.to, and Medium links in the footer point to `#` until those
-      accounts exist. (Raised 2026-09-23) Answered 2026-09-23: all four accounts exist now.
-      Real URLs kept in `site/links.md`, which the footer reads.
-- [x] The settlement-engine repo (`Invoice-Financing`) is recorded here as private, but its
-      GitHub page loaded without sign-in on 2026-09-23. (Raised 2026-09-23) Answered
-      2026-09-23: Miguel made it public. Linked from its project page.
-- [>] (H-012) The UMWAYI repo is public on GitHub, so `projects/career-prep.md`, several journal
-      entries, and `MASTER_CONTEXT.md` name the companies the site now keeps private. The
-      site no longer shows them, but anyone reading the repo can. Decide whether that's
-      acceptable, or whether those files, or the repo, should be private. Making the repo
-      private would break the site's build clone until it's given a read token. (Raised
-      2026-09-23)
 - [>] (H-013) Read the seven new journal excerpts in `site/journals/` (09-18 to 09-23) and correct
       anything that isn't how he'd put it, or that he'd rather keep private. (Raised
       2026-09-23)
@@ -66,14 +50,6 @@ evidence, as before.
       (Raised 2026-09-23)
 
 ### Settlement engine
-- [x] Whether outbox and double-ledger will surface similarly real, correctable gaps once
-      studied this closely, or whether idempotency's crash gap was specific to its own
-      complexity. Not assumed either way. (Raised 2026-09-21) Answered 2026-09-25: yes for
-      the ledger. `LedgerEntry` rows are written but never read anywhere in the codebase;
-      `LedgerAccount.balance` is a stored column mutated directly, with nothing checking it
-      against the sum of its own entries. The outbox held up as designed: the event write and
-      the business write share one transaction, and the publisher only marks a row published
-      after a confirmed send.
 - [>] (H-015) Who carries out a correction after a mismatch is resolved: a person editing the
       database directly, which is the only path today (no endpoint corrects data, and nothing
       moves a settlement to `REVERSED`), or a person deciding and the engine executing it
@@ -92,13 +68,6 @@ evidence, as before.
       has no consumer and no Prometheus rule covers mismatches, so one is seen only if
       someone opens the reconciliation page. Options: a consumer on the topic, or an alert
       rule on the open-mismatch count. (Raised 2026-10-02)
-- [x] Whether a resolved settlement mismatch whose disagreement persists reopens on the next
-      run. `flagMismatch` only skips a settlement that already has an `OPEN` row, so by
-      reading it the answer is yes, but it has not been run. The ledger-mismatch version of
-      this loop is documented and verified. (Raised 2026-10-09) Answered 2026-10-13: yes.
-      `docs/mcp.md` records it observed live in the Lab: after a resolve, the next
-      reconciliation run opened a new mismatch with a new id for the same settlement. Seen by
-      Claude Code in the repo's own docs, not rerun here.
 - [>] (H-018) Whether the reconciliation candidate query needs a time window or paging. Each run
       loads every settlement that has ever had a reference and checks each one against the
       external side, every 60 seconds. Fine at the current size, worth revisiting before
@@ -108,11 +77,6 @@ evidence, as before.
 - [>] (H-019) Whether the maintainers want a follow-up for the second half of supabase/mcp #457, and
       which direction (a rule for code strings, or a real parser). Comment posted
       2026-10-14. (Raised 2026-10-14)
-- [x] Whether mclenhard/mcp-evals is still maintained. Answered 2026-10-14: last commit June
-      2025, dormant, dropped.
-- [x] Which modelcontextprotocol/java-sdk issue to take. Answered 2026-10-14: the good first
-      issues each have two to five pull requests. Two reproductions chosen instead (#859,
-      #882), see the board in `projects/open-source.md`.
 - [>] (H-020) How long a first maintainer reply and a review take across these repositories. The board
       dates will show it. (Raised 2026-10-14)
 
@@ -132,20 +96,6 @@ evidence, as before.
 ## Pending decisions and actions
 
 ### Hub infrastructure
-- [x] Encrypt `journal/entries/` with git-crypt, since the UMWAYI repo is public and the
-      journal is the one folder that should never be readable there. (Raised 2026-09-24)
-      Answered 2026-09-29: git-crypt alone wouldn't have done it, since it only encrypts
-      commits made after it's turned on and years of plaintext entries were already
-      public in history. Miguel decided to rewrite history first (`git filter-repo`
-      dropping `journal/entries/` from every past commit, then a force-push), then
-      re-add the current entries fresh under git-crypt so they're encrypted from that
-      point on. Full step-by-step handed to Claude Code as
-      `claude-code-prompt-git-crypt.md`, since it needs local push access this hub
-      doesn't have. For my own ability to decrypt and read journal entries in future
-      sessions: Miguel chose to store the exported git-crypt key as a file in this
-      claude.ai Project rather than re-attaching it each session, which trades "only
-      git-crypt keyholders can read this" for "whoever can open this Project can", a
-      trade he made deliberately, not a default I picked.
 
       Executed 2026-09-30, not just planned. Scope was widened mid-run, before the
       force-push: the plan covered `journal/entries/` only, but
@@ -177,12 +127,6 @@ evidence, as before.
       pushed 2026-10-09). `2026-10-05-to-2026-10-11` does not yet. Decide whether to schedule
       them. (Raised 2026-10-09)
 
-- [>] (H-026) Review and push the agent-practice changes from 2026-10-13: `docs/agent-practices.md`
-      and the `MASTER_CONTEXT.md` rules (this repo), a root `CLAUDE.md` for this repo, and a
-      root `CLAUDE.md` in each of Invoice-Financing (`dev`), Routine Machine (`main`) and
-      miguel-site (`main`), plus a user-level `~/.claude/CLAUDE.md` on Miguel's machine. A
-      `CLAUDE.md` is read at the start of every Claude Code task, so read each one before
-      merging. (Raised 2026-10-13)
 - [>] (H-027) Measure whether the practices help: count corrections needed after each Claude Code run
       (late patches, missed requirements, claims that turn out unverified) and compare with
       the Lab prompt, which needed one late patch. Not measured yet. (Raised 2026-10-13)
@@ -193,16 +137,10 @@ evidence, as before.
       `site/README.md`, since both hold them. Both change a standing rule, so neither is
       applied. (Raised 2026-10-13)
 
-- [x] Add the understanding-first and 111-concerns section to the root `CLAUDE.md` of Invoice-Financing (`dev`) and
-      `miguel-site` (`main`). (Raised 2026-10-26) Answered 2026-10-26: pushed by Miguel.
 - [>] (H-029) Journal gaps: no commits in any repo on 2026-10-20, 10-22, 10-23, 10-24, so no entries. Entries for 10-17, 10-18,
       10-21, 10-25 and 10-26 were rebuilt from commits. Add notes for any of those days if you want them filled in.
       (Raised 2026-10-26)
 - [>] (H-030) Weekly summaries for 10-05 to 10-11 and 10-12 to 10-18 are not written. Only on request. (Raised 2026-10-26)
-- [x] Public hub files still name PostHog and Ezra as career targets (`projects/career-prep.md`, `MASTER_CONTEXT.md`,
-      `backlog.md`). (Raised 2026-10-26) Answered 2026-10-26: leave them named in the public hub files.
-- [x] Rewrite `site/projects/routine-machine.md` after the misrouted handoff. (Raised 2026-10-26) Answered 2026-10-26: leave
-      as deployed. It still names a target employer and the site rule says site files must not. Miguel's decision.
 - [>] (H-031) Find the sentence in Sapiens on Sumerian writing, the human brain and DNA, and check it against Miguel's note of
       2026-10-20. (Raised 2026-10-26)
 - [>] (H-032) Review the takeaways in `site/tech/my-first-agentic-system-is-a-folder.md`; they are a draft for Miguel to
@@ -214,14 +152,6 @@ evidence, as before.
       multiple times, still not started. (Raised 2026-09-16)
 
 ### Website and publishing
-- [x] Apply the RSS page patch to `miguel-site` `main`: the footer "RSS" link opened raw XML. Built and
-      checked in Chromium on 2026-10-19. (Raised 2026-10-19) Answered 2026-10-26: merged as pull request #3
-      (394230b, 2026-10-21).
-- [x] PostHog analytics on the site. Done 2026-10-15: `miguel-site` pull request #2 merged (a1f7bed). Pageviews,
-      autocapture, rage and dead clicks, web vitals, exception capture, heatmaps, session replay and eight
-      custom events, with replay masking all inputs, both comment widgets and the newsletter form. Do Not
-      Track and Global Privacy Control are honoured. The key is read from `PUBLIC_POSTHOG_KEY` and is not in
-      the repo. (Raised 2026-10-15)
 - [>] (H-034) Add the consent banner and a privacy page. Until then the live site sets cookies, keeps a localStorage
       identifier and records sessions with no notice to visitors. Miguel chose full analytics first and consent
       later on 2026-10-15. Note from the build: PostHog's `cookieless_mode: 'on_reject'` captures nothing until
@@ -232,23 +162,9 @@ evidence, as before.
       (Raised 2026-10-15)
 - [>] (H-036) `npm run check:mobile` fails on article and project pages, 378px against 375px. It fails the same way
       with analytics off, so it predates the analytics work. Needs its own pass. (Raised 2026-10-15)
-- [x] Publish every philosophy and tech article to Substack from a local script. Done 2026-10-15: all 10 are on
-      shinyenyi.substack.com, published with no email (the publication had no subscribers at the time). Script
-      `scripts/substack-post.mjs`, record `scripts/substack-posted.json`, doc `docs/substack-setup.md`. The
-      endpoints are undocumented and can change. Substack's terms do not name this use; breach can end the
-      account. (Raised 2026-10-15)
-- [>] (H-037) After each new article, run `npm run substack` from `scripts/` and commit the record. Renew the cookie
-      when the script exits with code 2. (Raised 2026-10-15)
 - [>] (H-038) Journal excerpt publication is on hold, by Miguel's decision on 2026-10-11. None
       written. If it resumes, the 2026-10-01 entry was the only one that made a point no
       published piece already covers. (Raised 2026-10-11)
-- [x] The luxury trap (Sapiens, Part Two) is a possible philosophy article. Before writing,
-      check it against `more-copies-is-not-a-better-life` and the other published pieces,
-      because the repetition rule allows two per point and the trap overlaps with the
-      measure-versus-welfare point. Raise it, do not write it unasked. (Raised 2026-10-13)
-      Answered 2026-10-14: Miguel asked for it. Written as `philosophy/a-convenience-is-hard-to-give-back`,
-      with a different point from the measure-versus-welfare piece (why a step is not undone once the cost
-      shows). Code example run before it was written; site build passed.
 - [>] (H-039) Possible next article, raise only: the AI hype and fundamentals thread (software as a side effect
       of learning). Check the published pieces first, and note that the video's claims are Miguel's
       reading, not checked against the video. Not written. (Raised 2026-10-14)
@@ -257,36 +173,6 @@ evidence, as before.
 - [>] (H-041) Optional: run the two-week test of whether AI tools save hours or raise expectations: log hours and
       output per day with and without the tool. Named in the new article as untested. (Raised 2026-10-13,
       repeated in the 2026-10-14 article)
-- [x] Create dev.to and Medium accounts, still don't exist. (Raised in the original site
-      plan, 2026-09-16, carried forward) Answered 2026-09-23: both exist, along with Hashnode
-      and LinkedIn profiles.
-- [x] Decide whether the broader hub cross-posting plan (Hashnode, dev.to, Medium, LinkedIn)
-      is still intended, separate from the narrower decision already made to keep the site
-      itself GitHub-Pages-only. (Raised 2026-09-20) Answered 2026-09-29: yes. A GitHub
-      Actions workflow (`cross-post.yml` + `scripts/cross-post.mjs`) posts every non-draft
-      `site/tech/` and `site/philosophy/` article to dev.to, Hashnode, and Medium as a
-      full cross-post with a canonical link back to the site, and posts a TL;DR (the
-      article's `summary` field) plus a link to LinkedIn for `site/tech/` articles only,
-      journal excerpts stay off all four platforms on purpose, personal-voice content
-      duplicated onto professional-audience platforms is a different call than an argued
-      piece, and Miguel chose the narrower scope when asked. Idempotent via a
-      `crossposted:` frontmatter block per article, so re-runs only fill in what's
-      missing. Correction, 2026-09-29: Medium was first described here as deprecated but
-      still functional, that was wrong. Medium stopped issuing new integration tokens
-      entirely as of a report dated 2026-09-24, and Miguel's Medium account is new, so
-      there's currently no way to get a token at all, not just a fragile one. Medium is
-      out of the pipeline for now, not best-effort; `MEDIUM_TOKEN` stays unset and the
-      script skips it cleanly. LinkedIn's personal-posting token still expires roughly
-      every 60 days with no refresh mechanism, confirmed and unchanged; Miguel chose to
-      run it anyway, on the condition that a failure there surfaces loudly (a failed
-      workflow run) rather than silently skipping the post, dev.to and Hashnode results
-      still get committed either way. Setup steps for every secret this needs, including
-      the recurring LinkedIn re-auth, are in `docs/cross-post-setup.md`. Hashnode's
-      official API field list
-      (`apidocs.hashnode.com`) couldn't be reached from here to verify against; the
-      script's field names come from a community writeup and are flagged in the setup
-      doc as worth checking, or testing against a throwaway draft, before the first real
-      run.
 
       First real run 2026-09-30, and the four-platform plan did not survive it. Of 14
       intended posts, 2 landed: both `site/tech/` articles on dev.to, live and verified,
@@ -304,92 +190,15 @@ evidence, as before.
       - LinkedIn failed on both tech articles with `403 ACCESS_DENIED` naming `/author`,
         which means `LINKEDIN_AUTHOR_URN` is not in the required `urn:li:person:<id>` form.
         The token and its scopes are fine; only the secret's value is wrong.
-- [x] Decide whether Hashnode is worth a paid Pro plan purely to keep it in the cross-post
-      pipeline, given Medium is already out and that would leave dev.to and LinkedIn as the
-      only free platforms. Their changelog also advertises an "MCP connect" feature for
-      read/write access to posts, which may or may not be a free alternative route; not
-      verified. Until this is decided, `HASHNODE_TOKEN` should be unset so the script skips
-      Hashnode cleanly instead of failing every run. (Raised 2026-09-30) Answered 2026-10-01:
-      no, not worth paying for. dev.to and LinkedIn already work for free; paying to keep one
-      leg of a plan that started as "if possible" running isn't worth it on its own. Hashnode
-      is parked here as a future problem, worth revisiting only if the unverified "MCP
-      connect" route turns out to be a free way back in. The homepage's "All articles on
-      Hashnode" link now points to dev.to instead (`index.astro`'s lookup switched from the
-      `Hashnode` label to `dev.to`), and the Hashnode entry was removed from the footer's
-      profile list (`site/links.md`). The Hashnode account itself is untouched, nothing was
-      deleted there. `HASHNODE_TOKEN` should stay unset in the workflow's secrets (it already
-      should be, per the previous entry), since the script otherwise has no platform left to
-      try for that article and would log nothing rather than fail, which is the quiet way for
-      this decision to stay correct without a secret to remember to touch again.
-- [x] Fix `LINKEDIN_AUTHOR_URN` to the full `urn:li:person:<sub>` form, re-checking `sub`
-      via `/v2/userinfo` as `docs/cross-post-setup.md` describes. Only Miguel can do this,
-      it is a secret value. (Raised 2026-09-30) Answered 2026-09-30: fixed by Miguel, and
-      both tech articles posted to LinkedIn on the next run. The diagnosis held exactly: the
-      token and its scopes were never the problem, the same token works unchanged, it was
-      only the URN's form. Reading which field the `403` named, `/author`, is what separated
-      this from an expired token or a missing product scope.
-- [x] Re-run the cross-post workflow for the four articles that were rate-limited, once the
-      throttle fix is in. (Raised 2026-09-30) Answered 2026-09-30: all four posted, zero
-      `429`s, and the run took about 90s, matching the three 31s gaps the throttle inserts.
-      The two already-published articles were skipped rather than reposted, so the
-      `crossposted:` idempotency works. dev.to is now 6 of 6, LinkedIn 2 of 2 (tech only, by
-      design). Hashnode is the only failing platform, and only because of the paid-plan
-      change, not a bug.
-- [x] Whether the two-typeface design contrast holds up on mobile. (Raised 2026-09-18)
-      Answered 2026-09-22: it didn't. Three real bugs confirmed by rendering the site at
-      375px and measuring, not guessed from CSS: header nav overflow, and one CSS line
-      (`.article-grid`'s mobile breakpoint missing `minmax(0, ...)`) causing both headline
-      and code-block overflow on article pages. Fixed same day by Claude Code, commit
-      `726e635`, independently reverified against the live pushed repo with a fresh
-      production build and a separate mobile-viewport measurement, not taken on the commit
-      message alone.
-- [x] Mobile-first redesign with a bolder accent, playful/interactive touches (daisyUI,
-      Tailwind), and a personal mark. (Raised 2026-09-22) Answered 2026-09-22: built and
-      pushed by Claude Code same day, commit `726e635`. `docs/design.md` in `miguel-site`
-      carries the full, dated reasoning, including where the build differed from the brief.
-- [x] Whether the shepherd-based personal mark and the bolder accent chrome actually read
-      well once seen directly, not assumed from the plan or the code alone. (Raised
-      2026-09-22) Answered 2026-09-22: the first cautious version (quiet six-dot mark, no
-      mascot) was seen live and read as flat, no real presence, confirmed by direct
-      screenshot review before Miguel said so himself. Reversed into a full mascot and hero
-      redesign at Miguel's explicit request, built and pushed by Claude Code, commit
-      `9e5210f`. That version was independently verified directly: a fresh production build
-      (13 pages, no errors), a repeated mobile-viewport overflow check confirming the new
-      hero illustration didn't reintroduce the earlier bug class, and real screenshots in
-      light mode, dark mode, and with reduced motion set, all read clearly with no leftover
-      color-collision issues. The design reads well. Whether its individual marks are
-      legible to a first-time viewer without context is a separate, still-open question
-      above.
 
-- [x] Full redesign around the illustrated shepherd, from Miguel's own spec. (Raised
-      2026-09-23) Answered 2026-09-23: built and pushed by Claude Code, commits `3b884cc` and
-      `7f4ac16`. Checked against a fresh production build (14 pages, no page-level overflow
-      at 390px). Eight gaps against the reference found and handed to Claude Code in the same
-      round as the content move below.
-- [x] Move all site content into UMWAYI's `site/` folder and have the site build from it.
-      (Raised 2026-09-23) Answered 2026-09-23: pushed on both sides, `miguel-site` commit
-      `8066b2b`. A fresh build clones `site/` and copies all 10 pages, 10 illustrations,
-      and the photo.
-- [x] Footer email sign-up saves to Waline as a subscription request. It collects
-      addresses; nothing sends the "new article" email yet. Decide how that gets sent.
-      (Raised 2026-09-23) Answered 2026-09-23: the sign-up moves to MailerLite (account
-      2655737). Addresses land in MailerLite's subscriber list, and emails go out as
-      MailerLite campaigns. The site gets an RSS feed in the same change.
 - [>] (H-042) On MailerLite's free plan, each new-article email is sent by hand as a campaign.
       Sending automatically from the site's RSS feed needs a paid plan (Comfort or Power).
       Decide which, once there are subscribers to write to. (Raised 2026-09-23)
-- [x] Turn double opt-in on or off in the MailerLite form's settings. (Raised 2026-09-23)
-      Answered 2026-09-23: on, confirmed from the inbox by Miguel (`miguel-site` commit
-      `680e833`).
 - [>] (H-043) With double opt-in on, "You're on the list" is true of the list, but nobody gets an
       email until they click the confirmation link. Decide whether the success message
       should say "Check your inbox to confirm." (Raised 2026-09-23)
 - [>] (H-044) One test address went into the live MailerLite list twice during testing (JavaScript
       on and off). Remove it, or keep it as a real subscriber. (Raised 2026-09-23)
-- [x] The homepage showed only three journal entries of nine. (Raised 2026-09-23)
-      Answered 2026-09-23: all nine were live at `/journal/`, but each Writing tab shows the
-      three newest and had no link to the rest. Fixed in `miguel-site` commit `55f0b17`:
-      each tab now ends with a counted link to its full list, confirmed in a fresh build.
 - [>] (H-045) Delete any test comments Claude Code posted to live Waline threads while checking
       "This helped" and the sign-up form, from the Waline admin page. (Raised 2026-09-23)
       Claude Code listed six in `docs/design.md`: objectId 3 ("This helped" on
@@ -400,16 +209,6 @@ evidence, as before.
       With the sign-up moving to MailerLite, any real addresses left under
       `/miguel-site/subscribe` in Waline should be moved into MailerLite by hand, then
       deleted from Waline.
-- [x] Create a fine-grained token scoped to `miguel-site` with Contents read and write, save
-      it as the `SITE_DISPATCH_TOKEN` secret on UMWAYI, and add
-      `.github/workflows/notify-site.yml`, so a push to `site/` rebuilds the site. Only
-      Miguel can do this. (Raised 2026-09-23) Answered 2026-09-23: workflow added in commit
-      `6a38a6f`, secret set, and the whole path verified end to end, a `workflow_dispatch`
-      run on UMWAYI succeeded and the matching `repository_dispatch` (`umwayi-content`)
-      deploy on `miguel-site` completed successfully. Not done as specified: the token used
-      is Miguel's existing broad personal access token, not a fine-grained one scoped to
-      `miguel-site`, chosen deliberately by him when the narrower scope was offered. The
-      same token is also stored in cleartext in `miguel-site`'s `.git/config` remote URL.
 - [>] (H-046) Decide whether to replace `SITE_DISPATCH_TOKEN` with a fine-grained token scoped to
       `miguel-site` with Contents read and write only, as originally intended, and whether
       to get the same token out of `miguel-site`'s `.git/config` remote URL, where it sits
@@ -433,52 +232,6 @@ evidence, as before.
       2026-10-09, so only their existence was confirmed. (Raised 2026-10-09)
 
 ### Settlement engine
-- [x] Choose which subsystem to study first, in depth, cold: idempotency/state machine,
-      reconciliation engine, or the concurrency fixes from Phase 1/9. (Raised 2026-09-20)
-      Answered 2026-09-21: idempotency, chosen and studied first.
-- [x] Fix the crash-recovery gap in settlement finalization: a hard crash between
-      `createPendingSettlement` and `finalizeSettlement` leaves a `PENDING` settlement with no
-      `externalRef`, invisible to reconciliation, and its idempotency key permanently
-      `IN_PROGRESS`. (Raised 2026-09-21) Answered 2026-09-21: fixed same day, commit
-      `950bf86`, `StalePendingSettlementSweepService`, a scheduled sweep finalizing stale
-      `PENDING` settlements as `UNKNOWN` past a grace period, with unit and integration
-      tests.
-- [x] Ledger entries are written but never read back anywhere in the codebase, so nothing
-      checks `LedgerAccount.balance` against the sum of its own entries. Found 2026-09-25
-      while restudying the ledger. Fix designed and handed to Claude Code: an `OPENING` entry
-      per account (accounts currently start with a nonzero balance and zero entries, seeded
-      directly), `ledger_entries.settlement_id` made nullable for `OPENING` rows only, a
-      `sumNetByAccountId` query, a consistency check on every `GET /accounts/{id}` that still
-      raises a 500 on mismatch, and a durable, reviewable record of the mismatch itself: a new
-      `ledger_mismatches` table, sibling to `reconciliation_mismatches` rather than a forced
-      generalization of it, with the same audited, manual-only resolve workflow. The general
-      policy this follows (detect internally, record it, require an explicit audited
-      resolution, never auto-correct) gets written into `docs/reconciliation.md` as a named
-      rule, not left implicit in what the existing mismatch handling happens to do. Answered
-      2026-09-27: built, merged to `dev` (`b3d3b33`), and checked line by line against the
-      spec (migrations, service, controller, docs) since this sandbox can't reach Maven
-      Central to run the real suite itself. Everything matched, plus two things not asked
-      for: a zero-opening-amount account correctly gets no row, and an honest note that the
-      check only fires on `GET /accounts/{id}`, so an account nobody reads stays unchecked.
-      Claude Code's own decisions log records a real end-to-end run against local dev data
-      (46 confirmed settlements, one hand-edited balance caught and resolved). Running the
-      actual Maven test suite is still worth doing once, but not blocking on it given the
-      code-level agreement. (Raised 2026-09-25)
-- [x] Restudy the reconciliation engine cold. (Raised 2026-09-27) Answered 2026-10-02 and
-      recorded 2026-10-09: explained from memory, then checked against the code. UNKNOWN with
-      an external reference is auto-resolved by `autoResolveUnknown`, only contradictions go
-      to a person, nothing alerts that person, and resolving a mismatch records a decision
-      without changing data. Found beyond what was asked: settlements stuck UNKNOWN with no
-      reference are invisible to reconciliation. All four are tracked as open questions above.
-- [x] Run `claude-code-prompt-lab-ui.md` in Claude Code on a branch off `dev` and check the
-      result against a real build and real screenshots, the way the ledger work was checked.
-      It is a full UI rewrite with a public sandbox that runs the real engine, so the safety
-      rules in the prompt (separate stack, rate limits, a startup guard) need testing, not
-      just reading. (Raised 2026-10-09) Answered 2026-10-13: built and merged to `dev` on
-      2026-10-09 (PR #1). `docs/lab.md` records the Java suite, a full `docker compose` run,
-      a Playwright pass at 375px and 1280px, and one real load run at the caps. It lists two
-      things not verified: streaming through a real Ingress and a from-scratch image build.
-      Not independently re-run here. An Apple-style restyle merged on 2026-10-13.
 - [>] (H-051) Look at the Lab and the MCP server's evals with fresh eyes, as a user would: open the
       Lab, read `docs/mcp.md`, and check the 7 of 7 first scored run (results file under
       `mcp-server/evals/results/`) against what the cases actually test. (Raised 2026-10-13)
@@ -499,14 +252,6 @@ evidence, as before.
       current MCP specification before teaching. Nothing built yet. (Raised 2026-10-15)
 
 ### Routine machine
-- [x] Run the staged routine-machine prompt of 2026-10-19 in Claude Code. Stage 1 reads and reports only;
-      each later stage waits for Miguel's answer. (Raised 2026-10-19) Answered 2026-10-26: run through Prompt 7
-      (see commits 2026-10-21 to 2026-10-26). Exception: Prompt 5 parts 4 to 6 are not visible in commits.
-- [x] Before any hosted use: user-scoped API routes must take the user from the signed session, not from
-      a request field. Stage 2 of that prompt. (Raised 2026-10-19) Answered 2026-10-21: access control parts 1 to 5
-      and a route sweep; isolation tests added.
-- [x] Merge Phases 10 to 12 into `main` once reviewed. They sit on their own branches. (Raised 2026-10-19)
-      Answered 2026-10-26: pull request #9 merged, `main` at da5640f.
 - [>] (H-055) Routine machine: Prompt 5 (product analytics) shows parts 1 to 3 of 6 in commits. Check whether parts 4 to 6
       were done. (Raised 2026-10-26)
 - [>] (H-056) Routine machine: confirm PostHog Live events from a real browser after consent. (Raised 2026-10-15, still open)
@@ -519,58 +264,21 @@ evidence, as before.
       and approval). Claude's assessment is in the 2026-10-19 reply; Miguel decides. (Raised 2026-10-19)
 - [>] (H-061) Design and build email reminders for anything time-related (deadlines, scheduled
       decision points) once Routine Machine can support it. (Raised 2026-09-20)
-- [>] (H-062) Fix `PROJECT.md`'s "Current phase" line, currently just reads "five" with no
-      description, unlike every earlier phase. Cosmetic, low priority. (Raised 2026-09-20)
 - [>] (H-063) Fix `docs/testing.md`'s stale "Open questions: None currently open for Phase 1"
       wording, now that Phase 3 is done. Cosmetic, low priority. (Raised 2026-09-19)
 
 ### Open source
-- [x] On 2026-10-21, check #457 for a maintainer reply. If none, one follow-up with new
-      evidence only. (Raised 2026-10-14) Answered 2026-10-16: no scheduled follow-up. Act only when the thread raises something already solved.
 - [>] (H-064) Test supabase/mcp #459 against the real PostgreSQL parser and comment only if it finds
       something. (Raised 2026-10-14)
 - [>] (H-065) Test hexproof-dev's rule on #457 (dollar-quoted body after `=`, `||`, `(`, `,`, `VALUES` is data,
       after `DO`, `AS`, `EXECUTE` is code), including single-quoted code strings. Comment only with
       new evidence. (Raised 2026-10-14)
-- [x] supabase-kt #415: post the follow-up to the maintainer's five answers (core multiplatform or not, module
-      name and path, start now or after the refactors, RS256 and ES256 first). No code until those are
-      answered. Decide who writes the core: the repo discourages AI for logic code. (Raised 2026-10-15) Answered 2026-10-16: Miguel posted the follow-up on 2026-10-15. No reply yet. Who writes the core is still open.
 - [>] (H-066) Second java-sdk #859 reproduction: a tool that calls back into the same Tomcat connector, NIO2,
       small and default `maxThreads`, plain and TLS. The reporter had already described this setup.
       A correcting comment only if the thread raises it. Do not start unprompted. (Raised 2026-10-14)
-- [x] Optional: edit the posted #882 comment so it says the same 20 second timeout, with the exact
-      message in most runs, instead of the exact error on all three versions. (Raised 2026-10-14)
-- [>] (H-067) Fix the board wording on spring-ai PR #6932: no maintainer chose it. Done in the 2026-10-14
-      replacement of `projects/open-source.md`. (Raised 2026-10-14)
-- [x] Build a minimal embedded-Tomcat reproduction for java-sdk #859 and post the result on the
-      issue. (Raised 2026-10-14) Done 2026-10-14: comment posted, hang not reproduced, thread
-      blocking and queueing confirmed.
-- [x] Read java-sdk #882 and decide if it is worth a reproduction. (Raised 2026-10-14) Done
-      2026-10-14: reproduced the exact timeout message, comment posted.
-- [x] Follow up once on java-sdk #859 and #882 if there is no reply by 2026-10-21, only with new
-      information. (Raised 2026-10-14) Answered 2026-10-16: replaced by the rule of no follow-up until the thread raises something already solved.
-- [x] Follow up once on supabase-kt #415 if there is no reply by 2026-10-21, only with new
-      information. No code until the maintainer answers. (Raised 2026-10-14) Answered 2026-10-16: replaced by the rule of no follow-up until the thread raises something already solved.
-- [x] Follow up once on posthog-android #577 if there is no reply by 2026-10-21, only with new
-      information. No code until a maintainer agrees on the API shape. (Raised 2026-10-14) Answered 2026-10-16: replaced by the rule of no follow-up until the thread raises something already solved.
-- [x] Follow up once on spring-ai PR #6932 if there is no reply by 2026-10-21, only with new
-      information. Watch whether it merges and whether a backport to 2.0.x or 1.1.x is discussed.
-      (Raised 2026-10-14) Answered 2026-10-16: replaced by the rule of no follow-up until the thread raises something already solved.
 - [>] (H-068) Add `docs/engineering-concerns.md` and `docs/understanding-first.md` to every project: one concerns record
       per project (111 rows since 2026-10-19, answer and reason), and a link from each `CLAUDE.md` and `PROJECT.md`. A project
       is audited only when Miguel asks. (Raised 2026-10-16)
-- [x] java-sdk #882: compare the reporter's answer with the comment. (Raised 2026-10-16) Answered 2026-10-16: cause
-      family matches, the `text/plain` claim differs from my results and is unproven, and the comment missed the goal.
-      See `projects/open-source.md`.
-- [x] Add the goal-first and no-preemption rules to the Claude Code prompt template in `docs/agent-practices.md`.
-      (Raised 2026-10-16) Done 2026-10-16.
-- [x] Review the draft article `site/philosophy/stay-close-behind-the-code.md` (draft: true, so it stays off the
-      lists, but the site still builds its page). Decide when to publish. The article's claims about hype and
-      overwhelm are Miguel's own notes, unchecked. (Raised 2026-10-16) Answered 2026-10-26: published, `draft: false`,
-      dated 2026-10-26.
-- [x] Routine machine: run the slow-down reminders prompt in Claude Code, after the docs are saved. Needs the
-      stage 1 gate answered. (Raised 2026-10-16) Answered 2026-10-19: not run. Replaced by the staged routine-machine prompt of 2026-10-19,
-      which includes the reminders.
 - [>] (H-069) Write one article per merged pull request. First candidate, only after something is
       merged or substantively reviewed: why splitting SQL on `;` fails and how to make a safety
       check fail closed. Check the published articles first. (Raised 2026-10-14)

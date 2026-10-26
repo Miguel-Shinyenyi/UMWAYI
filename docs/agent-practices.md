@@ -68,12 +68,7 @@ A Claude Code prompt contains, in this order:
 | Date | Decision | Reason |
 |------|----------|--------|
 | 2026-10-13 | Add a root `CLAUDE.md` to Invoice-Financing that routes Claude Code to the maintenance rules and to only the docs for the component it touches | Trigger and structure: the repo had maintenance rules but nothing that made an agent read them |
-| 2026-10-13 | Staged prompts with gates once a prompt has more than three parts | Steering: an agent that sees every phase tends to rush toward the end, and the Lab prompt needed a late patch |
-| 2026-10-13 | Acceptance checks come first in every prompt | Verification first: the checks define done before any code exists |
 | 2026-10-13 | Pruning is raised as an open decision, not applied | It conflicts with the rule to never delete a backlog line |
-| 2026-10-13 | The practices apply to every project, with a shared user-level file and one `CLAUDE.md` per repo | Miguel asked for it. Rules written once at user level stop each repo drifting, and each repo keeps its own routing |
-| 2026-10-16 | Goal first and no preemptive work are rules for every prompt and comment | Miguel, after java-sdk #882 closed with an answer the comment had missed |
-| 2026-10-13 | Every handed-over file states repo, path and new or replacement | A replacement without front matter broke a site build on 2026-10-09 
 
 ## Open questions
 
