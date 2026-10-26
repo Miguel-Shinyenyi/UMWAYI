@@ -20,15 +20,45 @@ CMU masters, PostHog and other target roles, becoming a working AI engineer.
 ## Architecture, one line
 
 Two services: Java Spring Boot core owns the data, Python FastAPI intelligence service owns
-suggestion and pattern logic. Mirrors the settlement-engine pattern deliberately.
+suggestion and pattern logic. Mirrors the settlement-engine pattern deliberately. Next.js
+frontend, Postgres, Docker Compose.
 
 ## Phases
 
+Checked against the repo (`main` at da5640f, 2026-10-26). Detail is in the repo's `PROJECT.md`.
+
 1. Logging plus rule-based topic suggestion, weighted toward the most neglected goal. Done.
-2. Pattern detection over accumulated logs: completion rates, streaks, skip-heavy days, a
-   topic/completion correlation. Done.
-3. Fixed weekly schedule, tasks, a reading log, and a full Next.js frontend (backlog,
-   roadmap, board, reports views). Done.
+2. Pattern detection over accumulated logs. Done.
+3. Fixed weekly schedule, tasks, a reading log, and a Next.js frontend. Done.
+4. Active reprioritization. Gated on weeks of real usage data. Not started.
+5. The shepherd frontend (Today, Path, Flock, Tally). Done.
+6. Watering holes: WakaTime, ActivityWatch, GitHub, RescueTime, a health-data endpoint, hub-sync. Done.
+7. Reader's notes assessed by an AI model. Done.
+8. Accounts, password login and the hillside. Done, OAuth sign-in deferred.
+9. Hillside v2 and the evidence-to-credit ledger. Done.
+10. Profile and analogies. Done.
+11. The granary: savings, the pause, M-Pesa statement import. Done.
+12. Organisations and cohorts. Done.
+
+Phases 9 to 12 are on `main` (pull request #9, 2026-10-26). After Phase 12, work moved to the
+hardening items below, run as staged Claude Code prompts.
+
+## Hardening since 2026-10-19
+
+- Per-user scoping and access control: every user-scoped route takes the user from the signed token,
+  with an owner role and cross-user isolation tests. Done 2026-10-21.
+- Observability: request ids, JSON logs, metrics, Prometheus, Alertmanager, Loki, Jaeger, Grafana,
+  exemplars, and an owner-only `/watchtower` page. Done 2026-10-21 to 2026-10-25.
+- API docs for both services, owner only, with the documentation check. Done 2026-10-25.
+- Product analytics, consent first (parts 1 to 3 of 6 visible in commits): identify by internal id,
+  replay off, a privacy page, named events, a build-failing field-name test.
+- Repository standard: README with a real screenshot, MIT license, CI (green on GitHub), demo profile
+  off by default, fresh-clone run. Done 2026-10-26.
+- Understanding first (staged Prompt 7): the two hub documents, a daily reminder, a stronger reminder
+  after missed days, a weekly failure-mode card, a choice of start day, the 111-row concerns record.
+  Done 2026-10-26.
+- Not started: cloud hosting and file storage, CI/CD deploys, Kubernetes, caching (each needs a
+  concerns-record answer first).
 
 Studying an existing system (settlement-engine) for understanding is a learning activity,
 not a building one, and belongs under Phase 1's goal-tagged `learning_topics`, not under
@@ -52,15 +82,16 @@ the reading tracker the same way. Detail in the routine-machine repo's `docs/hub
 
 ## Status
 
-All three phases built, tested, and pushed. Independently verified from this side: the
-frontend's test suite passes (5 tests), the intelligence service's passes unchanged (18
-tests). The backend's 56 tests couldn't be independently run here, Maven Central isn't
-reachable from this side, but the reasoning behind them held up under the same scrutiny as
-everything else.
+Updated 2026-10-26. Phases 1 to 12 are on `main`. CI is green on GitHub. The commit history shows the
+staged prompts of 2026-10-19 run through Prompt 7, except that Prompt 5 (product analytics) shows only
+parts 1 to 3 of 6 in commits. Whether parts 4 to 6 were done is unknown.
 
-Worth watching, not yet established: this is the second phase in a row where a fix from an
-earlier phase (the `JOIN FETCH` lazy-loading pattern) was applied proactively before hitting
-the same bug again, rather than after. Two data points so far.
+Open: whether Phase 4 stays gated; whether the app moves from tracking work toward producing it (an
+artifact with checks and approval); the routine-machine README and `PROJECT.md` name a target employer.
+
+Earlier note, still worth watching: fixes from one phase were applied ahead of time in the next (the
+`JOIN FETCH` pattern). Two data points so far. A new one on 2026-10-26: a test that passed only on
+macOS (it looked for the word "mum") failed in CI and was fixed to look for whole phrases.
 
 ## Daily inventory it tracks
 

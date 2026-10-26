@@ -188,14 +188,30 @@ project file.
       `site/README.md`, since both hold them. Both change a standing rule, so neither is
       applied. (Raised 2026-10-13)
 
+- [x] Add the understanding-first and 111-concerns section to the root `CLAUDE.md` of Invoice-Financing (`dev`) and
+      `miguel-site` (`main`). (Raised 2026-10-26) Answered 2026-10-26: pushed by Miguel.
+- [ ] Journal gaps: no commits in any repo on 2026-10-20, 10-22, 10-23, 10-24, so no entries. Entries for 10-17, 10-18,
+      10-21, 10-25 and 10-26 were rebuilt from commits. Add notes for any of those days if you want them filled in.
+      (Raised 2026-10-26)
+- [ ] Weekly summaries for 10-05 to 10-11 and 10-12 to 10-18 are not written. Only on request. (Raised 2026-10-26)
+- [x] Public hub files still name PostHog and Ezra as career targets (`projects/career-prep.md`, `MASTER_CONTEXT.md`,
+      `backlog.md`). (Raised 2026-10-26) Answered 2026-10-26: leave them named in the public hub files.
+- [x] Rewrite `site/projects/routine-machine.md` after the misrouted handoff. (Raised 2026-10-26) Answered 2026-10-26: leave
+      as deployed. It still names a target employer and the site rule says site files must not. Miguel's decision.
+- [ ] Find the sentence in Sapiens on Sumerian writing, the human brain and DNA, and check it against Miguel's note of
+      2026-10-20. (Raised 2026-10-26)
+- [ ] Review the takeaways in `site/tech/my-first-agentic-system-is-a-folder.md`; they are a draft for Miguel to
+      correct. Then run `npm run substack` from `scripts/` for it and for "Stay Close Behind the Code". (Raised 2026-10-26)
+
 ### Career prep
 - [ ] Actually work through the PostHog rejection feedback properly, what was said, what
       was felt, what's genuinely open versus already being decided about it. Deferred
       multiple times, still not started. (Raised 2026-09-16)
 
 ### Website and publishing
-- [ ] Apply the RSS page patch to `miguel-site` `main`: the footer "RSS" link opened raw XML. Built and
-      checked in Chromium on 2026-10-19, not yet applied. (Raised 2026-10-19)
+- [x] Apply the RSS page patch to `miguel-site` `main`: the footer "RSS" link opened raw XML. Built and
+      checked in Chromium on 2026-10-19. (Raised 2026-10-19) Answered 2026-10-26: merged as pull request #3
+      (394230b, 2026-10-21).
 - [x] PostHog analytics on the site. Done 2026-10-15: `miguel-site` pull request #2 merged (a1f7bed). Pageviews,
       autocapture, rage and dead clicks, web vitals, exception capture, heatmaps, session replay and eight
       custom events, with replay masking all inputs, both comment widgets and the newsletter form. Do Not
@@ -478,11 +494,20 @@ project file.
       current MCP specification before teaching. Nothing built yet. (Raised 2026-10-15)
 
 ### Routine machine
-- [ ] Run the staged routine-machine prompt of 2026-10-19 in Claude Code. Stage 1 reads and reports only;
-      each later stage waits for Miguel's answer. (Raised 2026-10-19)
-- [ ] Before any hosted use: user-scoped API routes must take the user from the signed session, not from
-      a request field. Stage 2 of that prompt. (Raised 2026-10-19)
-- [ ] Merge Phases 10 to 12 into `main` once reviewed. They sit on their own branches. (Raised 2026-10-19)
+- [x] Run the staged routine-machine prompt of 2026-10-19 in Claude Code. Stage 1 reads and reports only;
+      each later stage waits for Miguel's answer. (Raised 2026-10-19) Answered 2026-10-26: run through Prompt 7
+      (see commits 2026-10-21 to 2026-10-26). Exception: Prompt 5 parts 4 to 6 are not visible in commits.
+- [x] Before any hosted use: user-scoped API routes must take the user from the signed session, not from
+      a request field. Stage 2 of that prompt. (Raised 2026-10-19) Answered 2026-10-21: access control parts 1 to 5
+      and a route sweep; isolation tests added.
+- [x] Merge Phases 10 to 12 into `main` once reviewed. They sit on their own branches. (Raised 2026-10-19)
+      Answered 2026-10-26: pull request #9 merged, `main` at da5640f.
+- [ ] Routine machine: Prompt 5 (product analytics) shows parts 1 to 3 of 6 in commits. Check whether parts 4 to 6
+      were done. (Raised 2026-10-26)
+- [ ] Routine machine: confirm PostHog Live events from a real browser after consent. (Raised 2026-10-15, still open)
+- [ ] Routine machine: `README` and `PROJECT.md` name a target employer. Decide whether to reword. (Raised 2026-10-26)
+- [ ] Routine machine: 2026-10-26 commits fixed a test that passed only on macOS. Check the other tests for
+      machine-specific assumptions. (Raised 2026-10-26)
 - [ ] Later, not in the current prompt: cloud hosting and file storage, CI/CD, Kubernetes, caching. Each
       gets a concerns-record answer first. (Raised 2026-10-19)
 - [ ] Decide whether Routine Machine moves from tracking work toward producing it (an artifact with checks
@@ -534,9 +559,10 @@ project file.
       See `projects/open-source.md`.
 - [x] Add the goal-first and no-preemption rules to the Claude Code prompt template in `docs/agent-practices.md`.
       (Raised 2026-10-16) Done 2026-10-16.
-- [ ] Review the draft article `site/philosophy/stay-close-behind-the-code.md` (draft: true, so it stays off the
+- [x] Review the draft article `site/philosophy/stay-close-behind-the-code.md` (draft: true, so it stays off the
       lists, but the site still builds its page). Decide when to publish. The article's claims about hype and
-      overwhelm are Miguel's own notes, unchecked. (Raised 2026-10-16)
+      overwhelm are Miguel's own notes, unchecked. (Raised 2026-10-16) Answered 2026-10-26: published, `draft: false`,
+      dated 2026-10-26.
 - [x] Routine machine: run the slow-down reminders prompt in Claude Code, after the docs are saved. Needs the
       stage 1 gate answered. (Raised 2026-10-16) Answered 2026-10-19: not run. Replaced by the staged routine-machine prompt of 2026-10-19,
       which includes the reminders.

@@ -1,8 +1,8 @@
 ---
 title: "Stay Close Behind the Code"
-date: 2026-10-16
+date: 2026-10-26
 summary: "AI can write the code. You still have to understand it as it appears. Hype makes that feel optional, and the feelings it brings are fear and desperation."
-draft: true
+draft: false
 tags: ["Philosophy", "AI", "Engineering", "Java"]
 illustration: stay-close-behind-the-code.svg
 illustrationAlt: "A sheep tagged code waits at a gate. The shepherd holds up a hand beside a board that reads stored 120.00, ledger 120.00 and a tick. A speech bubble says check first."

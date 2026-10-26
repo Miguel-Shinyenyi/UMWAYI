@@ -1,6 +1,6 @@
 # Master Context
 
-Last updated: 2026-10-19
+Last updated: 2026-10-26
 
 ## Who this is for
 
@@ -34,7 +34,7 @@ where the observation gets tested against something real.
 | Career prep | `projects/career-prep.md` | PostHog (primary), Ezra (secondary), and other roles. Interview prep, applications, what's working and what isn't. |
 | CMU masters | `projects/cmu-masters.md` | Fall 2027 application cycle. Feeds from the writing, backend, and AI engineer goals. |
 | Settlement engine | `projects/settlement-engine.md` | Idempotent Settlement and Reconciliation Engine, built with Claude Code. Public repo `Invoice-Financing` (made public 2026-09-23), all nine build phases done and deployed to a live staging server. Idempotency and reconciliation restudied in depth, one verified gap found and fixed. A public Lab sandbox and an MCP server over it are built and merged to `dev` (2026-10-09 to 2026-10-13). |
-| Routine machine | `projects/routine-machine.md` | AI project against hype culture: routines, learning, reading notes, a credit ledger, savings and training cohorts. Own repo, built with Claude Code. Phases 1 to 12 built (10 to 12 on branches, 2026-10-19). |
+| Routine machine | `projects/routine-machine.md` | AI project against hype culture: routines, learning, reading notes, a credit ledger, savings and training cohorts. Own repo, built with Claude Code. Phases 1 to 12 built and on `main` (pull request #9, 2026-10-26), with access control, observability, API docs, consent-first analytics (parts 1 to 3 seen), CI and the 111-row concerns record. |
 | Open source | `projects/open-source.md` | Open source issues matched to his path (MCP servers first), worked one at a time, each recorded with its verification, and an article per merged pull request. Started 2026-10-14. |
 | Website | `website/PLAN.md` | Personal site. Historical plan, resolved and superseded. The site's code lives in the `miguel-site` repo; its content lives here, in `site/`. |
 | Site content | `site/` | Everything the site shows: articles (philosophy, tech, journal), project pages, illustrations, the profile photo, the Now section. The site clones this folder at build time and rebuilds on every push that touches it. Rules for every file are in `site/README.md`. Broader cross-posting (Hashnode, dev.to, Medium, LinkedIn) still pending, see `backlog.md`. |
@@ -202,6 +202,9 @@ separate from the general principles above so the reason each one exists stays v
   something already solved. (Caused: on java-sdk #882 the comment led with my method, the reporter
   closed the issue with an answer to their own problem, and Miguel told me the aim was to solve his
   problem, not the one I thought he had. He asked for this as a general rule on 2026-10-16.)
+- After each handover I name the destination again in the file name or the note, and on the next sync I check where it
+  landed. (Caused: on 2026-10-19 the hub file `projects/routine-machine.md` was applied to `site/projects/routine-machine.md`,
+  commit `1282a25`. The public page then held hub-only text until found on 2026-10-26.)
 
 ## Current open threads
 
@@ -227,16 +230,17 @@ See `backlog.md` for the full, itemized list. Summary by project:
   maintainers after pull request #470 was closed (another contributor's #459 covers half).
   Six issues are posted; java-sdk #882 is closed by the reporter, supabase-kt #415 has Miguel's follow-up and no reply yet, the rest wait. No follow-ups are drafted ahead of a reply. Next: a second #859 reproduction (tool
   calling back into the same connector) and a test of the #457 dollar-quote rule.
-- Routine machine: Phases 1 to 12 built. Phase 9 (the credit ledger) is merged to `main`; Phases 10 to 12
-  (profile, the granary, cohorts) are on their own branches (2026-10-19). Next: a staged prompt for
-  understanding first, access control, an owner-only operations page, API docs, product analytics and the
-  repository standard. Email reminders for time-related items remain a future addition.
+- Routine machine: Phases 1 to 12 are on `main` (2026-10-26, `da5640f`). Staged prompts of 2026-10-19 run through
+  Prompt 7 (access control, observability with an owner-only `/watchtower`, API docs, repository standard, CI green,
+  understanding-first reminders, the 111-row concerns record). Open: Prompt 5 parts 4 to 6 not seen in commits; whether
+  Phase 4 stays gated; whether the app moves from tracking toward producing work. Email reminders remain a future
+  addition.
 - Website and publishing: site live, redesigned around the illustrated shepherd (2026-09-23).
   Content lives in this hub's `site/` folder, so the site is updated by editing markdown here.
   Hashnode, dev.to, Medium, and LinkedIn profiles now exist and are linked from the footer;
   cross-posting is live to dev.to and LinkedIn (technical pieces only on LinkedIn). Hashnode
   (needs a paid plan) and Medium (issues no tokens) are not in use. Journal excerpt publication is on hold.
-  Built 2026-10-15: PostHog analytics on the site, live without a consent banner (the banner and a privacy
+  Published 2026-10-26: the articles "Stay Close Behind the Code" (philosophy) and "My First Agentic System Is a Folder of Files" (tech). Built 2026-10-15: PostHog analytics on the site, live without a consent banner (the banner and a privacy
   page are still to build), and a local script that published all 10 philosophy and tech articles to
   Substack with no email to subscribers.
   The footer email sign-up runs on MailerLite (account 2655737); Waline handles comments and
