@@ -36,6 +36,7 @@ where the observation gets tested against something real.
 | CMU masters | `projects/cmu-masters.md` | Fall 2027 application cycle. Feeds from the writing, backend, and AI engineer goals. |
 | Settlement engine | `projects/settlement-engine.md` | Idempotent Settlement and Reconciliation Engine, public repo `Invoice-Financing`. Nine phases done, live on staging, Lab and MCP server on `dev`. |
 | Routine machine | `projects/routine-machine.md` | Routines, learning, reading notes, credit ledger, savings and cohorts. Own repo. Phases 1 to 12 on `main`. Direction under review (`queue.md` D-1). |
+| Hackathon | `projects/hackathon.md` | Meta Global AI Developer Hackathon, Oct 26 to Nov 4. Open-source follow-through agent in a new public repo `umwayi-rm`. Plan v2, decisions D-9 to D-13 in `queue.md`. |
 | Open source | `projects/open-source.md` | Open source issues worked one at a time, each recorded with its verification. Started 2026-10-14. |
 | Website | `website/PLAN.md` | Historical plan, superseded. Site code is in `miguel-site`, content in `site/`. |
 | Site content | `site/` | Everything the site shows. Rebuilds on every push that touches it. Rules in `site/README.md`. |
