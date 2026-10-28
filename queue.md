@@ -30,10 +30,10 @@ These block queued work. Each has my recommendation. They are yours to decide.
 | D-8 | The first hire's terms: pay, hours, start date, contract type, and whether her cost sits on top of the planning envelope or comes out of contingency. | The financials workbook is built with the pay field empty. | Stipend or part-time in Tranche 1, full engagement only after the discovery gate. Written IP assignment and confidentiality before the first payment. |
 | D-9 | Hackathon stack: one TypeScript service (API and MCP server), or Java and Spring Boot with a separate MCP process. | Fresh build, nine days, schema checks and the agent loop are TypeScript-native. | TypeScript. |
 | D-10 | Hackathon licence. | The repo must be public. | MIT. |
-| D-11 | Is the problem first-hand, and which two programme staff can you interview by Nov 1? | Impact is 30% of the score. Real quotes beat a stated hypothesis. Nothing is invented. | Two ten minute interviews with permission. |
+| D-11 | Is the problem first-hand, and which two treasurers or group members can you interview by Nov 1? | Impact is 30% of the score. Real quotes beat a stated hypothesis. Nothing is invented. | Two ten minute interviews with permission. |
 | D-12 | Daily hours you can give Nov 1 to Nov 4. | The schedule assumes about 3 hours a day. | Tell me a number; days move if it is lower. |
-| D-13 | Photo of a paper register as a second intake. | Needs image input to work; adds scope. | Only after the freeze checklist is green. |
-| D-14 | Which hackathon direction: (1) a savings-group secretary agent with the brain ideas as the measured engineering inside it, (2) the training-programme agent with the same, or (3) the brain harness alone. See the discussion of 2026-10-27 and `projects/hackathon.md`. | The council scored 1 highest, 2 next, 3 lowest on Impact and Demo. Those scores are model opinions. Option 3 alone has no user, a weak demo and a mental-health-advisor risk if the reassurance framing is shown. | Option 1, with a small pre-registered test of the restraint and archive ideas. |
+| D-13 | Photo of a paper ledger as a second intake. | ANSWERED by D-14: included after voice and approval work. | n/a |
+| D-14 | Which hackathon direction | ANSWERED 2026-10-27: option 1, a savings-group secretary agent, with the restraint and archive ideas as a pre-registered test inside it. Plan v3 is in `umwayi-rm/HACKATHON.md`. | n/a | n/a |
 
 ## R. Routine Machine, from the brief
 
@@ -198,4 +198,5 @@ Day by day tasks, with acceptance checks, live in the repository's `queue.md` (H
 | K-01 | Request the Baseten $100 credit and submit the Meta $150 form. Each needs your own account and a card on file | queued, now | Confirmation saved, no card data in any file | `umwayi-rm/docs/hackathon-log.md` |
 | K-02 | Create the public repo `umwayi-rm` from the delivered zip, docs only, with a LICENSE | queued, now | Public when logged out; no code; first code commit Oct 27 or later | repo log |
 | K-03 | Decide D-9 to D-13 | queued, now | Answers recorded here | this file |
-| K-04 | Ask on the hackathon Discord whether a staff-facing agent counts as "AI for Education" | queued, next | Answer recorded | repo log |
+| K-04 | Ask on the hackathon Discord whether a savings-group ledger agent is clear of "basic RAG" and "simple image analyzers", and whether "Built with Muse Spark Open" is required | queued, next | Answer recorded | repo log |
+| K-05 | Two ten minute interviews with treasurers or members (D-11); read the Day 1 model checks | queued, next | Real rows in `umwayi-rm/docs/research/interviews.md`, or it says none | repo |

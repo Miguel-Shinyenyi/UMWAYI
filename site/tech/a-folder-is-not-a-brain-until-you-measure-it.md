@@ -4,7 +4,8 @@ date: 2026-10-27T00:00:00.000Z
 summary: >-
   I built a folder of rules, identity and memory for an AI and hoped it would
   act on what I mean. Then I read the studies. Here is what they say, where my
-  memory comparison fails, and the test I will run.
+  memory comparison fails, and the test I will run on Muse Spark Open for the
+  Meta Global AI Developer Hackathon.
 draft: true
 tags:
   - AI
@@ -72,11 +73,19 @@ One narrow claim looks supported by nearby evidence: short, human-written rules 
 
 Two bigger claims are not supported. A folder does not make a brain. A text file does not give an AI an identity. It gives it a policy and a style. If I say more, I owe a measurement.
 
+## Where I will test it
+
+I joined the Meta Global AI Developer Hackathon, which runs from October 27 to November 4, 2026. I entered as a solo builder in the Indie track. Entries must use Meta models. I will use Muse Spark Open, an open-weights model, served on Baseten.
+
+I will not test the folder on its own. A test with no user is easy to bend toward the answer I want. I am building a small open-source secretary for savings groups, the chamas many Kenyans use to save together. A treasurer speaks a note or photographs a paper ledger page. The agent proposes ledger entries and asks a question when a note is ambiguous, for example when two members share a name. The treasurer approves everything. The agent moves no money, scores no one and sends nothing.
+
+The restraint ideas from this article sit inside that agent. The tests are part of the entry, with the plan and protocol public in the repository before I run them. I have not built any of it yet. People already make chama apps, such as Chamasoft and M-Chama, so I am not claiming this is the first. Nobody has used mine. Whether treasurers want it is a question I still have to ask them.
+
 ## What I will test
 
-I will run it on an open-weights model this week, with the hypotheses written down first.
+I will run it on Muse Spark Open in the first week of the event, with the hypotheses written down first.
 
-1. Curated rules lower wrong guesses on ambiguous tasks. The comparison that counts is against a generic "ask when unsure" block of the same length, not against nothing.
+1. Curated rules lower wrong guesses on ambiguous notes, such as a name that matches two members. The comparison that counts is against a generic "ask when unsure" block of the same length, not against nothing.
 2. A core plus a traceable archive keeps stale-fact updates and archived needles better than truncation or plain retrieval at the same token budget.
 3. Rule adherence survives compaction, when a long conversation is summarised to continue.
 
@@ -84,7 +93,8 @@ Controls: a placebo text of equal length, scenarios split into development and a
 
 ## What I do not know
 
-- How this model follows instructions.
+- How Muse Spark Open follows instructions, and whether it reads handwriting and voice well. I check this on day one.
+- Whether treasurers want this at all.
 - Whether my rules fit my own test cases because I wrote both.
 - Whether any effect survives a second model.
 
@@ -99,6 +109,7 @@ Controls: a placebo text of equal length, scenarios split into development and a
 - [Memory for Autonomous LLM Agents: Mechanisms, Evaluation, and Emerging Frontiers](https://arxiv.org/pdf/2603.07670)
 - [Sleep-time compute, Letta](https://letta.com/blog/sleep-time-compute)
 - [Context management, Anthropic](https://claude.com/blog/context-management)
+- [Meta Global AI Developer Hackathon, event page](https://cerebralvalley.ai/e/meta-ai-developer-hackathon/details)
 - [Memory Transformation and Systems Consolidation, Winocur and Moscovitch (abstract)](https://www.cambridge.org/core/product/F50631D35ED93130B0E2D58889D00F34)
 
 I read the abstracts or summaries of the memory-science sources, not the full papers.

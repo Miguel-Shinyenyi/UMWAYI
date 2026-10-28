@@ -170,3 +170,10 @@ Entries before 2026-10-01 are in `archive/SYNC_LOG/2026-09.md` (A-011 in `archiv
 - What moved: ten sources were read, mostly abstracts and summaries, and three review lenses were run. The site builds with the article set to publish (32 pages) and with it held as a draft. The human-memory sources were abstracts only.
 - Not done: no direction picked; the repository plan files were not changed; the article takeaways are a draft for Miguel to correct; the article avoids company names; nothing pushed.
 
+
+## 2026-10-27 (06:22: savings-group agent chosen, repo and article updated)
+
+- Source: Miguel's message choosing the savings-group agent, with his ideas as measured engineering inside it, and asking to update the repo and name the model and event in the article.
+- Updated: `queue.md` (D-14 and D-13 answered, K-04 reworded, K-05 added); `projects/hackathon.md` (direction chosen); `MASTER_CONTEXT.md` (Hackathon row; one site-rule exception); `journal/entries/2026-10-27.md` (addendum); `site/tech/a-folder-is-not-a-brain-until-you-measure-it.md` (names Muse Spark Open and the event, adds where the test lives; still `draft: true`). New repository files delivered separately as `umwayi-rm/` plan v3, with plan v2 archived in `docs/archive/2026-10-26-plan-v2/`.
+- What moved: the repo plan, rules, agent design, API contract, demo script and submission text now describe the savings-group agent. A new `docs/experiments.md` holds the test protocol, written before any run.
+- Not done: no code, no credits requested, nothing pushed. Chama sources were read from public pages on 2026-10-27; exact URLs are not recorded in the repo file yet. The article takeaways are still a draft for Miguel to correct.
