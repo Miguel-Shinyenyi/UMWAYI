@@ -708,6 +708,29 @@ SCENES["tech/my-first-agentic-system-is-a-folder"] = (
 
 
 
+# a-folder-is-not-a-brain-until-you-measure-it: the board has core, archive and test rows; the test row is lit.
+SCENES["tech/a-folder-is-not-a-brain-until-you-measure-it"] = (
+    "A folder is not a brain until you measure it",
+    "A board lists three rows: core, archive and test. The test row is highlighted. A sheep tagged AI waits on the left and the shepherd on the right says measure it.",
+    f"""
+<g transform="translate(250 70)">
+<rect x="40" y="220" width="14" height="76" fill="#C08A3E" stroke="{INK}" stroke-width="3"/>
+<rect x="246" y="220" width="14" height="76" fill="#C08A3E" stroke="{INK}" stroke-width="3"/>
+<rect x="0" y="0" width="300" height="230" rx="10" fill="{PAPER}" stroke="{INK}" stroke-width="4"/>
+<rect x="24" y="22" width="252" height="54" rx="6" fill="none" stroke="{INK}" stroke-width="3"/>
+<rect x="24" y="88" width="252" height="54" rx="6" fill="none" stroke="{INK}" stroke-width="3"/>
+<rect x="24" y="154" width="252" height="54" rx="6" fill="{OCHRE_L}" stroke="{INK}" stroke-width="3"/>
+{label(150, 56, "CORE", 15, INK)}
+{label(150, 122, "ARCHIVE", 15, INK)}
+{label(150, 188, "TEST", 15, INK)}
+</g>
+{shepherd_raised(650, 425, 0.62, flip=True)}
+{sheep(150, 425, 0.72, tag="AI")}
+{bubble(560, 90, 190, 54, "Measure it.", 22, tail="right")}
+""",
+)
+
+
 if __name__ == "__main__":
     for key, (title, desc, body) in SCENES.items():
         name = key.split("/")[1] + ".svg"

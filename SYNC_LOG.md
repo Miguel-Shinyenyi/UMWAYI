@@ -155,3 +155,18 @@ Entries before 2026-10-01 are in `archive/SYNC_LOG/2026-09.md` (A-011 in `archiv
 - Updated: `MASTER_CONTEXT.md`, `CLAUDE.md`, `projects/routine-machine.md`, `docs/agent-practices.md`, `backlog.md`, `SYNC_LOG.md`, `queue.md`, `docs/pruning-candidates.md`; new `archive/` with `README.md`, `INDEX.md`, `verify.py` and the moved text. In routine-machine: `PROJECT.md`, `docs/status-log.md` (new) and the files that pointed at the status log.
 - What moved: 11 archive entries, A-001 to A-011, about 38,000 words, each with a checksum that `archive/verify.py` rechecks. MASTER_CONTEXT.md went from 3,464 to about 2,450 words.
 - Not moved: P-10, P-11, P-12. P-04 moved fewer rules than listed because the README lacks parts of the others.
+
+## 2026-10-26 (night: Meta hackathon joined, plan rebuilt)
+
+- Source: Miguel joined the Meta Global AI Developer Hackathon and sent a 101 page plan, the event links and four agent guides.
+- Updated: new `projects/hackathon.md`; `queue.md` (D-9 to D-13, section K); `MASTER_CONTEXT.md` (spokes row); `journal/entries/2026-10-26.md`. New repository files delivered separately as `umwayi-rm/`.
+- What moved: the event pages need a login, so Miguel signed in and the guide and waiver were read. The plan was split into nine files (one was in the PDF twice), chat commentary was removed and kept, and the originals were archived. The employer pivot was dropped because the anti-project list names a job application screener and personality analyzers, and because new work only rules out reusing Routine Machine code.
+- Not done: no code, no credits requested, nothing pushed. The agent guides were read as the four links gave them; the gerred series was read from its index page only.
+
+## 2026-10-27 (early morning: the brain question, research and an article)
+
+- Source: Miguel's message returning to why the hub exists and asking whether a curated model identity, rules and archive is a better brain, and whether it belongs in the hackathon.
+- Updated: `journal/entries/2026-10-27.md` (new); `projects/hackathon.md` (direction under review); `queue.md` (D-14); `site/tech/a-folder-is-not-a-brain-until-you-measure-it.md` and its illustration (new, `draft: true`); `site/tools/illustrations.py` (new scene).
+- What moved: ten sources were read, mostly abstracts and summaries, and three review lenses were run. The site builds with the article set to publish (32 pages) and with it held as a draft. The human-memory sources were abstracts only.
+- Not done: no direction picked; the repository plan files were not changed; the article takeaways are a draft for Miguel to correct; the article avoids company names; nothing pushed.
+
