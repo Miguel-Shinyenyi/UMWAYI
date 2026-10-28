@@ -36,7 +36,7 @@ where the observation gets tested against something real.
 | CMU masters | `projects/cmu-masters.md` | Fall 2027 application cycle. Feeds from the writing, backend, and AI engineer goals. |
 | Settlement engine | `projects/settlement-engine.md` | Idempotent Settlement and Reconciliation Engine, public repo `Invoice-Financing`. Nine phases done, live on staging, Lab and MCP server on `dev`. |
 | Routine machine | `projects/routine-machine.md` | Routines, learning, reading notes, credit ledger, savings and cohorts. Own repo. Phases 1 to 12 on `main`. Direction under review (`queue.md` D-1). |
-| Hackathon | `projects/hackathon.md` | Meta Global AI Developer Hackathon, Oct 26 to Nov 4. Open-source follow-through agent in a new public repo `umwayi-rm`. Plan v2, decisions D-9 to D-13 in `queue.md`. |
+| Hackathon | `projects/hackathon.md` | Meta Global AI Developer Hackathon, Oct 26 to Nov 4. Open-source savings-group secretary agent in a new public repo `umwayi-rm`, with the restraint and archive ideas tested inside it. Plan v3, decisions D-9 to D-13 open in `queue.md`. |
 | Open source | `projects/open-source.md` | Open source issues worked one at a time, each recorded with its verification. Started 2026-10-14. |
 | Website | `website/PLAN.md` | Historical plan, superseded. Site code is in `miguel-site`, content in `site/`. |
 | Site content | `site/` | Everything the site shows. Rebuilds on every push that touches it. Rules in `site/README.md`. |
@@ -72,7 +72,7 @@ where the observation gets tested against something real.
 - Nothing on the site names a company Miguel applied to or interviewed with (PostHog, Ezra,
   JUMO, and any that come later). On the site they're described in general terms, "a job
   interview", "a lending company", never by name. His current employer, Global Link+, may be
-  named; he confirmed that on 2026-09-23. The names stay in the hub's own files, which the
+  named; he confirmed that on 2026-09-23. Exception, 2026-10-27: the article on measuring the folder may name Muse Spark Open and the Meta Global AI Developer Hackathon, which he entered; no other article may without his say. The names stay in the hub's own files, which the
   site never publishes. The homepage's open threads read straight from `projects/` files,
   so a bullet under "Open questions" or "Open decisions" there counts as site content.
 - Journal excerpts for the site are drawn from `journal/entries/`, never copied whole.

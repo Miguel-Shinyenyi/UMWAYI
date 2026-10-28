@@ -15,7 +15,7 @@ Read on 2026-10-26 from the signed-in Participant Guide and Official Rules.
 
 ## The pivot (2026-10-26)
 
-The first plan (Oct 24) sold a retention-risk signal on candidates to employers and used AI for one sentence per item. It sat next to two anti-projects and scored low on Meta tooling. Plan v2: an open-source follow-through agent for community training programmes. Code computes state. An agent reads records through tools and proposes events, commitments and follow-up drafts. Staff approve everything. No risk scores on people.
+The first plan (Oct 24) sold a retention-risk signal on candidates to employers and used AI for one sentence per item. It sat next to two anti-projects and scored low on Meta tooling. Plan v2: an open-source follow-through agent for community training programmes. Code computes state. An agent reads records through tools and proposes events, commitments and follow-up drafts. Staff approve everything. No risk scores on people. Superseded by plan v3 on 2026-10-27 (below).
 
 ## How it connects to the other projects
 
@@ -23,28 +23,28 @@ The first plan (Oct 24) sold a retention-risk signal on candidates to employers 
 - Hub method: the queue, short context and archive with an index are reused in the new repository.
 - Open source: the repository is public and licensed (MIT proposed).
 
-## Direction under review (2026-10-27)
+## Direction chosen (2026-10-27): savings-group secretary agent, plan v3
 
-Before the build window opened, Miguel went back to the aim behind the hub: a model curated to his perspective, with identity, rules from mistakes and restraint against eager execution, and an archive for memory growth. We researched it and ran a council review. The findings, with sources, are in `site/tech/a-folder-is-not-a-brain-until-you-measure-it.md` (draft). Short version:
+Miguel picked option 1 of D-14. The product is an open-source secretary for savings groups (chamas). A treasurer speaks a note or photographs a paper ledger page. The agent proposes ledger entries and asks when a note is ambiguous. Code owns the ledger, balances and reconciliation. The treasurer approves everything. Nothing is sent, no money moves, no member is scored.
 
-- Eager execution and persona drift are measured. Human-written, short rules help a little. Model-written files can hurt. All cost tokens.
-- Core memory plus archive already exists (Letta, Anthropic memory tool). It is not novel. A measured result on one open model can be.
-- The human memory comparison motivates a design. It does not support one.
-- Project options and their weaknesses are in queue decision D-14. Plan v2 stays in force until D-14 is answered.
-- Licence note to verify: press coverage of Muse Spark Open says products using it must display "Built with Muse Spark Open". Check the model terms before the video.
-- Capability note to verify: the plan and Baseten's docs say audio and image input work. One news report does not mention multimodal. Day 1 check.
+His restraint and archive ideas are tested inside it, with a protocol committed before any run (`umwayi-rm/docs/experiments.md`): H1 curated rules against a generic "ask when unsure" block and a placebo; H2 core plus traceable archive against truncation and plain retrieval; H3 rules after compaction as a stretch. Small samples; null results get reported. Findings behind this are in `site/tech/a-folder-is-not-a-brain-until-you-measure-it.md` (draft).
+
+How the other projects feed it: Routine Machine's granary (statement import, month targets) supplies the concepts of evidence tiers and statement matching, rebuilt from scratch with synthetic statements. If the evidence tiers and restraint rules measure well, they are candidates to go back into the granary later. Invoice-Financing supplies idempotent approval and reconciliation as concepts.
+
+Facts to hold lightly: existing chama apps exist (Chamasoft, M-Chama, Fundi Chama, a Postbank app); the Sh300 billion figure is a news report of a ministry statement. Notes in `umwayi-rm/docs/research/chama-landscape.md`.
+
+Things to verify: the "Built with Muse Spark Open" display requirement (press coverage only), and audio, image, tool-calling and Swahili capability (Day 1).
 
 ## Open decisions
 
-- Direction (queue D-14).
 - Stack: TypeScript service or Java and Spring Boot (queue D-9).
-- Licence (D-10). Whether the problem is first-hand and who to interview (D-11). Hours available from Nov 1 (D-12). Photo intake (D-13).
+- Licence (D-10). Whether the problem is first-hand and who to interview (D-11). Hours available from Nov 1 (D-12). 
 
 ## Open questions
 
-- Does a staff-facing agent for training programmes read as "AI for Education"? To be asked on the hackathon Discord.
+- Is a savings-group ledger agent clear of "basic RAG" and "simple image analyzers"? To be asked on the hackathon Discord.
 - Can Muse Spark Open take audio and images, call tools and write Swahili at usable quality? To be checked on Oct 27.
 
 ## Status
 
-Planning only. Plan v2, rules sheet, agent design, API contract, demo script and submission text written on 2026-10-26. No code. Credits not yet requested (queue H-01).
+Planning only. Plan v3 (savings-group agent), rules sheet, agent design, experiment protocol, API contract, demo script and submission text written on 2026-10-27. Plan v2 is archived in the repo. No code. Credits not yet requested (queue H-01).
