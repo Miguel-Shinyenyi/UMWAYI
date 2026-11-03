@@ -193,11 +193,21 @@ function buildBody(a, siteBase, images) {
   return { type: "doc", content: [...lead, ...doc.content, footer] };
 }
 
+// Substack rejects subtitles over its length limit (a 265 character summary got a 400).
+// Cut long summaries at a word boundary and end with "...". The full summary stays on the site.
+const SUBTITLE_MAX = 250;
+function fitSubtitle(text) {
+  const t = (text ?? "").trim();
+  if (t.length <= SUBTITLE_MAX) return t;
+  const cut = t.slice(0, SUBTITLE_MAX - 3);
+  return cut.slice(0, cut.lastIndexOf(" ")).replace(/[,;:.\s]+$/, "") + "...";
+}
+
 // The two requests that decide whether subscribers are emailed. Used for real and for --dry-run.
 function buildDraftSave(a, doc, bylines) {
   return {
     draft_title: a.fm.title,
-    draft_subtitle: a.fm.summary ?? "",
+    draft_subtitle: fitSubtitle(a.fm.summary),
     draft_body: JSON.stringify(doc),
     section_chosen: false,
     draft_section_id: null,
