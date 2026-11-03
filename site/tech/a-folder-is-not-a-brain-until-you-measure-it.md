@@ -15,8 +15,12 @@ tags:
 illustration: a-folder-is-not-a-brain-until-you-measure-it.svg
 illustrationAlt: >-
   A board lists three rows: core, archive and test. The test row is highlighted.
-  A sheep tagged AI waits on the left and the shepherd on the right says
-  measure it.
+  A sheep tagged AI waits on the left and the shepherd on the right says measure
+  it.
+crossposted:
+  devto: >-
+    https://dev.to/miguel_shinyenyi_e2291c8c/a-folder-is-not-a-brain-until-you-measure-it-8gm
+  linkedin: 'urn:li:share:7523294153510813696'
 ---
 
 ## What I wanted
