@@ -177,3 +177,11 @@ Entries before 2026-10-01 are in `archive/SYNC_LOG/2026-09.md` (A-011 in `archiv
 - Updated: `queue.md` (D-14 and D-13 answered, K-04 reworded, K-05 added); `projects/hackathon.md` (direction chosen); `MASTER_CONTEXT.md` (Hackathon row; one site-rule exception); `journal/entries/2026-10-27.md` (addendum); `site/tech/a-folder-is-not-a-brain-until-you-measure-it.md` (names Muse Spark Open and the event, adds where the test lives; still `draft: true`). New repository files delivered separately as `umwayi-rm/` plan v3, with plan v2 archived in `docs/archive/2026-10-26-plan-v2/`.
 - What moved: the repo plan, rules, agent design, API contract, demo script and submission text now describe the savings-group agent. A new `docs/experiments.md` holds the test protocol, written before any run.
 - Not done: no code, no credits requested, nothing pushed. Chama sources were read from public pages on 2026-10-27; exact URLs are not recorded in the repo file yet. The article takeaways are still a draft for Miguel to correct.
+
+## 2026-11-02 (notes consolidated, plans written, journals drafted)
+
+- Source: Miguel's notes of 27 Oct to 2 Nov and his request to consolidate them, scan projects, plan an AI operating system, a Steward agent and a social agent, and draft the journals from git history.
+- Updated: `docs/agent-principles.md` and `docs/agent-principles-map.md` (new); `docs/plans/` (new, six files); `journal/entries/2026-10-28.md` to `2026-11-02.md` (new drafts) and `2026-10-27.md` (addendum); `journal/weekly-summaries/raw-notes-2026-10-27-to-2026-11-02.md` (new, byte for byte copy of the notes); `queue.md` (D-15 to D-18, section L); `MASTER_CONTEXT.md`; `CLAUDE.md`; `projects/hackathon.md`.
+- What moved: every non empty line of the notes is mapped to a destination; the check found none unmapped. Commit counts come from git history, not from reading each diff.
+- Not done: nothing pushed; work repositories not read (list only); the Routine Machine landing page has no commit and was not started; the work repository inventory file was not written; feelings in the journals are marked not recorded.
+

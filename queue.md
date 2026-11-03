@@ -34,6 +34,13 @@ These block queued work. Each has my recommendation. They are yours to decide.
 | D-12 | Daily hours you can give Nov 1 to Nov 4. | The schedule assumes about 3 hours a day. | Tell me a number; days move if it is lower. |
 | D-13 | Photo of a paper ledger as a second intake. | ANSWERED by D-14: included after voice and approval work. | n/a |
 | D-14 | Which hackathon direction | ANSWERED 2026-10-27: option 1, a savings-group secretary agent, with the restraint and archive ideas as a pre-registered test inside it. Plan v3 is in `umwayi-rm/HACKATHON.md`. | n/a | n/a |
+| D-15 | Reading list location | ANSWERED 2026-11-03: create `reading-list.md` in the hub (done). Title still assumed as Think Again. | n/a | n/a |
+| D-16 | Employer permission to read Global Link+ repositories | ANSWERED 2026-11-03: Miguel says permission is held. Read only; no writes, no pushes. Still open: a written record naming which model vendor may see work code. | n/a | n/a |
+| D-17 | Journal key location | Miguel will handle it later. The key file may be read from his computer by a tool without its contents entering a chat. | n/a | n/a |
+| D-18 | Readings in `docs/agent-principles.md` section 15 | ANSWERED 2026-11-03: TypeSafe confirmed; studios means LM Studio. Musk quotes stay unverified. | n/a | n/a |
+| D-19 | Shepherd: app or own use | ANSWERED 2026-11-03: an app for other users, not only for you. That adds accounts, per user cost caps and support to the Shepherd Lite scope in the validation PDF. | n/a | n/a |
+| D-20 | Shepherd: Qloo | ANSWERED 2026-11-03: Qloo is its own feature, separate from the pipeline. It does not route. | n/a | n/a |
+| D-21 | Shepherd: hosted open model provider | ANSWERED 2026-11-03: Baseten for now. Modal and Fireworks accounts also exist, so the gateway must treat the provider as a config value. Keys never go in any hub file. | n/a | n/a |
 
 ## R. Routine Machine, from the brief
 
@@ -200,3 +207,16 @@ Day by day tasks, with acceptance checks, live in the repository's `queue.md` (H
 | K-03 | Decide D-9 to D-13 | queued, now | Answers recorded here | this file |
 | K-04 | Ask on the hackathon Discord whether a savings-group ledger agent is clear of "basic RAG" and "simple image analyzers", and whether "Built with Muse Spark Open" is required | queued, next | Answer recorded | repo log |
 | K-05 | Two ten minute interviews with treasurers or members (D-11); read the Day 1 model checks | queued, next | Real rows in `umwayi-rm/docs/research/interviews.md`, or it says none | repo |
+
+## L. Practices and plans (from the notes of 27 Oct to 2 Nov)
+
+Plans are in `docs/plans/`. Rules are in `docs/agent-principles.md`. Order and counter arguments are in `docs/plans/README.md`.
+
+| ID | Task | Status | Acceptance checks | Outcome goes in |
+|---|---|---|---|---|
+| L-01 | Protect `main` on all four personal repositories and require a pull request. | queued | A direct push to `main` is refused on each repository; one test pull request merges. | repo settings, then `SYNC_LOG.md` |
+| L-02 | Routine Machine landing page on GitHub Pages. | queued | The page loads logged out; it states who it is for and what it solves; no private data on it. | `routine-machine` |
+| L-03 | Append the branch and pull request rule and a pointer to the principles into `CLAUDE.md` of `routine-machine` and `miguel-site`. | queued | Both files carry the block; nothing else in them changed. | each repo |
+| L-04 | Fix the `BASENTEN_API_KEY` risk in `umwayi-rm` (accept both spellings). | queued, urgent | A run with each spelling reaches the model adapter. | `umwayi-rm/docs/final-48h-packets.md`, H-21 |
+| L-05 | Run Steward steps S1 to S3 only, then stop and review. | queued, after Nov 4 | Acceptance checks in `docs/plans/steward-agent.md`. | `docs/plans/steward-agent.md` |
+| L-06 | Measure real token use of one video script and one render, and compare with your Pro limits. | queued, after Nov 4 | A number from Settings, Usage, before and after. | `docs/plans/social-agent.md` |
