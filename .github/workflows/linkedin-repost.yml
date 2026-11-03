@@ -1,0 +1,69 @@
+# Save as .github/workflows/linkedin-repost.yml in UMWAYI.
+# Manual only. Re-posts one site/tech/ article to LinkedIn using its `linkedin:` front
+# matter (hashtags, company mentions, links) and then deletes the old post. The new post
+# is created first, so a rejected request leaves the old post in place. Needs the same
+# LINKEDIN_TOKEN, LINKEDIN_AUTHOR_URN secrets and SITE_BASE_URL variable as cross-post.yml.
+#
+# Run: Actions > Re-post to LinkedIn > Run workflow, or
+#   gh workflow run linkedin-repost.yml -f slug=<slug> -f delete_urn=<urn:li:share:...> -f dry_run=true
+
+name: Re-post to LinkedIn
+
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: "Article slug under site/tech/ (no .md)"
+        required: true
+      delete_urn:
+        description: "Old post to delete after the new one is live, e.g. urn:li:share:123 (blank to keep it)"
+        required: false
+      dry_run:
+        description: "Print the post and send nothing"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+jobs:
+  repost:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install script dependencies
+        working-directory: scripts
+        run: npm install
+
+      - name: Re-post to LinkedIn
+        env:
+          SITE_BASE_URL: ${{ vars.SITE_BASE_URL }}
+          LINKEDIN_TOKEN: ${{ secrets.LINKEDIN_TOKEN }}
+          LINKEDIN_AUTHOR_URN: ${{ secrets.LINKEDIN_AUTHOR_URN }}
+          SLUG: ${{ inputs.slug }}
+          DELETE_URN: ${{ inputs.delete_urn }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          set -e
+          ARGS=(--slug "$SLUG")
+          if [ -n "$DELETE_URN" ]; then ARGS+=(--delete-urn "$DELETE_URN"); fi
+          if [ "$DRY_RUN" = "true" ]; then ARGS+=(--dry-run); fi
+          node scripts/linkedin-repost.mjs "${ARGS[@]}"
+
+      - name: Commit the new post link
+        if: always() && inputs.dry_run != true
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain site/tech)" ]; then
+            git add site/tech
+            git commit -m "Record re-posted LinkedIn link [skip ci]"
+            git push
+          else
+            echo "No front matter changes to commit."
+          fi
