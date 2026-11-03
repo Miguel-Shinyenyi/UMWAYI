@@ -6,7 +6,7 @@ summary: >-
   act on what I mean. Then I read the studies. Here is what they say, where my
   memory comparison fails, and the test I will run on Muse Spark Open for the
   Meta Global AI Developer Hackathon.
-draft: true
+draft: false
 tags:
   - AI
   - Agents
