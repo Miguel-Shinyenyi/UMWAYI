@@ -33,7 +33,7 @@ linkedin:
 crossposted:
   devto: >-
     https://dev.to/miguel_shinyenyi_e2291c8c/a-folder-is-not-a-brain-until-you-measure-it-8gm
-  linkedin: 'urn:li:share:7523294153510813696'
+  linkedin: 'urn:li:share:7523302378775920640'
 ---
 
 ## What I wanted
