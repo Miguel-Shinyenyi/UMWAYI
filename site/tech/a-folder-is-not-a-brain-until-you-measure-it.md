@@ -17,6 +17,19 @@ illustrationAlt: >-
   A board lists three rows: core, archive and test. The test row is highlighted.
   A sheep tagged AI waits on the left and the shepherd on the right says measure
   it.
+linkedin:
+  hashtags:
+    - Meta
+    - MetaAI
+    - AIHackathon
+  mentions:
+    - name: Meta
+      urn: 'urn:li:organization:10667'
+    - name: AI at Meta
+      urn: 'urn:li:organization:35482514'
+  links:
+    - label: Meta Global AI Developer Hackathon
+      url: 'https://dev.meta.ai/events/global-hackathon'
 crossposted:
   devto: >-
     https://dev.to/miguel_shinyenyi_e2291c8c/a-folder-is-not-a-brain-until-you-measure-it-8gm

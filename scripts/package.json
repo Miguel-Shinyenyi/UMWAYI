@@ -7,6 +7,6 @@
   },
   "scripts": {
     "substack": "node substack-post.mjs",
-    "test": "node --test test/substack-convert.test.mjs"
+    "test": "node --test test/*.test.mjs"
   }
 }

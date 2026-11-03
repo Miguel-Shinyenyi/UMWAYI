@@ -11,7 +11,9 @@
 //   to get one. This code path is left in place (gated on MEDIUM_TOKEN existing) in case
 //   that changes, but expect it to sit unused. See docs/cross-post-setup.md.
 // LinkedIn: site/tech/ only, a short TL;DR + link post rather than a full cross-post,
-//   since the personal-profile share API isn't meant for long-form content. Best-effort:
+//   since the personal-profile share API isn't meant for long-form content. An article's
+//   optional `linkedin:` front matter adds hashtags, company mentions and extra links
+//   (see scripts/lib/linkedin.mjs). Best-effort:
 //   a failure here surfaces as a failed workflow run rather than being silently dropped,
 //   but never blocks dev.to/Hashnode.
 //
@@ -20,6 +22,7 @@
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
+import { createPost as createLinkedInPost } from "./lib/linkedin.mjs";
 
 const SITE_BASE_URL = process.env.SITE_BASE_URL; // e.g. https://miguel-shinyenyi.github.io/miguel-site
 if (!SITE_BASE_URL) {
@@ -210,40 +213,6 @@ async function publishToMedium({ title, bodyMarkdown, tags, canonical }) {
   return JSON.parse(text).data.url;
 }
 
-async function postToLinkedIn({ title, tldr, canonical }) {
-  const commentary = `${title}\n\n${tldr}\n\n${canonical}`;
-  const res = await fetch("https://api.linkedin.com/v2/ugcPosts", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${LINKEDIN_TOKEN}`,
-      "content-type": "application/json",
-      "X-Restli-Protocol-Version": "2.0.0",
-    },
-    body: JSON.stringify({
-      author: LINKEDIN_AUTHOR_URN,
-      lifecycleState: "PUBLISHED",
-      specificContent: {
-        "com.linkedin.ugc.ShareContent": {
-          shareCommentary: { text: commentary },
-          shareMediaCategory: "ARTICLE",
-          media: [{ status: "READY", originalUrl: canonical }],
-        },
-      },
-      visibility: { "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC" },
-    }),
-  });
-  const text = await res.text();
-  if (!res.ok) {
-    if (res.status === 401) {
-      throw new Error(
-        `LinkedIn 401: the access token has expired (personal tokens last ~60 days with no auto-refresh). Redo the OAuth flow and update the LINKEDIN_TOKEN secret. Response: ${text}`
-      );
-    }
-    throw new Error(`LinkedIn ${res.status}: ${text}`);
-  }
-  return res.headers.get("x-restli-id") || "posted";
-}
-
 for (const { dir, category, linkedin } of CATEGORIES) {
   for (const file of listArticles(dir)) {
     const filePath = path.join(dir, file);
@@ -311,10 +280,13 @@ for (const { dir, category, linkedin } of CATEGORIES) {
 
     if (linkedin && !crossposted.linkedin && LINKEDIN_TOKEN) {
       try {
-        crossposted.linkedin = await postToLinkedIn({
+        crossposted.linkedin = await createLinkedInPost({
+          token: LINKEDIN_TOKEN,
+          author: LINKEDIN_AUTHOR_URN,
           title: fm.title,
-          tldr: fm.summary,
+          summary: fm.summary,
           canonical,
+          linkedin: fm.linkedin,
         });
         changed = true;
         summary.push(`LinkedIn: ${fm.title} -> posted`);

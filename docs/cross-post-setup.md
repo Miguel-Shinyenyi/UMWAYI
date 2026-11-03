@@ -157,3 +157,27 @@ one place it needs to stay.
   since journal excerpts are personal-voice content and project pages are portfolio
   pages, not blog posts, not because of a technical limit. To include either later, add
   an entry to the same `CATEGORIES` list.
+## LinkedIn hashtags, company mentions and links
+
+An article in `site/tech/` can add a `linkedin:` block to its front matter. `cross-post.mjs`
+uses it when it posts to LinkedIn.
+
+```yaml
+linkedin:
+  hashtags: [Meta, MetaAI]
+  mentions:
+    - name: Meta
+      urn: "urn:li:organization:10667"
+  links:
+    - label: Event
+      url: https://example.com/event
+```
+
+Find a company's number on its public LinkedIn page, in the `urn:li:organization:<number>`
+value. Check the page is the right company before you use it (`/company/meta-ai` is an
+unrelated firm; Meta's AI page is `aiatmeta`). Set the block before the article is merged,
+because the post goes out on merge.
+
+To replace a post that is already live, run **Re-post to LinkedIn** (manual) with the
+article slug and the old post's URN (the `crossposted.linkedin` value). Run it once with
+`dry_run` on to read the text first. The new post goes up before the old one is deleted.
