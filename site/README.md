@@ -41,6 +41,27 @@ illustrationAlt: "What the picture shows, in one sentence."
 
 Read time is computed from word count at build time. Don't add it.
 
+### Promotion rule: hashtags, company mentions, links
+
+Rule: every `site/tech/` article posts to LinkedIn on merge, and anywhere else a post drives
+traffic (the Substack footer, for example) should carry the same pointers. When an article
+relates to a company or an event, add a `linkedin:` block to its front matter before it
+merges: real hashtags, a mention for each company page, and a link to the event.
+
+```yaml
+linkedin:
+  hashtags: [Meta, MetaAI]
+  mentions:
+    - name: Meta
+      urn: "urn:li:organization:10667"
+  links:
+    - label: Event
+      url: https://example.com/event
+```
+
+Check each company page is the right one before you copy its number. Setup and the manual
+re-post workflow are in `docs/cross-post-setup.md`.
+
 ## Project front matter
 
 Everything above, plus:

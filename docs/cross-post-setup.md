@@ -159,6 +159,10 @@ one place it needs to stay.
   an entry to the same `CATEGORIES` list.
 ## LinkedIn hashtags, company mentions and links
 
+**Rule:** when an article relates to a company or an event, it gets this block before it
+merges, so the LinkedIn post carries real hashtags, company mentions and the event link. The
+same pointers go on any other post that drives traffic, such as the Substack footer.
+
 An article in `site/tech/` can add a `linkedin:` block to its front matter. `cross-post.mjs`
 uses it when it posts to LinkedIn.
 
