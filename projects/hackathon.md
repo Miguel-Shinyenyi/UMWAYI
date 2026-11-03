@@ -45,6 +45,6 @@ Things to verify: the "Built with Muse Spark Open" display requirement (press co
 - Is a savings-group ledger agent clear of "basic RAG" and "simple image analyzers"? To be asked on the hackathon Discord.
 - Can Muse Spark Open take audio and images, call tools and write Swahili at usable quality? To be checked on Oct 27.
 
-## Status
+## Status (2026-11-02, from the repository)
 
-Planning only. Plan v3 (savings-group agent), rules sheet, agent design, experiment protocol, API contract, demo script and submission text written on 2026-10-27. Plan v2 is archived in the repo. No code. Credits not yet requested (queue H-01).
+Built and public: `umwayi-rm` (TypeScript, Express, Postgres, MCP server, Baseten adapter, Muse Voice Transcribe, Lab page). Eval runs are in `docs/evals/`. H1 returned null (0 of 48 against 0 of 48). Zero interviews recorded. Open before submission: the key name risk (`BASENTEN_API_KEY`), the pitch placeholder, the demo video, the Discord question and the model terms check. Packets are in `umwayi-rm/docs/final-48h-packets.md`. Submit by Nov 4 16:00 EAT.
