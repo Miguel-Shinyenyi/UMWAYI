@@ -16,4 +16,4 @@ See section 1 of the plan. The two that matter most: build during the window, an
 
 ## Open
 
-D-28 in `queue.md`.
+D-28 answered 2026-11-05: headline "Every AI helper needs a shepherd", 3 hours a day, builder generated mascot, the page names the product Umwayi hub. Design results may reopen D-5.
