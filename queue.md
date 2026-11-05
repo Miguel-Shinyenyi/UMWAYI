@@ -30,8 +30,8 @@ These block queued work. Each has my recommendation. They are yours to decide.
 | D-8 | The first hire's terms: pay, hours, start date, contract type, and whether her cost sits on top of the planning envelope or comes out of contingency. | The financials workbook is built with the pay field empty. | Stipend or part-time in Tranche 1, full engagement only after the discovery gate. Written IP assignment and confidentiality before the first payment. |
 | D-9 | Hackathon stack: one TypeScript service (API and MCP server), or Java and Spring Boot with a separate MCP process. | Fresh build, nine days, schema checks and the agent loop are TypeScript-native. | TypeScript. |
 | D-10 | Hackathon licence. | The repo must be public. | MIT. |
-| D-11 | Is the problem first-hand, and which two treasurers or group members can you interview by Nov 1? | Impact is 30% of the score. Real quotes beat a stated hypothesis. Nothing is invented. | Two ten minute interviews with permission. |
-| D-12 | Daily hours you can give Nov 1 to Nov 4. | The schedule assumes about 3 hours a day. | Tell me a number; days move if it is lower. |
+| D-11 | Is the problem first-hand, and which two treasurers or group members can you interview by Nov 1? | ANSWERED 2026-11-03: no interviews will be done; the problem stays a hypothesis and every document says so. | n/a | n/a |
+| D-12 | Daily hours you can give Nov 1 to Nov 4. | ANSWERED 2026-11-03: 3 to 4 hours per day. | n/a | n/a |
 | D-13 | Photo of a paper ledger as a second intake. | ANSWERED by D-14: included after voice and approval work. | n/a |
 | D-14 | Which hackathon direction | ANSWERED 2026-10-27: option 1, a savings-group secretary agent, with the restraint and archive ideas as a pre-registered test inside it. Plan v3 is in `umwayi-rm/HACKATHON.md`. | n/a | n/a |
 | D-15 | Reading list location | ANSWERED 2026-11-03: create `reading-list.md` in the hub (done). Title still assumed as Think Again. | n/a | n/a |
@@ -205,10 +205,10 @@ Day by day tasks, with acceptance checks, live in the repository's `queue.md` (H
 | ID | Task | Status | Acceptance checks | Outcome goes in |
 |---|---|---|---|---|
 | K-01 | Request the Baseten $100 credit and submit the Meta $150 form. Each needs your own account and a card on file | queued, now | Confirmation saved, no card data in any file | `umwayi-rm/docs/hackathon-log.md` |
-| K-02 | Create the public repo `umwayi-rm` from the delivered zip, docs only, with a LICENSE | queued, now | Public when logged out; no code; first code commit Oct 27 or later | repo log |
-| K-03 | Decide D-9 to D-13 | queued, now | Answers recorded here | this file |
+| K-02 | Create the public repo `umwayi-rm` from the delivered zip, docs only, with a LICENSE | done 2026-10-28 | Public when logged out; no code; first code commit Oct 27 or later | repo log (H-02) |
+| K-03 | Decide D-9 to D-13 | done 2026-11-03 | Answers recorded here | this file |
 | K-04 | Ask on the hackathon Discord whether a savings-group ledger agent is clear of "basic RAG" and "simple image analyzers", and whether "Built with Muse Spark Open" is required | queued, next | Answer recorded | repo log |
-| K-05 | Two ten minute interviews with treasurers or members (D-11); read the Day 1 model checks | queued, next | Real rows in `umwayi-rm/docs/research/interviews.md`, or it says none | repo |
+| K-05 | Two ten minute interviews with treasurers or members (D-11); read the Day 1 model checks | done 2026-11-03, none held by decision (D-11); Day 1 model checks done 2026-10-28 | Real rows in `umwayi-rm/docs/research/interviews.md`, or it says none | repo |
 
 ## L. Practices and plans (from the notes of 27 Oct to 2 Nov)
 
@@ -219,6 +219,6 @@ Plans are in `docs/plans/`. Rules are in `docs/agent-principles.md`. Order and c
 | L-01 | Protect `main` on all four personal repositories and require a pull request. | queued | A direct push to `main` is refused on each repository; one test pull request merges. | repo settings, then `SYNC_LOG.md` |
 | L-02 | Routine Machine landing page on GitHub Pages. | queued | The page loads logged out; it states who it is for and what it solves; no private data on it. | `routine-machine` |
 | L-03 | Append the branch and pull request rule and a pointer to the principles into `CLAUDE.md` of `routine-machine` and `miguel-site`. | queued | Both files carry the block; nothing else in them changed. | each repo |
-| L-04 | Fix the `BASENTEN_API_KEY` risk in `umwayi-rm` (accept both spellings). | queued, urgent | A run with each spelling reaches the model adapter. | `umwayi-rm/docs/final-48h-packets.md`, H-21 |
+| L-04 | Fix the `BASENTEN_API_KEY` risk in `umwayi-rm` (accept both spellings). | done 2026-11-03, PR #20 (the deploy batch in PR #21 kept one key helper) | A run with each spelling reaches the model adapter. | `umwayi-rm/docs/hackathon-log.md`, H-21 |
 | L-05 | Run Steward steps S1 to S3 only, then stop and review. | queued, after Nov 4 | Acceptance checks in `docs/plans/steward-agent.md`. | `docs/plans/steward-agent.md` |
 | L-06 | Measure real token use of one video script and one render, and compare with your Pro limits. | queued, after Nov 4 | A number from Settings, Usage, before and after. | `docs/plans/social-agent.md` |

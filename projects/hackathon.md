@@ -21,7 +21,7 @@ The first plan (Oct 24) sold a retention-risk signal on candidates to employers 
 
 - Routine Machine: same follow-through idea, moved to programme staff. Design token values and ideas are borrowed. Code is not. Decision D-1 on the Routine Machine direction is not settled by this.
 - Hub method: the queue, short context and archive with an index are reused in the new repository.
-- Open source: the repository is public and licensed (MIT proposed).
+- Open source: the repository is public and licensed (MIT, decided 2026-10-28, D-10).
 
 ## Direction chosen (2026-10-27): savings-group secretary agent, plan v3
 
@@ -33,18 +33,36 @@ How the other projects feed it: Routine Machine's granary (statement import, mon
 
 Facts to hold lightly: existing chama apps exist (Chamasoft, M-Chama, Fundi Chama, a Postbank app); the Sh300 billion figure is a news report of a ministry statement. Notes in `umwayi-rm/docs/research/chama-landscape.md`.
 
-Things to verify: the "Built with Muse Spark Open" display requirement (press coverage only), and audio, image, tool-calling and Swahili capability (Day 1).
+Things to verify: the "Built with Muse Spark Open" display requirement (press coverage only; the primary licence text was not read, see the 2026-10-28 H-04 entry in the repository log), and Swahili drafting quality (one reader judged it, not a metric).
 
 ## Open decisions
 
-- Stack: TypeScript service or Java and Spring Boot (queue D-9).
-- Licence (D-10). Whether the problem is first-hand and who to interview (D-11). Hours available from Nov 1 (D-12). 
+- Answered: stack is one TypeScript service (D-9, 2026-10-28); licence is MIT (D-10, 2026-10-28); no interviews will be done, so the problem stays a hypothesis (D-11, 2026-11-03); 3 to 4 hours a day from Nov 1 (D-12, 2026-11-03).
+- Pilot: one savings group for a month is the ask. No group is lined up.
 
 ## Open questions
 
-- Is a savings-group ledger agent clear of "basic RAG" and "simple image analyzers"? To be asked on the hackathon Discord.
-- Can Muse Spark Open take audio and images, call tools and write Swahili at usable quality? To be checked on Oct 27.
+- Is a savings-group ledger agent clear of "basic RAG" and "simple image analyzers"? To be asked on the hackathon Discord (H-03 in the repository queue, not recorded as answered).
+- Does Muse Voice handle Kenyan names? Observed on 2026-11-04: it heard Kiptoo as "crypto" and "dipto". The agent asks instead of guessing; the transcription is not fixed.
 
-## Status (2026-11-02, from the repository)
+## Status (2026-11-05, from the repository and the conversation)
 
-Built and public: `umwayi-rm` (TypeScript, Express, Postgres, MCP server, Baseten adapter, Muse Voice Transcribe, Lab page). Eval runs are in `docs/evals/`. H1 returned null (0 of 48 against 0 of 48). Zero interviews recorded. Open before submission: the key name risk (`BASENTEN_API_KEY`), the pitch placeholder, the demo video, the Discord question and the model terms check. Packets are in `umwayi-rm/docs/final-48h-packets.md`. Submit by Nov 4 16:00 EAT.
+Built, public and deployed: `umwayi-rm` (TypeScript, Express, Postgres, MCP server, Baseten adapter, Muse Voice Transcribe, console, Lab page). Live demo with synthetic data: https://umwayi-rm.vercel.app (Vercel plus Neon, demo mode, per-visitor reset, rate limits). Demo deck in `docs/` (umwayi-rm-demo-v2.pdf and .pptx). The README links the demo video.
+
+Counted results (synthetic data, frozen test split, run files in `docs/evals/`):
+
+- H1, three seeds (7, 8, 9), 40 scenarios each. Wrong proposals on ambiguous notes: curated 0 of 48, generic 0 of 48, placebo 0 of 48, bare 7 of 48. Clear notes passed, out of 72: curated 67, placebo 55, generic 24, bare 23. Primary metric (curated against generic on wrong proposals) is a 0-point gap, so H1 is not supported. About three quarters of the gain comes from prompt length, not content.
+- H2, seed 7 only, 20 questions. Rescored: truncation 13, plain retrieval 20, archive 19, full context 20. Archive used 6.2 times the retrieval prompt tokens. H2 is not supported. The rescored figures are in `docs/evals/h2-seed7-analysis.json`; the Lab page charts the raw run files (archive 17, full context 19, plain retrieval 19), so the pitch and the Lab differ by design, and the Lab has not been updated.
+- Interviews: none, by decision. Every document says the problem is a hypothesis.
+
+Built between Nov 3 and Nov 5 (pull requests in `umwayi-rm`): #20 both spellings of the Baseten key; #21 Vercel deploy, guards and roster names; #22 findings and ledger entries shown in words, empty reply warning, tunable `MODEL_MAX_TOKENS`; #23 default cap raised from 600 to 2000, server error logging, migration 007 so demo purges can cascade to the append-only entries table, live URL and deck in the README; #24 claim check uses the shared cap and tolerates fenced JSON; #25 claim prompt accepts first names and month names that match the roster; #26 demo video link in the README; #27 first-visit walkthrough tour in the console.
+
+Why #23 to #25 happened: on the live site, Reset returned "internal error" because the append-only trigger blocked the purge cascade. Model replies came back empty because reasoning tokens count toward `max_tokens` and the caps were 600 and 200. The claim check then rejected first-name quotes. Each was found by testing the live site, not by the test suite.
+
+Demo video: 2:43, uploaded to YouTube by Miguel (https://www.youtube.com/watch?v=ohYcxH72vBA), re-rendered once at higher resolution with the group id and token blurred.
+
+Submission: form answers were drafted on 2026-11-05. Whether the form was submitted before the deadline: [fill in]. Survey answers on Muse Code and model comparison are Miguel's own.
+
+Known issues, not fixed: unsupported or oversized audio returns a 500 on the intake endpoint instead of a 4xx; Muse Voice mishears Kenyan names; the video says about 22 percent of Kenyans save through groups where FinAccess 2024 says 19.7 percent; the Lab page shows raw H2 numbers; Baseten and Meta spend caps are not confirmed.
+
+Next: find one pilot group for a month and ask treasurers for feedback; patch the 500 on bad audio; update the Lab page to the rescored H2 figures; read the primary model licence for the display requirement.
