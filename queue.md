@@ -41,6 +41,8 @@ These block queued work. Each has my recommendation. They are yours to decide.
 | D-19 | Shepherd: app or own use | ANSWERED 2026-11-03: an app for other users, not only for you. That adds accounts, per user cost caps and support to the Shepherd Lite scope in the validation PDF. | n/a | n/a |
 | D-20 | Shepherd: Qloo | ANSWERED 2026-11-03: Qloo is its own feature, separate from the pipeline. It does not route. | n/a | n/a |
 | D-21 | Shepherd: hosted open model provider | ANSWERED 2026-11-03: Baseten for now. Modal and Fireworks accounts also exist, so the gateway must treat the provider as a config value. Keys never go in any hub file. | n/a | n/a |
+| D-18a | Musk quotes in `docs/agent-principles.md` section 15 | PARTLY VERIFIED 2026-11-04: reports of the Nov 2025 Kamath interview support the appearance-of-goodness line, "can't pursue happiness directly" and value-before-money. The gym detail is in no source I read. The article marks it as yours. | n/a | n/a |
+| D-27 | Kiroween entry versus the Claude Code budget governor (plan section 10) | OPEN. Recommended: keep the entry as Steward plus draft-only social agent; build the governor after 4 Dec. Also open: written clearance on Anthropic terms before any unattended run. | Which option | Before 11 Nov kill rule |
 
 ## R. Routine Machine, from the brief
 

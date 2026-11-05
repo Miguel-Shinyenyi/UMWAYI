@@ -1,0 +1,7 @@
+# One repository per line: name|clone-url-or-path. Public personal repositories only.
+# Work repositories belong in a private list outside this repository.
+UMWAYI|https://github.com/Miguel-Shinyenyi/UMWAYI.git
+routine-machine|https://github.com/Miguel-Shinyenyi/routine-machine.git
+miguel-site|https://github.com/Miguel-Shinyenyi/miguel-site.git
+Invoice-Financing|https://github.com/Miguel-Shinyenyi/Invoice-Financing.git
+umwayi-rm|https://github.com/Miguel-Shinyenyi/umwayi-rm.git

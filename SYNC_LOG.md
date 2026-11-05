@@ -185,3 +185,10 @@ Entries before 2026-10-01 are in `archive/SYNC_LOG/2026-09.md` (A-011 in `archiv
 - What moved: every non empty line of the notes is mapped to a destination; the check found none unmapped. Commit counts come from git history, not from reading each diff.
 - Not done: nothing pushed; work repositories not read (list only); the Routine Machine landing page has no commit and was not started; the work repository inventory file was not written; feelings in the journals are marked not recorded.
 
+
+## 2026-11-04 (progress tracker, three article drafts, AI OS section 10)
+
+- Source: Miguel's request to track commits and pull requests, draft articles from his long notes (verdict versus curiosity, the vicious cycle, the Musk quotes), and add a budget governor and task queue built on anyone's Claude Code.
+- Added: `scripts/progress.py`, `progress/` (README, repos list, digests for 26 Oct to 1 Nov and 2 to 8 Nov), `.github/workflows/progress.yml`; three drafts in `site/philosophy/` (draft: true); `docs/plans/ai-operating-system.md` section 10 and two layer rows; queue rows D-18a and D-27.
+- Checked: progress script run against fresh clones of five public repos; site builds with the drafts switched on; claude-code-guide agent checked Claude Code docs; three council lenses on the plan (Opus, Sonnet, Haiku) and one on the articles (Sonnet), all Claude models reading my brief.
+- Not done: work repositories not tracked (needs a private repos file and his work login); nothing pushed; the weekly workflow has not run in GitHub; no illustrations for the three articles; Musk gym detail unverified.

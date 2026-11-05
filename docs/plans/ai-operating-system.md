@@ -1,6 +1,6 @@
 # docs/plans/ai-operating-system.md: AI operating system plan
 
-Status: plan, 2026-11-02. Nothing here is built. Source instructions: [L3, L28, L33, L34, L53, L58-63, L68, L72] in `docs/agent-principles.md`.
+Status: plan, 2026-11-02; section 10 added 2026-11-04. Nothing here is built. Source instructions: [L3, L28, L33, L34, L53, L58-63, L68, L72] in `docs/agent-principles.md`.
 
 ## 1. What it is and is not
 
@@ -38,6 +38,8 @@ Prior art read on 2026-11-02: AIOS (arXiv 2403.16971, code at github.com/agirese
 | L5 Memory | Core files always loaded; archive verbatim with checksums and gists; recall logged | Yes |
 | L6 Verification | Deterministic checks, then judge, then cross-model, loops with a limit | Checks yes; judge no |
 | L7 Audit | Append-only log of every action, check and approval; failure mode register | Yes |
+| L0b Budget governor | Reads real usage, enforces hourly, daily and weekly caps, admits or defers tasks (section 10) | Yes. No model inside |
+| L1b Queue and task graph | Splits heavy prompts into subtasks, orders them, lets me pick the next one (section 10) | Code owns the graph; a model proposes the split |
 | L8 Agents | Steward, Social, later others | No |
 
 ## 4. The decision gate (fast and slow) [L30-33]
@@ -131,3 +133,145 @@ Start after the hackathon submission (Nov 4). Assumes about 3 hours a day. Each 
 - Approval fatigue, correlated judges that share a blind spot, and injection through permitted reads would still get through this design (agent design lens). The seeded tests above are how to find out how often.
 - Language choice is a judgement.
 - AIOS code licence, Rust agent libraries, and the mutation tools were not verified.
+
+## 10. Built on top of your own Claude Code, with a budget governor and a task queue
+
+Added 2026-11-04 from Miguel's instruction. Design only. Claude Code facts below come from its documentation, checked 2026-11-04 by a research agent; anything it could not confirm is marked UNCONFIRMED. A council of three Claude models reviewed this section (risk, scope, tests); they read my brief, so they are not independent. Their changes are in the text.
+
+### 10.1 Principle: an adapter on the user's own install
+
+The operating system holds no API keys and no model access of its own. It drives the Claude Code the user already has, under the user's own login and plan. It ships as a Claude Code plugin: hooks, slash commands, a subagent and an MCP server in one package (documented as possible), plus a small local program that owns state.
+
+Other models sit behind the same model gateway (L3) as later adapters. Claude Code is the first adapter, not the only one.
+
+### 10.2 What Claude Code tells us about limits
+
+- Plan limits. The status line input carries `rate_limits.five_hour` and `rate_limits.seven_day`, each with `used_percentage` and `resets_at`. It appears for Pro and Max subscribers, only in a live session, after the first response. This is the only documented plan-limit signal. The plan's real windows are therefore a five-hour window and a seven-day window, each with its own reset time, not a Nairobi day.
+- Exact numbers. Anthropic does not publish the token or message counts for Pro or Max. The Max page says only five times Pro usage per five hours and per week. So percentages from the status line are ground truth, and any token cap I compute is my own estimate.
+- Session logs. The path `~/.claude/projects/<project>/<session>.jsonl` is documented. The entry format is documented as internal and subject to change. I saw per-message token counts in them on 2026-11-04. Treat that as incidental, and fail closed if the format changes (10.3).
+- The `/usage` screen is built from local history. Other devices and claude.ai are not in it.
+- Headless runs (`claude -p`) can output JSON with token usage and a cost field. The cost is a list-price estimate, not the plan meter.
+
+### 10.3 The budget governor (L0b)
+
+Job: know how much you have used, refuse to start work that would not fit, and say when it will fit.
+
+Windows. Two come from the plan: the five-hour window and the seven-day window, read from the status line percentages and reset times. Three are mine and optional: a cap per hour, per Nairobi day and per week, in weighted tokens from the logs. They exist because you may want to stay under what the plan allows, and because the status line only reports during a live session.
+
+Gate. It is code, with no model inside. Before a task starts, for every window:
+
+  used + reserved + predicted <= cap * (1 - reserve)
+
+- used: from the status line percentage where present, otherwise from the log ledger.
+- reserved: the predicted cost of every task admitted but not yet finished. When a task is admitted, its prediction is reserved. When it finishes, the reservation is released and the actual cost is booked. This stops two tasks passing the same headroom at once.
+- predicted: the 90th percentile of past costs for that task class and model, times 1.25. A class with fewer than ten samples uses a flat ceiling you set, and its runs are logged as probes. Cost is tracked per model because different models likely drain the limit at different rates.
+- reserve starts at 10 percent.
+
+If a window fails, the task is deferred. The message names the window and its reset time.
+
+Fail closed. If the log parser meets an unknown format, an unknown token field, a missing status line value or a governor process that is not running, the gate refuses and says why. It never treats missing data as zero. Log reads skip a half-written last line and deduplicate by message id. Subagent logs must be counted; a test checks this.
+
+Blind spot. Chat on the web or phone, and other devices, may draw on the same plan limit and are not in the logs. The status line percentage includes them, which is the reason it is the first source. Where it is absent, add a hand entry ("I used about 8 percent elsewhere"). A hand entry expires after one hour. A hard stop applies: if Claude Code reports a limit hit, every window is treated as full until its reset time.
+
+Calibration. My hour, day and week caps start as guesses. Each time the plan reports a limit, record the ledger total and adjust. Cache token weights are unknown: start with input plus output at weight 1 and cache at a low editable weight. Limit hits will be rare because the governor works to avoid them, so calibration data builds slowly. Plan for that.
+
+Override. One command, for one task, with a reason, written to the audit log. It is bound to that task id and expires when that task finishes or at the next reset of the window it overrode, whichever comes first. A split or retried child does not inherit it. It is never a default.
+
+What "deterministic" means here. The gate's arithmetic and refusals are deterministic. The inputs are not: usage depends on output length no one knows in advance, the task class and the estimate come from a model, and the logs are an unstable interface. The guarantee is that the same ledger and the same request always give the same decision.
+
+### 10.4 Breaking heavy prompts into subtasks
+
+A heavy prompt is one the governor predicts will not fit, or that would use more than 25 percent (a guess) of the smallest cap.
+
+1. A planning call (a model, admitted first, charged to the budget) turns the prompt into a task graph. Each node has: id, goal, inputs, expected outputs, task class, estimated cost, dependencies, files it expects to touch, and an acceptance check.
+2. Code validates the graph: no cycles, an acceptance check on every node, no node estimated above the share limit (an oversized node returns to the planner, up to three rounds), and no two nodes that declare the same file running together.
+3. The model proposes where to cut. Code checks whether each piece fits. Caveat from the council: the planner also supplies the estimates and the file lists, so the validator checks numbers it was handed. Two guards: estimates for known classes are replaced by measured history, and a node that touches a file it did not declare is stopped and parked.
+
+Non-sequential work is a graph. Independent nodes can run in any order. A node waits until every upstream node has finished and passed its check.
+
+### 10.5 The queue you control
+
+Commands: list, next (pin a node), move, hold, drop, split, merge, run-now.
+
+Default order: nodes that unblock the most others, then nodes that fit the current window, then deadline. Your pin beats the default but cannot break a dependency or skip the gate. If a pinned node does not fit, the system says when it will and offers three options: wait, split it smaller, or override once. Editing while a node runs: dropping or re-pinning a running node asks you to stop it first. Dropping a node that others depend on lists the blocked nodes and asks what to do with them.
+
+Each node runs as a fresh headless Claude Code run. It gets a handoff file with its dependencies' outputs, not the earlier transcript. Each run goes through the gate. Retries go through the gate too, and each retry is charged. A failed acceptance check allows two retries, then the node is parked and you are told. An interrupted node is charged for the partial usage and restarts from its handoff file in a clean working copy.
+
+State is an append-only event file: queued, admitted, started, finished, checked, parked, overridden, pinned. The queue is derived from it. After a crash, a node with a start event and no finish event is marked unknown, not rerun. It may already have edited files or made commits. You decide: inspect, discard, or rerun.
+
+### 10.6 The full picture
+
+On request, a report built from the graph:
+
+- done, running, queued, blocked, parked, with actual versus estimated cost per node;
+- each finished node's output in graph order;
+- a partial result labelled partial, listing every missing node by name;
+- when all nodes are done, an assembled result following the assembly step the planner wrote at the start. Code concatenates the outputs. A model may add a summary, marked as model-written.
+
+### 10.7 Terms and where it may run
+
+The research agent found this, and I could not settle it:
+
+- Anthropic's consumer terms restrict access "through automated or non-human means, whether through a bot, script, or otherwise" except through an API key or where Anthropic explicitly permits it (quoted from a fetch summary; read the terms yourself).
+- Reports of Anthropic's compliance guidance say subscription login tokens are intended only for Claude Code and Claude.ai.
+- It is unclear whether a scheduler that starts the official `claude` binary counts as Claude Code use. The headless documentation describes scripted use but is not a terms grant. A tool that manages budgets on top of Claude Code is the case most likely to be read as a third-party tool. The acceptable use policy was not read.
+
+Consequences for the plan. Everything in stages 1 to 3 below runs inside a live session you started: a status line script, hooks and slash commands. That is how Claude Code is meant to be extended. Starting headless runs unattended from a scheduler (stages 4 and 5) waits for written clearance from Anthropic. Also, hooks work only inside Claude Code sessions; a scheduler would need its own gate before each run.
+
+"Anyone's Claude Code": each user installs it under their own account and takes on their own terms risk. The README must say so.
+
+### 10.8 Acceptance tests, written first
+
+- Fake logs: windows sum correctly across a day boundary in Africa/Nairobi, and across a laptop sleep or clock jump.
+- Status line percentage present: the gate uses it. Absent: it uses the ledger or refuses.
+- Unknown log format, renamed token field, half-written last line, duplicate message ids, a missing subagent log: each ends in refusal or correct totals, never in an undercount.
+- A task failing any window is deferred, and the message names the window and reset.
+- Two tasks submitted together that each fit but together do not: only one is admitted.
+- Override: bound to one task, logged, expires at task end or reset, not inherited by retries or split children.
+- Hand entry expires after one hour.
+- Pinned node runs next only if it fits and its dependencies passed.
+- Property test: for random graphs and pins, no node starts before its dependencies pass.
+- Queue edits during a run: drop and re-pin of a running node, drop of a depended-on node, each leaves a valid state.
+- Crash recovery: a started but unfinished node becomes unknown and is not rerun.
+- Limit hit mid-run: partial usage booked, all windows full until reset.
+- Partial report names exactly the nodes that are not done.
+- Replay: feed recorded usage through the estimator and report how far predictions miss. The target is set after the first measurement.
+
+### 10.9 What is not proven
+
+- Every number: the reserve, the 1.25 margin, the 25 percent share, the cache weights.
+- Whether the log format stays readable across Claude Code versions.
+- Whether the terms allow anything beyond a live session (10.7).
+- A hook cannot stop a response already generating. The gate works at task start and between tool calls. One long response can overshoot, which is why a reserve exists. Stopping between tool calls can also leave files half edited; each node works in its own working copy for that reason.
+- The planning call costs tokens. For a small prompt, decomposition may cost more than it saves. Only heavy prompts are decomposed, and the replay test should check that this rule helps.
+- Baseline to beat: you watching the usage screen and picking tasks by hand.
+
+### 10.10 Council verdict on scope
+
+The scope lens (a Claude model, not independent) said the idea is sound and over-scoped: build the ledger and a warning hook first and stop, because a person who queues three to five heavy tasks a week may get most of the value from a pinned to-do list plus warnings. I agree the queue has to earn its place. So the design above stays on paper, and the build order below gates each step on evidence.
+
+Four-week test, set now:
+
+- Weeks 1 and 2: run the read-only ledger plus the status line recorder. Log every real limit hit with the ledger and status line values at that moment. Pass: on at least three of four limit events the ledger is within about 20 percent of the plan's own percentage.
+- Weeks 3 and 4: run the warning hook. Count how many times a warning changed what you did, and how many were false alarms.
+- Week 4 decision: if the ledger tracks the plan and warnings changed your choices, build the gate. Build the queue only if you regularly hit limits in the middle of a task. Otherwise stop.
+
+### 10.11 Build order for this part
+
+1. Read-only ledger, status line recorder and report. No gating.
+2. Warning hook, then a blocking gate with the explicit override.
+3. Task graph, validator and queue commands, with you running each node inside a live session.
+4. Headless execution of nodes and the full-picture report. Needs terms clearance first.
+5. Scheduler for unattended runs. Needs terms clearance first.
+
+Each stage is its own branch and pull request, tests first.
+
+### 10.12 Kiroween tension (decision D-27)
+
+The Kiroween entry must be built with Kiro. This governor is for Claude Code and does not by itself show Kiro use. Options:
+
+1. Keep the entry as planned (Steward plus a draft-only social agent, built with Kiro). Build the governor after the contest as a separate project.
+2. Make the governor the entry, with Claude Code and Kiro CLI adapters. Risks: scope, and Kiro may not expose usage data (UNCONFIRMED).
+3. Add only the read-only ledger report to the entry, if it takes under a day.
+
+Recommendation, a guess shared by the scope lens: option 1. The contest date is firm (4 December), the key facts are unconfirmed, and the terms question blocks the unattended half.
