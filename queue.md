@@ -24,9 +24,9 @@ These block queued work. Each has my recommendation. They are yours to decide.
 | D-2 | Which plan wins where the two PDFs differ? The operating plan (8-week pilot, 2 programmes, habit and return-after-interruption measures, AI coach out of scope) and the strategy update (10 to 12 weeks, one lead partner, placement and retention measures, AI drafting allowed with human review). | Pilot length, measures and scope conflict. | The strategy update is dated 2026-10-20 and is the narrower one. Treat it as current and the operating plan as background unless you say otherwise. |
 | D-3 | The brief puts account deletion and the privacy centre in the backlog until there are paying customers. The operating plan lists privacy controls, export and deletion as P0. The strategy update requires role-based access, a correction path for records and a privacy notice. | The profile page has no export or deletion today. A Kenyan pilot with learner data will need them. | Ship export, deletion and a privacy notice before any real learner data. Put the rest of the account menu in the backlog. |
 | D-4 | The developer chat with a model that reads and writes system data (brief section 3). Neither PDF includes a developer chat. The strategy update defers autonomous outreach and bans silent status changes by AI. | A model with write access to records is the largest new risk surface. | Hold until after the discovery gate. When built, writes need an explicit approval step and schema-checked output, as the strategy update requires. |
-| D-5 | Adopt DaisyUI for the redesign? It is not installed in routine-machine (Tailwind 4 only). The app was brought to the hand-built design reference in six fidelity passes on 2026-10-17 and 10-18. | A component library replaces styling that was checked against the reference. | Keep the current styles. Fix feedback and motion in place. Revisit DaisyUI only if D-1 means a new front end. |
-| D-6 | Name for the records screen (the brief's "lab UI"). | Fits the shepherd words in `docs/design.md`. | The Hut: where the shepherd keeps notes and tools. Four tabs: Notes (research), Tasks, Tickets, Outcomes. |
-| D-7 | Your daily and weekly cap numbers. | I cannot see usage. | Tell me both numbers; I will plan at 60%. |
+| D-5 | Adopt DaisyUI for the redesign? | ANSWERED 2026-11-05: no for now; keep the current styles. Revisit after the Founding.dev hackathon, which may bring design changes. | n/a | n/a |
+| D-6 | Name for the records screen (the brief's "lab UI"). | ANSWERED 2026-11-05: yes, The Hut. Four tabs: Notes (research), Tasks, Tickets, Outcomes. | n/a | n/a |
+| D-7 | Your daily and weekly cap numbers. | PARTLY ANSWERED 2026-11-05: Miguel agreed to planning at 60% of the caps. The two numbers themselves are not recorded yet. | The two numbers | When planning the governor |
 | D-8 | The first hire's terms: pay, hours, start date, contract type, and whether her cost sits on top of the planning envelope or comes out of contingency. | The financials workbook is built with the pay field empty. | Stipend or part-time in Tranche 1, full engagement only after the discovery gate. Written IP assignment and confidentiality before the first payment. |
 | D-9 | Hackathon stack: one TypeScript service (API and MCP server), or Java and Spring Boot with a separate MCP process. | Fresh build, nine days, schema checks and the agent loop are TypeScript-native. | TypeScript. |
 | D-10 | Hackathon licence. | The repo must be public. | MIT. |
@@ -42,9 +42,9 @@ These block queued work. Each has my recommendation. They are yours to decide.
 | D-20 | Shepherd: Qloo | ANSWERED 2026-11-03: Qloo is its own feature, separate from the pipeline. It does not route. | n/a | n/a |
 | D-21 | Shepherd: hosted open model provider | ANSWERED 2026-11-03: Baseten for now. Modal and Fireworks accounts also exist, so the gateway must treat the provider as a config value. Keys never go in any hub file. | n/a | n/a |
 | D-18a | Musk quotes in `docs/agent-principles.md` section 15 | PARTLY VERIFIED 2026-11-04: reports of the Nov 2025 Kamath interview support the appearance-of-goodness line, "can't pursue happiness directly" and value-before-money. The gym detail is in no source I read. The article marks it as yours. | n/a | n/a |
-| D-27 | Kiroween entry versus the Claude Code budget governor (plan section 10) | OPEN. Recommended: keep the entry as Steward plus draft-only social agent; build the governor after 4 Dec. Also open: written clearance on Anthropic terms before any unattended run. | Which option | Before 11 Nov kill rule |
-| D-28 | Founding.dev landing page: headline (hero: Let your AI helpers roam. Keep them in the field; title: Every AI helper needs a shepherd), hours a day next to Kiroween week 1 (suggested 3), mascot source (own image or builder generated), and whether the page names the product or says the shepherd | OPEN. See `docs/plans/founding-dev-landing-page.md` section 11 | Four answers | Before 6 Nov 11:00 Nairobi |
-| D-29 | Kiroween trajectory: Skeleton Crew with a kill switch on 11 Nov, or Frankenstein from the start (plan section 11) | OPEN. Recommended: Skeleton Crew | One choice | Before 11 Nov kill rule |
+| D-27 | Kiroween entry versus the Claude Code budget governor (plan section 10) | ANSWERED 2026-11-05: the budget governor will be built, with the aim of completing it. It is no longer deferred to after 4 Dec. Open: where it sits in the build order next to the Kiroween slice (see D-29), and written clearance on Anthropic terms before any unattended run. | n/a | n/a |
+| D-28 | Founding.dev landing page choices | ANSWERED 2026-11-05: hero headline "Every AI helper needs a shepherd"; 3 hours a day is fine; the mascot is builder generated, and Miguel wants to see what he can come up with on the platform; the page names the product, which is Umwayi hub. | n/a | n/a |
+| D-29 | Kiroween trajectory: Skeleton Crew with a kill switch on 11 Nov, or Frankenstein from the start (plan section 11) | ANSWERED 2026-11-05: Skeleton for now, with the hope of finishing the entire product. Order of the governor against the skeleton: open. Suggested: skeleton first, governor second, kill rule on 11 Nov. | n/a | n/a |
 
 ## R. Routine Machine, from the brief
 
@@ -125,8 +125,8 @@ IDs match the `(H-nnn)` mark on the line in `backlog.md`. "Yours" means only you
 | H-006 | Could a moved or renamed file be double-counted by hub-sync | Routine Machine | closed 2026-10-26 |
 | H-007 | Does the Board view call the backend or the intelligence service | Routine Machine | queued |
 | H-008 | Chart types for the Reports view, once real data exists | Routine Machine | held |
-| H-009 | Waline free-tier database: Postgres or MongoDB | Site | queued |
-| H-010 | Waline database suspension: keepalive or accepted risk | Site | queued |
+| H-009 | Waline free-tier database: Postgres or MongoDB | Site | closed 2026-11-05: Postgres (Miguel says it is already decided and implemented; not checked here) |
+| H-010 | Waline database suspension: keepalive or accepted risk | Site | closed 2026-11-05: accepted risk |
 | H-011 | Four pillars and a four-step loop on the homepage: loss or fair simplification | Site | yours |
 | H-012 | Public repo names companies the site keeps private | Site | closed 2026-10-26 |
 | H-013 | Read the seven journal excerpts in site/journals | Site | yours |
@@ -158,10 +158,10 @@ IDs match the `(H-nnn)` mark on the line in `backlog.md`. "Yours" means only you
 | H-039 | Possible next article: AI hype and fundamentals | Site | held |
 | H-040 | Next book: Algorithms Are Not Enough | Reading | held |
 | H-041 | Optional two-week test: do AI tools save hours or raise expectations | Hub | held |
-| H-042 | MailerLite: manual campaigns or paid plan for RSS sends | Site | held |
+| H-042 | MailerLite: manual campaigns or paid plan for RSS sends | Site | closed 2026-11-05: manual campaigns |
 | H-043 | Double opt-in success message wording | Site | queued |
-| H-044 | Remove or keep the test address on the MailerLite list | Site | yours |
-| H-045 | Delete test comments in Waline | Site | yours |
+| H-044 | Remove or keep the test address on the MailerLite list | Site | decided 2026-11-05: remove. The removal itself is not done |
+| H-045 | Delete test comments in Waline | Site | decided 2026-11-05: delete. The deletion itself is not done |
 | H-046 | Replace SITE_DISPATCH_TOKEN with a fine-grained token | Site | queued |
 | H-047 | Read the takeaways on six articles and four project pages | Site | yours |
 | H-048 | Study Java concurrency mechanisms to failure, then the OS | Study | held |
@@ -173,7 +173,7 @@ IDs match the `(H-nnn)` mark on the line in `backlog.md`. "Yours" means only you
 | H-054 | MCP and agents study, six modules | Study | yours |
 | H-055 | Prompt 5 parts 4 to 6 not visible in commits | Routine Machine | queued |
 | H-056 | Confirm PostHog Live events after consent | Routine Machine | queued |
-| H-057 | README and PROJECT.md name a target employer | Routine Machine | yours |
+| H-057 | README and PROJECT.md name a target employer | Routine Machine | closed 2026-11-05: keep naming it (Miguel: yes) |
 | H-058 | Check other tests for machine-specific assumptions | Routine Machine | queued |
 | H-059 | Cloud hosting, storage, CI/CD, Kubernetes, caching: concerns answer first | Routine Machine | held |
 | H-060 | Does Routine Machine move from tracking toward producing work | Routine Machine | yours |
@@ -209,7 +209,7 @@ Day by day tasks, with acceptance checks, live in the repository's `queue.md` (H
 | K-01 | Request the Baseten $100 credit and submit the Meta $150 form. Each needs your own account and a card on file | queued, now | Confirmation saved, no card data in any file | `umwayi-rm/docs/hackathon-log.md` |
 | K-02 | Create the public repo `umwayi-rm` from the delivered zip, docs only, with a LICENSE | done 2026-10-28 | Public when logged out; no code; first code commit Oct 27 or later | repo log (H-02) |
 | K-03 | Decide D-9 to D-13 | done 2026-11-03 | Answers recorded here | this file |
-| K-04 | Ask on the hackathon Discord whether a savings-group ledger agent is clear of "basic RAG" and "simple image analyzers", and whether "Built with Muse Spark Open" is required | queued, next | Answer recorded | repo log |
+| K-04 | Ask on the hackathon Discord whether a savings-group ledger agent is clear of "basic RAG" and "simple image analyzers", and whether "Built with Muse Spark Open" is required | not asked (Miguel, 2026-11-05). He assumes yes; that is an assumption, not an answer | Answer recorded | repo log |
 | K-05 | Two ten minute interviews with treasurers or members (D-11); read the Day 1 model checks | done 2026-11-03, none held by decision (D-11); Day 1 model checks done 2026-10-28 | Real rows in `umwayi-rm/docs/research/interviews.md`, or it says none | repo |
 
 ## L. Practices and plans (from the notes of 27 Oct to 2 Nov)

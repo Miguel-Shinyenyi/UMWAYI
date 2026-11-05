@@ -278,7 +278,7 @@ Recommendation, a guess shared by the scope lens: option 1. The contest date is 
 
 ## 11. Kiroween trajectory, credits and fallback
 
-Added 2026-11-05. Facts about Kiro come from its pages and the signed-in account, read 2026-11-05. Design only.
+Added 2026-11-05. Facts about Kiro come from its pages and the signed-in account, read 2026-11-05. Design only. Updated the same day after D-27 and D-29 were answered.
 
 ### 11.1 Credits
 
@@ -300,7 +300,8 @@ Added 2026-11-05. Facts about Kiro come from its pages and the signed-in account
 - Skeleton Crew: build the smallest slice first. A policy kernel with Yes, No and Ask me first, an append only logbook, an MCP server with three tools (check policy, record audit, request approval), one policy file with a schema, the Steward as the manager agent, and a draft only social agent. About 21 hours a week.
 - Kill switch to Frankenstein: if the slice is not working by 11 Nov, stop adding parts and reuse existing tools for the rest. Do not rebuild what a tool already does.
 - Approval gate: GitHub branch protection. The agent proposes, you merge.
-- Deferred: the budget governor (D-27).
+- Budget governor (section 10): in scope. D-27 was answered on 2026-11-05: it will be built, with the aim of completing it. Its place in the order against the skeleton is open. Suggested: skeleton first, governor second, with the 11 Nov kill rule applied to both.
+- Miguel's stated aim (2026-11-05): finish the entire product. The Kiroween entry is the skeleton slice.
 
 ### 11.4 Not verified
 
