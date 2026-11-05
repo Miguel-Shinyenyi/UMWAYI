@@ -7,6 +7,7 @@ Written 2026-11-02, Africa/Nairobi. Plans only. No agent here is built. Principl
 | AI operating system | `ai-operating-system.md` | Deterministic services every agent runs on, built in gated stages |
 | Steward | `steward-agent.md` | UMWAYI upgraded into the manager agent, and the everything agent, as one agent with two scopes |
 | Social media agent | `social-agent.md` | Articles to scripts to videos and posts, drafts only, token cost measured first |
+| Landing page | `founding-dev-landing-page.md` | Page for the AI operating system, built on Founding.dev during the design hackathon, 6 to 10 Nov |
 
 ## 1. What the repositories show for 27 Oct to 2 Nov
 

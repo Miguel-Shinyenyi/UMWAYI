@@ -275,3 +275,34 @@ The Kiroween entry must be built with Kiro. This governor is for Claude Code and
 3. Add only the read-only ledger report to the entry, if it takes under a day.
 
 Recommendation, a guess shared by the scope lens: option 1. The contest date is firm (4 December), the key facts are unconfirmed, and the terms question blocks the unattended half.
+
+## 11. Kiroween trajectory, credits and fallback
+
+Added 2026-11-05. Facts about Kiro come from its pages and the signed-in account, read 2026-11-05. Design only.
+
+### 11.1 Credits
+
+- The Kiro account is on the Free plan: 50 credits a month, none used, reset on 1 Dec.
+- A hackathon credit request was made by Miguel. No grant shows on the account yet.
+- Paid plans exist. Whether a Kenyan payment method works is not confirmed.
+
+### 11.2 If no grant arrives
+
+- Use the Auto agent, the cheapest option, for routine work.
+- Spend credits only on specs, steering files and hooks, where Kiro's own features earn their cost.
+- Hand write the policy kernel and its tests. They are small and they are the core of the entry.
+- Skip Crew (the always on agent runner). It needs about 10 GB of memory and uses credits all day.
+- Ask for help in the Kiro community channel.
+- Do not route Kiro through another harness. The hackathon rules forbid third party harness use.
+
+### 11.3 Trajectory
+
+- Skeleton Crew: build the smallest slice first. A policy kernel with Yes, No and Ask me first, an append only logbook, an MCP server with three tools (check policy, record audit, request approval), one policy file with a schema, the Steward as the manager agent, and a draft only social agent. About 21 hours a week.
+- Kill switch to Frankenstein: if the slice is not working by 11 Nov, stop adding parts and reuse existing tools for the rest. Do not rebuild what a tool already does.
+- Approval gate: GitHub branch protection. The agent proposes, you merge.
+- Deferred: the budget governor (D-27).
+
+### 11.4 Not verified
+
+The submission date (3 Dec was read from the Devpost page and should be confirmed), whether Kiro hooks fail closed in every case, and the credit grant itself.
+

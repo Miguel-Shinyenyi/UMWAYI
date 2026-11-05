@@ -786,6 +786,24 @@ SCENES["philosophy/appearance-versus-reality"] = (
 )
 
 
+# one-mind-or-many: a fence splits a flock; a few sheep stand at the gap; the shepherd asks.
+SCENES["philosophy/one-mind-or-many"] = (
+    "One flock or two",
+    "A fence splits a flock into two groups. A few sheep stand at the gap. The shepherd asks whether the fence should stay.",
+    f"""
+<rect x="396" y="250" width="12" height="170" rx="3" fill="#C08A3E" stroke="{INK}" stroke-width="3"/>
+<rect x="392" y="250" width="20" height="16" rx="3" fill="#C08A3E" stroke="{INK}" stroke-width="3"/>
+{sheep(150, 410, 0.55)}
+{sheep(270, 410, 0.55)}
+{sheep(530, 410, 0.55, flip=True)}
+{sheep(650, 410, 0.55, flip=True)}
+{sheep(402, 440, 0.5)}
+{shepherd(740, 425, 0.6, flip=True)}
+{bubble(430, 70, 300, 58, "Should the fence stay?", 22, tail="right")}
+""",
+)
+
+
 if __name__ == "__main__":
     for key, (title, desc, body) in SCENES.items():
         name = key.split("/")[1] + ".svg"
