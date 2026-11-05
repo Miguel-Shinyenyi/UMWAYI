@@ -1,6 +1,6 @@
 # Master Context
 
-Last updated: 2026-10-26 (queue, pruning list, strategy update)
+Last updated: 2026-11-05 (hackathon status)
 
 ## Who this is for
 
@@ -36,7 +36,7 @@ where the observation gets tested against something real.
 | CMU masters | `projects/cmu-masters.md` | Fall 2027 application cycle. Feeds from the writing, backend, and AI engineer goals. |
 | Settlement engine | `projects/settlement-engine.md` | Idempotent Settlement and Reconciliation Engine, public repo `Invoice-Financing`. Nine phases done, live on staging, Lab and MCP server on `dev`. |
 | Routine machine | `projects/routine-machine.md` | Routines, learning, reading notes, credit ledger, savings and cohorts. Own repo. Phases 1 to 12 on `main`. Direction under review (`queue.md` D-1). |
-| Hackathon | `projects/hackathon.md` | Meta Global AI Developer Hackathon, Oct 26 to Nov 4. Public repo `umwayi-rm` is built (savings-group secretary agent, MIT). Submission due Nov 4 16:00 EAT. Open items in `queue.md` D-11, D-12 and `umwayi-rm/docs/final-48h-packets.md`. |
+| Hackathon | `projects/hackathon.md` | Meta Global AI Developer Hackathon, Oct 26 to Nov 4. Public repo `umwayi-rm` is built and deployed (savings-group secretary agent, MIT), live at umwayi-rm.vercel.app with a demo video. H1 and H2 returned nulls. Zero interviews, by decision. Submission status and known issues in the project file. Open items in `queue.md` K and `umwayi-rm/docs/hackathon-log.md`. |
 | Agent principles and plans | `docs/agent-principles.md`, `docs/plans/` | Consolidated rules from the notes of 27 Oct to 2 Nov, with a line map; plans for an AI operating system, a Steward agent and a social agent. Tasks in `queue.md` section L. |
 | Open source | `projects/open-source.md` | Open source issues worked one at a time, each recorded with its verification. Started 2026-10-14. |
 | Website | `website/PLAN.md` | Historical plan, superseded. Site code is in `miguel-site`, content in `site/`. |
