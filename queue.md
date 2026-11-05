@@ -43,6 +43,8 @@ These block queued work. Each has my recommendation. They are yours to decide.
 | D-21 | Shepherd: hosted open model provider | ANSWERED 2026-11-03: Baseten for now. Modal and Fireworks accounts also exist, so the gateway must treat the provider as a config value. Keys never go in any hub file. | n/a | n/a |
 | D-18a | Musk quotes in `docs/agent-principles.md` section 15 | PARTLY VERIFIED 2026-11-04: reports of the Nov 2025 Kamath interview support the appearance-of-goodness line, "can't pursue happiness directly" and value-before-money. The gym detail is in no source I read. The article marks it as yours. | n/a | n/a |
 | D-27 | Kiroween entry versus the Claude Code budget governor (plan section 10) | OPEN. Recommended: keep the entry as Steward plus draft-only social agent; build the governor after 4 Dec. Also open: written clearance on Anthropic terms before any unattended run. | Which option | Before 11 Nov kill rule |
+| D-28 | Founding.dev landing page: headline (hero: Let your AI helpers roam. Keep them in the field; title: Every AI helper needs a shepherd), hours a day next to Kiroween week 1 (suggested 3), mascot source (own image or builder generated), and whether the page names the product or says the shepherd | OPEN. See `docs/plans/founding-dev-landing-page.md` section 11 | Four answers | Before 6 Nov 11:00 Nairobi |
+| D-29 | Kiroween trajectory: Skeleton Crew with a kill switch on 11 Nov, or Frankenstein from the start (plan section 11) | OPEN. Recommended: Skeleton Crew | One choice | Before 11 Nov kill rule |
 
 ## R. Routine Machine, from the brief
 
@@ -116,7 +118,7 @@ IDs match the `(H-nnn)` mark on the line in `backlog.md`. "Yours" means only you
 | ID | Item | Area | Status |
 |---|---|---|---|
 | H-001 | Does the register-calibration pattern extend past technical explanations | Self | yours |
-| H-002 | Which CMU program: MSCS, MSAII, MSE or MSIT | CMU | yours |
+| H-002 | Which CMU program: MSCS, MSAII, MSE or MSIT | CMU | ANSWERED 2026-11-05: MS in Engineering Artificial Intelligence (MS EAI) at CMU-Africa |
 | H-003 | Target durations per schedule block | Routine Machine | queued |
 | H-004 | Does the weekly schedule layout need tuning once lived with | Routine Machine | queued |
 | H-005 | Poll hub-sync on a schedule or trigger by hand | Routine Machine | closed 2026-10-26 |
