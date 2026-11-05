@@ -10,6 +10,7 @@ Claude Code reads this file at the start of every task. Practices that apply to 
 4. Only the project file for the project you are touching, under `projects/`.
 5. `docs/understanding-first.md` and `docs/engineering-concerns.md` when you design, review or write code.
 6. `docs/agent-principles.md` when you design or run an agent. Every rule there carries a source line in the notes.
+7. `docs/core-rules.md` on every task: use each tool's strengths and do not rebuild it, consult the council, ask whether we are going live (then `docs/pre-launch-security.md`).
 7. `archive/INDEX.md` only when a task needs history that was moved out of a working file. Do not read the archive otherwise.
 
 ## Rules that already apply

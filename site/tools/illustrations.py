@@ -730,6 +730,61 @@ SCENES["tech/a-folder-is-not-a-brain-until-you-measure-it"] = (
 """,
 )
 
+# come-with-a-question-not-a-verdict: a crossed-out verdict on the grass; the shepherd asks instead.
+SCENES["philosophy/come-with-a-question-not-a-verdict"] = (
+    "Ask before you judge",
+    "A paper marked verdict lies crossed out on the grass. The shepherd asks a sheep what it saw instead.",
+    f"""
+<g transform="translate(70 300) rotate(-6)">
+<rect x="0" y="0" width="150" height="96" rx="6" fill="{PAPER}" stroke="{INK}" stroke-width="4"/>
+{label(75, 40, "VERDICT", 17, INK)}
+<path d="M10 10 L140 86 M140 10 L10 86" stroke="{RED}" stroke-width="6"/>
+</g>
+{sheep(330, 425, 0.78)}
+{shepherd(560, 425, 0.62, flip=True)}
+{bubble(430, 80, 300, 58, "What did you see?", 22, tail="right")}
+""",
+)
+
+# who-the-standards-serve: a standard on a tall post that stays out of reach.
+SCENES["philosophy/who-the-standards-serve"] = (
+    "A standard out of reach",
+    "Three sheep walk toward a flag marked standard on a tall post. The post stays far ahead. The shepherd asks who it is for.",
+    f"""
+<rect x="660" y="90" width="12" height="260" fill="#C08A3E" stroke="{INK}" stroke-width="3"/>
+<path d="M672 96 H760 V140 H672 Z" fill="{OCHRE_L}" stroke="{INK}" stroke-width="3"/>
+{label(716, 125, "STANDARD", 12, INK)}
+{sheep(200, 400, 0.6)}
+{sheep(320, 400, 0.6)}
+{sheep(440, 400, 0.6)}
+{shepherd(90, 425, 0.62)}
+{bubble(40, 70, 300, 58, "Who is this for?", 22, tail="left")}
+""",
+)
+
+# appearance-versus-reality: a count board versus a sheep actually through the gate.
+SCENES["philosophy/appearance-versus-reality"] = (
+    "Counted, or solved",
+    "A board shows a large commit count. Beside it a sheep passes through a gate marked solved. The shepherd points at the gate.",
+    f"""
+<g transform="translate(60 120)">
+<rect x="20" y="170" width="14" height="70" fill="#C08A3E" stroke="{INK}" stroke-width="3"/>
+<rect x="166" y="170" width="14" height="70" fill="#C08A3E" stroke="{INK}" stroke-width="3"/>
+<rect x="0" y="0" width="200" height="180" rx="10" fill="{PAPER}" stroke="{INK}" stroke-width="4"/>
+{label(100, 50, "COMMITS", 15, INK)}
+{label(100, 120, "128", 52, INK)}
+</g>
+<g stroke="{INK}" stroke-width="3" fill="#C08A3E">
+<rect x="400" y="290" width="12" height="120" rx="3"/><rect x="520" y="290" width="12" height="120" rx="3"/>
+<rect x="394" y="270" width="144" height="18" rx="4"/>
+</g>
+{label(466, 262, "SOLVED", 15, INK)}
+{sheep(466, 420, 0.7)}
+{shepherd(690, 425, 0.62, flip=True)}
+{bubble(500, 70, 270, 58, "Count what got solved.", 20, tail="right")}
+""",
+)
+
 
 if __name__ == "__main__":
     for key, (title, desc, body) in SCENES.items():
