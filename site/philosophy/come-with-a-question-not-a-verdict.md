@@ -1,11 +1,21 @@
 ---
-title: "Come with a question, not a verdict"
-date: 2026-11-04
-summary: "Most arguments start after one side has already decided. What changes when you open with a question, and a check you can run on yourself first."
+title: 'Come with a question, not a verdict'
+date: 2026-11-04T00:00:00.000Z
+summary: >-
+  Most arguments start after one side has already decided. What changes when you
+  open with a question, and a check you can run on yourself first.
 draft: false
 illustration: come-with-a-question-not-a-verdict.svg
-illustrationAlt: "A paper marked verdict lies crossed out on the grass. The shepherd asks a sheep what it saw."
-tags: ["Reasoning", "Learning", "Conversation"]
+illustrationAlt: >-
+  A paper marked verdict lies crossed out on the grass. The shepherd asks a
+  sheep what it saw.
+tags:
+  - Reasoning
+  - Learning
+  - Conversation
+crossposted:
+  devto: >-
+    https://dev.to/miguel_shinyenyi_e2291c8c/come-with-a-question-not-a-verdict-48cc
 ---
 
 ## The verdict is already written
