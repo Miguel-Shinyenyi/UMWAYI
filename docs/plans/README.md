@@ -58,7 +58,7 @@ What the council advised (security lens, confidence high on the first three risk
 4. The split of command and network is weakened by fetch and PR tools that take model-chosen arguments. Add an egress allowlist, size limits and a secret scan on outbound content.
 5. The social agent: read platform terms and AI-labelling rules before posting; add an "AI-assisted" field to the post log; check proper nouns against a blocklist.
 
-Your project doc `secrets/umwayi-journal-key.md` holds the journal key in the claude.ai Project. Anything attached to that Project can read it. Move the key to a password manager or the system keychain, and do not give agents the Project.
+The journal key must not sit in any shared or cloud document, because anything attached to it can read the key. Keep it in a password manager or the system keychain, and do not give agents access to it.
 
 What the council advised (agent design lens):
 - "Zero hallucinations by deterministic code" is unsupported. Zero unapproved actions is supported. Zero unchecked claims is only as strong as the checker, so test it with 20 seeded answers that have real citations and false conclusions.

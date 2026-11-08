@@ -2,7 +2,7 @@
 title: "Do the rules that stop an AI also stop us?"
 date: 2026-11-08
 summary: "I compared how an AI model is trained with how a person is raised. The comparison breaks in places that matter, and those places show what a rule file can do that a social rule cannot."
-draft: true
+draft: false
 illustration: rules-that-stop-an-ai-and-rules-that-stop-us.svg
 illustrationAlt: "A kite on a string tied to a fence post flies above sheep inside a fence. A sign with three lamps stands to the right, and one sheep outside the fence looks at it."
 tags: ["AI", "Reasoning", "Reading"]

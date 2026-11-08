@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Miguel Shinyenyi CV</title>
+<style>
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; }
+html,body { margin:0; padding:0; }
+body { font-family: "Liberation Sans", Arial, Helvetica, sans-serif; font-size: 9.8pt; line-height: 1.5; color:#1a1a1a; }
+.page { padding: 1mm 18mm 0 18mm; }
+h1 { font-size: 18.5pt; margin: 0 0 6px 0; line-height:1.2; color:#111; }
+.contact { font-size: 8.2pt; color:#444; line-height:1.55; }
+.contact .sep { color:#aaa; padding:0 4px; }
+h2 { font-size: 9.6pt; letter-spacing: .06em; text-transform: uppercase; color:#14513d; margin: 20px 0 0 0; padding-bottom: 3px; border-bottom: 1px solid #222; }
+p { margin: 6px 0 0 0; }
+.job { margin-top: 9px; break-inside: avoid; }
+.row { display:flex; justify-content:space-between; align-items:flex-start; }
+.row .l { }
+.row .r { white-space:nowrap; margin-left:12px; text-align:right; font-size:8.2pt; color:#444; line-height:1.6; }
+.row .l b { font-weight:700; }
+.row .l span { color:#333; }
+.desc { font-style: italic; font-size: 8pt; color:#444; margin: 2px 0 0 0; }
+ul { margin: 3px 0 0 0; padding-left: 15px; }
+li { margin: 0 0 3px 0; padding-left: 0; }
+.proj { margin-top: 8px; }
+.skills { display:grid; grid-template-columns: 172px 1fr; column-gap: 6px; row-gap: 3px; margin-top: 8px; }
+.skills b { font-weight:700; } .skills b { white-space:nowrap; }
+.edu { margin-top: 8px; }
+</style></head><body><div class="page">
+<h1>Miguel Shinyenyi</h1>
+<div class="contact">Nairobi, Kenya<span class="sep">|</span>+254 723 654 035<span class="sep">|</span>miguelshinyenyi@gmail.com<span class="sep">|</span>linkedin.com/in/miguel-shinyenyi<span class="sep">|</span> github.com/Miguel-Shinyenyi</div>
+
+<h2>Professional Summary</h2>
+<p>Backend Software Engineer with 3+ years of experience building scalable, data-intensive systems in Java and Spring Boot. Proven track record delivering multi-tenant ERP platforms, RESTful microservices, and automated data pipelines processing hundreds of daily transactions across distributed systems. Strong foundation in event-driven architecture, PostgreSQL optimisation, TDD, and secure access control. Writes technical deep-dives on the systems he builds and is developing umwayi-os, an open-source rules and oversight system for AI helpers, as a working example of the same practices.</p>
+
+<h2>Work Experience</h2>
+<div class="job"><div class="row"><div class="l"><b>Software Engineer</b><span>, Global Link+</span></div><div class="r">Sep 2023 – Present<br>Utah, USA (Remote)</div></div>
+<div class="desc">Multi-tenant ERP logistics platform serving 10 B2B clients, with integrations across Shopify, Amazon, and Walmart.</div>
+<ul>
+<li>Designed and maintained RESTful backend services in Java Spring Boot powering a multi-tenant ERP platform, enforcing strict data isolation across 10 B2B clients and their customer bases, processing hundreds of orders daily.</li>
+<li>Built and optimised backend APIs for a real-time admin dashboard tracking client shipment volumes, order activity, and logistics KPIs, combining live PostgreSQL queries with pre-aggregated data for historical reporting.</li>
+<li>Integrated Stripe for secure payment processing, improving transaction reliability and the client-facing payment experience.</li>
+<li>Implemented scheduled background jobs to automate client report generation, aggregating daily order and shipment data across 10 clients into structured summaries and eliminating manual reporting overhead.</li>
+<li>Introduced Redis caching for frequently-accessed, low-volatility dashboard data and optimised PostgreSQL queries through indexing and query planning, reducing API latency by 40% and cutting redundant database load under peak concurrent usage.</li>
+<li>Architected and delivered a secure file management system storing tens of thousands of documents (contracts, product images, shipping records) with role-based access control enforced at the API layer.</li>
+<li>Designed a multi-tenant PostgreSQL data model with tenant-scoped schemas and query filtering, ensuring data integrity and isolation across all client tiers without relying on application-layer safeguards alone.</li>
+<li>Contributed to CI/CD pipeline setup by writing Maven build scripts to automate compilation, testing, and packaging for consistent, repeatable deployments.</li>
+<li>Improved system observability by integrating JVM metrics and backend health checks into monitoring dashboards, surfacing performance bottlenecks before they reached clients.</li>
+<li>Participated in code reviews and pair programming, upholding clean-code principles and consistent engineering standards across the Java codebase.</li>
+<li>Collaborated with product and operations teams to translate logistics workflows into backend features, bridging business requirements and technical implementation in a cross-functional startup environment.</li>
+</ul></div>
+
+<div class="job"><div class="row"><div class="l"><b>Software Engineer</b><span>, IBM Research</span></div><div class="r">Jun 2023 – Aug 2023<br>Nairobi, Kenya</div></div>
+<div class="desc">Backend services supporting real-time molecular visualisation and AI-driven computation for scientific research workflows.</div>
+<ul>
+<li>Developed Flask-based APIs for real-time molecular visualisation and AI-driven computation, working directly with researchers to diagnose integration issues and improve data accuracy and latency.</li>
+<li>Built and tuned PostgreSQL queries for analytical workloads, applying indexing and query planning to support high-read scientific data pipelines.</li>
+<li>Containerised backend services using Docker, ensuring consistent deployment and environment reproducibility across research and production systems.</li>
+</ul></div>
+
+<div class="job"><div class="row"><div class="l"><b>Software Engineer</b><span>, Quikk API</span></div><div class="r">Sep 2022 – May 2023<br>Nairobi, Kenya</div></div>
+<div class="desc">Spring Boot microservices powering an analytics-driven API platform.</div>
+<ul>
+<li>Built and optimised Spring Boot microservices with JWT authentication, keyset pagination, and database indexing for secure, performant API access.</li>
+<li>Integrated PostHog for real-time user telemetry and performance metrics, supporting proactive troubleshooting and data-driven product decisions.</li>
+<li>Conducted unit and integration testing following TDD principles, maintaining high test coverage and contributing to service reliability.</li>
+</ul></div>
+
+<h2>Projects &amp; Writing</h2>
+<div class="proj"><div class="row"><div class="l"><b>umwayi-os</b><span>, open-source rules system for AI helpers (in development)</span></div><div class="r">github.com/Miguel-Shinyenyi/umwayi-os</div></div>
+<ul>
+<li>Building a command-line system in Python, with no third-party packages in the core, that checks every action an AI helper wants to take against a rules file and answers Yes, No or Ask me first. Unknown actions default to Ask me first, and any internal error blocks the action.</li>
+<li>Implemented eight layers: memory, rules check, approval queue, archive, tamper-evident logbook, scheduled jobs with an allow list, read-only helpers that cannot approve their own work, and workflows with a kill switch.</li>
+<li>Directed an AI coding agent to build each layer from a written specification, then reviewed, tested and merged it by pull request. More than 500 automated tests, continuous integration on Python 3.10 and 3.12, and a security scan before each merge.</li>
+</ul></div>
+<div class="proj"><div class="row"><div class="l"><b>Invoice-Financing</b><span>, open-source settlement &amp; reconciliation engine</span></div><div class="r">github.com/Miguel-Shinyenyi</div></div>
+<ul><li>Personal fintech backend project: an idempotent settlement engine with a transactional outbox, double-entry ledger consistency checks, and concurrency-safe idempotency-key handling under load.</li></ul></div>
+<div class="proj"><div class="row"><div class="l"><b>Technical writing</b><span>, personal site, dev.to, Substack</span></div><div class="r">miguel-shinyenyi.github.io/miguel-site</div></div>
+<ul><li>Writes and publishes deep-dives on backend systems design, drawn from real production and portfolio code, on a personal site, dev.to and Substack.</li></ul></div>
+
+<h2>Technical Skills</h2>
+<div class="skills">
+<b>Languages &amp; Frameworks</b><div>Java, Spring Boot, JavaScript, TypeScript, Fastify, Flask, Python</div>
+<b>Backend &amp; Architecture</b><div>RESTful APIs, microservices, event-driven architecture, pub/sub patterns, synchronous &amp; asynchronous flows, multi-tenancy, stateful vs. stateless systems</div>
+<b>Databases &amp; Caching</b><div>PostgreSQL, MySQL, MongoDB, DynamoDB, Redis; indexing, query optimisation, keyset pagination, caching strategies</div>
+<b>Messaging &amp; Streaming</b><div>Familiar with Kafka and RabbitMQ event-driven patterns; publish/subscribe, streaming pipelines, message queuing</div>
+<b>Testing</b><div>Unit testing, integration testing, TDD, test coverage, regression testing</div>
+<b>DevOps &amp; Tooling</b><div>Docker, Maven, Git, CI/CD pipelines, build scripting, AWS, Linux</div>
+<b>Observability</b><div>JVM metrics, health checks, PostHog analytics, log-based debugging, performance monitoring, incident triage</div>
+<b>Networking Fundamentals</b><div>OSI model, reverse proxies, load balancing, API routing, connection multiplexing, caching layers</div>
+</div>
+
+<h2>Education</h2>
+<div class="edu"><div class="row"><div class="l"><b>Bachelor of Science, Computer Science</b></div><div class="r">Thika, Kenya</div></div><div>Gretsa University</div></div>
+</div></body></html>

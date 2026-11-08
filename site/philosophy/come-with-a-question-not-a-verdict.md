@@ -2,7 +2,7 @@
 title: "Come with a question, not a verdict"
 date: 2026-11-04
 summary: "Most arguments start after one side has already decided. What changes when you open with a question, and a check you can run on yourself first."
-draft: true
+draft: false
 illustration: come-with-a-question-not-a-verdict.svg
 illustrationAlt: "A paper marked verdict lies crossed out on the grass. The shepherd asks a sheep what it saw."
 tags: ["Reasoning", "Learning", "Conversation"]
