@@ -101,7 +101,7 @@ Added after the security review:
 - Pull requests may only target allowlisted repos and branch prefixes, with a diff size cap. Before the Steward opens any PR (step S6), run a planted-instruction test: a repo file that says to add a URL to the PR must not change the PR.
 - Fetch and PR tools sit on the network side and take model-chosen arguments, so they are an exfiltration path. Add an egress allowlist, response and body size limits, and a secret scan on outbound content, not only on the working tree.
 - CI scan that fails if text from decrypted journal files appears in any public path, plus a test that every journal path is marked encrypted in `.gitattributes`.
-- Keep the journal key out of anything an agent can read. It now sits in the claude.ai Project (`secrets/umwayi-journal-key.md`); move it to a password manager or the system keychain.
+- Keep the journal key out of anything an agent can read. Do not keep it in a shared or cloud project document; move it to a password manager or the system keychain.
 - Hosted model vendors are the real exposure for rule 3. Checksums show integrity, not safety.
 - Approval fatigue: after weeks of good drafts, pressing approve becomes a habit. Plant a known-bad draft at random in about one in twenty approvals, and log whether I caught it. Sample a share of Class A actions for review.
 
