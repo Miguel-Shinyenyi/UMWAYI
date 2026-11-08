@@ -194,6 +194,8 @@ IDs match the `(H-nnn)` mark on the line in `backlog.md`. "Yours" means only you
 | H-075 | Remove the journal key from every shared or cloud document once a safe copy exists | Hub | proposed |
 | H-076 | Article: come with a question, not a verdict. Set to published on 2026-11-08 (draft: false). Goes live when the pull request merges | Site | released on merge |
 | H-077 | Three articles are still drafts: appearance-versus-reality, who-the-standards-serve, one-mind-or-many. Decide which to release next | Site | yours |
+| H-078 | Budget governor: built before Dec 3 (Nov 15 to 21). Answered yes on Nov 8 | AI OS | answered |
+| H-079 | Layer 10 may use packages, in adapter packages only, pinned and listed in their README. Core stays standard library only. Answered yes on Nov 8 | AI OS | answered |
 
 ### Closes and the evidence
 
