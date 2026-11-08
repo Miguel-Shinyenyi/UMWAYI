@@ -187,6 +187,11 @@ IDs match the `(H-nnn)` mark on the line in `backlog.md`. "Yours" means only you
 | H-068 | Concerns record and understanding-first in every project | Hub | queued |
 | H-069 | One article per merged pull request | Open source | held |
 | H-070 | Check career-prep against current applications before any article names a company | Open source | yours |
+| H-071 | Use the current site CV (site/files/Miguel_Shinyenyi_CV.pdf, same file in miguel-site) for CMU, and list every place that repeats it. See docs/plans/cv-update-2026-11-08.md | CMU | checklist written; your choice on editing the CV |
+| H-072 | Export the git-crypt journal key and keep a second copy off the machine (for example encrypted, on Google Drive) | Hub | yours |
+| H-073 | Review the draft article: do the rules that stop an AI also stop us | Site | awaiting your review |
+| H-074 | AI OS layer 9 and later: adapters for other AI CLIs (Claude Code, Kiro), own CLI and chat, reuse existing Linux features. Decided 2026-11-08: adapter packages may use packages. See docs/plans/ai-os-layer-9-adapters.md | Hub | held until layer 8 is merged |
+| H-075 | Remove the journal key from the Claude project document secrets/umwayi-journal-key.md after a safe copy exists | Hub | proposed |
 
 ### Closes and the evidence
 
