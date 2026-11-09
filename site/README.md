@@ -54,6 +54,7 @@ linkedin:
   mentions:
     - name: Meta
       urn: "urn:li:organization:10667"
+      url: https://www.linkedin.com/company/meta/   # company page; Substack links to it
   links:
     - label: Event
       url: https://example.com/event

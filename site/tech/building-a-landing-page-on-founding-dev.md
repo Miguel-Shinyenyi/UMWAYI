@@ -25,6 +25,7 @@ linkedin:
   mentions:
     - name: Founding Dev
       urn: 'urn:li:organization:107829355'
+      url: 'https://www.linkedin.com/company/foundingdev/'
   links:
     - label: Design Hackathon
       url: 'https://founding.dev/hackathon/design'

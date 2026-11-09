@@ -25,8 +25,10 @@ linkedin:
   mentions:
     - name: Meta
       urn: 'urn:li:organization:10667'
+      url: 'https://www.linkedin.com/company/meta/'
     - name: AI at Meta
       urn: 'urn:li:organization:35482514'
+      url: 'https://www.linkedin.com/company/aiatmeta/'
   links:
     - label: Meta Global AI Developer Hackathon
       url: 'https://dev.meta.ai/events/global-hackathon'
