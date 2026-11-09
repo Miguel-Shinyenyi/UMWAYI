@@ -1,6 +1,6 @@
 # Master Context
 
-Last updated: 2026-11-05 (Founding.dev plan, CMU program, Kiro trajectory, one article draft)
+Last updated: 2026-11-09 (Kiroween progress)
 
 ## Who this is for
 
@@ -38,6 +38,7 @@ where the observation gets tested against something real.
 | Routine machine | `projects/routine-machine.md` | Routines, learning, reading notes, credit ledger, savings and cohorts. Own repo. Phases 1 to 12 on `main`. Direction under review (`queue.md` D-1). |
 | Hackathon | `projects/hackathon.md` | Meta Global AI Developer Hackathon, Oct 26 to Nov 4. Public repo `umwayi-rm` is built and deployed (savings-group secretary agent, MIT), live at umwayi-rm.vercel.app with a demo video. H1 and H2 returned nulls. Zero interviews, by decision. Submission status and known issues in the project file. Open items in `queue.md` K and `umwayi-rm/docs/hackathon-log.md`. |
 | Founding.dev hackathon | `projects/founding-dev-hackathon.md`, `docs/plans/founding-dev-landing-page.md` | Landing page for the AI operating system, shepherd theme. Build window 6 to 10 Nov. Registered. Nothing built yet. |
+| Kiroween 2026 | `projects/kiroween.md` | Kiroween 2026 (Skeleton Crew): the Umwayi hub as an AI OS, repo umwayi-os, main 5910c01, 854 tests; layer 10 Claude Code chat merged, subscription-first spec merged; submit Dec 3. See projects/kiroween.md. |
 | Agent principles and plans | `docs/agent-principles.md`, `docs/plans/` | Consolidated rules from the notes of 27 Oct to 2 Nov, with a line map; plans for an AI operating system, a Steward agent and a social agent. Tasks in `queue.md` section L. |
 | Open source | `projects/open-source.md` | Open source issues worked one at a time, each recorded with its verification. Started 2026-10-14. |
 | Website | `website/PLAN.md` | Historical plan, superseded. Site code is in `miguel-site`, content in `site/`. |

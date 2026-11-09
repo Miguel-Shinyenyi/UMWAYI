@@ -9,6 +9,7 @@ The entry is a landing page for the AI operating system, with the shepherd theme
 - Registered. The platform account is signed in. Credits arrive on Nov 6 if accepted. Confirmation by email: not yet seen.
 - Nothing is built. The page has to be built on Founding.dev during the window.
 - Preparation is written. The LinkedIn post and the repost plan are drafts for Miguel.
+- 2026-11-09: the preview page shows "Taking a break". Check it before Tue Nov 10, 10:59 Nairobi. Do not publish until Miguel says so. The page is for the hub as an AI OS; refresh the counts (commits, rules, tests) on build day: umwayi-os now has 854 tests and 22 merged pull requests.
 
 ## Rules that shape it
 
