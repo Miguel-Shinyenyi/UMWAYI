@@ -1,10 +1,12 @@
 ---
-title: 'Building the Umwayi hub landing page on Founding.dev: what happened and how we responded'
+title: >-
+  Building the Umwayi hub landing page on Founding.dev: what happened and how we
+  responded
 date: 2026-11-09T00:00:00.000Z
 summary: >-
   I built the Umwayi hub landing page on Founding.dev, an AI page builder, for
-  its design hackathon. This is what happened over four days, what went wrong
-  on screen, and how we responded.
+  its design hackathon. This is what happened over four days, what went wrong on
+  screen, and how we responded.
 illustration: building-a-landing-page-on-founding-dev.svg
 illustrationAlt: >-
   A browser window shows a small hill scene with three gate lamps labelled Yes,
@@ -28,6 +30,10 @@ linkedin:
       url: 'https://founding.dev/hackathon/design'
     - label: Landing page
       url: 'https://umwayi-hub.foundingdev.com/'
+crossposted:
+  devto: >-
+    https://dev.to/miguel_shinyenyi_e2291c8c/building-the-umwayi-hub-landing-page-on-foundingdev-what-happened-and-how-we-responded-307c
+  linkedin: 'urn:li:share:7525639441814761473'
 ---
 
 I build the Umwayi hub in public. It is an AI operating system that grew out of my personal notebook. One backend engineer in Nairobi builds it, and it is pre-release. The code has no front door, so for the Founding.dev design hackathon I designed one.
