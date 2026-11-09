@@ -804,6 +804,35 @@ SCENES["philosophy/one-mind-or-many"] = (
 )
 
 
+# a-flaky-test-showed-a-real-bug: a test that sometimes fails points at a gap between two logbook steps.
+SCENES["tech/a-flaky-test-showed-a-real-bug"] = (
+    "Sometimes red",
+    "A clipboard shows a test that is sometimes red and sometimes green, with a small bug beside it. Next to it a logbook sits open with two lines, intent and record, and a gap between them where a sheep stands. The shepherd says it is not a test problem.",
+    f"""
+<g transform="translate(120 120)">
+<rect x="0" y="0" width="190" height="200" rx="10" fill="{PAPER}" stroke="{INK}" stroke-width="4"/>
+{label(95, 42, "THE TEST", 15, INK)}
+<path d="M30 80 l16 16 l30 -34" stroke="{GREEN}" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M30 140 l36 36 M66 140 l-36 36" stroke="{RED}" stroke-width="7" fill="none" stroke-linecap="round"/>
+{label(125, 100, "green", 15, INK)}
+{label(125, 164, "red", 15, INK)}
+</g>
+<ellipse cx="344" cy="300" rx="12" ry="8" fill="{INK}"/>
+<path d="M334 296 l-10 -8 M334 302 l-12 2 M354 296 l10 -8 M354 302 l12 2" stroke="{INK}" stroke-width="3" fill="none" stroke-linecap="round"/>
+<g transform="translate(430 250)">
+<rect x="0" y="0" width="250" height="150" rx="8" fill="{PAPER}" stroke="{INK}" stroke-width="4"/>
+<path d="M125 0 V150" stroke="{INK}" stroke-width="2.5"/>
+{label(62, 36, "INTENT", 15, INK)}
+{label(188, 36, "RECORD", 15, INK)}
+<path d="M24 60 H100 M24 80 H100 M150 60 H226" stroke="{OCHRE}" stroke-width="4" stroke-linecap="round"/>
+</g>
+{sheep(372, 424, 0.5)}
+{shepherd(740, 425, 0.6, flip=True)}
+{bubble(430, 70, 330, 58, "Not a test problem.", 22, tail="right")}
+""",
+)
+
+
 if __name__ == "__main__":
     for key, (title, desc, body) in SCENES.items():
         name = key.split("/")[1] + ".svg"
