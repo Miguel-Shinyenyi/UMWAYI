@@ -17,6 +17,11 @@
 // | { } @ [ ] ( ) < > # \ * _ ~ are markup, so plain text must escape them.
 // A mention is @[Name](urn) and a hashtag is {hashtag|\#|Tag}.
 
+import { readFileSync } from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
 const API = "https://api.linkedin.com/rest/posts";
 export const LINKEDIN_VERSION = process.env.LINKEDIN_API_VERSION || "202511";
 
@@ -44,8 +49,55 @@ function checkUrl(url) {
   return url;
 }
 
+// Reads the text under "## The post" in a repo-relative markdown file. Miguel writes the
+// post by hand there; the front matter field `linkedin.post` points at it.
+export function loadPostText(relPath) {
+  const md = readFileSync(path.resolve(REPO, relPath), "utf8");
+  const m = md.match(/^## The post[^\n]*\n([\s\S]*?)(?=^## |(?![\s\S]))/m);
+  const text = m && m[1].trim();
+  if (!text) throw new Error(`No "## The post" section with text in ${relPath}`);
+  return text;
+}
+
+const reEscape = (x) => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+// Turns a hand-written post into little text format. In the text:
+//   @Name            becomes a mention, and Name must be in linkedin.mentions
+//   #Tag             becomes a hashtag
+//   [article link]   becomes the article URL
+//   https://...      stays a plain link
+// Everything else is escaped. The title, summary and extra blocks are not added.
+export function buildCommentaryFromText(text, { canonical, linkedin = {} }) {
+  const mentions = linkedin.mentions || [];
+  const names = mentions.map((m) => reEscape(m.name)).sort((a, b) => b.length - a.length);
+  const parts = ["https?:\\/\\/[^\\s]*[^\\s.,;:!?)]", "\\[article link\\]", "#[\\p{L}\\p{N}_]+"];
+  if (names.length) parts.push("@(?:" + names.join("|") + ")");
+  parts.push("@\\S+");
+  const re = new RegExp(parts.join("|"), "gu");
+  let out = "";
+  let last = 0;
+  let usedLink = false;
+  for (const m of text.matchAll(re)) {
+    out += escapeLittleText(text.slice(last, m.index));
+    const t = m[0];
+    if (t === "[article link]") { out += checkUrl(canonical); usedLink = true; }
+    else if (t.startsWith("http")) out += t;
+    else if (t.startsWith("#")) out += hashtag(t);
+    else {
+      const hit = mentions.find((x) => "@" + x.name === t);
+      if (!hit) throw new Error(`Post text has ${JSON.stringify(t)} but no matching entry in linkedin.mentions`);
+      out += mention(hit);
+    }
+    last = m.index + t.length;
+  }
+  out += escapeLittleText(text.slice(last));
+  if (!usedLink) out += "\n\n" + checkUrl(canonical);
+  return out;
+}
+
 // Returns the post text in little text format. URLs stay unescaped so they remain links.
 export function buildCommentary({ title, summary, canonical, linkedin = {} }) {
+  if (linkedin.post) return buildCommentaryFromText(loadPostText(linkedin.post), { canonical, linkedin });
   const blocks = [escapeLittleText(title)];
   if (summary) blocks.push(escapeLittleText(summary));
 
