@@ -58,3 +58,34 @@ test("post body is public, in the main feed, with an article card", () => {
   assert.deepEqual(body.content.article, { source: CANONICAL, title: "T", description: "S" });
   assert.equal(body.lifecycleState, "PUBLISHED");
 });
+
+import { buildCommentaryFromText, loadPostText } from "../lib/linkedin.mjs";
+
+test("written post: mention, hashtag, article link and plain URL", () => {
+  const out = buildCommentaryFromText(
+    "Built on @Acme Co (beta).\n\nTry: https://a.example/x.\n\nStory: [article link]\n\n#BuildIt",
+    {
+      canonical: "https://s.example/p/",
+      linkedin: { mentions: [{ name: "Acme Co", urn: "urn:li:organization:5" }] },
+    }
+  );
+  assert.equal(
+    out,
+    "Built on @[Acme Co](urn:li:organization:5) \\(beta\\).\n\nTry: https://a.example/x.\n\nStory: https://s.example/p/\n\n{hashtag|\\#|BuildIt}"
+  );
+});
+
+test("written post: appends the article link when the text has no placeholder", () => {
+  const out = buildCommentaryFromText("Hello.", { canonical: "https://s.example/p/" });
+  assert.equal(out, "Hello.\n\nhttps://s.example/p/");
+});
+
+test("written post: an @name with no mention entry is an error", () => {
+  assert.throws(() => buildCommentaryFromText("Hi @Nobody", { canonical: "https://s.example/p/" }), /no matching entry/);
+});
+
+test("loadPostText reads the section under '## The post'", () => {
+  const t = loadPostText("docs/plans/founding-dev-linkedin-post.md");
+  assert.match(t, /^I designed a landing page/);
+  assert.doesNotMatch(t, /Link to the article/);
+});

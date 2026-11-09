@@ -19,6 +19,7 @@ tags:
   - Umwayi
   - Build in public
 linkedin:
+  post: docs/plans/founding-dev-linkedin-post.md
   hashtags:
     - BuildWithFoundingDev
     - BuildInPublic

@@ -60,6 +60,11 @@ linkedin:
       url: https://example.com/event
 ```
 
+To post your own wording instead of the title and summary, add `post: docs/plans/<file>.md`
+to the block. The workflow posts the text under that file's `## The post` heading. In it,
+`@Name` becomes a mention (the name must be in `mentions`), `#Tag` becomes a hashtag and
+`[article link]` becomes the article URL.
+
 Check each company page is the right one before you copy its number. Setup and the manual
 re-post workflow are in `docs/cross-post-setup.md`.
 

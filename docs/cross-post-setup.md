@@ -180,7 +180,10 @@ linkedin:
 
 Find a company's number on its public LinkedIn page, in the `urn:li:organization:<number>`
 value. Check the page is the right company before you use it (`/company/meta-ai` is an
-unrelated firm; Meta's AI page is `aiatmeta`). Give each mention a `url`, its company page:
+unrelated firm; Meta's AI page is `aiatmeta`). To post hand-written text, set `post:` in the block to a repo path. The text under that file's
+`## The post` heading replaces the title, summary and extra blocks. `@Name` becomes a mention,
+`#Tag` a hashtag and `[article link]` the article URL; an `@Name` with no `mentions` entry fails
+the run. Give each mention a `url`, its company page:
 LinkedIn ignores it, and Substack uses it to link the name, because Substack has no company
 mentions. The Substack footer lists each `links` entry and a "Follow:" line of the mentions.
 Set the block before the article is merged,
