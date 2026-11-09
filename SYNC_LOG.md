@@ -223,7 +223,7 @@ Entries before 2026-10-01 are in `archive/SYNC_LOG/2026-09.md` (A-011 in `archiv
 ## 2026-11-09 (journal rule and backfill)
 
 - Source: Miguel asking to add updates for the hub as a rule, and to add missing journal entries from commits when no other data is given, otherwise from all data provided.
-- Added: `docs/core-rules.md` section 4 "Is the journal complete?"; a rule in `MASTER_CONTEXT.md`; `journal/entries/2026-11-05.md` (private); `docs/plans/founding-dev-linkedin-post.md` (the LinkedIn post and the hackathon rules that decide it); the draft article `site/tech/a-flaky-test-showed-a-real-bug.md` with its illustration `site/illustrations/a-flaky-test-showed-a-real-bug.svg` and a new scene in `site/tools/illustrations.py`.
+- Added: `docs/core-rules.md` section 4 "Is the journal complete?"; a rule in `MASTER_CONTEXT.md`; `journal/entries/2026-11-05.md` (private); `docs/plans/founding-dev-linkedin-post.md` (the LinkedIn post and the hackathon rules that decide it); the draft article `site/tech/building-a-landing-page-on-founding-dev.md` with its illustration `site/illustrations/building-a-landing-page-on-founding-dev.svg` and a new scene in `site/tools/illustrations.py`.
 - What moved: the journal had no entry for 2026-11-05 and 2026-11-06. 11-05 was built from the hub commits, the sync log and the queue changes. 11-06 has no commits and no notes, so it has no entry.
 - Not done: no entry for 11-06; the 11-09 entry was not changed and does not cover the evening work (umwayi-os pull requests 23 to 27, the Founding.dev page update).
 - Checked: the site build ran with the draft article in place (38 pages built). A draft page is built at its direct URL but is not listed and not in the feed. The illustration was rendered and looked at.
