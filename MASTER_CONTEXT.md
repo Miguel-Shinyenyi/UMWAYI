@@ -172,6 +172,7 @@ separate from the general principles above so the reason each one exists stays v
   something already solved. (Caused: the java-sdk #882 comment led with my method, not the reporter's problem. Detail: A-003.)
 - After each handover I name the destination again in the file name or the note, and on the next sync I check where it
   landed. (Caused: a hub file was applied to the public site page, commit `1282a25`. Detail: A-003.)
+- On every hub update I check `journal/entries/` for missing days and fill them. I use all the data Miguel gave for the day, or the commits when he gave none, facts only, and I never write what he felt. Detail: `docs/core-rules.md` section 4. (Caused: the sync log listed missing journal entries as "not done" on 2026-11-04, 11-05 and 11-09.)
 
 ## Current open threads
 
