@@ -832,6 +832,36 @@ SCENES["tech/a-flaky-test-showed-a-real-bug"] = (
 """,
 )
 
+# building-a-landing-page-on-founding-dev: a browser window with the page, and a note of what was not checked.
+SCENES["tech/building-a-landing-page-on-founding-dev"] = (
+    "Look at it yourself",
+    "A browser window shows a small hill scene with three gate lamps. Beside it a note card lists what was not checked: phone at night, tablet width. The shepherd says to look at it yourself.",
+    f"""
+<g transform="translate(110 110)">
+<rect x="0" y="0" width="330" height="230" rx="10" fill="{PAPER}" stroke="{INK}" stroke-width="4"/>
+<path d="M0 36 H330" stroke="{INK}" stroke-width="3"/>
+<circle cx="20" cy="18" r="5" fill="{RED}"/><circle cx="38" cy="18" r="5" fill="{OCHRE_L}"/><circle cx="56" cy="18" r="5" fill="{GREEN}"/>
+<path d="M12 200 Q110 120 200 170 Q270 140 318 190 V218 Q318 222 314 222 H16 Q12 222 12 218 Z" fill="{HILL2}" stroke="{INK}" stroke-width="2.5"/>
+<circle cx="60" cy="100" r="9" fill="{GREEN}" stroke="{INK}" stroke-width="2.5"/>
+<circle cx="165" cy="100" r="9" fill="{RED}" stroke="{INK}" stroke-width="2.5"/>
+<circle cx="270" cy="100" r="9" fill="{OCHRE_L}" stroke="{INK}" stroke-width="2.5"/>
+{label(60, 128, "Yes", 12, INK)}
+{label(165, 128, "No", 12, INK)}
+{label(270, 128, "Ask me first", 12, INK)}
+</g>
+<g transform="translate(480 150)">
+<rect x="0" y="0" width="190" height="150" rx="8" fill="{PAPER}" stroke="{INK}" stroke-width="4"/>
+{label(95, 36, "NOT CHECKED", 15, INK)}
+<path d="M24 62 H166 M24 92 H166" stroke="{OCHRE}" stroke-width="4" stroke-linecap="round"/>
+{label(95, 82, "phone at night", 13, INK, "middle", 400)}
+{label(95, 112, "tablet width", 13, INK, "middle", 400)}
+</g>
+{sheep(450, 440, 0.5)}
+{shepherd(740, 425, 0.6, flip=True)}
+{bubble(430, 50, 330, 58, "Look at it yourself.", 22, tail="right")}
+""",
+)
+
 
 if __name__ == "__main__":
     for key, (title, desc, body) in SCENES.items():

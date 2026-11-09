@@ -12,25 +12,28 @@ Written 2026-11-09, Africa/Nairobi. A draft. Nothing is posted. You post it your
 
 ## The post
 
-I built a landing page for Umwayi hub on @Founding Dev for their design hackathon.
+I designed a landing page for Umwayi hub on @Founding Dev for their design hackathon.
 
 Umwayi hub is an AI operating system that grew from my personal notebook. One backend engineer in Nairobi builds it in public.
 
-What the page does:
+What the page is for:
 
-- Shows the real hub, not a mock-up. You can run a rule check, answer a queue card and read the logbook.
-- Gives every AI helper one of three answers: Yes, No, or Ask me first.
-- Turns the build into a hill scene with a robot shepherd, gate lamps and a logbook printer.
+- Shows the hub in one minute. Every AI helper gets one of three answers: Yes, No, or Ask me first.
+- Shows the answers instead of describing them: gate lamps on a hill, a robot shepherd and a logbook printer.
+- Lets you run a rule check, answer a queue card and read the logbook on the page.
 - Lists the roadmap with dates that may change. Nothing on it is marked live.
 
-Where the build stands today:
+What happened while building it:
 
-- 9 layers built as code in a public repository
-- Over 900 tests passing
-- Logbook now survives a helper that stops mid-write
-- Next: login checks for each AI tool, then one spending limit across all of them
+- Planned six prompts with Claude before touching the builder.
+- The builder checked one view, so I looked at every result myself and fixed what was wrong: tiny lamp labels, a sign as tall as the fence, sheep floating above it.
+- Six passes to get the scale, spacing and phone width right.
+- A restore point after every change, and a credit reserve I decided on myself.
+- Page text updated as the hub moved, so it never claims more than the hub does.
 
 Try the page: https://umwayi-hub.foundingdev.com/
+
+The design story behind it: [article link]
 
 If a shepherd for your AI helpers makes sense to you, a repost helps a lot. Every repost counts, so please only repost if you mean it.
 
@@ -40,4 +43,6 @@ Tell me one thing your AI helper should always ask you before it acts.
 
 ## Link to the article
 
-The article "A flaky test showed me a real bug in my AI helper hub" is `site/tech/a-flaky-test-showed-a-real-bug.md` (draft: true, with its illustration). When you publish it, add a line before the hashtag: "The build story behind it: [article link]".
+The article "Building the Umwayi hub landing page on Founding.dev: what happened and how we responded" is `site/tech/building-a-landing-page-on-founding-dev.md` (draft: true until you approve, with its illustration `site/illustrations/building-a-landing-page-on-founding-dev.svg`). When you publish it, add a line before the hashtag: "The design story behind it: [article link]".
+
+Before you publish it, check the article against the live page. It says nothing about the sign-up form on purpose, because the form does not work for now.
