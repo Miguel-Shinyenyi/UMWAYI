@@ -45,6 +45,9 @@ These block queued work. Each has my recommendation. They are yours to decide.
 | D-27 | Kiroween entry versus the Claude Code budget governor (plan section 10) | ANSWERED 2026-11-05: the budget governor will be built, with the aim of completing it. It is no longer deferred to after 4 Dec. Open: where it sits in the build order next to the Kiroween slice (see D-29), and written clearance on Anthropic terms before any unattended run. | n/a | n/a |
 | D-28 | Founding.dev landing page choices | ANSWERED 2026-11-05: hero headline "Every AI helper needs a shepherd"; 3 hours a day is fine; the mascot is builder generated, and Miguel wants to see what he can come up with on the platform; the page names the product, which is Umwayi hub. | n/a | n/a |
 | D-29 | Kiroween trajectory: Skeleton Crew with a kill switch on 11 Nov, or Frankenstein from the start (plan section 11) | ANSWERED 2026-11-05: Skeleton for now, with the hope of finishing the entire product. Order of the governor against the skeleton: open. Suggested: skeleton first, governor second, kill rule on 11 Nov. | n/a | n/a |
+| D-30 | Subscription first on every platform | ANSWERED 2026-11-09: use the normal subscription first (free, Pro, Max or any plan); pay as you go only later through the budget governor. Claude Code: both ways in (already signed in, or `umwayi agent login`); chat refused unless the login is the claude.ai subscription. All ten billing answers approved as proposed (umwayi-os PR 22). | n/a | n/a |
+| D-31 | OpenCode and Meta Muse Spark Open | ANSWERED 2026-11-09: spec only now (umwayi-os tasks 10.40, 10.41), build after Dec 3. Muse Spark Open runs as a model behind OpenCode, local first. | n/a | n/a |
+| D-32 | Schedule A moved one day | ANSWERED 2026-11-09: part 7c adds the login work Nov 9 to 12; layer 11 Nov 13 to 14; scan Nov 15 to 16. Layer 11 still needs its own spec approved before it is built. | n/a | n/a |
 
 ## R. Routine Machine, from the brief
 
@@ -196,6 +199,8 @@ IDs match the `(H-nnn)` mark on the line in `backlog.md`. "Yours" means only you
 | H-077 | Three articles are still drafts: appearance-versus-reality, who-the-standards-serve, one-mind-or-many. Decide which to release next | Site | yours |
 | H-078 | Budget governor: built before Dec 3 (Nov 15 to 21). Answered yes on Nov 8 | AI OS | answered |
 | H-079 | Layer 10 may use packages, in adapter packages only, pinned and listed in their README. Core stays standard library only. Answered yes on Nov 8 | AI OS | answered |
+| H-080 | Run the first real Claude Code chat on a machine with Node 22 and a Claude Code login; record whether the hook ran before the first prompt | umwayi-os task 10.31 | yours |
+| H-081 | Check the Founding.dev preview ("Taking a break") before Tue Nov 10, 10:59 Nairobi; do not publish until told | Founding.dev | yours |
 
 ### Closes and the evidence
 

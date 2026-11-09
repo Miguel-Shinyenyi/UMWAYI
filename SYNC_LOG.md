@@ -210,3 +210,12 @@ Entries before 2026-10-01 are in `archive/SYNC_LOG/2026-09.md` (A-011 in `archiv
 - Checked: the Founding.dev hackathon page and the Kiro account page were read in the signed-in browser on 2026-11-05. The new illustration was rendered and looked at.
 - Not done: nothing pushed; no journal entries for 11-03 to 11-05; the Sapiens article rests on a record of Miguel's points, not his original notes or the book; Kiroween dates not re-confirmed; the credit grants are unconfirmed.
 - Later the same day: Miguel answered 14 queue items. D-5, D-6, D-27, D-28, D-29 recorded; D-7 partly (agreed 60%, caps still missing); H-009, H-010, H-042, H-057 closed; H-044 and H-045 decided, actions not done; K-04 recorded as not asked. D-27 now says the budget governor is built, so plan section 11 no longer defers it.
+
+## 2026-11-09 (Kiroween progress, appearance versus reality, Sapiens notes)
+
+- Source: Miguel asking to check the state of Umwayi, publish "Appearance versus reality" (held), update the hackathon progress and record his notes on money from Sapiens.
+- Added: `projects/kiroween.md`; `journal/entries/2026-11-09.md` (private).
+- Changed: queue.md (D-30 to D-32, two human tasks); MASTER_CONTEXT.md (date, Kiroween row); `projects/founding-dev-hackathon.md` (status line). Not changed: `site/philosophy/appearance-versus-reality.md` stays a draft until Miguel confirms the publish and the cross-post behaviour.
+- What moved: umwayi-os main is 5910c01 with 22 merged pull requests and 854 tests; the Claude Code ACP chat is merged; the subscription-first spec is merged and its build has started.
+- Checked: umwayi-os state read from the repository on 2026-11-09. The article text was not changed.
+- Not done: the hub itself was not re-read after 2026-11-05; no journal entries for 11-06 to 11-08; no progress digest for 11-09 to 11-15.
