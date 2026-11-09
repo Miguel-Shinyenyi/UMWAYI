@@ -10,12 +10,24 @@ illustrationAlt: >-
   A browser window shows a small hill scene with three gate lamps labelled Yes,
   No and Ask me first. Beside it a note card lists what was not checked: phone
   at night and tablet width. A shepherd says to look at it yourself.
-draft: true
+draft: false
 tags:
   - Founding.dev
   - Design
   - Umwayi
   - Build in public
+linkedin:
+  hashtags:
+    - BuildWithFoundingDev
+    - BuildInPublic
+  mentions:
+    - name: Founding Dev
+      urn: 'urn:li:organization:107829355'
+  links:
+    - label: Design Hackathon
+      url: 'https://founding.dev/hackathon/design'
+    - label: Landing page
+      url: 'https://umwayi-hub.foundingdev.com/'
 ---
 
 I build the Umwayi hub in public. It is an AI operating system that grew out of my personal notebook. One backend engineer in Nairobi builds it, and it is pre-release. The code has no front door, so for the Founding.dev design hackathon I designed one.
