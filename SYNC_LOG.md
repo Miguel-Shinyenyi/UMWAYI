@@ -219,3 +219,10 @@ Entries before 2026-10-01 are in `archive/SYNC_LOG/2026-09.md` (A-011 in `archiv
 - What moved: umwayi-os main is 5910c01 with 22 merged pull requests and 854 tests; the Claude Code ACP chat is merged; the subscription-first spec is merged and its build has started.
 - Checked: umwayi-os state read from the repository on 2026-11-09. The article text was not changed.
 - Not done: the hub itself was not re-read after 2026-11-05; no journal entries for 11-06 to 11-08; no progress digest for 11-09 to 11-15.
+
+## 2026-11-09 (journal rule and backfill)
+
+- Source: Miguel asking to add updates for the hub as a rule, and to add missing journal entries from commits when no other data is given, otherwise from all data provided.
+- Added: `docs/core-rules.md` section 4 "Is the journal complete?"; a rule in `MASTER_CONTEXT.md`; `journal/entries/2026-11-05.md` (private).
+- What moved: the journal had no entry for 2026-11-05 and 2026-11-06. 11-05 was built from the hub commits, the sync log and the queue changes. 11-06 has no commits and no notes, so it has no entry.
+- Not done: no entry for 11-06; the 11-09 entry was not changed and does not cover the evening work (umwayi-os pull requests 23 to 27, the Founding.dev page update).
