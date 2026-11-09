@@ -1,11 +1,21 @@
 ---
-title: "Appearance versus reality, from three lines in an interview"
-date: 2026-11-09
-summary: "Three ideas from a public interview with Elon Musk, checked against sources, and what they changed in how I count my own work."
+title: 'Appearance versus reality, from three lines in an interview'
+date: 2026-11-09T00:00:00.000Z
+summary: >-
+  Three ideas from a public interview with Elon Musk, checked against sources,
+  and what they changed in how I count my own work.
 draft: false
 illustration: appearance-versus-reality.svg
-illustrationAlt: "A board shows a commit count of 128. Beside it a sheep passes through a gate marked solved. The shepherd points at the gate."
-tags: ["Work", "Measurement", "Learning"]
+illustrationAlt: >-
+  A board shows a commit count of 128. Beside it a sheep passes through a gate
+  marked solved. The shepherd points at the gate.
+tags:
+  - Work
+  - Measurement
+  - Learning
+crossposted:
+  devto: >-
+    https://dev.to/miguel_shinyenyi_e2291c8c/appearance-versus-reality-from-three-lines-in-an-interview-2bf4
 ---
 
 ## The source
