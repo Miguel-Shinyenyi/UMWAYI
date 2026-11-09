@@ -172,6 +172,7 @@ linkedin:
   mentions:
     - name: Meta
       urn: "urn:li:organization:10667"
+      url: https://www.linkedin.com/company/meta/
   links:
     - label: Event
       url: https://example.com/event
@@ -179,7 +180,10 @@ linkedin:
 
 Find a company's number on its public LinkedIn page, in the `urn:li:organization:<number>`
 value. Check the page is the right company before you use it (`/company/meta-ai` is an
-unrelated firm; Meta's AI page is `aiatmeta`). Set the block before the article is merged,
+unrelated firm; Meta's AI page is `aiatmeta`). Give each mention a `url`, its company page:
+LinkedIn ignores it, and Substack uses it to link the name, because Substack has no company
+mentions. The Substack footer lists each `links` entry and a "Follow:" line of the mentions.
+Set the block before the article is merged,
 because the post goes out on merge.
 
 To replace a post that is already live, run **Re-post to LinkedIn** (manual) with the

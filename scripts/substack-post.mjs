@@ -20,6 +20,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import matter from "gray-matter";
 import { markdownToDoc, imageNode, collectImages, UnsupportedMarkdown } from "./lib/substack-convert.mjs";
+import { buildPromoParagraphs } from "./lib/substack-promo.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(HERE, "..");
@@ -190,7 +191,8 @@ function buildBody(a, siteBase, images) {
       },
     ],
   };
-  return { type: "doc", content: [...lead, ...doc.content, footer] };
+  const promo = buildPromoParagraphs(a.fm.linkedin);
+  return { type: "doc", content: [...lead, ...doc.content, ...promo, footer] };
 }
 
 // Substack rejects subtitles over its length limit (a 265 character summary got a 400).
