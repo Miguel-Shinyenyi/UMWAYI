@@ -1,8 +1,8 @@
 ---
 title: "Appearance versus reality, from three lines in an interview"
-date: 2026-11-04
+date: 2026-11-09
 summary: "Three ideas from a public interview with Elon Musk, checked against sources, and what they changed in how I count my own work."
-draft: true
+draft: false
 illustration: appearance-versus-reality.svg
 illustrationAlt: "A board shows a commit count of 128. Beside it a sheep passes through a gate marked solved. The shepherd points at the gate."
 tags: ["Work", "Measurement", "Learning"]
