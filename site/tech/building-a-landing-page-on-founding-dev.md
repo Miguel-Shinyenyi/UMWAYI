@@ -35,7 +35,7 @@ linkedin:
 crossposted:
   devto: >-
     https://dev.to/miguel_shinyenyi_e2291c8c/building-the-umwayi-hub-landing-page-on-foundingdev-what-happened-and-how-we-responded-307c
-  linkedin: 'urn:li:share:7525639441814761473'
+  linkedin: 'urn:li:share:7525642046813073410'
 ---
 
 I build the Umwayi hub in public. It is an AI operating system that grew out of my personal notebook. One backend engineer in Nairobi builds it, and it is pre-release. The code has no front door, so for the Founding.dev design hackathon I designed one.
