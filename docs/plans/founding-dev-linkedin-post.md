@@ -14,7 +14,7 @@ Written 2026-11-09, Africa/Nairobi. A draft. Nothing is posted. You post it your
 
 I designed a landing page for Umwayi hub on @Founding Dev for their design hackathon.
 
-Umwayi hub is an AI operating system that grew from my personal notebook. One backend engineer in Nairobi builds it in public.
+Umwayi hub is an AI operating system that grew from my personal notebook. Built in public.
 
 What the page is for:
 
@@ -23,26 +23,19 @@ What the page is for:
 - Lets you run a rule check, answer a queue card and read the logbook on the page.
 - Lists the roadmap with dates that may change. Nothing on it is marked live.
 
-What happened while building it:
-
-- Planned six prompts with Claude before touching the builder.
-- The builder checked one view, so I looked at every result myself and fixed what was wrong: tiny lamp labels, a sign as tall as the fence, sheep floating above it.
-- Six passes to get the scale, spacing and phone width right.
-- A restore point after every change, and a credit reserve I decided on myself.
-- Page text updated as the hub moved, so it never claims more than the hub does.
-
 Try the page: https://umwayi-hub.foundingdev.com/
 
-The design story behind it: [article link]
+How I built it and what went wrong on the way: [article link]
 
-If a shepherd for your AI helpers makes sense to you, a repost helps a lot. Every repost counts, so please only repost if you mean it.
-
-Tell me one thing your AI helper should always ask you before it acts.
+If a shepherd for your AI helpers makes sense to you, tell me one thing your AI helper should always ask you before it acts.
 
 #BuildWithFoundingDev
 
 ## Link to the article
 
-The article "Building the Umwayi hub landing page on Founding.dev: what happened and how we responded" is `site/tech/building-a-landing-page-on-founding-dev.md` (draft: true until you approve, with its illustration `site/illustrations/building-a-landing-page-on-founding-dev.svg`). When you publish it, add a line before the hashtag: "The design story behind it: [article link]".
+The article "Building the Umwayi hub landing page on Founding.dev: what happened and how we responded" is `site/tech/building-a-landing-page-on-founding-dev.md` (draft: false, with its illustration `site/illustrations/building-a-landing-page-on-founding-dev.svg`). When you publish it, add a line before the hashtag: "How I built it and what went wrong on the way: [article link]".
 
-Before you publish it, check the article against the live page. It says nothing about the sign-up form on purpose, because the form does not work for now.
+Before you publish it, check two things against the live page:
+
+- The article says the "Helpers come last" heading is out of step with the roadmap. Remove that line if you fix the heading.
+- The article says nothing about the sign-up form, on purpose, because the form does not work for now. Keep it out of the post too.
