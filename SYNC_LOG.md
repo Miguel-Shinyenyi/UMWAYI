@@ -227,3 +227,12 @@ Entries before 2026-10-01 are in `archive/SYNC_LOG/2026-09.md` (A-011 in `archiv
 - What moved: the journal had no entry for 2026-11-05 and 2026-11-06. 11-05 was built from the hub commits, the sync log and the queue changes. 11-06 has no commits and no notes, so it has no entry.
 - Not done: no entry for 11-06; the 11-09 entry was not changed and does not cover the evening work (umwayi-os pull requests 23 to 27, the Founding.dev page update).
 - Checked: the site build ran with the draft article in place (38 pages built). A draft page is built at its direct URL but is not listed and not in the feed. The illustration was rendered and looked at.
+
+## 2026-11-11 (hub update: umwayi-os layers 11 to 12, interface and layer 13 decisions)
+
+- Source: Miguel asking to update the hub after the UI.1 review, the interface look change and the layer 13 decisions.
+- Added: `journal/entries/2026-11-10.md` and `journal/entries/2026-11-11.md` (private, built from the umwayi-os merge history and the session; no other notes); queue.md D-33 to D-38.
+- Changed: `projects/kiroween.md` (status table, schedule, open items); `MASTER_CONTEXT.md` (date and Kiroween row).
+- What moved: umwayi-os main is 5cd03a8 with 38 merged pull requests; layer 11, the hash chain, the budget governor, the whole-system test, the security scan and the interface spec merged on Nov 10; the interface look changed on Nov 11; layer 13 scope decided.
+- Checked: pull request list and merge times read from the umwayi-os repository; the Notion decisions log was updated the same day.
+- Not done: no entry for 2026-11-06 (no commits, no notes); the 11-09 entry was not changed; nothing pushed; no progress digest for 11-09 to 11-15; the 11-11 entry will need the end of day.
