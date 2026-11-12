@@ -6,7 +6,7 @@ Written 2026-11-12, Africa/Nairobi. A draft. Nothing is posted. You post it your
 
 - Social Blitz bonus prize: the post must start with #KiroweenHackathon26, before any other text. It must share your favorite part of Kiro and how it changed your development approach. It must be published before Dec 4, 2:00 PM Pacific (Dec 5, 1:00 AM Nairobi). Put the post link in the Devpost form. Images or video help the judging.
 - Blog bonus prize: the article must be on a third-party blog platform and say it is part of the Kiroween 2026 hackathon. The article has that line. Cross-post it (for example to dev.to) and put that URL in the form.
-- Tags: choose each name from LinkedIn's dropdown after typing the at sign. Typed text alone does not tag.
+- Tags: the workflow posts through the API, which tags companies only. Typed text alone does not tag a person. See the tag check below.
 
 ## The post
 
@@ -27,7 +27,7 @@ Review caught two real mistakes that Kiro's own summary did not show. The articl
 Article: [article link]
 Code: https://github.com/Miguel-Shinyenyi/umwayi-os
 
-@Kiro @Amazon Web Services @Brian Beach @Darlyze Calixte this is my entry. What is one thing your AI helper should always ask you before it acts?
+#Kiro @Amazon Web Services this is my entry. Brian Beach and Darlyze Calixte, what is one thing your AI helper should always ask you before it acts?
 
 ## Before you post
 
@@ -35,5 +35,11 @@ Code: https://github.com/Miguel-Shinyenyi/umwayi-os
 - Update the pull request and test numbers to the latest CI run.
 - Add the article link once it is live (set `draft: false` in `site/tech/stitching-a-chimera-with-kiro.md`).
 - Add one image: a screenshot of the hillside scene from the High tier, or the CI run with all four Python versions green.
-- You gave the name as Bryan Beach, but the profile link is brianjbeach. I wrote Brian Beach. Pick the right person from the dropdown by checking the link: https://www.linkedin.com/in/brianjbeach/. Darlyze Calixte: https://www.linkedin.com/in/darveloper/.
+- Tag check, done in LinkedIn on 2026-11-12 with Claude in Chrome:
+  - Amazon Web Services: company page `amazon-web-services`, organization ID 2382910, read from its "See all employees" link. Tagged as a company mention.
+  - Kiro: its page is a showcase page under AWS (`/showcase/kirodotdev/`, 32K followers). I could not read its own ID, so the post uses the #Kiro hashtag.
+  - Brian Beach: `/in/brianjbeach/` shows "Principal Tech Lead at AWS - AI Developer Experience | Kiro". The spelling is Brian, not Bryan. The API cannot tag a person, so the name is plain text. To tag him, post by hand and pick him from the dropdown.
+  - Darlyze Calixte: `/in/darveloper/` shows "Developer Marketing Manager @ Devpost". Plain text for the same reason.
+  - Hashtags found in use on LinkedIn: #KiroweenHackathon26 (16 posts in one search), #Kiro, #Kiroween, #AgenticEngineering.
+- Bryan or Brian: you wrote Bryan, the profile says Brian. I used Brian.
 - I have not stated anyone's job title in the post, because I could not confirm them.

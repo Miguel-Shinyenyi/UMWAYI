@@ -9,7 +9,12 @@ tags:
   - Agentic engineering
   - Hackathon
 linkedin:
-  hashtags: [Kiro, Kiroween, AgenticEngineering]
+  post: docs/plans/kiroween-linkedin-post.md
+  hashtags: [Kiroween, AgenticEngineering]
+  mentions:
+    - name: Amazon Web Services
+      urn: 'urn:li:organization:2382910'
+      url: 'https://www.linkedin.com/company/amazon-web-services/'
   links:
     - label: Event
       url: https://kiroween.devpost.com/
