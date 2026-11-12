@@ -46,12 +46,12 @@ Four different tools, two languages and a 3D scene, under one set of rules. That
 Kiro writes the code. I do not. The work goes in this order.
 
 1. A spec pull request comes first: requirements, a design, and a task list. They live in `.kiro/specs/umwayi-os`, next to a steering file, `.kiro/steering/product.md`.
-2. Kiro builds one slice per pull request, in the same session as the slice before it, so slices stack without merge conflicts.
-3. A second AI reviews the diff on its own. It does not trust Kiro's report. It reruns checks by hand on a fresh folder.
-4. GitHub CI is the record. It runs the whole suite on Python 3.10 to 3.13. The last run counted 1,899 tests on each version.
-5. I read the result and merge. Kiro never merges.
+2. Kiro builds one task per pull request. Each task gets its own session and its own browser tab, and the session merges the newest main into its branch before every push.
+3. A second AI, which I call the guide, reviews the diff on its own. It does not trust Kiro's report. It reads the code, scans the diff, and for risky code runs a live check by hand. It does not rerun the whole suite.
+4. GitHub CI is the record. It runs the whole suite on Python 3.10 to 3.13. The last count was about 2,200 tests on each version.
+5. I read the result and merge in GitHub. Kiro never merges, and the guide never merges.
 
-The repository started on 2026-11-07. It has had 59 pull requests since.
+So the roles are fixed: the guide holds the plan and reviews, I decide and merge, and Kiro sessions build. The repository started on 2026-11-07. Its pull request numbers have reached 66.
 
 ## What broke
 
@@ -62,16 +62,24 @@ Review caught real mistakes. Two of them:
 
 Neither would have shown up if I had only read the summary Kiro wrote. Both showed up because something else checked the files.
 
+Running several sessions at once broke other things, and I keep a log of them:
+
+- Parallel sessions all edited the same status and limits files, so almost every pull request opened with a merge conflict. One pull request opened conflicting because another merged while it was open. The fixes are a rule that every session merges main before it pushes, and a task that splits those files into one part per task and builds them by script.
+- Messages to a Kiro session can vanish if the sandbox is waking or if the page layout shifts under the send button. I confirm each message with a screenshot.
+- Opening a session in a tab reloads its sandbox, so each session keeps its own tab. Closing one tab once dropped my whole browser tab group.
+- CI took about 24 minutes on every pull request, even for a change that could not affect most tests. A task now maps tests to paths, runs only what a change can affect, shards the rest, and adds a final check that every test still ran.
+- The working rules lived in my messages, so a new session did not know them. They are moving into a steering file in the repository, which Kiro reads in every session. A steering file is advice, so the checks that matter stay in code.
+
 ## Where it goes next
 
-These are plans. None is built.
+Some of this is built and some is a plan. I say which.
 
-- A local backend, so the page can send the same request the command line would. It goes through the same rules, logbook and kill switch, so the page can never do more than the terminal.
+- A local backend, so the page can send the same request the command line would. The core is built and merged: it binds only to the local machine, needs a token, and goes through the same rules, logbook and kill switch. The page cannot turn the kill switch off. The page itself is not built yet.
 - One chat for Claude Code, Kiro and OpenCode, and a queue where an intake step asks questions until the intent is clear before it adds a task.
-- Goals that a main agent holds and tests. A goal splits into loosely coupled pieces for helper agents, down to tasks small enough for a model to finish without guessing. A different agent tests each piece before it moves up.
+- Goals that a main agent holds and tests. The spec is merged, nothing of it is built yet. A goal splits into loosely coupled pieces for helper agents, down to tasks small enough for a model to finish without guessing. Each task runs in its own git worktree with a fresh session. A different agent tests each piece before it moves up.
 - Progress dashboards, so a person can see they are getting better at agentic engineering.
 
-I also want the system to track the practices Kiro lists for frontier engineering, such as giving agents fast feedback and enforcing limits at the boundaries, and show which ones are in place.
+I also want the system to carry the working rules and the practices Kiro lists for frontier engineering, such as giving agents fast feedback and enforcing limits at the boundaries. The plan is a checked guidance file that the goal flow loads. Rules that code can check, such as a question without a recommendation or a branch behind main, are enforced at the gates. The rest are put into the prompts and checked by the tester. This is planned, not built.
 
 ## What I took from it
 
@@ -80,3 +88,4 @@ I also want the system to track the practices Kiro lists for frontier engineerin
 3. Write the spec first and keep slices small. Kiro stays accurate when each slice is one pull request with a clear list of tests.
 4. Keep CI as the record. My hand checks find what CI does not, and CI finds what I cannot rerun.
 5. Say what is not built. Every pull request lists what was not verified, and this article does the same.
+6. Put the rules where the builder reads them, and the enforcement where the builder cannot skip it. A rule in a chat message reaches one session. A rule in the repository reaches every session, and a rule in code cannot be ignored.
