@@ -244,5 +244,15 @@ Entries before 2026-10-01 are in `archive/SYNC_LOG/2026-09.md` (A-011 in `archiv
 - Changed: `projects/kiroween.md` (category Frankenstein, the 15 workstreams, bonus prize conditions); `MASTER_CONTEXT.md` (date and Kiroween row).
 - What moved: umwayi-os main is c642436 (CI.1, PR 59, merged); UI.7 (PR 58) is in review with the answers in D-45; the OpenCode session started 10.47; the umwayi-os repository About and topics, the GitHub profile bio and the Devpost profile bio were set; the Devpost project draft was saved and not submitted.
 - Checked: the Kiroween rules page for the Social Blitz and Blog prize conditions; the article builds in `miguel-site` (40 pages) with the draft in place; no em dashes in the new files.
-- Not done: nothing pushed; the article stays a draft until Miguel sets `draft: false`; no entry for 2026-11-06; the 11-12 entry covers the day so far only; the Notion hub was updated separately.
+- Not done: nothing pushed; the article stays a draft until Miguel sets `draft: false`; no entry for 2026-11-06; the Notion hub was updated separately.
+
+## 2026-11-12 evening (guide and executor system, five merges, issues log, W16 to W20)
+
+- Source: the session of 2026-11-12 after the direction message: Miguel's merge words, rules and answers.
+- Added: `docs/plans/guide-executor-system.md`, `docs/plans/kiro-crew-lessons.md`, `docs/plans/kiro-issues-and-solutions.md` (24 issues, 4 unsolved items as tasks), `docs/plans/w20-faster-ci-packet.md`; queue.md D-46 to D-51.
+- Changed: `projects/kiroween.md` (progress of 2026-11-12, W16 to W20, main a7d73e8, 2,171 tests); `MASTER_CONTEXT.md` Kiroween row; `journal/entries/2026-11-12.md` (the later events).
+- What moved: umwayi-os main is a7d73e8 (PR 58, 61, 62, 63, 64 merged on 2026-11-12, each after the guide's own review); W1 (PR 65, conflict being fixed), OpenCode 10.48 and W9.9 are the three running sessions; W20 added and waits for those three.
+- Checked: PR 64 was smoke tested live (token, Host, Origin, CORS, kill switch, loopback bind) before merge; GitHub CI 4 of 4 on the merged head; no em dashes in the new hub files.
+- Not done: nothing pushed (Miguel applies the zip); the hub zip v3 replaces v2; the journal entry covers the day to 21:10 Nairobi only.
+
 

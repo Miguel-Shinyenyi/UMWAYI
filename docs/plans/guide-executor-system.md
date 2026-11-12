@@ -60,7 +60,15 @@ Record: a spec pull request in `.kiro/specs/umwayi-os`, as for earlier layers.
 Files it may touch: `.kiro/specs/umwayi-os/**`, `docs/tasks/**`, and the usual status rows.
 Model: Sonnet 5.5 at medium effort (recommended). Owner confirms.
 
+## Status on 2026-11-12 evening
+
+- Approved: the owner answered W9-Q1 to W9-Q14 as recommended and the spec merged (PR 63). The worktree per task (one task, one worktree, a fresh session per task) is a core rule of umwayi-os, not an option.
+- Standing rules the system now follows: one browser tab per Kiro session; keep the guide's Chrome tab group; every question comes with a recommendation; do it yourself before asking the owner; every rule the owner gives the guide also applies to umwayi-os; every session merges the newest origin/main into its branch before every push so a PR never opens with conflicts; the Kiro issues log is kept as we go.
+- Coded in the library next (W19): the hub's rules and engineering guidance and Kiro's ten frontier practices as a checked `guidance.yaml`, enforced at the gates where checkable, injected into prompts and checked by the tester otherwise.
+- Built so far from this plan: W6.1 to W6.6 (`umwayi serve`, PR 64). W9.9 (the shared docs builder, also W17) is building; the rest of W9 comes after Dec 3. W20 (faster CI) waits for PRs 65, 10.48 and W9.9.
+- Measured in use: five pull requests reviewed alone by the guide and merged by the owner in one day; the conflicts that came up (PRs 57, 58, 59, 62, 63, 64, 65) all came from parallel edits of the shared docs, which W9.9 removes.
+
 ## Not done
 
-- Nothing here is approved or built. No script, no `umwayi goal`.
+- No script, no `umwayi goal` (the spec is merged; the build after Dec 3 apart from W9.9).
 - The 30 minute stall limit and the 60 minute size are guesses to adjust after real use.

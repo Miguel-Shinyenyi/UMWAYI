@@ -1,13 +1,13 @@
 # Kiroween 2026: the Umwayi hub as an AI operating system (umwayi-os)
 
-Status date: 2026-11-12. Category: Frankenstein (changed from Skeleton Crew on 2026-11-12). Platform: Devpost. Sponsor: AWS. Plan: submit on Dec 3; whatever works by then is what gets submitted.
+Status date: 2026-11-12 (evening). Category: Frankenstein (changed from Skeleton Crew on 2026-11-12). Platform: Devpost. Sponsor: AWS. Plan: submit on Dec 3; whatever works by then is what gets submitted.
 Repo (public): Miguel-Shinyenyi/umwayi-os. Python, core uses only the standard library. Command line: `umwayi`.
 
 ## What it is
 
 An operating layer for AI agents. It sits in front of the agents he already uses (Claude Code, Kiro, later others), asks the rules before each action, keeps a queue and a logbook, and refuses to start an agent it cannot gate. He is the first user; others can use it to run their own agents.
 
-## Where it stands (main c642436 on 2026-11-12, 59 pull requests; 1,899 tests on each of Python 3.10 to 3.13 in the last CI run; table below last re-read on 2026-11-11)
+## Where it stands (main a7d73e8 on 2026-11-12 evening, PR 64 merged; 2,171 tests on each of Python 3.10 to 3.13 in the last CI run; the table below was last re-read on 2026-11-11)
 
 | part | state | tests on main |
 | --- | --- | --- |
@@ -54,6 +54,15 @@ Workstreams (status and owners are in the Notion schedule, W1 to W15):
 Public face on 2026-11-12: repo About, topics and GitHub profile bio were set; the Devpost profile bio was set. The Devpost project draft (id 1297770) is saved with the repository link and category Frankenstein. It is not submitted. Still to fill by Miguel: his own eligibility answers, the working demo URL, the demo video URL and the bonus prize links.
 
 Bonus prizes and their conditions (read from the rules on 2026-11-12): the Social Blitz post must start with the hashtag #KiroweenHackathon26, share a favourite part of Kiro and how it changed the development approach, and be linked in the form. The Blog post must be on a third-party blog platform, say it is part of the Kiroween 2026 hackathon, and be linked in the form. Submissions close Dec 4, 2:00 PM Pacific (Dec 5, 1:00 AM Nairobi).
+
+Progress on 2026-11-12 after the direction message (all merges by the owner in GitHub after the guide's own review):
+
+- PR 58 (UI.7 High tier) merged; the owner's own High-tier test on a real device is held for later.
+- PR 61 (W6 spec) merged; PR 62 (10.47 fake OpenCode over ACP) merged; PR 63 (W9 goal orchestration spec, with the worktree-per-task core rule and W9-Q1 to Q14 answered) merged.
+- PR 64 (W6.1 to W6.6, `umwayi serve`: gate, token, server, pipeline, first routes) merged at 20:15 Nairobi. The guide's live smoke test: no token 401, wrong Host 403, no Origin 403, no CORS or cookie headers, loopback only, the kill switch can be turned on from the page and no route turns it off. KNOWN-LIMITS 200 to 236 used.
+- Running: W1 mobile-first rework (PR 65, has a conflict; the session was told to merge main and renumber to 237 to 241), OpenCode 10.48 (entries from 242), W9.9 shared docs builder (also W17, started 20:25 on Sonnet 5.5 medium). Three builder sessions at once is the cap, one per area.
+- New tasks: W16 board status script, W17 (= W9.9), W18 CI Python versions, W19 the guided flow in the library (hub rules and Kiro's ten frontier practices coded as a checked `guidance.yaml`), W20 faster CI (path filters, sharding, a final check that every test ran; waits for PRs 65, 10.48 and W9.9).
+- The way of working is now written down: Claude is the guide, Miguel is the executor and merges, Kiro sessions build, one task per PR. Files: `docs/plans/guide-executor-system.md`, `docs/plans/kiro-issues-and-solutions.md` (24 issues), `docs/plans/kiro-crew-lessons.md`, `docs/plans/w20-faster-ci-packet.md`.
 
 Article: `site/tech/stitching-a-chimera-with-kiro.md` (draft). LinkedIn post: `docs/plans/kiroween-linkedin-post.md`.
 

@@ -13,6 +13,7 @@ Written 2026-11-02, Africa/Nairobi. Plans only. No agent here is built. Principl
 | Kiro Crew lessons | `kiro-crew-lessons.md` | Kiro Crew as a tool only, its downfalls, and what umwayi-os takes from them |
 | Guide and executor | `guide-executor-system.md` | Our own system: Claude guides, Miguel executes, Kiro sessions build. A proposal until approved |
 | Kiro issues | `kiro-issues-and-solutions.md` | Issues met while building with Kiro and the fix for each. A living log |
+| W20 faster CI | `w20-faster-ci-packet.md` | Task packet for umwayi-os: path filters and sharding that run only what a change can affect |
 
 ## 1. What the repositories show for 27 Oct to 2 Nov
 
