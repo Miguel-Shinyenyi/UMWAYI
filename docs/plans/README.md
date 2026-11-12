@@ -9,6 +9,9 @@ Written 2026-11-02, Africa/Nairobi. Plans only. No agent here is built. Principl
 | Social media agent | `social-agent.md` | Articles to scripts to videos and posts, drafts only, token cost measured first |
 | Landing page | `founding-dev-landing-page.md` | Page for the AI operating system, built on Founding.dev during the design hackathon, 6 to 10 Nov |
 | LinkedIn post | `founding-dev-linkedin-post.md` | The post that goes with the landing page entry: rules, text and the article link |
+| Kiroween post | `kiroween-linkedin-post.md` | LinkedIn post for the Kiroween article and the prize rules that decide it |
+| Kiro Crew lessons | `kiro-crew-lessons.md` | Kiro Crew as a tool only, its downfalls, and what umwayi-os takes from them |
+| Guide and executor | `guide-executor-system.md` | Our own system: Claude guides, Miguel executes, Kiro sessions build. A proposal until approved |
 
 ## 1. What the repositories show for 27 Oct to 2 Nov
 
