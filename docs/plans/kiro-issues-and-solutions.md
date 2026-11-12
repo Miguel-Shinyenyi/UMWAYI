@@ -14,6 +14,7 @@ Setup in one line: Kiro sessions build one task each and open one pull request. 
 | 4 | A message sent to a busy builder queues ("Looking into it") | It is read only after the current step | Say "finish the step you are on, then ..." in the message so the order is clear | In use |
 | 5 | No signal of a stall | A running builder can look alive and do nothing | Judge by git commit timestamps in UTC, not the page. If no push or message for 30 minutes, look and report. Same error twice, stop | In use, limits are guesses |
 | 6 | Choosing a model is easy to forget and costs money | A heavy model is used for a light task | The guide gives model options with a recommendation first. Miguel picks. Spec work: Sonnet 5.5 medium | In use (D-38) |
+| 22 | A layout shift (the side panel opening) moves the message box, so a click misses the send button (2026-11-12) | The message sits in the box and the builder never receives it | Screenshot after every send and click the send button by its position in the new layout; resend one combined message if it did not land (same check as issue 2) | In use |
 
 ## Issues with the way sessions work together
 
@@ -29,6 +30,8 @@ Setup in one line: Kiro sessions build one task each and open one pull request. 
 | 14 | Builder questions arrive without advice | Slow decisions | Owner rule 2026-11-12: every question gets a recommendation. The guide adds one before relaying Kiro's questions | In use |
 | 15 | Spec text can conflict with steering rules | A build would break a rule | Changing a rule needs the owner's approval first (D-39 for steering rule 10 and 12.R17.6), then the rule is reworded in the same PR | In use |
 | 16 | Hour estimates leave things out (noticed by guide) | W6 first said 53 hours and left out W6.10 (8 hours); the true total is 61 | Check every estimate against the task list before sending | In use |
+| 23 | CI takes about 24 minutes on every pull request, whatever changed (owner, 2026-11-12) | The whole Python suite runs four times (3.10 to 3.13) even for a change under ui/ or site/; the owner waits on every merge | Task W20: map which tests read which paths, add path filters with one always-on decider job, shard the Python suite, and add a final job that fails if any shard drops a test. A filter that cannot prove it is safe runs everything; the full suite always runs on main. Packet written 2026-11-12 | Open, W20 |
+| 24 | A session pushes a branch that is behind main, so the PR opens with conflicts (PR 65, W1, 2026-11-12, after PR 64 took KNOWN-LIMITS 233 to 236) | The owner finds the conflict in GitHub and the guide has to chase it | Owner rule 9: every session merges the newest origin/main into its branch, resolves conflicts, reruns tests and only then pushes; GitHub must show no conflicts before it reports ready; KNOWN-LIMITS numbers are read after the merge. Sent to all sessions; W9 will enforce it in the supervisor | In use |
 
 ## Issues with the guide (Claude)
 
@@ -38,6 +41,7 @@ Setup in one line: Kiro sessions build one task each and open one pull request. 
 | 18 | The first control board did not know the plan (noticed by guide) | Wrong claim that the worktree page held the plan | Added the overall plan, backlog W1 to W15, area map, next-up list and capacity check to the board | Fixed |
 | 19 | Browser tools cannot read cookies or cross-domain data | Some checks fail | Use screenshots and git branches instead | In use |
 | 20 | The Notion running-now table goes stale | Wrong state shown | Guide updates it after each merge and each report | In use |
+| 21 | Closing a finished session tab dropped the guide's Chrome tab group (2026-11-12) | The guide lost control of the other session tabs and had to reopen them, which reloads each sandbox | Owner rule: keep the tab group. Open the new session tab first, then close the finished one. Keep a GitHub tab as the anchor. Never close the last tab of the group | In use |
 
 ## Decisions that came from these issues
 
@@ -53,5 +57,6 @@ Each unsolved item becomes a backlog task on the Notion control board.
 | Stall detection is manual | Interim: the guide checks the last push time of every open branch each cycle. Build a small standard library status script that lists open PRs, last push, CI state and a conflict flag (the repo is public, so no token). The real fix is the stall watcher in the W9 goal spec | W16, then W9 |
 | Conflicts on shared docs | Do not wait for the W9 build. Split status and limits into one file per task, built into docs/status-log.md and docs/KNOWN-LIMITS.md by a script, in one small PR at a quiet moment after UI.7 and PR 62 merge (about 3 hours). Until then merge the smallest PRs first | W17 |
 | Local tests do not match CI | Ask sessions to run Python 3.10 and 3.13 before pushing if they can install them. If not, shard CI (CI.1.D) to cut the 24 minute wait | W18 |
+| CI wait of about 24 minutes on every PR | Path filters plus sharding, with a safety rule: unknown or unprovable means run everything, and a final job proves every test ran. Hold the build until PRs 65, 10.48 and W9.9 are merged (it changes check names and the branch rule) | W20 |
 
 Rule (owner, 2026-11-12): this log is updated as the project goes. A new issue gets a row. An unsolved item gets a task.
