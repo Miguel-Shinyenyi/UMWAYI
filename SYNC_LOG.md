@@ -236,3 +236,13 @@ Entries before 2026-10-01 are in `archive/SYNC_LOG/2026-09.md` (A-011 in `archiv
 - What moved: umwayi-os main is 5cd03a8 with 38 merged pull requests; layer 11, the hash chain, the budget governor, the whole-system test, the security scan and the interface spec merged on Nov 10; the interface look changed on Nov 11; layer 13 scope decided.
 - Checked: pull request list and merge times read from the umwayi-os repository; the Notion decisions log was updated the same day.
 - Not done: no entry for 2026-11-06 (no commits, no notes); the 11-09 entry was not changed; nothing pushed; no progress digest for 11-09 to 11-15; the 11-11 entry will need the end of day.
+
+## 2026-11-12 (Frankenstein direction, public profiles, article, LinkedIn post)
+
+- Source: Miguel's direction message of 2026-11-12 and his answers to the open decisions; then asking for the hub update, a zip, and a LinkedIn post for the article.
+- Added: `journal/entries/2026-11-12.md` (private); `site/tech/stitching-a-chimera-with-kiro.md` (draft: true); `docs/plans/kiroween-linkedin-post.md`; queue.md D-39 to D-45.
+- Changed: `projects/kiroween.md` (category Frankenstein, the 15 workstreams, bonus prize conditions); `MASTER_CONTEXT.md` (date and Kiroween row).
+- What moved: umwayi-os main is c642436 (CI.1, PR 59, merged); UI.7 (PR 58) is in review with the answers in D-45; the OpenCode session started 10.47; the umwayi-os repository About and topics, the GitHub profile bio and the Devpost profile bio were set; the Devpost project draft was saved and not submitted.
+- Checked: the Kiroween rules page for the Social Blitz and Blog prize conditions; the article builds in `miguel-site` (40 pages) with the draft in place; no em dashes in the new files.
+- Not done: nothing pushed; the article stays a draft until Miguel sets `draft: false`; no entry for 2026-11-06; the 11-12 entry covers the day so far only; the Notion hub was updated separately.
+

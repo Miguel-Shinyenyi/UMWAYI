@@ -54,6 +54,13 @@ These block queued work. Each has my recommendation. They are yours to decide.
 | D-36 | Interface tiers and public site (UI-Q17 to UI-Q22) | ANSWERED 2026-11-11: three tiers chosen from the device with a visible override (list view, standard, near photoreal); a public Next.js site in site/ on Vercel free tier with no analytics; the owner view stays one offline file; Maasai silhouette, real looking sheep, goats and dog, dense forest, water over rocks; all four plan cuts accepted, owner handles the timelines. | n/a | n/a |
 | D-37 | Layer 13 scope | ANSWERED 2026-11-11: build all four correction ideas (review dates, reopen, petitions, honest tension) and graded autonomy with behaviour, off by default and fail closed; a reopen is a new logbook entry linked to the old one; stop where Dec 3 finds us. | n/a | n/a |
 | D-38 | Kiro model choice | ANSWERED 2026-11-11: Opus 5.5 for realistic environment work, Sonnet 5.5 for the rest, both at medium effort. Claude asks before picking a model and gives the options so Miguel picks. | n/a | n/a |
+| D-39 | Interface rule change: the page may send requests | ANSWERED 2026-11-12: approved. Steering rule 10 and 12.R17.6 change from "the interface only looks" to: the page may send the same request the command line would, to a local backend (`umwayi serve` on 127.0.0.1, with a token), through the same rules, logbook and kill switch. Spec first (W6). | n/a | n/a |
+| D-40 | Plan cuts and deployed UI | ANSWERED 2026-11-12: plan cuts acceptable. Deploy on Vercel as soon as the frontend and the backend with login exist, with a CI that deploys automatically on updates. | n/a | n/a |
+| D-41 | Timelines and parallel work | ANSWERED 2026-11-12: timelines are not strict. Several Kiro sessions run at once, later using the task worktree system planned in umwayi-os. | n/a | n/a |
+| D-42 | Direction question 4 | ANSWERED 2026-11-12: done later; added to the task list. | n/a | n/a |
+| D-43 | Migration of hub data | ANSWERED 2026-11-12: only the journals are private and stay private. Everything else public in the repository is free to access and use. | n/a | n/a |
+| D-44 | Article and hub deployment | ANSWERED 2026-11-12: write both. The article is created (draft, `site/tech/stitching-a-chimera-with-kiro.md`). The hub deploys to every site already listed. | n/a | n/a |
+| D-45 | Kiroween category and UI.7 answers | ANSWERED 2026-11-12: category is Frankenstein, not Skeleton Crew. UI.7 (PR 58): allow one timer in the faults test; accept Standard's extra 4.4 KB and one request; keep the Poly Haven photos as they are; make the antelope larger; automatic fall back to Standard after slow frames is a follow-up task, not built. | n/a | n/a |
 
 ## R. Routine Machine, from the brief
 

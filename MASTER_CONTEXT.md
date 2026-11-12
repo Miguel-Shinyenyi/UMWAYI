@@ -1,6 +1,6 @@
 # Master Context
 
-Last updated: 2026-11-11 (Kiroween progress, interface and layer 13 decisions)
+Last updated: 2026-11-12 (Kiroween category Frankenstein, new direction W1 to W15, public profiles)
 
 ## Who this is for
 
@@ -38,7 +38,7 @@ where the observation gets tested against something real.
 | Routine machine | `projects/routine-machine.md` | Routines, learning, reading notes, credit ledger, savings and cohorts. Own repo. Phases 1 to 12 on `main`. Direction under review (`queue.md` D-1). |
 | Hackathon | `projects/hackathon.md` | Meta Global AI Developer Hackathon, Oct 26 to Nov 4. Public repo `umwayi-rm` is built and deployed (savings-group secretary agent, MIT), live at umwayi-rm.vercel.app with a demo video. H1 and H2 returned nulls. Zero interviews, by decision. Submission status and known issues in the project file. Open items in `queue.md` K and `umwayi-rm/docs/hackathon-log.md`. |
 | Founding.dev hackathon | `projects/founding-dev-hackathon.md`, `docs/plans/founding-dev-landing-page.md` | Landing page for the AI operating system, shepherd theme. Build window 6 to 10 Nov. Registered. Nothing built yet. |
-| Kiroween 2026 | `projects/kiroween.md` | Kiroween 2026 (Skeleton Crew): the Umwayi hub as an AI OS, repo umwayi-os, main 5cd03a8, 38 pull requests, layers 1 to 11, the scan and the budget governor merged; layer 12 web interface (highlands scene, three tiers, public site) in progress; layer 13 correction and graded autonomy decided; submit Dec 3. See projects/kiroween.md. |
+| Kiroween 2026 | `projects/kiroween.md` | Kiroween 2026 (Frankenstein): the Umwayi hub as an AI OS, repo umwayi-os, main c642436, 59 pull requests, 1,899 tests on Python 3.10 to 3.13; layer 12 interface in progress (UI.7 in review, PR 58); new direction of 2026-11-12 with 15 workstreams (W1 to W15); Devpost draft saved, not submitted; submit Dec 3. See projects/kiroween.md. |
 | Agent principles and plans | `docs/agent-principles.md`, `docs/plans/` | Consolidated rules from the notes of 27 Oct to 2 Nov, with a line map; plans for an AI operating system, a Steward agent and a social agent. Tasks in `queue.md` section L. |
 | Open source | `projects/open-source.md` | Open source issues worked one at a time, each recorded with its verification. Started 2026-10-14. |
 | Website | `website/PLAN.md` | Historical plan, superseded. Site code is in `miguel-site`, content in `site/`. |
