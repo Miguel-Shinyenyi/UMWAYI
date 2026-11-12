@@ -12,6 +12,7 @@ Written 2026-11-02, Africa/Nairobi. Plans only. No agent here is built. Principl
 | Kiroween post | `kiroween-linkedin-post.md` | LinkedIn post for the Kiroween article and the prize rules that decide it |
 | Kiro Crew lessons | `kiro-crew-lessons.md` | Kiro Crew as a tool only, its downfalls, and what umwayi-os takes from them |
 | Guide and executor | `guide-executor-system.md` | Our own system: Claude guides, Miguel executes, Kiro sessions build. A proposal until approved |
+| Kiro issues | `kiro-issues-and-solutions.md` | Issues met while building with Kiro and the fix for each. A living log |
 
 ## 1. What the repositories show for 27 Oct to 2 Nov
 
