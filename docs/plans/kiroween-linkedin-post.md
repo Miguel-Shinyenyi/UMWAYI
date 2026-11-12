@@ -27,7 +27,7 @@ Review caught two real mistakes that Kiro's own summary did not show. The articl
 Article: [article link]
 Code: https://github.com/Miguel-Shinyenyi/umwayi-os
 
-#Kiro @Amazon Web Services this is my entry. Brian Beach and Darlyze Calixte, what is one thing your AI helper should always ask you before it acts?
+#KiroweenHackathon26 @Amazon Web Services this is my entry. Brian Beach and Darlyze Calixte, what is one thing your AI helper should always ask you before it acts?
 
 ## Before you post
 
@@ -37,9 +37,9 @@ Code: https://github.com/Miguel-Shinyenyi/umwayi-os
 - Add one image: a screenshot of the hillside scene from the High tier, or the CI run with all four Python versions green.
 - Tag check, done in LinkedIn on 2026-11-12 with Claude in Chrome:
   - Amazon Web Services: company page `amazon-web-services`, organization ID 2382910, read from its "See all employees" link. Tagged as a company mention.
-  - Kiro: its page is a showcase page under AWS (`/showcase/kirodotdev/`, 32K followers). I could not read its own ID, so the post uses the #Kiro hashtag.
+  - Kiro: its page is a showcase page under AWS (`/showcase/kirodotdev/`, 32K followers). I could not read its own ID, so it is not tagged. The post uses the full #KiroweenHackathon26 and not #Kiro.
   - Brian Beach: `/in/brianjbeach/` shows "Principal Tech Lead at AWS - AI Developer Experience | Kiro". The spelling is Brian, not Bryan. The API cannot tag a person, so the name is plain text. To tag him, post by hand and pick him from the dropdown.
   - Darlyze Calixte: `/in/darveloper/` shows "Developer Marketing Manager @ Devpost". Plain text for the same reason.
-  - Hashtags found in use on LinkedIn: #KiroweenHackathon26 (16 posts in one search), #Kiro, #Kiroween, #AgenticEngineering.
+  - Hashtags found in use on LinkedIn: #KiroweenHackathon26 (16 posts in one search), #Kiroween, #AgenticEngineering.
 - Bryan or Brian: you wrote Bryan, the profile says Brian. I used Brian.
 - I have not stated anyone's job title in the post, because I could not confirm them.
