@@ -33,6 +33,19 @@ Part C: sharding (the CI.1.D plan)
 - The shard assignment is deterministic and listed in a file; a test that is in no shard fails the final job.
 - Keep the cache and the Node step as they are unless the filter says skip.
 
+Part D: the sessions follow it too (owner, 2026-11-12 21:38)
+- Build one command (for example python tools/affected_tests.py) that reads the diff against origin/main and prints, and optionally runs, only the Python test modules and Node test directories a change can affect, using the same map and rules as the CI decider. Unknown path or unreadable diff means everything.
+- It shares one code path with the CI decider; a test proves both give the same answer for the same changed-file set.
+- Builder instructions change: while building run the affected tests only; before pushing run the affected tests on the Python versions you can install; run the full suite only when the command says so (workflow, map or tools changes) or when asked; GitHub CI stays the record. Written in docs/testing.md and in the Kiro steering text for builders (if a safety rule would change, stop and ask the owner).
+- The PR description says what an affected-only run could miss.
+- The same idea goes into umwayi-os itself: the W9 builder and tester instructions and W19 guidance run the affected tests only.
+
+Part E: the builder rules live in the repo (owner, 2026-11-12 21:48)
+- One new file, .kiro/steering/builder-workflow.md, always included (Kiro Web reads workspace steering and AGENTS.md in every session on the repo). Do not edit product.md or steering rules 1 to 13.
+- Ten short numbered rules, under 60 lines: one task one PR one session, never merge, never review own work; merge newest origin/main before every push and before opening the PR, no conflicts on GitHub before reporting; read KNOWN-LIMITS after merging and take the next free number (docs-parts once it exists); tests first, affected tests only through tools/affected_tests.py, full suite only when it says so, GitHub CI is the record; no em dashes; every question comes with a recommendation; do it yourself first; PR description has Built, Not built, Could not verify, test counts, open questions with a recommendation; ask before changing a safety rule or the meaning of an existing test; stop and report after the same error twice or 30 stuck minutes.
+- A test checks the file exists, is under 60 lines, has no em dash and names tools/affected_tests.py. The PR says sessions started earlier get it only after merging main, and how the owner checks (a fresh session lists its working rules).
+- Steering is advice, not enforcement; enforcement stays in code (decider, CI, later W9 and W19 gates).
+
 Tests first
 - Tests for the filter script: a table of changed-file sets and the expected jobs, including: empty diff (run all), a workflow change (run all), an unknown path (run all), ui/ only, umwayi/ only, docs only, a rename across areas.
 - Planted faults: a shard drops a test (final job fails), a filter wrongly skips Python for a change in umwayi/ (a test must catch it), a map entry missing for a file that reads ui/ (the checker test fails).
@@ -51,5 +64,5 @@ Process rules (all sessions)
 - Size: about 60 builder minutes per part; if Part C does not fit, ship A and B first and say so.
 
 Model: owner picks. Guide recommendation: Sonnet 5.5 medium.
-Start: not before PRs 65 (W1), 10.48 and W9.9 are merged, because it touches .github/ and changes check names; a slot must be free (max 3 builders).
+Start: started 2026-11-12 21:30 on the owner's word (faster CI first); the earlier wait for PRs 65, 10.48 and W9.9 was waived.
 Owner action after merge: update the branch rule to the new required check names.
