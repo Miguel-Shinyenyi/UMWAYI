@@ -892,6 +892,260 @@ SCENES["tech/the-ci-wait-halved"] = (
 )
 
 
+# ---- batch: articles on the parts of umwayi-os (Nov 13) ----
+def _box(x, y, w, h, text, fill=PAPER, size=14, tc=INK, rx=8):
+    return (f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{rx}" fill="{fill}" stroke="{INK}" stroke-width="3"/>'
+            + label(x + w / 2, y + h / 2 + 5, text, size, tc))
+
+
+def _arrow(x1, y1, x2, y2):
+    return (f'<path d="M{x1} {y1} L{x2} {y2}" stroke="{INK}" stroke-width="3" stroke-linecap="round" fill="none"/>'
+            f'<circle cx="{x2}" cy="{y2}" r="4" fill="{INK}"/>')
+
+
+# yes-no-or-ask-me-first: three doors, the sheep at the third.
+SCENES["tech/yes-no-or-ask-me-first"] = (
+    "Yes, No or Ask me first",
+    "Three doors in a row. The left door is green and says yes, the middle door is red and says no, the right door is ochre and says ask me first. A sheep stands at the right door. The shepherd says if unsure, ask.",
+    f"""
+<g stroke="{INK}" stroke-width="3">
+<rect x="90" y="150" width="140" height="210" rx="10" fill="{GREEN}"/>
+<rect x="270" y="150" width="140" height="210" rx="10" fill="{RED}"/>
+<rect x="450" y="150" width="140" height="210" rx="10" fill="{OCHRE_L}"/>
+</g>
+{label(160, 270, "YES", 24, "#fff")}
+{label(340, 270, "NO", 24, "#fff")}
+{label(520, 256, "ASK", 22, INK)}
+{label(520, 284, "ME FIRST", 16, INK)}
+{label(160, 392, "EXIT 0", 14)}
+{label(340, 392, "EXIT 2", 14)}
+{label(520, 392, "EXIT 3", 14)}
+{sheep(520, 440, 0.45)}
+{shepherd(740, 425, 0.6, flip=True)}
+{bubble(440, 60, 320, 58, "If unsure, ask.", 22, tail="right")}
+""",
+)
+
+# a-logbook-that-shows-when-it-was-edited: a chain of blocks, one cracked.
+SCENES["tech/a-logbook-that-shows-when-it-was-edited"] = (
+    "An edit breaks the chain",
+    "A row of four linked blocks, each holding a fingerprint of the one before it. The third block is cracked and a sheep stands on it. The shepherd says an edit breaks the chain.",
+    f"""
+{label(110, 128, "LOGBOOK  ENTRIES", 15, INK, "start")}
+{_box(100, 160, 120, 70, "ENTRY 1", PAPER)}
+{_box(250, 160, 120, 70, "ENTRY 2", PAPER)}
+{_box(400, 160, 120, 70, "ENTRY 3", OCHRE_L)}
+{_box(550, 160, 120, 70, "ENTRY 4", PAPER)}
+<path d="M220 195 H250 M370 195 H400 M520 195 H550" stroke="{INK}" stroke-width="4" stroke-linecap="round"/>
+<path d="M395 195 l14 -22 l-6 20 l14 4 l-12 22" stroke="{RED}" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+{label(160, 262, "HASH", 13)}
+{label(310, 262, "HASH + 1", 13)}
+{label(460, 262, "HASH + 2", 13)}
+{label(610, 262, "HASH + 3", 13)}
+{_box(250, 300, 270, 44, "VERIFY: BROKEN AT ENTRY 3", "#fff", 14, RED)}
+{sheep(460, 160, 0.42)}
+{shepherd(740, 425, 0.6, flip=True)}
+{bubble(110, 370, 330, 58, "An edit breaks the chain.", 22, tail="left")}
+""",
+)
+
+# reserve-before-you-spend: a day bar with the reservation, then the settled spend; unknown drawn full size.
+SCENES["tech/reserve-before-you-spend"] = (
+    "Reserve before you spend",
+    "A bar for the day's limit. In the top row a block labelled reserved fills part of the bar before a run begins. In the second row a smaller block labelled spent replaces it. In the third row a block labelled unknown is drawn at full size. The shepherd says unknown counts as the worst case.",
+    f"""
+{label(110, 120, "DAY LIMIT", 14, INK, "start")}
+<rect x="110" y="130" width="560" height="26" rx="6" fill="#fff" stroke="{INK}" stroke-width="3"/>
+{label(110, 192, "BEFORE THE RUN: RESERVE THE CAP", 14, INK, "start")}
+<rect x="110" y="202" width="560" height="34" rx="6" fill="#fff" stroke="{INK}" stroke-width="3"/>
+<rect x="110" y="202" width="200" height="34" rx="6" fill="{OCHRE_L}" stroke="{INK}" stroke-width="3"/>
+{label(210, 225, "RESERVED", 14)}
+{label(110, 272, "AFTER THE RUN: SETTLE WHAT WAS USED", 14, INK, "start")}
+<rect x="110" y="282" width="560" height="34" rx="6" fill="#fff" stroke="{INK}" stroke-width="3"/>
+<rect x="110" y="282" width="90" height="34" rx="6" fill="{GREEN}" stroke="{INK}" stroke-width="3"/>
+{label(155, 305, "SPENT", 14, "#fff")}
+{label(110, 352, "IF NOBODY REPORTS: UNKNOWN", 14, INK, "start")}
+<rect x="110" y="362" width="560" height="34" rx="6" fill="#fff" stroke="{INK}" stroke-width="3"/>
+<rect x="110" y="362" width="200" height="34" rx="6" fill="{RED}" stroke="{INK}" stroke-width="3"/>
+{label(210, 385, "WORST CASE", 14, "#fff")}
+{sheep(690, 440, 0.45)}
+{shepherd(765, 425, 0.55, flip=True)}
+{bubble(440, 40, 330, 58, "Unknown is the worst case.", 22, tail="right")}
+""",
+)
+
+# one-task-one-worktree: three task folders with branches, the owner's copy apart.
+SCENES["tech/one-task-one-worktree"] = (
+    "One task, one folder",
+    "Three separate folders side by side, each with its own branch label and a sheep standing in it. A fourth folder drawn with a dashed line and labelled the owner's copy stands apart with no sheep. The shepherd says each task gets its own folder.",
+    f"""
+{_box(90, 170, 150, 130, "", PAPER)}
+{_box(260, 170, 150, 130, "", PAPER)}
+{_box(430, 170, 150, 130, "", PAPER)}
+{label(165, 160, "TASK 1", 14)}{label(335, 160, "TASK 2", 14)}{label(505, 160, "TASK 3", 14)}
+{label(165, 326, "BRANCH g-7-t-01", 12)}{label(335, 326, "BRANCH g-7-t-02", 12)}{label(505, 326, "BRANCH g-7-t-03", 12)}
+{sheep(165, 296, 0.38)}{sheep(335, 296, 0.38)}{sheep(505, 296, 0.38)}
+<rect x="610" y="170" width="150" height="130" rx="8" fill="none" stroke="{INK}" stroke-width="3" stroke-dasharray="9 7"/>
+{label(685, 160, "OWNER'S COPY", 14)}
+{label(685, 242, "NEVER TOUCHED", 12)}
+{shepherd(745, 432, 0.45, flip=True)}
+{bubble(120, 60, 360, 58, "Each task gets its own folder.", 22, tail="left")}
+""",
+)
+
+# advice-goes-stale-unless-you-pin-it: a rule card pinned to a source line; the hash no longer matches.
+SCENES["tech/advice-goes-stale-unless-you-pin-it"] = (
+    "Pinned to its source",
+    "A source page with one edited line and a rule card pinned to it by a hash tag. The tag no longer matches and a stop sign sits beside it. A sheep reads the card. The shepherd says if the source changes, stop and ask.",
+    f"""
+<rect x="110" y="120" width="250" height="270" rx="8" fill="{PAPER}" stroke="{INK}" stroke-width="4"/>
+{label(235, 150, "SOURCE", 14)}
+<path d="M135 180 H335 M135 205 H335 M135 255 H335 M135 280 H300" stroke="{INK}" stroke-width="4" stroke-linecap="round"/>
+<path d="M135 230 H335" stroke="{RED}" stroke-width="6" stroke-linecap="round"/>
+{label(235, 360, "ONE LINE EDITED", 13, RED)}
+<path d="M360 230 H430" stroke="{INK}" stroke-width="4" stroke-dasharray="2 8" stroke-linecap="round"/>
+{_box(430, 180, 170, 100, "", OCHRE_L)}
+{label(515, 214, "RULE CARD", 14)}
+{label(515, 240, "HASH  4acf14", 13)}
+{label(515, 262, "SAYS: MATCH", 13)}
+<g transform="translate(675 230)">
+<polygon points="-26,-62 26,-62 62,-26 62,26 26,62 -26,62 -62,26 -62,-26" fill="{RED}" stroke="{INK}" stroke-width="4" transform="scale(0.8)"/>
+{label(0, 6, "STOP", 18, "#fff")}
+</g>
+{label(635, 300, "HASH DIFFERS", 13)}
+{sheep(500, 410, 0.45)}
+{shepherd(750, 430, 0.5, flip=True)}
+{bubble(120, 40, 440, 58, "Source changed. Stop and ask.", 22, tail="left")}
+""",
+)
+
+# one-gate-three-tools: three tools into one gate.
+SCENES["tech/one-gate-three-tools"] = (
+    "One gate, three tools",
+    "One gate in the centre with three paths leading to it from the left, labelled Claude Code, Kiro and OpenCode. Past the gate a single path continues. A sheep waits at the gate. The shepherd says same rules, every tool.",
+    f"""
+{_box(90, 130, 170, 50, "CLAUDE CODE")}
+{_box(90, 215, 170, 50, "KIRO")}
+{_box(90, 300, 170, 50, "OPENCODE")}
+<path d="M260 155 L380 225 M260 240 H380 M260 325 L380 255" stroke="{INK}" stroke-width="3" fill="none" stroke-linecap="round"/>
+<g stroke="{INK}" stroke-width="4">
+<rect x="380" y="150" width="22" height="200" rx="6" fill="{OCHRE_L}"/>
+<rect x="440" y="150" width="22" height="200" rx="6" fill="{OCHRE_L}"/>
+<path d="M380 175 H462 M380 325 H462" stroke-width="6"/>
+</g>
+{label(421, 135, "ONE GATE", 14)}
+{label(421, 380, "umwayi check", 13)}
+<path d="M462 240 H600" stroke="{INK}" stroke-width="3" stroke-linecap="round"/>
+{_box(590, 215, 165, 50, "ALLOW OR STOP", PAPER, 13)}
+{sheep(350, 420, 0.4)}
+{shepherd(750, 430, 0.5, flip=True)}
+{bubble(120, 40, 360, 58, "Same rules. Every tool.", 22, tail="left")}
+""",
+)
+
+# two-pull-requests-never-edit-the-same-line: two part files into one built file.
+SCENES["tech/two-pull-requests-never-edit-the-same-line"] = (
+    "Each task writes its own file",
+    "Two small part files on the left, one from each task, flowing into a single wide file labelled built log on the right through a builder box. A sheep stands on each part file. The shepherd says each task writes its own file.",
+    f"""
+{_box(90, 140, 190, 56, "PART: TASK A", PAPER)}
+{_box(90, 250, 190, 56, "PART: TASK B", OCHRE_L)}
+{sheep(120, 140, 0.34)}{sheep(120, 250, 0.34)}
+<path d="M280 168 L350 215 M280 278 L350 240" stroke="{INK}" stroke-width="3" fill="none" stroke-linecap="round"/>
+{_box(350, 190, 130, 70, "BUILD", "#fff")}
+<path d="M480 225 H540" stroke="{INK}" stroke-width="3" stroke-linecap="round"/>
+<rect x="540" y="150" width="190" height="150" rx="8" fill="{PAPER}" stroke="{INK}" stroke-width="3"/>
+{label(635, 178, "BUILT LOG", 14)}
+<path d="M560 205 H710 M560 228 H710 M560 251 H710 M560 274 H680" stroke="{INK}" stroke-width="4" stroke-linecap="round"/>
+{label(415, 300, "CHECK: SAME BYTES", 12)}
+{shepherd(750, 430, 0.5, flip=True)}
+{bubble(120, 360, 420, 58, "Each task writes its own file.", 22, tail="left")}
+""",
+)
+
+# a-record-that-checks-form-not-truth: three answers, one with evidence, form checked and truth not.
+SCENES["tech/a-record-that-checks-form-not-truth"] = (
+    "Form checked, truth not checked",
+    "A table with three columns labelled applies, not applicable and deferred. One row has a file icon pointing at a real file. A note beside the table says form checked, truth not checked. The shepherd says I check the form.",
+    f"""
+<rect x="100" y="120" width="440" height="250" rx="8" fill="{PAPER}" stroke="{INK}" stroke-width="3"/>
+<path d="M247 120 V370 M394 120 V370 M100 170 H540 M100 230 H540 M100 290 H540" stroke="{INK}" stroke-width="2.5"/>
+{label(173, 152, "APPLIES", 13)}{label(320, 152, "NOT APPLICABLE", 12)}{label(467, 152, "DEFERRED", 13)}
+<rect x="130" y="188" width="86" height="28" rx="5" fill="{GREEN}"/>
+{label(173, 207, "FILE", 12, "#fff")}
+<rect x="274" y="248" width="92" height="28" rx="5" fill="{OCHRE_L}"/>
+{label(320, 267, "REASON", 12)}
+<rect x="418" y="308" width="98" height="28" rx="5" fill="{RED}"/>
+{label(467, 327, "TO DO", 12, "#fff")}
+<g transform="translate(590 150)">
+<rect x="0" y="0" width="150" height="90" rx="8" fill="#fff" stroke="{INK}" stroke-width="3"/>
+{label(75, 34, "FORM: CHECKED", 12, GREEN)}
+{label(75, 62, "TRUTH: NOT", 12, RED)}
+</g>
+{sheep(600, 400, 0.42)}
+{shepherd(750, 430, 0.5, flip=True)}
+{bubble(430, 40, 330, 58, "I check the form.", 22, tail="right")}
+""",
+)
+
+# trust-you-can-take-back: a dial that moves only from ask toward yes, with the no mark locked.
+SCENES["tech/trust-you-can-take-back"] = (
+    "Up from ask, never from no",
+    "A dial with three marks labelled ask, yes and no, with the pointer on ask. Beside it a list of gates with check marks and a lock on the no mark. A sheep sits at the base of the dial. The shepherd says only up from ask, never from no.",
+    f"""
+<path d="M120 330 A150 150 0 0 1 420 330" stroke="{INK}" stroke-width="5" fill="{PAPER}"/>
+<path d="M270 330 L270 200" stroke="{INK}" stroke-width="7" stroke-linecap="round"/>
+<circle cx="270" cy="330" r="12" fill="{INK}"/>
+{label(270, 160, "ASK", 16)}
+{label(160, 270, "NO", 16, RED)}
+{label(380, 270, "YES", 16, GREEN)}
+<path d="M285 175 A110 110 0 0 1 355 235" stroke="{GREEN}" stroke-width="4" fill="none" stroke-dasharray="4 8" stroke-linecap="round"/>
+<g transform="translate(130 296)"><rect x="-14" y="0" width="28" height="22" rx="4" fill="{RED}" stroke="{INK}" stroke-width="3"/><path d="M-8 0 V-8 a8 8 0 0 1 16 0 V0" stroke="{INK}" stroke-width="3" fill="none"/></g>
+{_box(470, 120, 230, 40, "OPTED IN RULE ONLY", "#fff", 12)}
+{_box(470, 165, 230, 40, "OWN RECORD, 13 GATES", "#fff", 12)}
+{_box(470, 210, 230, 40, "NEVER: PAY, SEND, POST", "#fff", 12)}
+{_box(470, 255, 230, 40, "OFF BY DEFAULT", "#fff", 12)}
+{sheep(250, 430, 0.42)}
+{shepherd(750, 430, 0.5, flip=True)}
+{bubble(120, 50, 420, 58, "Up from ask. Never from no.", 22, tail="left")}
+""",
+)
+
+# a-timer-and-a-web-page-use-the-same-gate: a clock and a browser into the same gate, then the logbook.
+SCENES["tech/a-timer-and-a-web-page-use-the-same-gate"] = (
+    "Every way in meets the same gate",
+    "A clock and a browser window on the left, each with an arrow to the same gate. Past the gate a single arrow leads to a logbook. A sheep stands by the clock. The shepherd says every way in meets the same gate.",
+    f"""
+<g transform="translate(150 190)">
+<circle cx="0" cy="0" r="44" fill="{PAPER}" stroke="{INK}" stroke-width="4"/>
+<path d="M0 0 V-26 M0 0 L20 12" stroke="{INK}" stroke-width="5" stroke-linecap="round"/>
+</g>
+{label(150, 262, "07:30 TIMER", 13)}
+<g transform="translate(100 300)">
+<rect x="0" y="0" width="130" height="80" rx="8" fill="{PAPER}" stroke="{INK}" stroke-width="3"/>
+<path d="M0 22 H130" stroke="{INK}" stroke-width="3"/>
+<circle cx="14" cy="11" r="3.5" fill="{RED}"/><circle cx="28" cy="11" r="3.5" fill="{OCHRE_L}"/><circle cx="42" cy="11" r="3.5" fill="{GREEN}"/>
+{label(65, 56, "127.0.0.1", 13)}
+</g>
+{_arrow(205, 190, 330, 250)}
+{_arrow(235, 340, 330, 280)}
+<g stroke="{INK}" stroke-width="4">
+<rect x="330" y="200" width="22" height="130" rx="6" fill="{OCHRE_L}"/>
+<rect x="390" y="200" width="22" height="130" rx="6" fill="{OCHRE_L}"/>
+</g>
+{label(371, 186, "SAME GATE", 14)}
+{_arrow(412, 265, 520, 265)}
+<rect x="520" y="215" width="150" height="100" rx="8" fill="{PAPER}" stroke="{INK}" stroke-width="3"/>
+<path d="M595 262 V315" stroke="{INK}" stroke-width="2.5"/>
+{label(595, 250, "LOGBOOK", 13)}
+<path d="M535 275 H580 M610 275 H655 M535 295 H580" stroke="{OCHRE}" stroke-width="4" stroke-linecap="round"/>
+{sheep(270, 140, 0.34)}
+{shepherd(750, 430, 0.5, flip=True)}
+{bubble(120, 50, 480, 58, "Every way in meets the same gate.", 22, tail="left")}
+""",
+)
+
+
 if __name__ == "__main__":
     for key, (title, desc, body) in SCENES.items():
         name = key.split("/")[1] + ".svg"

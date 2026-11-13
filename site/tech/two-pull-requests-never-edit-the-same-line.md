@@ -1,0 +1,116 @@
+---
+title: "Two pull requests never edit the same line: generating shared files from parts"
+date: 2026-11-13
+summary: "When several builders work in parallel, the files every pull request touches become the conflicts. umwayi-os builds its status log and its list of known limits from one small file per task, and a check proves the output matches byte for byte."
+draft: true
+illustration: two-pull-requests-never-edit-the-same-line.svg
+illustrationAlt: "Two small part files on the left, one from each task, flowing into a single wide file labelled built log on the right through a builder box. A sheep stands on each part file. The shepherd says each task writes its own file."
+tags:
+  - Engineering
+  - Git
+  - Process
+  - Building in public
+linkedin:
+  hashtags: [KiroweenHackathon26, Kiroween, Kiro, AgenticEngineering, ContinuousIntegration, Python, BuildInPublic]
+  post: docs/plans/two-pull-requests-never-edit-the-same-line-linkedin-post.md
+  links:
+    - label: Event
+      url: https://kiroween.devpost.com/
+---
+
+## The conflict every pull request creates
+
+umwayi-os has two files that every pull request must change. One is the status log: a table with a row for each pull request. The other is the list of known limits: a numbered list where each pull request may add an item.
+
+With one builder, that is fine. With three builders working at once, it is a guaranteed conflict. Two branches add a row at the top of the same table. Two branches add item 266 to the same list. Git cannot decide which row goes first or which item is 266, and neither can the builder that hits the conflict.
+
+I could ask builders to merge main more often. That shrinks the window but does not close it. The better answer is that no two branches should ever edit the same line. The code is public: https://github.com/Miguel-Shinyenyi/umwayi-os
+
+## One file per task
+
+Each task writes its own small file, a part. A command builds the two shared files from the parts.
+
+```
+docs-parts/status-log/W9-6b.md
+docs-parts/known-limits/W9-6b.md
+         |
+         v
+python -m umwayi goal docs build
+         |
+         v
+docs/status-log.md
+docs/KNOWN-LIMITS.md
+```
+
+Two tasks create two different files, so git has nothing to conflict on. The shared files are outputs. Nobody edits them by hand.
+
+## What a part looks like
+
+A status part has four lines, in this order, then optional free text that is not copied into the table.
+
+```
+date: 2026-11-13
+pr: 91
+what: ONE LINE
+tests: TEXT
+```
+
+A limits part has a section name, a title, a blank line and a Markdown body.
+
+```
+section: Goal orchestration (W9)
+title: ONE LINE
+number: 266
+
+body ...
+```
+
+The limits part has no number when the builder writes it. The build gives it the next free one, after the largest number in the base and the parts, and writes `number: N` into the part. A number that is there is never changed. A number below the first free one, a number used twice, or a gap is refused.
+
+This solves the second conflict. Two tasks can both leave the number blank. The build gives out numbers in the order of each part's `date`, then its id.
+
+## The base is frozen
+
+The old content moved into a base. Three files hold the status log's head, its old rows and its tail. One file holds the whole old list of limits. They were moved without a changed byte. The first build with no parts equals the old files byte for byte.
+
+The status log is the head, the new rows (newest first by date, then pull request, then id), the old rows, one blank line and the tail.
+
+## The check, and the strict reader
+
+`umwayi goal docs check` builds in memory and compares bytes with the two files. It writes nothing. It exits 2 for a difference. A pull request that hand edits a shared file, or forgets to rebuild, fails the check.
+
+The reader is strict because a lenient reader hides mistakes. Every file in a parts folder, apart from the base files, must be a good part:
+
+- a file name of letters, digits, hyphens and underscores
+- UTF-8, LF line ends, at most 64 KiB, one final newline
+- no em dash, no control character, no link or folder
+- one part per id
+
+A bad part refuses the whole build with a fixed message that names the file. The build never skips it, and nothing is written. The output is checked before it is written: no em dash, a length limit, and every relative link and anchor resolves.
+
+## The same pattern in other files
+
+Parts fix two files. They do not fix the rest. When I merged the progress page, I found the same problem in smaller form.
+
+- The list that assigns test files to CI shards changes whenever a pull request adds a test file.
+- The map of which tests read which paths changes with it.
+- The page `ui/dist/progress.html` is built from the status log and its hash covers the ten newest rows. Every pull request that adds a row makes the committed page stale, and two parallel pull requests change the same generated file.
+
+All of these are generated by a command. In every case the fix is the same: take main's version of the file, run the command again, check the result. I am building one tool for it, `python -m tools.merge_main`. It merges main, and when every conflict is in a file on a list of generated files, it clears the conflict by regenerating the file and verifying it. When any other file conflicts, it stops, aborts the merge and says which paths. It is not merged yet, so I count it as a plan.
+
+A conflict that a program can judge, the program should clear. A conflict that needs a person's judgment should still stop with a question.
+
+## What this does not do
+
+- Parts make the shared files conflict free. They do not stop two tasks from changing the same source file, and the task packet lists the files a task may touch.
+- A part is only as good as its writer. The check proves form, byte equality and links. It does not prove that a row is true.
+- Order in the log depends on the dates the builders write.
+
+## What I took from it
+
+1. If every task must touch a file, the file will conflict. Change the file so tasks do not touch it.
+2. Make shared files outputs and give each task its own input.
+3. Hand out numbers at build time, in a fixed order, so no builder has to guess the next number.
+4. Freeze the old content without changing a byte, and test that the new build equals it.
+5. A strict reader that refuses a bad input beats a lenient one that skips it.
+6. Where a generator exists, a conflict in its output is a build step and not a decision.
