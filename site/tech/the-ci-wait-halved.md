@@ -28,6 +28,7 @@ linkedin:
     - SoftwareTesting
     - Python
     - BuildInPublic
+  post: docs/plans/the-ci-wait-halved-linkedin-post.md
   links:
     - label: Event
       url: 'https://kiroween.devpost.com/'
