@@ -271,3 +271,10 @@ Entries before 2026-10-01 are in `archive/SYNC_LOG/2026-09.md` (A-011 in `archiv
 - Changed: hashtags of `the-ci-wait-halved.md` and `stitching-a-chimera-with-kiro.md` now use his set; the CI article front matter names its post file. The zip replaces the earlier zip of the same day.
 - Checked: each claim was read against the umwayi-os docs of main after PR 91; the site builds in `miguel-site` (51 pages); the ten illustrations were rendered and looked at; no em dashes, no listed words, diagrams at most 40 characters wide, and every article ends with "What I took from it".
 - Not done: nothing pushed (Miguel applies the zip); all articles stay `draft: true`; the memory layer and the archive have no article of their own; the rules library toggle design is written as a design, not as built; the numbers (111 concerns, 31 guidance entries, 18 git lists) come from the repo files, not from a new run.
+
+## 2026-11-13 (readiness plan and two projects to judge)
+
+- Source: Miguel's requests of 2026-11-13 for the OS to be ready for testers and for two projects to judge, one by Claude and one by him.
+- Added: `docs/plans/readiness-and-assessment-plan.md`.
+- Checked: the status and the task list were read from umwayi-os main 68e827e on 2026-11-13.
+- Not done: nothing pushed (Miguel applies the zip); the two projects are not confirmed; W25 and W26 are not on the umwayi-os checklist yet.
