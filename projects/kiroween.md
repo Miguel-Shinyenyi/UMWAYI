@@ -7,7 +7,7 @@ Repo (public): Miguel-Shinyenyi/umwayi-os. Python, core uses only the standard l
 
 An operating layer for AI agents. It sits in front of the agents he already uses (Claude Code, Kiro, later others), asks the rules before each action, keeps a queue and a logbook, and refuses to start an agent it cannot gate. He is the first user; others can use it to run their own agents.
 
-## Where it stands (main a7d73e8 on 2026-11-12 evening, PR 64 merged; 2,171 tests on each of Python 3.10 to 3.13 in the last CI run; the table below was last re-read on 2026-11-11)
+## Where it stands (main 00b28cb on 2026-11-13, PR 89 merged; more than 2,400 tests; CI about 12 minutes; the table below was last re-read on 2026-11-11)
 
 | part | state | tests on main |
 | --- | --- | --- |
@@ -65,6 +65,14 @@ Progress on 2026-11-12 after the direction message (all merges by the owner in G
 - The way of working is now written down: Claude is the guide, Miguel is the executor and merges, Kiro sessions build, one task per PR. Files: `docs/plans/guide-executor-system.md`, `docs/plans/kiro-issues-and-solutions.md` (24 issues), `docs/plans/kiro-crew-lessons.md`, `docs/plans/w20-faster-ci-packet.md`.
 
 Article: `site/tech/stitching-a-chimera-with-kiro.md` (draft). LinkedIn post: `docs/plans/kiroween-linkedin-post.md`.
+
+Progress on 2026-11-13 (merges after the guide's own review, KNOWN-LIMITS up to 264):
+
+- Merged: W20 faster CI (PR 67), W9.9 docs builder (70), 10.48 to 10.51 OpenCode chat (66, 71, 74, 75), W1 mobile-first (65), W6.9 page client (72), CI.2 browser required (73), W6.10 whole-system scenarios (76), W16 board status (77), OpenCode examples (78), W19 concerns checker (79), backfill history (80), model routing table (81), guidance.yaml loader (82), stalls check (83), W2 command map page (85), concerns record draft (86), 22 advise entries (84), W10 frontier practices tracker (87), W9.6 run options (88), W9.1 to W9.5 pure core (89).
+- CI: one job took 24.9 minutes before W20; a typical full run now takes about 12 minutes and a documentation only first run 1 minute 30 seconds. Article: `site/tech/the-ci-wait-halved.md` (draft).
+- Running: W9.6b (worktree per task, `--workdir`, `goalgit.py`), a read-only progress page (`ui/` only) and W9.7 (the supervisor, stacked on W9.6b; waits for the owner's word before merge). Kiro Auto for all new sessions.
+- Decided: base rules with user toggles, tiers 1 and 2 locked, user rules separate, promotion by the owner only (D-54, later).
+- Still with the owner: the ten least sure rows of the concerns record, rows 1, 3 and 7 of the frontier practices, the High tier on a real device, the branch rule that requires `tests / result (pull_request)`.
 
 ## Schedule to Dec 3 (re-planned Nov 10, interface changed Nov 11)
 

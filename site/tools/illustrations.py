@@ -863,6 +863,35 @@ SCENES["tech/building-a-landing-page-on-founding-dev"] = (
 )
 
 
+# the-ci-wait-halved: one long bar of waiting against three short bars side by side.
+SCENES["tech/the-ci-wait-halved"] = (
+    "Same tests, half the wait",
+    "Two rows of bars. The top row is one long bar labelled one job, 25 minutes. The bottom row is three short bars side by side labelled three shards, about 10 minutes. The shepherd says same tests, half the wait.",
+    f"""
+{label(110, 128, "BEFORE", 15, INK, "start")}
+<rect x="110" y="140" width="520" height="40" rx="8" fill="{RED}" stroke="{INK}" stroke-width="3"/>
+{label(370, 166, "ONE JOB  25 MIN", 15, "#fff")}
+{label(110, 238, "AFTER", 15, INK, "start")}
+<rect x="110" y="250" width="208" height="40" rx="8" fill="{GREEN}" stroke="{INK}" stroke-width="3"/>
+<rect x="110" y="298" width="208" height="40" rx="8" fill="{GREEN}" stroke="{INK}" stroke-width="3"/>
+<rect x="110" y="346" width="208" height="40" rx="8" fill="{GREEN}" stroke="{INK}" stroke-width="3"/>
+{label(214, 276, "SHARD 1", 14, "#fff")}
+{label(214, 324, "SHARD 2", 14, "#fff")}
+{label(214, 372, "SHARD 3", 14, "#fff")}
+<path d="M318 270 H338 M318 318 H338 M318 366 H338" stroke="{INK}" stroke-width="3" stroke-linecap="round"/>
+<path d="M338 270 V366" stroke="{INK}" stroke-width="3" stroke-linecap="round"/>
+<g transform="translate(368 296)">
+<rect x="0" y="0" width="230" height="46" rx="8" fill="{PAPER}" stroke="{INK}" stroke-width="3"/>
+{label(115, 29, "ALL TESTS RAN?", 14, INK)}
+</g>
+<path d="M338 318 H368" stroke="{INK}" stroke-width="3" stroke-linecap="round"/>
+{sheep(640, 432, 0.5)}
+{shepherd(740, 425, 0.6, flip=True)}
+{bubble(430, 50, 330, 58, "Same tests. Half the wait.", 22, tail="right")}
+""",
+)
+
+
 if __name__ == "__main__":
     for key, (title, desc, body) in SCENES.items():
         name = key.split("/")[1] + ".svg"

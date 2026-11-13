@@ -255,4 +255,11 @@ Entries before 2026-10-01 are in `archive/SYNC_LOG/2026-09.md` (A-011 in `archiv
 - Checked: PR 64 was smoke tested live (token, Host, Origin, CORS, kill switch, loopback bind) before merge; GitHub CI 4 of 4 on the merged head; no em dashes in the new hub files.
 - Not done: nothing pushed (Miguel applies the zip); the hub zip v3 replaces v2; the journal entry covers the day to 21:10 Nairobi only.
 
+## 2026-11-13 (20 merges, W19 and W9 core, CI article)
 
+- Source: the session of 2026-11-13: Miguel's merge words and answers, then asking for the hub update with a tech article on the CI time reduction.
+- Added: `journal/entries/2026-11-13.md` (private); `site/tech/the-ci-wait-halved.md` (draft: true) with `site/illustrations/the-ci-wait-halved.svg` and its scene in `site/tools/illustrations.py`; queue.md D-52 to D-55.
+- Changed: `projects/kiroween.md` (header, progress of 2026-11-13); `MASTER_CONTEXT.md` (date and Kiroween row). The files of the evening update of 2026-11-12 are in this zip too, so it replaces zip v3.
+- What moved: umwayi-os main is 00b28cb (PR 89); the W19 guided flow parts, the frontier practices tracker, W9.1 to W9.6 and the rest of W6 and OpenCode merged; W9.6b, a read only progress page and W9.7 started at 14:20 Nairobi.
+- Checked: the merge list was read from the umwayi-os git history and the run times from the GitHub Actions page; the article builds in `miguel-site` (41 pages) with the draft in place; the illustration was rendered and looked at; the article page was loaded at phone width and the diagrams fit; no em dashes in the new files.
+- Not done: nothing pushed (Miguel applies the zip); both articles stay drafts; no entry for 2026-11-06; the journal entry covers the day to about 15:30 Nairobi; I did not measure total runner minutes; the slower CI runs (13 to 22 minutes) wait for a free runner when runs overlap, which Miguel checked on GitHub; the Notion hub was updated separately.
