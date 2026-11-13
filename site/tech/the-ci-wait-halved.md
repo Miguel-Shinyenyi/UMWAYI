@@ -1,20 +1,40 @@
 ---
-title: "I cut my CI wait from 25 minutes to about 12 and checked that no test was dropped"
-date: 2026-11-13
-summary: "Every pull request on umwayi-os waited about 25 minutes for the same test suite. Here is how I cut that to about 12 by running fewer jobs and splitting the suite, and the check that proves every test still runs."
+title: >-
+  I cut my CI wait from 25 minutes to about 12 and checked that no test was
+  dropped
+date: 2026-11-13T00:00:00.000Z
+summary: >-
+  Every pull request on umwayi-os waited about 25 minutes for the same test
+  suite. Here is how I cut that to about 12 by running fewer jobs and splitting
+  the suite, and the check that proves every test still runs.
 draft: false
 illustration: the-ci-wait-halved.svg
-illustrationAlt: "Two rows of bars. The top row is one long bar, one job, 25 minutes. The bottom row is three shorter bars side by side, three shards, feeding one check that asks whether all tests ran. The shepherd says same tests, half the wait."
+illustrationAlt: >-
+  Two rows of bars. The top row is one long bar, one job, 25 minutes. The bottom
+  row is three shorter bars side by side, three shards, feeding one check that
+  asks whether all tests ran. The shepherd says same tests, half the wait.
 tags:
   - Engineering
   - Testing
   - CI
   - Building in public
 linkedin:
-  hashtags: [KiroweenHackathon26, Kiroween, Kiro, AgenticEngineering, ContinuousIntegration, SoftwareTesting, Python, BuildInPublic]
+  hashtags:
+    - KiroweenHackathon26
+    - Kiroween
+    - Kiro
+    - AgenticEngineering
+    - ContinuousIntegration
+    - SoftwareTesting
+    - Python
+    - BuildInPublic
   links:
     - label: Event
-      url: https://kiroween.devpost.com/
+      url: 'https://kiroween.devpost.com/'
+crossposted:
+  devto: >-
+    https://dev.to/miguel_shinyenyi_e2291c8c/i-cut-my-ci-wait-from-25-minutes-to-about-12-and-checked-that-no-test-was-dropped-3n25
+  linkedin: 'urn:li:share:7526996863967916032'
 ---
 
 ## The wait
