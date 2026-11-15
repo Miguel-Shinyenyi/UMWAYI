@@ -15,6 +15,7 @@ Written 2026-11-02, Africa/Nairobi. Plans only. No agent here is built. Principl
 | Kiro issues | `kiro-issues-and-solutions.md` | Issues met while building with Kiro and the fix for each. A living log |
 | W20 faster CI | `w20-faster-ci-packet.md` | Task packet for umwayi-os: path filters and sharding that run only what a change can affect |
 | Readiness and assessment | `readiness-and-assessment-plan.md` | Get umwayi-os ready for outside testers, then judge it on two projects, one by Claude and one by Miguel |
+| umwayi-os roadmap | `umwayi-os-what-it-is-and-roadmap.md` | What umwayi-os is and is not, and the roadmap |
 
 ## 1. What the repositories show for 27 Oct to 2 Nov
 

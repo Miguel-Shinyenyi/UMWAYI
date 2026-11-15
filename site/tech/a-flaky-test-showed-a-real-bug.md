@@ -36,7 +36,7 @@ Any error counts as No. If the hub cannot read its own rules, nothing runs. I ca
 - Layers 1 to 8: memory, rules, queue, archive, logbook, scheduled scripts, helpers and workflows.
 - Layer 9: adapters, so the hub works with Claude Code, Kiro and a generic command line tool.
 - Layer 10: the hub's own command line and chat, plus a login check for each AI tool.
-- Over 900 tests, run on Python 3.10, 3.11, 3.12 and 3.13.
+- Over 900 tests when I wrote this on Nov 9, run on Python 3.10, 3.11, 3.12 and 3.13. On Nov 15 the count is 3,763.
 - The core uses only the Python standard library. Adapters may use pinned outside packages.
 
 ## How I build it
@@ -71,16 +71,17 @@ My review of that pull request:
 
 ## What I do not know yet
 
-- The hub has not run against a real Claude Code login or a real Kiro login in a full run. I plan that test for Nov 12 and 13.
+- On Nov 9 the hub had not run against a real Claude Code login or a real Kiro login. The first real runs were on Nov 15, one each for Claude Code, OpenCode and Kiro on one machine. The gate held in all three. The Claude Code run found a fault in how its cost report is read, and the fix is approved and not merged yet.
 - Cost readings from Claude Code are estimates at list price. On a subscription they are not a bill.
 - Known limits are listed in a file in the repository, and I keep adding to it.
 
 ## What comes next
 
-- Nov 10 to 13: login checks, so each AI tool signs in with its own plan.
-- Nov 16: a hash chain on the logbook, so an edited entry is named.
-- Nov 17 to 22: one spending limit across all tools.
-- Nov 23 to 26: a full check of the whole system and a security scan.
+This was the plan on Nov 9. The login checks, the hash chain on the logbook, the spending limit across all tools, the whole-system check and the security scan were all merged by Nov 10, earlier than planned. What is left as of Nov 15:
+
+- A fix for the Claude Code cost report, and a second round of real runs.
+- A page that says plainly what the system is and is not.
+- Nov 29 to Dec 2: freeze.
 - Dec 3: the Kiroween submission.
 
 Try the page I built for the Founding.dev design hackathon: https://umwayi-hub.foundingdev.com/
