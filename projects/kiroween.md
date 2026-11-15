@@ -103,3 +103,8 @@ Layers 10 to 11, the hash chain, the budget governor and the scan were merged by
 ## Process notes
 
 Kiro builds from approved specs on feature branches; Claude reviews each pull request (tests on Python 3.11 to 3.13, scans, hand tests with fake agents) and Miguel approves the merge. Kiro's own "Running command" display is unreliable; the GitHub branch is the record.
+
+
+## Update 2026-11-15 (afternoon)
+
+Rules read again from kiroween.devpost.com/rules: credit request form closes Dec 1, 12:00 Pacific (Dec 1, 23:00 Nairobi), 4,000 credits one time, redeem by Dec 4. The form needs a demo URL, testing instructions, a public YouTube video under 3 minutes with no third party trademarks, a public GitHub repo with an open source licence in About and a /.kiro folder at the root. The first umwayi-os commit is 2026-11-07, inside the submission period. Details, the two licence checks and the Vercel state: `docs/plans/kiroween-submission-checklist.md`. The owner chores for Claude Code: `docs/plans/claude-code-owner-tasks-2026-11-15.md`.
