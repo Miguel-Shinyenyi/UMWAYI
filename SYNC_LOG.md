@@ -297,3 +297,9 @@ Entries before 2026-10-01 are in `archive/SYNC_LOG/2026-09.md` (A-011 in `archiv
 - New files: docs/plans/claude-code-owner-tasks-2026-11-15.md (a prompt for Claude Code to do the repo chores and report), docs/plans/kiroween-submission-checklist.md (form items, dates, the two licence checks, Vercel state).
 - Facts read on 2026-11-15: Kiro credit requests close Dec 1 12:00 Pacific (23:00 Nairobi); submission closes Dec 4 14:00 Pacific (Dec 5 01:00 Nairobi); the form needs a demo URL, a public YouTube video under 3 minutes, a /.kiro folder, an open source licence in About; Vercel is on Hobby with one project (umwayi-rm) and two factor authentication off.
 - Not done: Reddit could not be read (blocked in this browser), so the idea check rests on blogs and one public project; nothing pushed; the site build was not run; the licence texts themselves were not read, only public summaries.
+
+## 2026-11-15 (evening, v7)
+
+- Source: Miguel's replies at 16:10, 16:40, 17:01 and 17:12.
+- Updated: `queue.md` (D-69 answered; D-70 to D-75 added), `journal/entries/2026-11-15.md` (evening addendum), `site/now.md` and `site/projects/umwayi.md` (dates).
+- What moved: Kiro credits are already in use, so the credit request is done and off the list. The public hub is intended. W53 (tester run capture) is approved as a design. The ruleset on umwayi-os main is active. Merged on umwayi-os: 110 (0c5125d), 111 (726a1fa), 114 W28 login wizard (2c86df9). 112 (W30) and 113 (W47a) wait for `merge_main` because main moved.

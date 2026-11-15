@@ -84,7 +84,13 @@ These block queued work. Each has my recommendation. They are yours to decide.
 | D-66 | Signature and logo | ANSWERED 2026-11-15: as recommended. W49 provenance record with SSH signature (nothing inside produced content changes), W50 `umwayi verify PATH`, W51 logo on pages and reports with a text trailer on commits and a logo line in PR bodies. Logo file supplied by the owner: amwayi-logo-512.png. | n/a | n/a |
 | D-67 | Adoption and storytelling | ANSWERED 2026-11-15: as recommended. W52 story guide (creed, ritual, symbol, founding story, short laws, every claim ends in verify it yourself) and one philosophy article, from the owner's Sapiens notes. | n/a | n/a |
 | D-68 | Merge 110 and 111 | ANSWERED 2026-11-15 14:43: merge 110 and merge 111. Merged one at a time, each on newest main with green CI. | n/a | n/a |
-| D-69 | Analytics (PostHog) | OPEN 2026-11-15. Recommendation: no analytics inside the library (local only is a core claim; network use is Ask me first by our own rules); if ever, opt in, off by default, fixed counts only, standard library HTTPS, logged first, kill switch blocks it. Website only: reverse D-36 for the public site in anonymous cookieless mode. Testers use W29 feedback send instead. | pending | n/a |
+| D-69 | Analytics (PostHog) | ANSWERED 2026-11-15 16:10: no analytics in the library now; the safe shape (opt in, off by default, fixed counts, standard library HTTPS, logged first, kill switch blocks it) is recorded for much later. Website analytics stay acceptable and are left off on Vercel for now. | n/a | n/a |
+| D-70 | Logo | ANSWERED 2026-11-15 16:40: use the logo as it is for testers; the rights question waits until real users. | n/a | n/a |
+| D-71 | Ruleset on umwayi-os main | DONE 2026-11-15: ruleset active (main requires the `result` check). PR 114 merged under it as 2c86df9. | n/a | n/a |
+| D-72 | Journal key document in the Project | ANSWERED 2026-11-15: deleted at the owner's word; he keeps a safe copy elsewhere. | n/a | n/a |
+| D-73 | Monitoring testers | ANSWERED 2026-11-15: the system records what testers do and sends complete logs for evaluation, because human reports miss a lot. Became W53. | n/a | n/a |
+| D-74 | Public hub and tester capture (W53) | ANSWERED 2026-11-15 17:01: the public hub is intended (yes). W53 design APPROVED; consent text, log destination and retention are still the owner's to decide before any build. Licence recommendations APPROVED (Muse Spark Open stays out of the demo). | n/a | n/a |
+| D-75 | Kiro hackathon credits | DONE 2026-11-15 17:12: the credits are already in use (the owner said so before). No request form needed. Remove the Dec 1 credit request from the plan. | n/a | n/a |
 
 ## R. Routine Machine, from the brief
 
