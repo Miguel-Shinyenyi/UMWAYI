@@ -35,7 +35,7 @@ Every decision is written to a logbook. Each entry carries the hash of the one b
 I did not build a new agent. I put one gate in front of agents that already exist.
 
 - Claude Code and Kiro start through `umwayi agent`, with a hook in front of every tool call. Both can chat through it over ACP.
-- OpenCode has a plugin and six gate checks. Its chat is not built yet.
+- OpenCode has a plugin and six gate checks, and its chat is built. A first real chat ran on Nov 15 on its free route.
 - The view is a Three.js hillside with eleven stations, one per part of the system, and a public Next.js site that draws it.
 - The core stays standard library Python. Everything else sits outside it.
 
@@ -48,10 +48,10 @@ Kiro writes the code. I do not. The work goes in this order.
 1. A spec pull request comes first: requirements, a design, and a task list. They live in `.kiro/specs/umwayi-os`, next to a steering file, `.kiro/steering/product.md`.
 2. Kiro builds one task per pull request. Each task gets its own session and its own browser tab, and the session merges the newest main into its branch before every push.
 3. A second AI, which I call the guide, reviews the diff on its own. It does not trust Kiro's report. It reads the code, scans the diff, and for risky code runs a live check by hand. It does not rerun the whole suite.
-4. GitHub CI is the record. It runs the whole suite on Python 3.10 to 3.13. The last count was about 2,200 tests on each version.
-5. I read the result and merge in GitHub. Kiro never merges, and the guide never merges.
+4. GitHub CI is the record. A pull request runs the suite on Python 3.10 and 3.13, and every push to main runs it on 3.10 to 3.13. On Nov 15 the count is 3,763 Python tests.
+5. Kiro never merges. Until Nov 13 I made every merge myself. Since then the guide merges a pull request that passes its own review with green CI and no conflicts. I still give the word for any change to a safety rule, to what an existing test means, or to anything that raises a question for me.
 
-So the roles are fixed: the guide holds the plan and reviews, I decide and merge, and Kiro sessions build. The repository started on 2026-11-07. Its pull request numbers have reached 66.
+So the roles are fixed: the guide holds the plan and reviews, I decide, and Kiro sessions build. The repository started on 2026-11-07. Its pull request numbers have reached 108.
 
 ## What broke
 
@@ -67,19 +67,23 @@ Running several sessions at once broke other things, and I keep a log of them:
 - Parallel sessions all edited the same status and limits files, so almost every pull request opened with a merge conflict. One pull request opened conflicting because another merged while it was open. The fixes are a rule that every session merges main before it pushes, and a task that splits those files into one part per task and builds them by script.
 - Messages to a Kiro session can vanish if the sandbox is waking or if the page layout shifts under the send button. I confirm each message with a screenshot.
 - Opening a session in a tab reloads its sandbox, so each session keeps its own tab. Closing one tab once dropped my whole browser tab group.
-- CI took about 24 minutes on every pull request, even for a change that could not affect most tests. A task now maps tests to paths, runs only what a change can affect, shards the rest, and adds a final check that every test still ran.
+- CI took about 24 minutes on every pull request, even for a change that could not affect most tests. CI now maps tests to paths, runs only what a change can affect, shards the rest, and adds a final check that every test still ran. A typical full run takes about 12 minutes.
+- Some tests used a fixed date. The logbook refuses a date earlier than its last entry, so main went red at midnight UTC on Nov 14. The tests now use the date of the day they run.
 - The working rules lived in my messages, so a new session did not know them. They are moving into a steering file in the repository, which Kiro reads in every session. A steering file is advice, so the checks that matter stay in code.
 
 ## Where it goes next
 
 Some of this is built and some is a plan. I say which.
 
-- A local backend, so the page can send the same request the command line would. The core is built and merged: it binds only to the local machine, needs a token, and goes through the same rules, logbook and kill switch. The page cannot turn the kill switch off. The page itself is not built yet.
+- A local backend, so the page can send the same request the command line would. It is built and merged: it binds only to the local machine, needs a token, and goes through the same rules, logbook and kill switch. The page cannot turn the kill switch off. The page client is merged too.
 - One chat for Claude Code, Kiro and OpenCode, and a queue where an intake step asks questions until the intent is clear before it adds a task.
-- Goals that a main agent holds and tests. The spec is merged, nothing of it is built yet. A goal splits into loosely coupled pieces for helper agents, down to tasks small enough for a model to finish without guessing. Each task runs in its own git worktree with a fresh session. A different agent tests each piece before it moves up.
-- Progress dashboards, so a person can see they are getting better at agentic engineering.
+- Goals that a main agent holds and tests. This is built and merged as of Nov 15: the `umwayi goal` commands, a supervisor, and one git worktree per task with a fresh session. A different agent tests each task before it moves up. It is tested with fake agents in 16 whole-system scenarios. A real goal run from start to end is still on my own list.
+- A goal map page that draws one goal as a mind map, with a small Halloween theme for Kiroween. It is merged and reads a file for now. The live read from the local backend is being built.
+- Progress dashboards, so a person can see they are getting better at agentic engineering. A first read-only progress page is merged.
 
-I also want the system to carry the working rules and the practices Kiro lists for frontier engineering, such as giving agents fast feedback and enforcing limits at the boundaries. The plan is a checked guidance file that the goal flow loads. Rules that code can check, such as a question without a recommendation or a branch behind main, are enforced at the gates. The rest are put into the prompts and checked by the tester. This is planned, not built.
+I also want the system to carry the working rules and the practices Kiro lists for frontier engineering, such as giving agents fast feedback and enforcing limits at the boundaries. The first part is built: a checked guidance file with 31 entries, each pinned to its source line by a hash. Rules that code can check, such as a question without a recommendation or a branch behind main, are to be enforced at the gates. The rest are put into the prompts and checked by the tester. How much of the file the goal flow loads is something I still have to check.
+
+I also say what this is not. It is a governing layer for AI agents, not a full operating system. It is not a sandbox: it does not stop a process that never asks it. Real runs with Claude Code, OpenCode and Kiro happened once each on Nov 15, on one machine.
 
 ## What I took from it
 

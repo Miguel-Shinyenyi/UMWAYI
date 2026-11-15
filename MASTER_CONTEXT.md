@@ -1,6 +1,6 @@
 # Master Context
 
-Last updated: 2026-11-13 (umwayi-os main 00b28cb, 20 merges on Nov 13, three new builder sessions, base rules design, CI article)
+Last updated: 2026-11-15 (umwayi-os main 8bf7777, 108 pull requests, goal orchestration merged, first real agent runs, what it is and is not, tasks W28 to W46)
 
 ## Who this is for
 
@@ -38,7 +38,7 @@ where the observation gets tested against something real.
 | Routine machine | `projects/routine-machine.md` | Routines, learning, reading notes, credit ledger, savings and cohorts. Own repo. Phases 1 to 12 on `main`. Direction under review (`queue.md` D-1). |
 | Hackathon | `projects/hackathon.md` | Meta Global AI Developer Hackathon, Oct 26 to Nov 4. Public repo `umwayi-rm` is built and deployed (savings-group secretary agent, MIT), live at umwayi-rm.vercel.app with a demo video. H1 and H2 returned nulls. Zero interviews, by decision. Submission status and known issues in the project file. Open items in `queue.md` K and `umwayi-rm/docs/hackathon-log.md`. |
 | Founding.dev hackathon | `projects/founding-dev-hackathon.md`, `docs/plans/founding-dev-landing-page.md` | Landing page for the AI operating system, shepherd theme. Build window 6 to 10 Nov. Registered. Nothing built yet. |
-| Kiroween 2026 | `projects/kiroween.md` | Kiroween 2026 (Frankenstein): the Umwayi hub as an AI OS, repo umwayi-os, main 00b28cb, 89 pull requests closed, more than 2,400 tests, CI about 12 minutes (W20); W6, W9.9, W19 (guided flow), W10 and W9.1 to W9.6 merged by 2026-11-13; W9.6b, a read-only progress page and W9.7 building; guide and executor way of working in `docs/plans/guide-executor-system.md`; Devpost draft saved, not submitted; submit Dec 3. See projects/kiroween.md. |
+| Kiroween 2026 | `projects/kiroween.md` | Kiroween 2026 (Frankenstein): umwayi-os, a governing layer for AI agents (not a full operating system; see `docs/plans/umwayi-os-what-it-is-and-roadmap.md`), main 8bf7777 on 2026-11-15, pull requests up to 108, 3,763 Python tests, pull requests run Python 3.10 and 3.13 and main runs 3.10 to 3.13; goal orchestration W9.1 to W9.10 merged (worktree per task, supervisor, goal commands, 16 whole-system scenarios); progress page, goal map page with a small Halloween theme, tester quickstart, feedback template and `umwayi feedback export` merged; first real runs of Claude Code, OpenCode and Kiro on 2026-11-15 (gate held; the Claude Code cost report fault is task W45); open: PR 107 (W35), W37, W39, W45, W28, W30, W36, W38b, W40 to W44, W46; guide and executor way of working in `docs/plans/guide-executor-system.md`; Devpost draft saved, not submitted; freeze Nov 29 to Dec 2; submit Dec 3. See projects/kiroween.md. |
 | Agent principles and plans | `docs/agent-principles.md`, `docs/plans/` | Consolidated rules from the notes of 27 Oct to 2 Nov, with a line map; plans for an AI operating system, a Steward agent and a social agent. Tasks in `queue.md` section L. |
 | Open source | `projects/open-source.md` | Open source issues worked one at a time, each recorded with its verification. Started 2026-10-14. |
 | Website | `website/PLAN.md` | Historical plan, superseded. Site code is in `miguel-site`, content in `site/`. |

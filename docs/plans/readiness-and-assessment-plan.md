@@ -9,6 +9,15 @@ Written 2026-11-13, Africa/Nairobi. Decision (owner, 2026-11-13): get umwayi-os 
 - Not done by the owner: the real Claude Code, Kiro and OpenCode runs (10.20, 10.21, 10.31, 10.37, 11.6, B.10), the browser pass of the UI, the high tier device test.
 - Checklist: about 198 of 232 tasks done on 2026-11-13. W9.1 to W9.6b are merged but unticked, so the true figure is nearer 88 percent.
 
+## Update, 2026-11-15 (main 8bf7777)
+
+- Now ready: goal orchestration. W9.7 (PR 93), W9.8 the goal commands (PR 96) and W9.10 the whole-system scenarios (PR 101) are merged. It is tested with fake agents only.
+- Done from the readiness order: steps 1, 2 and the W9.10 part of 3; step 4 (W25, `docs/quickstart.md`, PR 100); step 5 (W26 the feedback template, PR 99, and W33 `umwayi feedback export`, PR 105).
+- Owner runs, first round done on 2026-11-15: one real run each of Claude Code 2.1.322, OpenCode 2.3.0 and Kiro CLI 3.3.0. The gate held in all three. The Claude Code run ended with exit 2 because of a cost report fault (W45). Still open: W9.11 (one tiny real goal run), the browser pass of the UI, the High tier device test.
+- Before testers: W35 (a Homebrew Python path, PR 107), W45, W36 (rerun the walkthrough tests and explain two failures), W39 (the page that says what it is and is not), W28 (the login wizard).
+- Both projects are confirmed by the owner (D-56). Project A still needs an empty private repo.
+- The tester date of about Nov 21 to 24 stands only if W45 and W9.11 pass first.
+
 ## Readiness order
 
 1. PR 93 (W9.7): fix, Claude review, owner word before merge (first code that starts an AI helper). The guard in `tests/test_automation.py` line 848 was widened to name goalrun.py by owner decision (option A, 2026-11-13).
@@ -43,5 +52,5 @@ Gaps found go to the checklist as defects of umwayi-os.
 
 ## Open
 
-- Access to a repo for Project A.
-- Miguel confirms the two projects.
+- Access to a repo for Project A (an empty private repo).
+- Confirmed 2026-11-14: the two projects.

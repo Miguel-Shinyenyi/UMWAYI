@@ -42,6 +42,12 @@ Setup in one line: Kiro sessions build one task each and open one pull request. 
 | 19 | Browser tools cannot read cookies or cross-domain data | Some checks fail | Use screenshots and git branches instead | In use |
 | 20 | The Notion running-now table goes stale | Wrong state shown | Guide updates it after each merge and each report | In use |
 | 21 | Closing a finished session tab dropped the guide's Chrome tab group (2026-11-12) | The guide lost control of the other session tabs and had to reopen them, which reloads each sandbox | Owner rule: keep the tab group. Open the new session tab first, then close the finished one. Keep a GitHub tab as the anchor. Never close the last tab of the group | In use |
+| 25 | A fixed date in a test met a rule that uses the real clock (2026-11-14) | Main went red on every shard at midnight UTC; every open pull request looked broken | Tests that write a logbook use the date of the day they run (W34). Builder rule: tests never use a fixed day | Fixed |
+| 26 | A session waits in a long CI poll loop and takes no new message (2026-11-15) | A message typed while it polls is not sent; one session polled for 36 minutes after its pull request was green | The guide watches CI itself, tells sessions not to poll for long, and stops the loop with the Stop button before typing | In use |
+| 27 | Kiro signs every session tab out overnight, and tabs drift to the home or settings page | No message can be sent; a builder's question waited a day unseen | The guide stops and asks the owner to sign in, then opens each session by its own address again and reads its last message first | In use |
+| 28 | The guide misread two merge commit hashes from a screenshot (2026-11-14) | Two messages to builders named a hash that does not exist (9882656 for 9802656, 329ba8e for 329ba0e) | Read a hash from the page text or from git, never from a picture | In use |
+| 29 | The guide wrote a task that broke the spec it told the builder to keep (W37, 2026-11-14) | The builder stopped and asked eight questions; a day passed before they were seen | The builder's stop was right. The guide reads the spec section itself before writing a task that adds a route or a command | In use |
+| 30 | The command line API for GitHub stopped working in the guide's session (2026-11-14) | Check states could not be read by command | The guide reads checks and merges in the browser tab, and reads diffs from a clone | In use |
 
 ## Decisions that came from these issues
 

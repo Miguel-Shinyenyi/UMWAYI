@@ -163,6 +163,15 @@ I read the run times from the Actions page for pull requests 73 to 89.
 
 Before, one job took 24.9 minutes. A typical full run now takes about 12. That is the 25 to 12 in the title.
 
+## Update, Nov 15
+
+Two things changed after I wrote this.
+
+- A pull request now runs the suite on Python 3.10 and 3.13 only. Every push to main still runs 3.10, 3.11, 3.12 and 3.13. That is six shard jobs on a pull request, not twelve.
+- The suite grew to 3,763 Python tests. On one pull request of Nov 14 the four shards I read took 7 to 12 minutes each.
+
+I also learned what a fixed date in a test costs. Some tests wrote a fixed day into a logbook that refuses a date earlier than its last entry. Main went red at midnight UTC on Nov 14, on every shard. The tests now use the date of the day they run.
+
 ## What I do not know yet
 
 - I did not measure total runner minutes. Three shards per version repeat setup work, so the total may be the same or higher. The wait fell. The cost may not have.

@@ -1,13 +1,15 @@
 # Kiroween 2026: the Umwayi hub as an AI operating system (umwayi-os)
 
-Status date: 2026-11-12 (evening). Category: Frankenstein (changed from Skeleton Crew on 2026-11-12). Platform: Devpost. Sponsor: AWS. Plan: submit on Dec 3; whatever works by then is what gets submitted.
+Status date: 2026-11-15 (morning). Category: Frankenstein (changed from Skeleton Crew on 2026-11-12). Platform: Devpost. Sponsor: AWS. Plan: submit on Dec 3; whatever works by then is what gets submitted.
 Repo (public): Miguel-Shinyenyi/umwayi-os. Python, core uses only the standard library. Command line: `umwayi`.
 
 ## What it is
 
-An operating layer for AI agents. It sits in front of the agents he already uses (Claude Code, Kiro, later others), asks the rules before each action, keeps a queue and a logbook, and refuses to start an agent it cannot gate. He is the first user; others can use it to run their own agents.
+A governing layer for AI agents. It sits in front of the agents he already uses (Claude Code, Kiro, OpenCode), asks the rules before each action, keeps a queue and a logbook, caps spend, and refuses to start an agent it cannot gate. He is the first user; others can use it to run their own agents.
 
-## Where it stands (main 00b28cb on 2026-11-13, PR 89 merged; more than 2,400 tests; CI about 12 minutes; the table below was last re-read on 2026-11-11)
+What it is not (owner's question of 2026-11-14, D-59): not a full operating system, not a model or an agent, not a sandbox (it does not stop a process that never asks it), not a security product, not a hosted service. For Kiroween the page says AI-OS and says in its first line what that means. The full text and the five missing things (W40 to W44) are in `docs/plans/umwayi-os-what-it-is-and-roadmap.md`.
+
+## Where it stands (main 8bf7777 on 2026-11-15, pull requests up to 108; 3,763 Python tests; the progress page reads 278 tasks done and 46 open; the table below was last re-read on 2026-11-11, and the progress sections further down are newer)
 
 | part | state | tests on main |
 | --- | --- | --- |
@@ -74,6 +76,17 @@ Progress on 2026-11-13 (merges after the guide's own review, KNOWN-LIMITS up to 
 - Decided: base rules with user toggles, tiers 1 and 2 locked, user rules separate, promotion by the owner only (D-54, later).
 - Still with the owner: the ten least sure rows of the concerns record, rows 1, 3 and 7 of the frontier practices, the High tier on a real device, the branch rule that requires `tests / result (pull_request)`.
 
+Progress from the afternoon of 2026-11-13 to the morning of 2026-11-15 (KNOWN-LIMITS up to 279):
+
+- Merged on Nov 13 after 15:30: the read-only progress page (PR 90), W9.6b the worktree per task (91), W21 `tools.merge_main` (92, steering change), W22 the progress page built at build time (94), W9.7 the supervisor (93, on the owner's word), W24 pull requests run Python 3.10 and 3.13 only (95), W25a task list (98), W23 the Kiro issues log and rule 9 (97, steering change), W9.8 the goal commands (96), W26 the tester feedback template (99).
+- Merged on Nov 14: W25 the tester quickstart (100), W27 the progress page as a build artifact (102), W25b task list with W28 to W32 (104), W34 goal tests use the date of the day (106), UI.8 High steps down to Standard after slow frames (103), W33 `umwayi feedback export` (105).
+- Merged on Nov 15: W38 the goal map page with a small Halloween theme (108, on the owner's word), W9.10 the whole-system scenarios of `umwayi goal` and a mutation pass (101: 16 scenarios; 48 mutants, 47 killed, 1 shown equivalent).
+- Main was red from midnight UTC on Nov 14: a fixed test date met the logbook rule that dates never go backwards. W34 fixed it.
+- Walkthrough test run on the owner's Mac (video pack v2, Nov 14): scenes 1 to 7 ran correctly; scene 8 did not pass (test_cli 41 tests with 1 failure and 1 error, test_goalrun 209 with 6 errors, test_whole_system 30 with 2 failures and 25 skipped). Two causes confirmed: the fixed dates (W34, merged) and the @ in a Homebrew Python path (W35, PR 107). Two failures have no cause yet (W36).
+- First real agent runs (Nov 15, one Mac): Claude Code 2.1.322, OpenCode 2.3.0 on its free route, Kiro CLI 3.3.0. The kill switch stopped each start; with it off each agent ran and answered. OpenCode and Kiro ended with exit 0 and settled as unknown at 100 UU (no cost report). The Claude Code run answered and was then stopped with exit 2 and settled the full reservation, because its token counts arrive as `asDouble` and `umwayi/telemetry.py` requires `asInt`. Fix: W45 (D-63).
+- Open on Nov 15: PR 107 (W35, owner said merge), W37 (`GET /v1/goal-map` and `umwayi goal map`, D-61), W39 (the what it is page), W45. Queued: W28 login wizard, W29 feedback send, W30, W36, W38b (live read of the goal map), W40 to W44, W46.
+- Video pack v2 holds the prompts, the voice script, the walkthrough scripts and five recordings (the walkthrough, the tests, and one per agent). To correct before the voice is recorded: goal help lists 11 commands; a fresh logbook has 5 earlier entries; the budget screen says unknown and placeholders; kill status exit 3 is correct; a test run takes about 4.5 minutes; scene 8 needs the new real counts. The tests recording is not published as it is.
+
 ## Schedule to Dec 3 (re-planned Nov 10, interface changed Nov 11)
 
 Layers 10 to 11, the hash chain, the budget governor and the scan were merged by Nov 10. Layer 12 interface Nov 11 to Nov 22 (about 75 hours by Kiro, the owner handles the timeline); layer 13 from Nov 16 or in parallel, stopping where the deadline finds us; owner physical tests Nov 19 to 22; README, demo and Devpost Nov 23 to 28; freeze Nov 29 to Dec 2; submit Dec 3.
@@ -81,8 +94,8 @@ Layers 10 to 11, the hash chain, the budget governor and the scan were merged by
 ## Open
 
 - Owner items: read the Claude Agent SDK licence; keep Python 3.10 until Dec 3; the real tests 10.21, 10.31, 11.6, B.10 capture, 10.37 and the interface check.
-- First real run of the Claude Code chat on a machine with Node 22 and a Claude Code login (task 10.31): whether the hook runs before the first prompt, and the real field names of the login status.
-- KNOWN-LIMITS lists 68 known items; they are fixed later when more people are hired.
+- First real run of the Claude Code chat on a machine with Node 22 and a Claude Code login (task 10.31): whether the hook runs before the first prompt, and the real field names of the login status. The first real `agent run` happened on 2026-11-15 (see above); the chat over ACP and a real goal run (W9.11) are still open.
+- KNOWN-LIMITS numbers reach 279 on 2026-11-15; they are fixed later when more people are hired.
 - Kiro hackathon credits: requested, grant not confirmed.
 - Devpost write-up: say honestly that hooks, custom agents, powers and MCP are not yet built; nine Anthropic SDK packages carry a "SEE LICENSE IN LICENSE.md" licence; mention it.
 - Go-live: ask before any project goes live, then run security scans.
