@@ -1,7 +1,7 @@
 ---
 title: "UMWAYI"
 date: 2026-09-18
-updated: 2026-11-15
+updated: 2026-11-16
 summary: "The hub behind this site. One master file holds my context. Journal entries update the projects they touch, and every sync is logged."
 draft: false
 status: "Live"

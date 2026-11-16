@@ -303,3 +303,11 @@ Entries before 2026-10-01 are in `archive/SYNC_LOG/2026-09.md` (A-011 in `archiv
 - Source: Miguel's replies at 16:10, 16:40, 17:01 and 17:12.
 - Updated: `queue.md` (D-69 answered; D-70 to D-75 added), `journal/entries/2026-11-15.md` (evening addendum), `site/now.md` and `site/projects/umwayi.md` (dates).
 - What moved: Kiro credits are already in use, so the credit request is done and off the list. The public hub is intended. W53 (tester run capture) is approved as a design. The ruleset on umwayi-os main is active. Merged on umwayi-os: 110 (0c5125d), 111 (726a1fa), 114 W28 login wizard (2c86df9). 112 (W30) and 113 (W47a) wait for `merge_main` because main moved.
+
+## 2026-11-16 (morning, v8)
+
+- Source: Miguel's request of 2026-11-16 10:27 for hub zip v8 and the Notion update.
+- Updated: `queue.md` (D-76 to D-79), `journal/entries/2026-11-15.md` (night addendum), `site/now.md` and `site/projects/umwayi.md` (dates). New: `journal/entries/2026-11-16.md`.
+- What moved: umwayi-os main is f0163d1. Merged since v7 (17:15 on Nov 15): 112 to 129 except 114, which was already in v7. In order: 112 f3a2194, 113 1be308a, 115 956b214, 117 11b157b, 116 f6abc1c, 119 295c800, 120 67f0661, 121 e55e817, 124 9dd7319, 118 4603426, 122 4c26166, 125 7a656cc, 123 5920edd, 126 ae9585a, 127 87957e8, 128 1bfdb55, 129 f0163d1. The first real goal run (W9.11) gave tasks W54 to W59; W54 is a design note, W55a, W55b, W56, W57, W58a and W59 are merged. W44 `umwayi up` and the W52 story guide are merged. W51 rest is on a branch, no pull request.
+- Checked: merge shas and times were read from the umwayi-os first-parent history on 2026-11-16; the decision rows come from the project docs and the owner's messages of that night; no em dashes in any file of the zip.
+- Not done: nothing pushed (Miguel applies the zip); `MASTER_CONTEXT.md` and `projects/kiroween.md` were not changed (they were last changed in v6); the five articles checked in v5 were not read again against the new main, so the stitching article still gives the numbers of Nov 15 (for example 108 as the latest pull request); the site build was not run; the video pack and the test recordings are not in the hub because they show a home folder path.
