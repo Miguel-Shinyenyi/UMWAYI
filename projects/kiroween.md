@@ -3,6 +3,12 @@
 Status date: 2026-11-15 (morning). Category: Frankenstein (changed from Skeleton Crew on 2026-11-12). Platform: Devpost. Sponsor: AWS. Plan: submit on Dec 3; whatever works by then is what gets submitted.
 Repo (public): Miguel-Shinyenyi/umwayi-os. Python, core uses only the standard library. Command line: `umwayi`.
 
+## Correction, 2026-11-16 (owner): runtime view, not build-time view
+
+Lines on this page and in the hub that say the guide reviews or merges, or that Claude, the guide or the Kiro web tabs do a step, describe how umwayi-os is being BUILT. They do not describe how it RUNS. At runtime the owner and umwayi's own internal supervisor (a Claude session in the goal guide role) run everything, and the supervisor launches every helper through `umwayi agent run`. Dates (freeze Nov 29 to Dec 2, submit Dec 3) are guidelines: all planned work stays in scope and what works on Dec 3 is what is submitted. Scope map as an AI operating system for AI agents (processes, permissions, resources, audit, shared memory, apps, drivers, front door): `docs/plans/umwayi-os-what-it-is-and-roadmap.md`, Part 3. Task order: `docs/plans/umwayi-os-task-queue-2026-11-16.md`. Narrative and claims: `docs/plans/umwayi-narrative-2026-11-16.md` (use it for the write-up, the voice script and the posts).
+
+State on 2026-11-16 13:50: umwayi-os main b247b66, pull requests up to 134 merged (131 W48 design, 132 W60 idle line, 133 W41 enforcement design, 134 W49 and W50 provenance design), 135 open (tasks.md checkbox cleanup). Building: W64, W9.14, W65 design. Designs waiting for their PR turn: W62, W43, W61, W42, W63 (W63 is rewritten for the runtime supervisor).
+
 ## What it is
 
 A governing layer for AI agents. It sits in front of the agents he already uses (Claude Code, Kiro, OpenCode), asks the rules before each action, keeps a queue and a logbook, caps spend, and refuses to start an agent it cannot gate. He is the first user; others can use it to run their own agents.

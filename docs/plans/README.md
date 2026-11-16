@@ -18,6 +18,8 @@ Written 2026-11-02, Africa/Nairobi. Plans only. No agent here is built. Principl
 | umwayi-os roadmap | `umwayi-os-what-it-is-and-roadmap.md` | What umwayi-os is and is not, and the roadmap |
 | Owner tasks prompt | `claude-code-owner-tasks-2026-11-15.md` | Prompt for Claude Code to do the owner items and report |
 | Kiroween submission | `kiroween-submission-checklist.md` | Dates, licence checks and Vercel for the Devpost submission |
+| umwayi-os task queue | `umwayi-os-task-queue-2026-11-16.md` | Current state of umwayi-os work and the order of the queue |
+| UMWAYI narrative | `umwayi-narrative-2026-11-16.md` | The owner's spine and claims for the Devpost write-up, voice script and posts |
 
 ## 1. What the repositories show for 27 Oct to 2 Nov
 
