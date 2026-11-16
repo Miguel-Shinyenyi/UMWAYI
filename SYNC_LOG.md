@@ -311,3 +311,18 @@ Entries before 2026-10-01 are in `archive/SYNC_LOG/2026-09.md` (A-011 in `archiv
 - What moved: umwayi-os main is f0163d1. Merged since v7 (17:15 on Nov 15): 112 to 129 except 114, which was already in v7. In order: 112 f3a2194, 113 1be308a, 115 956b214, 117 11b157b, 116 f6abc1c, 119 295c800, 120 67f0661, 121 e55e817, 124 9dd7319, 118 4603426, 122 4c26166, 125 7a656cc, 123 5920edd, 126 ae9585a, 127 87957e8, 128 1bfdb55, 129 f0163d1. The first real goal run (W9.11) gave tasks W54 to W59; W54 is a design note, W55a, W55b, W56, W57, W58a and W59 are merged. W44 `umwayi up` and the W52 story guide are merged. W51 rest is on a branch, no pull request.
 - Checked: merge shas and times were read from the umwayi-os first-parent history on 2026-11-16; the decision rows come from the project docs and the owner's messages of that night; no em dashes in any file of the zip.
 - Not done: nothing pushed (Miguel applies the zip); `MASTER_CONTEXT.md` and `projects/kiroween.md` were not changed (they were last changed in v6); the five articles checked in v5 were not read again against the new main, so the stitching article still gives the numbers of Nov 15 (for example 108 as the latest pull request); the site build was not run; the video pack and the test recordings are not in the hub because they show a home folder path.
+
+## 2026-11-16 13:50 (hub zip v9)
+- Corrected the runtime view in projects/kiroween.md and MASTER_CONTEXT.md: umwayi-os runs by itself with its internal supervisor; the outside guide and the Kiro web tabs are build time only. Dates are guidelines.
+- New docs/plans/umwayi-os-what-it-is-and-roadmap.md (Part 3 scope map as an AI operating system for AI agents) and docs/plans/umwayi-os-task-queue-2026-11-16.md (promoted queue, audit fixes E1 to E9).
+- umwayi-os main b247b66, pull requests up to 134 merged, 135 open.
+
+## 2026-11-16 14:25 (hub zip v10, replaces v9)
+- New docs/plans/umwayi-narrative-2026-11-16.md: the owner's spine (OS before agents, governed apps, rules in a gate not in memory, a separate checker), claims we can make and hold back, outside evidence (Felony Bench, agentjacking through Sentry MCP), script changes.
+- Queue: security and gap designs W67 to W73 (threat model, untrusted content, network and credentials, shared memory poisoning and app supply chain, operations, connectors, independent verification) and the free integrations plan F7a (Vercel Hobby, owner's free backend host to confirm, email, free push, GitHub free features, OSV, local models).
+- Decision to confirm: the real backend stays local; a public demo is the static pages plus a read only demo backend.
+
+## 2026-11-16 14:45 (hub zip v11, replaces v10)
+- Backend data store corrected to Neon (serverless Postgres, free plan limits as of Nov 16). umwayi serve stays local; multi user shared mode is W74, later, off by default.
+- Narrative: deterministic means same rules, same decision, not deterministic output; role separation by model family (W73); handoff notes per task do not make an agent obey (W42, F13); Google sign in is identity only.
+- Voice script v2 applied in the video pack on the Mac (V1 rewritten, V12 added), with backups in pre-narrative-2026-11-16/.
