@@ -8,6 +8,7 @@
 //   metrics ID [--views N] [--upvotes N] [--comments N]
 //   draft ID                start a body file from the platform's template
 //   fanout SOURCE --platforms a,b,c [--date D]   one drafted item per platform
+//   pack [--today D]        write COPY-PASTE-PACK.md: every item's text, where to paste it, cleared or not
 //   report
 //   reminders [--today D]   what Miguel posts by hand and has not yet
 //   connectors
@@ -18,9 +19,10 @@ import { makeEnv } from "./lib/io.mjs";
 import * as cmd from "./lib/commands.mjs";
 import { publish, connectorsStatus } from "./lib/publish.mjs";
 import { draft, fanout } from "./lib/drafts.mjs";
+import { pack } from "./lib/pack.mjs";
 import { makeSecretReader } from "./lib/secrets.mjs";
 
-const USAGE = "usage: social lint ID | next [--today D] | approve ID --confirmed | record ID URL | metrics ID [--views N] [--upvotes N] [--comments N] | draft ID | fanout SOURCE --platforms a,b,c [--date D] | report | reminders [--today D] | connectors | publish ID [--live --confirmed]";
+const USAGE = "usage: social lint ID | next [--today D] | approve ID --confirmed | record ID URL | metrics ID [--views N] [--upvotes N] [--comments N] | draft ID | fanout SOURCE --platforms a,b,c [--date D] | pack [--today D] | report | reminders [--today D] | connectors | publish ID [--live --confirmed]";
 
 function parse(argv) {
   const pos = [];
@@ -76,6 +78,12 @@ export function run(argv, env = makeEnv(), now = new Date()) {
         if (date !== null && !/^\d{4}-\d{2}-\d{2}$/.test(date)) return { code: 64, out: ["--date must be YYYY-MM-DD"] };
         const platforms = (opts.platforms ?? "").split(",").map((p) => p.trim()).filter(Boolean);
         return fanout(env, args[0], platforms, date);
+      }
+      case "pack": {
+        if (args.length) return usage;
+        const today = opts.today ?? now.toISOString().slice(0, 10);
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(today)) return { code: 64, out: ["--today must be YYYY-MM-DD"] };
+        return pack(env, today);
       }
       case "reminders": {
         if (args.length) return usage;

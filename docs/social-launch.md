@@ -41,6 +41,7 @@ Run from `scripts/`: `npm run social -- COMMAND`.
 
 * `draft ID`: starts the item's body file from the template for its platform, never overwrites a file, sets the status to drafted and prints the limits and rules.
 * `fanout SOURCE --platforms a,b,c [--date DATE]`: one drafted item and one template file per platform, from one published article or one repository. It refuses a source with `draft: true`, an unknown platform, a platform listed twice or an id that exists, and creates nothing when it refuses.
+* `pack [--today DATE]`: writes one private file, `COPY-PASTE-PACK.md`, with every open item's exact text, title, link, where to paste it and the steps. An item is marked CLEARED only if it is approved, its text is unchanged since, and every check passes. Otherwise it says why not. It posts nothing and changes no item.
 * `lint ID`: runs every check on one item. A pass moves it to linted. A fail or a missing input moves it back to drafted.
 * `next [--today DATE]`: lists the items due, in order, with the reason and the next step. It writes nothing.
 * `approve ID --confirmed`: run only after the owner says yes in chat for that exact item. It stores the SHA-256 of the title, link and body.

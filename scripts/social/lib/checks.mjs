@@ -84,7 +84,8 @@ export function runChecks(ctx) {
     if (item.title !== null) checks.push(["title_max", "title", lengthOf(title)]);
     if (ctx.body !== null && ctx.body !== undefined) checks.push(["body_max", "body", lengthOf(body)]);
     for (const [key, label, len] of checks) {
-      const st = limitState(entry, key);
+      // A platform with two text fields can set a limit for one kind: "<kind>_body_max" beats "body_max".
+      const st = limitState(entry, entry?.[`${item.kind}_${key}`] ? `${item.kind}_${key}` : key);
       if (typeof st.value === "number") {
         if (len > st.value) fails.push(`limit: ${label} is ${len} characters, over the ${st.value} limit${st.checked ? "" : " (limit not yet confirmed)"}`);
         else if (!st.checked) unknowns.push(`limit: ${label} limit ${st.value} for ${item.platform} is not confirmed on the platform's own page`);

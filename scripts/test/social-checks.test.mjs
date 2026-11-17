@@ -128,3 +128,10 @@ test("helpers: urlAllowed, extractUrls, parseList", () => {
   assert.deepEqual(extractUrls("See https://a.b/c. And (https://d.e/f)"), ["https://a.b/c", "https://d.e/f"]);
   assert.deepEqual(parseList("# note\n\nfoo\n bar \n"), ["foo", "bar"]);
 });
+
+test("a kind-specific limit beats the general one for that kind only", () => {
+  const withKind = { ...limits, body_max: { value: 100, checked: true }, post_body_max: { value: 5000, checked: true } };
+  const long = "w".repeat(400);
+  assert.equal(code(ctx({ body: long, limits: withKind })), 0);
+  assert.match(fails(ctx({ body: long, limits: withKind, item: { kind: "listing" } })), /over the 100 limit/);
+});
