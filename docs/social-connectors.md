@@ -41,6 +41,7 @@ The owner stores them himself. Error text from a platform has every secret value
 | Mastodon | `MASTODON_TOKEN` | `instance` (an https host) | Token needs the write:statuses scope. Uses an idempotency key so a retry cannot post twice. Limit is per instance. |
 | Bluesky | `BLUESKY_APP_PASSWORD` | `handle`, optional `service` | Use an app password, not the account password. Links get facets so they are clickable. |
 | Threads | `THREADS_TOKEN` | `user_id` | Needs the threads_content_publish permission. Text limit 500. 250 posts per 24 hours. |
+| LinkedIn | `LINKEDIN_TOKEN` | `author_urn`, optional `mentions` | Reuses `scripts/lib/linkedin.mjs`, the module `cross-post.mjs` uses, so escaping, hashtags, mentions and the link card are built the same way. Same credentials as the article flow. The token lasts about 60 days. Needs an https link on the item. |
 
 Not confirmed against a live platform: the Bluesky and Threads endpoint names are from memory, because the Bluesky docs page returned no text and the Threads page did not show the paths. The first live post on each is a test the owner approves.
 
@@ -54,7 +55,13 @@ Not confirmed against a live platform: the Bluesky and Threads endpoint names ar
 * Instagram: needs a professional account and a Meta app. Not built.
 * Indie Hackers, Peerlist, DevHunt: no official API found.
 
-Already in the repo, not part of this layer: `scripts/cross-post.mjs` for DEV and LinkedIn articles. The Substack script uses a login cookie, which the social rules do not allow for new work. It is unchanged and the owner decides about it.
+## Credentials
+
+The article flow (`scripts/cross-post.mjs`) runs in GitHub Actions with secrets that are already set: `DEVTO_API_KEY`, `LINKEDIN_TOKEN`, `LINKEDIN_AUTHOR_URN`. Hashnode needs a paid plan and its token is left unset. Medium issues no new tokens. GitHub never shows a secret's value, so the local tool cannot read them. To post a launch post from this machine, the owner stores the credential in the Keychain under the names in the table. Nothing is created or stored for him.
+
+New credentials are needed for Mastodon, Bluesky and Threads. LinkedIn needs the token copied into the Keychain once, and the author URN in `connectors.json`.
+
+Already in the repo and unchanged: `scripts/cross-post.mjs` for DEV and LinkedIn articles. The Substack script uses a login cookie, which the social rules do not allow for new work. It is unchanged and the owner decides about it.
 
 ## Commands
 

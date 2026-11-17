@@ -21,6 +21,7 @@ export const PLATFORMS = {
   discord: { kind: "post", mode: "manual", template: "discord-post" },
   producthunt: { kind: "listing", mode: "browser", template: "producthunt-comment" },
   youtube: { kind: "video", mode: "browser", template: "youtube-description" },
+  instagram: { kind: "video", mode: "browser", template: "instagram-caption" },
   peerlist: { kind: "listing", mode: "browser", template: "directory-listing" },
   devhunt: { kind: "listing", mode: "browser", template: "directory-listing" },
   futuretools: { kind: "listing", mode: "browser", template: "directory-listing" },

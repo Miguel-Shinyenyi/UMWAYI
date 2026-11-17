@@ -1,8 +1,9 @@
 import { mastodon } from "./mastodon.mjs";
 import { bluesky } from "./bluesky.mjs";
 import { threads } from "./threads.mjs";
+import { linkedin } from "./linkedin.mjs";
 
-export const CONNECTORS = { mastodon, bluesky, threads };
+export const CONNECTORS = { mastodon, bluesky, threads, linkedin };
 
 // Platforms that have no official free write API, or none we may use, and why.
 export const NO_CONNECTOR = {

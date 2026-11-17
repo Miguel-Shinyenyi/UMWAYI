@@ -1,0 +1,6 @@
+[[Hook for the first line of the caption: one idea.]]
+
+• [[Point one, with a number or an example]]
+• [[What it does not do. State the limit: enforcement is cooperative today and it is not a sandbox]]
+
+[[Say the link is in the bio, because a link in a caption is not clickable.]]

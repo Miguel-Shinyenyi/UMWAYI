@@ -66,7 +66,7 @@ export async function publish(env, id, { live = false, confirmed = false } = {},
 
   let plan;
   try {
-    plan = connector.describe(text, cfg);
+    plan = connector.describe(text, cfg, item);
   } catch (e) {
     return { code: 3, out: [`CANNOT DECIDE ${e.message}`] };
   }
@@ -83,7 +83,7 @@ export async function publish(env, id, { live = false, confirmed = false } = {},
   }
   let res;
   try {
-    res = await connector.publish({ text, hash: item.approved_sha256, cfg, secrets, fetch, now });
+    res = await connector.publish({ text, hash: item.approved_sha256, cfg, secrets, fetch, now, item });
   } catch (e) {
     return { code: 2, out: [`FAIL ${item.platform} refused or failed: ${redact(e.message, Object.values(secrets))}`, "nothing was recorded; check the platform before trying again, because a step may have succeeded"] };
   }
