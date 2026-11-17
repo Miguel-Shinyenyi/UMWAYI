@@ -16,7 +16,7 @@ function find(items, id) {
   return items.find((i) => i.id === id) ?? null;
 }
 
-function hashOf(ctx) {
+export function hashOf(ctx) {
   return contentHash({ title: ctx.item.title, link: ctx.item.link, body: ctx.body });
 }
 

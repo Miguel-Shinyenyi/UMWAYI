@@ -72,7 +72,8 @@ Editing the title, link or body after approval changes the hash. The item goes b
 
 ## What it does not do
 
-* It does not post, log in, vote, follow, like or send anything.
+* The commands above post nothing. Optional posting through official free APIs is a separate layer, off by default: see [social-connectors.md](social-connectors.md).
+* It does not log in, vote, follow or like anything.
 * It does not check that a claim is true. It blocks the phrases the owner listed. A claim that is not on the list passes.
 * It does not read replies. Replies are drafted by a person and sent by the owner.
 

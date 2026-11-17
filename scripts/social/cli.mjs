@@ -7,12 +7,16 @@
 //   record ID URL
 //   metrics ID [--views N] [--upvotes N] [--comments N]
 //   report
+//   connectors
+//   publish ID [--live --confirmed]   dry run unless both flags are given
 // Environment: SOCIAL_DIR, the private folder (default ~/Downloads/umwayi-video-pack-v2/social).
 // Exit codes: 0 pass, 2 fail, 3 cannot decide, 64 usage. Never 1.
 import { makeEnv } from "./lib/io.mjs";
 import * as cmd from "./lib/commands.mjs";
+import { publish, connectorsStatus } from "./lib/publish.mjs";
+import { makeSecretReader } from "./lib/secrets.mjs";
 
-const USAGE = "usage: social lint ID | next [--today D] | approve ID --confirmed | record ID URL | metrics ID [--views N] [--upvotes N] [--comments N] | report";
+const USAGE = "usage: social lint ID | next [--today D] | approve ID --confirmed | record ID URL | metrics ID [--views N] [--upvotes N] [--comments N] | report | connectors | publish ID [--live --confirmed]";
 
 function parse(argv) {
   const pos = [];
@@ -20,6 +24,7 @@ function parse(argv) {
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === "--confirmed") opts.confirmed = true;
+    else if (a === "--live") opts.live = true;
     else if (["--today", "--views", "--upvotes", "--comments"].includes(a)) {
       if (i + 1 >= argv.length) return null;
       opts[a.slice(2)] = argv[++i];
@@ -71,8 +76,26 @@ export function run(argv, env = makeEnv(), now = new Date()) {
   }
 }
 
+// publish and connectors are the only commands that can reach the network, and only
+// publish with --live --confirmed does. Everything else goes through run().
+export async function runAsync(argv, env = makeEnv(), now = new Date(), deps = {}) {
+  const parsed = parse(argv);
+  const name = parsed?.pos[0];
+  if (name !== "publish" && name !== "connectors") return run(argv, env, now);
+  const d = { fetch: globalThis.fetch, readSecret: makeSecretReader(), now, ...deps };
+  const args = parsed.pos.slice(1);
+  try {
+    if (name === "connectors") return args.length === 0 ? connectorsStatus(env, d.readSecret) : { code: 64, out: [USAGE] };
+    if (args.length !== 1) return { code: 64, out: [USAGE] };
+    return await publish(env, args[0], { live: parsed.opts.live === true, confirmed: parsed.opts.confirmed === true }, d);
+  } catch (e) {
+    const known = e && e.constructor && e.constructor.name === "QueueError";
+    return { code: 3, out: [known ? `cannot decide: ${e.message}` : `cannot decide: unexpected error (${e?.name ?? "unknown"})`] };
+  }
+}
+
 if (import.meta.url === `file://${process.argv[1]}`) {
-  const { code, out } = run(process.argv.slice(2));
+  const { code, out } = await runAsync(process.argv.slice(2));
   for (const line of out) console.log(line);
   process.exitCode = code;
 }
