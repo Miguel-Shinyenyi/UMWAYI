@@ -25,9 +25,11 @@ None of these files is ever committed.
 
 ## The queue
 
-Fields: `id`, `platform`, `kind` (post, video, listing, reply_draft), `source`, `title`, `body_file`, `link`, `media`, `earliest_date`, `status`, `approved_sha256`, `posted_url`, `posted_at`, `ai_assisted` (yes, no, unknown), `notes`.
+Fields: `id`, `platform`, `kind` (post, video, listing, reply_draft), `source`, `title`, `body_file`, `link`, `media`, `earliest_date`, `status`, `approved_sha256`, `posted_url`, `posted_at`, `ai_assisted` (yes, no, unknown), `notes`, `mode`.
 
 Statuses: idea, drafted, linted, approved, posted, skipped.
+
+Mode says who posts: `browser` (filled in the owner's signed-in Chrome, he approves each item), `manual` (he copies and pastes it himself, the default) or `api` (sent through an official API, see [social-connectors.md](social-connectors.md)).
 
 The reader is strict. An unknown field, an unknown status, a bad date or a duplicate id stops every command with exit 3.
 
@@ -42,6 +44,7 @@ Run from `scripts/`: `npm run social -- COMMAND`.
 * `approve ID --confirmed`: run only after the owner says yes in chat for that exact item. It stores the SHA-256 of the title, link and body.
 * `record ID URL`: run after the post is live. It stores the URL and the time. It refuses unless the item is approved and the hash still matches.
 * `metrics ID --views N --upvotes N --comments N`: adds the numbers read from the platform to the ledger.
+* `reminders [--today DATE]`: what the owner posts by hand and has not yet: post now, not ready, and coming up.
 * `report`: counts by platform and status, and the latest numbers for each posted item.
 
 Exit codes: 0 pass, 2 fail with reasons, 3 cannot decide, 64 usage. Never 1.
@@ -72,7 +75,8 @@ Editing the title, link or body after approval changes the hash. The item goes b
 
 ## What it does not do
 
-* It does not post, log in, vote, follow, like or send anything.
+* The commands above post nothing. Optional posting through official free APIs is a separate layer, off by default: see [social-connectors.md](social-connectors.md).
+* It does not log in, vote, follow or like anything.
 * It does not check that a claim is true. It blocks the phrases the owner listed. A claim that is not on the list passes.
 * It does not read replies. Replies are drafted by a person and sent by the owner.
 

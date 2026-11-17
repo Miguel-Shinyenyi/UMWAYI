@@ -10,13 +10,18 @@ const NEXT_ACTION = {
   linted: "show Miguel platform, account, exact text, link, media and time, and wait for his yes",
   approved: "post it in Miguel's signed-in browser after his word, then run: social record ID URL",
 };
+const APPROVED_BY_MODE = {
+  browser: "open the platform in Miguel's signed-in Chrome, paste the text from the file, attach the media, take a screenshot, and wait for his word to press the button, then run: social record ID URL",
+  manual: "remind Miguel to post it by hand: the text is in BODY; after he posts, ask for the URL and run: social record ID URL",
+  api: "dry run with: social publish ID, then post only after his yes with --live --confirmed",
+};
 const PRIORITY = { approved: 0, linted: 1, drafted: 2, idea: 3 };
 
 function find(items, id) {
   return items.find((i) => i.id === id) ?? null;
 }
 
-function hashOf(ctx) {
+export function hashOf(ctx) {
   return contentHash({ title: ctx.item.title, link: ctx.item.link, body: ctx.body });
 }
 
@@ -79,8 +84,40 @@ export function next(env, today) {
   const out = due.map(({ item, status }, i) => {
     const why = `${item.platform} ${item.kind}, ${status}, due ${item.earliest_date ?? "any day"}`;
     const note = item.status === "approved" && status === "drafted" ? " (content changed since approval)" : "";
-    return `${i + 1}. ${item.id}: ${why}${note}. Next: ${NEXT_ACTION[status].replace("ID", item.id)}`;
+    const action = status === "approved" ? APPROVED_BY_MODE[item.mode].replace("BODY", item.body_file ?? "its body file") : NEXT_ACTION[status];
+    return `${i + 1}. ${item.id} [${item.mode}]: ${why}${note}. Next: ${action.split("ID").join(item.id)}`;
   });
+  return { code: 0, out };
+}
+
+// The list Miguel asked for: every item he posts by hand that is waiting on him, so he is reminded.
+export function reminders(env, today) {
+  const items = readQueue(env).filter((i) => i.mode === "manual");
+  const waiting = [];
+  const coming = [];
+  for (const item of items) {
+    let status = item.status;
+    if (status === "approved") {
+      const ctx = gatherContext(env, item);
+      status = ctx.body === null ? "drafted" : effectiveStatus(item, hashOf(ctx));
+    }
+    if (status === "posted" || status === "skipped") continue;
+    const late = item.earliest_date && item.earliest_date < today ? ` (${Math.round((Date.parse(today) - Date.parse(item.earliest_date)) / 86400000)} days past its date)` : "";
+    const due = !item.earliest_date || item.earliest_date <= today;
+    if (status === "approved" && due) {
+      waiting.push(`POST NOW ${item.id} on ${item.platform}${late}: paste the text from ${item.body_file}. Tell me the URL after, and I run record.`);
+    } else if (status === "approved") {
+      coming.push(`${item.id} on ${item.platform}: approved, due ${item.earliest_date}.`);
+    } else if (due) {
+      waiting.push(`NOT READY ${item.id} on ${item.platform}${late}: status ${status}. ${NEXT_ACTION[status]}`);
+    } else {
+      coming.push(`${item.id} on ${item.platform}: ${status}, due ${item.earliest_date}.`);
+    }
+  }
+  const out = [];
+  if (waiting.length) out.push("Waiting on Miguel today:", ...waiting.map((l) => `* ${l}`));
+  else out.push("Nothing by hand is waiting today.");
+  if (coming.length) out.push("Coming up:", ...coming.map((l) => `* ${l}`));
   return { code: 0, out };
 }
 

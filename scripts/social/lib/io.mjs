@@ -52,6 +52,18 @@ export function writeQueue(env, items) {
   fs.renameSync(tmp, file);
 }
 
+export function readConnectorsConfig(env) {
+  const text = readOptional(path.join(env.socialDir, "connectors.json"));
+  if (text === null) return {};
+  try {
+    const d = JSON.parse(text);
+    if (d === null || typeof d !== "object" || Array.isArray(d)) throw new Error("shape");
+    return d;
+  } catch {
+    throw new QueueError("connectors.json is not a JSON object");
+  }
+}
+
 export function appendLedger(env, entry) {
   fs.appendFileSync(path.join(env.socialDir, "ledger.jsonl"), JSON.stringify(entry) + "\n", { mode: 0o600 });
 }
