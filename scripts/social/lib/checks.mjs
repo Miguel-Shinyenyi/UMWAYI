@@ -18,6 +18,17 @@ export function parseList(text) {
     .filter((l) => l && !l.startsWith("#"));
 }
 
+// Share of words two texts have in common (0 to 1). Short texts give 0.
+export function similarity(a, b) {
+  const words = (t) => new Set(String(t).toLowerCase().split(/[^\p{L}\p{N}]+/u).filter((w) => w.length >= 3));
+  const x = words(a);
+  const y = words(b);
+  if (x.size < 8 || y.size < 8) return 0;
+  let both = 0;
+  for (const w of x) if (y.has(w)) both++;
+  return both / (x.size + y.size - both);
+}
+
 export function lineOf(text, index) {
   return text.slice(0, index).split("\n").length;
 }
@@ -84,6 +95,14 @@ export function runChecks(ctx) {
   }
 
   // Style rules.
+  const ph = /\[\[[^\]]*\]\]/.exec(text);
+  if (ph) fails.push(`placeholder: "${ph[0].slice(0, 40)}" on line ${lineOf(text, ph.index)} is not filled in`);
+
+  for (const o of ctx.others ?? []) {
+    const sim = similarity(body, o.body);
+    if (sim >= 0.7) fails.push(`copy: ${Math.round(sim * 100)} percent the same as ${o.id} on ${item.platform}; write each post for its own place`);
+  }
+
   const dash = text.indexOf(EM_DASH);
   if (dash !== -1) fails.push(`no-em-dash: found on line ${lineOf(text, dash)}`);
 

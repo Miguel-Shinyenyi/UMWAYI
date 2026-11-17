@@ -1,0 +1,6 @@
+[[One sentence: why this piece, in your own words.]]
+
+• [[The main point, with a number or an example from the piece]]
+• [[What the piece does not cover]]
+
+[[Link to the piece]]

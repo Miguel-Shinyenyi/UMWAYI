@@ -1,0 +1,9 @@
+[[Hook: one sentence with a number or an example.]]
+
+• [[What you did]]
+• [[What you measured]]
+• [[What you would change]]
+
+[[Link]]
+
+[[Mentions and hashtags, only the ones Miguel agrees]]

@@ -1,0 +1,11 @@
+[[What you built, in one sentence.]]
+
+[[A measured number from the work, with what it measures.]]
+
+[[What went wrong, in plain words.]]
+
+[[What you changed because of it.]]
+
+[[Link]]
+
+[[One question for the group.]]

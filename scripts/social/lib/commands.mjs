@@ -41,7 +41,7 @@ export function lint(env, id) {
   const items = readQueue(env);
   const item = find(items, id);
   if (!item) return { code: 64, out: [`no item with id ${id}`] };
-  const ctx = gatherContext(env, item);
+  const ctx = gatherContext(env, item, items);
   const result = runChecks(ctx);
   const code = exitCodeFor(result);
   const out = formatResult(result);
@@ -129,7 +129,7 @@ export function approve(env, id, confirmed) {
   if (item.status === "posted" || item.status === "skipped" || item.status === "idea") {
     return { code: 2, out: [`FAIL ${id} is ${item.status} and cannot be approved`] };
   }
-  const ctx = gatherContext(env, item);
+  const ctx = gatherContext(env, item, items);
   const result = runChecks(ctx);
   const code = exitCodeFor(result);
   if (code !== 0) return { code, out: [...formatResult(result), `${id} was not approved`] };

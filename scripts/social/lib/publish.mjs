@@ -37,7 +37,7 @@ export async function publish(env, id, { live = false, confirmed = false } = {},
   if (live && !confirmed) return { code: 64, out: ["--live needs --confirmed, after Miguel's yes for this exact item"] };
   if (item.status !== "approved") return { code: 2, out: [`FAIL ${id} is ${item.status}, not approved`] };
 
-  const ctx = gatherContext(env, item);
+  const ctx = gatherContext(env, item, items);
   if (ctx.body === null || effectiveStatus(item, hashOf(ctx)) !== "approved") {
     item.status = "drafted";
     item.approved_sha256 = null;

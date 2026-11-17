@@ -6,6 +6,8 @@
 //   approve ID --confirmed
 //   record ID URL
 //   metrics ID [--views N] [--upvotes N] [--comments N]
+//   draft ID                start a body file from the platform's template
+//   fanout SOURCE --platforms a,b,c [--date D]   one drafted item per platform
 //   report
 //   reminders [--today D]   what Miguel posts by hand and has not yet
 //   connectors
@@ -15,9 +17,10 @@
 import { makeEnv } from "./lib/io.mjs";
 import * as cmd from "./lib/commands.mjs";
 import { publish, connectorsStatus } from "./lib/publish.mjs";
+import { draft, fanout } from "./lib/drafts.mjs";
 import { makeSecretReader } from "./lib/secrets.mjs";
 
-const USAGE = "usage: social lint ID | next [--today D] | approve ID --confirmed | record ID URL | metrics ID [--views N] [--upvotes N] [--comments N] | report | reminders [--today D] | connectors | publish ID [--live --confirmed]";
+const USAGE = "usage: social lint ID | next [--today D] | approve ID --confirmed | record ID URL | metrics ID [--views N] [--upvotes N] [--comments N] | draft ID | fanout SOURCE --platforms a,b,c [--date D] | report | reminders [--today D] | connectors | publish ID [--live --confirmed]";
 
 function parse(argv) {
   const pos = [];
@@ -26,7 +29,7 @@ function parse(argv) {
     const a = argv[i];
     if (a === "--confirmed") opts.confirmed = true;
     else if (a === "--live") opts.live = true;
-    else if (["--today", "--views", "--upvotes", "--comments"].includes(a)) {
+    else if (["--today", "--views", "--upvotes", "--comments", "--platforms", "--date"].includes(a)) {
       if (i + 1 >= argv.length) return null;
       opts[a.slice(2)] = argv[++i];
     } else if (a.startsWith("--")) return null;
@@ -64,6 +67,15 @@ export function run(argv, env = makeEnv(), now = new Date()) {
           values[k] = Number(opts[k]);
         }
         return cmd.metrics(env, args[0], values, now);
+      }
+      case "draft":
+        return args.length === 1 ? draft(env, args[0]) : usage;
+      case "fanout": {
+        if (args.length !== 1) return usage;
+        const date = opts.date ?? null;
+        if (date !== null && !/^\d{4}-\d{2}-\d{2}$/.test(date)) return { code: 64, out: ["--date must be YYYY-MM-DD"] };
+        const platforms = (opts.platforms ?? "").split(",").map((p) => p.trim()).filter(Boolean);
+        return fanout(env, args[0], platforms, date);
       }
       case "reminders": {
         if (args.length) return usage;
