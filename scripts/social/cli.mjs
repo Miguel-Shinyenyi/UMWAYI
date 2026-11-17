@@ -7,6 +7,7 @@
 //   record ID URL
 //   metrics ID [--views N] [--upvotes N] [--comments N]
 //   report
+//   reminders [--today D]   what Miguel posts by hand and has not yet
 //   connectors
 //   publish ID [--live --confirmed]   dry run unless both flags are given
 // Environment: SOCIAL_DIR, the private folder (default ~/Downloads/umwayi-video-pack-v2/social).
@@ -16,7 +17,7 @@ import * as cmd from "./lib/commands.mjs";
 import { publish, connectorsStatus } from "./lib/publish.mjs";
 import { makeSecretReader } from "./lib/secrets.mjs";
 
-const USAGE = "usage: social lint ID | next [--today D] | approve ID --confirmed | record ID URL | metrics ID [--views N] [--upvotes N] [--comments N] | report | connectors | publish ID [--live --confirmed]";
+const USAGE = "usage: social lint ID | next [--today D] | approve ID --confirmed | record ID URL | metrics ID [--views N] [--upvotes N] [--comments N] | report | reminders [--today D] | connectors | publish ID [--live --confirmed]";
 
 function parse(argv) {
   const pos = [];
@@ -63,6 +64,12 @@ export function run(argv, env = makeEnv(), now = new Date()) {
           values[k] = Number(opts[k]);
         }
         return cmd.metrics(env, args[0], values, now);
+      }
+      case "reminders": {
+        if (args.length) return usage;
+        const today = opts.today ?? now.toISOString().slice(0, 10);
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(today)) return { code: 64, out: ["--today must be YYYY-MM-DD"] };
+        return cmd.reminders(env, today);
       }
       case "report":
         return args.length === 0 ? cmd.report(env) : usage;

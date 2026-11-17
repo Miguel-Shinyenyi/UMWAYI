@@ -48,6 +48,7 @@ export async function publish(env, id, { live = false, confirmed = false } = {},
   const code = exitCodeFor(result);
   if (code !== 0) return { code, out: [...result.fails.map((f) => `FAIL ${f}`), ...result.unknowns.map((u) => `CANNOT DECIDE ${u}`), "checks do not pass, nothing was sent"] };
 
+  if (item.mode !== "api") return { code: 3, out: [`CANNOT DECIDE ${id} has mode ${item.mode}; only an item with mode api is sent through an API`] };
   const connector = connectors[item.platform];
   if (!connector) return { code: 3, out: [`CANNOT DECIDE no connector for ${item.platform}: ${NO_CONNECTOR[item.platform] ?? "none built"}`] };
   if (item.media.length) return { code: 3, out: ["CANNOT DECIDE this item has media and the connectors send text only"] };

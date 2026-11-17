@@ -12,6 +12,7 @@ A person still decides each post. The tool only removes the copy and paste.
 
 `publish ID` is a dry run. It sends nothing and prints the exact requests it would make, with every secret shown as a name. It posts only when you add `--live --confirmed`, and only if all of these hold:
 
+* the item has mode `api`
 * the item is approved and its title, link and body still match the approved hash
 * every rule check passes now
 * the platform is switched on in `connectors.json` with the terms page URL and the date it was read

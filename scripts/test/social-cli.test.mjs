@@ -231,8 +231,8 @@ test("next lists due items in order, skips future and finished ones, writes noth
   const r = f.cli("next");
   assert.equal(r.code, 0);
   assert.equal(r.out.length, 2);
-  assert.match(r.out[0], /^1\. early:/);
-  assert.match(r.out[1], /^2\. late:/);
+  assert.match(r.out[0], /^1\. early \[manual\]:/);
+  assert.match(r.out[1], /^2\. late \[manual\]:/);
   assert.match(r.out[0], /Next: run: social lint early/);
   assert.equal(fs.readFileSync(path.join(f.soc, "queue.jsonl"), "utf8"), before);
   assert.match(f.cli("next", "--today", "2026-11-30").out.join("\n"), /future/);
@@ -283,4 +283,49 @@ test("usage faults exit 64 and nothing ever exits 1", (t) => {
   for (const args of [[], ["lint"], ["report"], ["next"], ["approve", "x"]]) {
     assert.notEqual(f.cli(...args).code, 1);
   }
+});
+
+test("mode defaults to manual, is validated, and the approved next step follows the mode", (t) => {
+  const f = fixture(t);
+  f.body("p1.txt", "\u2022 One honest line.");
+  f.queue(item({ mode: "robot" }));
+  assert.equal(f.cli("next").code, 3);
+  for (const [mode, text] of [["browser", /signed-in Chrome/], ["manual", /remind Miguel to post it by hand: the text is in drafts\/p1.txt/], ["api", /social publish p1/]]) {
+    f.queue(item({ mode }));
+    f.cli("lint", "p1");
+    f.cli("approve", "p1", "--confirmed");
+    assert.match(f.cli("next").out[0], text);
+    assert.match(f.cli("next").out[0], new RegExp(`p1 \\[${mode}\\]`));
+  }
+  f.queue(item());
+  assert.match(f.cli("next").out[0], /p1 \[manual\]/);
+});
+
+test("reminders lists what Miguel posts by hand: post now, not ready, and coming up", (t) => {
+  const f = fixture(t);
+  f.body("ready.txt", "\u2022 One honest line.");
+  f.body("later.txt", "\u2022 Another honest line.");
+  f.queue(
+    item({ id: "ready", body_file: "drafts/ready.txt", mode: "manual", earliest_date: "2026-11-18" }),
+    item({ id: "later", body_file: "drafts/later.txt", mode: "manual", earliest_date: "2026-11-25" }),
+    item({ id: "idea1", mode: "manual", status: "idea", earliest_date: "2026-11-19" }),
+    item({ id: "viabrowser", mode: "browser", body_file: "drafts/ready.txt" }),
+    item({ id: "done", mode: "manual", status: "posted", posted_url: "https://example.com/x" }),
+  );
+  f.cli("lint", "ready");
+  f.cli("approve", "ready", "--confirmed");
+  f.cli("lint", "later");
+  f.cli("approve", "later", "--confirmed");
+  const r = f.cli("reminders");
+  assert.equal(r.code, 0);
+  const text = r.out.join("\n");
+  assert.match(text, /POST NOW ready on threads \(2 days past its date\): paste the text from drafts\/ready.txt/);
+  assert.match(text, /NOT READY idea1 on threads \(1 days past its date\): status idea/);
+  assert.match(text, /later on threads: approved, due 2026-11-25/);
+  assert.ok(!text.includes("viabrowser"));
+  assert.ok(!text.includes("done"));
+  assert.equal(f.cli("reminders", "x").code, 64);
+  assert.equal(f.cli("reminders", "--today", "bad").code, 64);
+  f.queue(item({ id: "none", mode: "browser" }));
+  assert.match(f.cli("reminders").out[0], /Nothing by hand is waiting today/);
 });

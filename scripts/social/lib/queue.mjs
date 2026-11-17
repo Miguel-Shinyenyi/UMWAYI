@@ -7,10 +7,13 @@ export class QueueError extends Error {}
 export const STATUSES = ["idea", "drafted", "linted", "approved", "posted", "skipped"];
 export const KINDS = ["post", "video", "listing", "reply_draft"];
 export const AI_VALUES = ["yes", "no", "unknown"];
+// How a post is made. browser: filled in the owner's signed-in Chrome, he approves each item.
+// manual: he copies and pastes it himself. api: sent through an official API (publish).
+export const MODES = ["browser", "manual", "api"];
 export const FIELDS = [
   "id", "platform", "kind", "source", "title", "body_file", "link", "media",
   "earliest_date", "status", "approved_sha256", "posted_url", "posted_at",
-  "ai_assisted", "notes",
+  "ai_assisted", "notes", "mode",
 ];
 
 const ID_RE = /^[a-z0-9][a-z0-9-]{0,63}$/;
@@ -59,6 +62,8 @@ export function parseQueue(text) {
     if (!STATUSES.includes(obj.status)) throw new QueueError(`${w}: unknown status`);
     const ai = obj.ai_assisted ?? "unknown";
     if (!AI_VALUES.includes(ai)) throw new QueueError(`${w}: ai_assisted must be yes, no or unknown`);
+    const mode = obj.mode ?? "manual";
+    if (!MODES.includes(mode)) throw new QueueError(`${w}: mode must be browser, manual or api`);
     let media = obj.media ?? [];
     if (!Array.isArray(media) || !media.every((m) => typeof m === "string" && m.length > 0)) {
       throw new QueueError(`${w}: media must be a list of file names`);
@@ -83,6 +88,7 @@ export function parseQueue(text) {
       posted_at: textOrNull(obj, "posted_at", w),
       ai_assisted: ai,
       notes: textOrNull(obj, "notes", w),
+      mode,
     };
     if (item.status === "approved" && !item.approved_sha256) throw new QueueError(`${w}: approved needs approved_sha256`);
     if (item.status === "posted" && !item.posted_url) throw new QueueError(`${w}: posted needs posted_url`);

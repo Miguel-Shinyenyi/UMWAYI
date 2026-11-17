@@ -31,7 +31,7 @@ function setup(t, platform = "mastodon", { itemOver = {}, body = "• One honest
   fs.writeFileSync(path.join(soc, "link-allowlist.txt"), "https://github.com/Miguel-Shinyenyi\n");
   fs.writeFileSync(path.join(soc, "drafts", "p1.txt"), body);
   if (mediaFile) fs.writeFileSync(path.join(soc, mediaFile), "x");
-  const item = { id: "p1", platform, kind: "post", source: "site/tech/ok.md", title: "Plain title", body_file: "drafts/p1.txt", link: null, media: [], status: "drafted", ai_assisted: "no", ...itemOver };
+  const item = { id: "p1", platform, kind: "post", source: "site/tech/ok.md", title: "Plain title", body_file: "drafts/p1.txt", link: null, media: [], status: "drafted", ai_assisted: "no", mode: "api", ...itemOver };
   fs.writeFileSync(path.join(soc, "queue.jsonl"), JSON.stringify(item) + "\n");
   const env = makeEnv({ socialDir: soc, hubDir: hub });
   if (approve) {
@@ -315,4 +315,16 @@ test("threads sends the token in the form body of both steps", async (t) => {
   assert.ok(fetch.calls[0].opts.body.includes(`access_token=${encodeURIComponent(TOKEN)}`));
   assert.ok(fetch.calls[1].opts.body.includes(`access_token=${encodeURIComponent(TOKEN)}`));
   assert.equal(fetch.calls[2].opts.headers.Authorization, `Bearer ${TOKEN}`);
+});
+
+test("only an item with mode api can be sent through an API", async (t) => {
+  for (const mode of ["manual", "browser"]) {
+    const f = setup(t, "mastodon", { itemOver: { mode } });
+    f.conn(MASTO);
+    const fetch = fakeFetch([]);
+    const r = await go(f, ["publish", "p1", "--live", "--confirmed"], fetch);
+    assert.equal(r.code, 3);
+    assert.match(r.out.join(), new RegExp(`has mode ${mode}`));
+    assert.equal(fetch.calls.length, 0);
+  }
 });
