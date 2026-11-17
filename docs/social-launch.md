@@ -39,6 +39,9 @@ The reader is strict. An unknown field, an unknown status, a bad date or a dupli
 
 Run from `scripts/`: `npm run social -- COMMAND`.
 
+* `draft ID`: starts the item's body file from the template for its platform, never overwrites a file, sets the status to drafted and prints the limits and rules.
+* `fanout SOURCE --platforms a,b,c [--date DATE]`: one drafted item and one template file per platform, from one published article or one repository. It refuses a source with `draft: true`, an unknown platform, a platform listed twice or an id that exists, and creates nothing when it refuses.
+* `pack [--today DATE]`: writes one private file, `COPY-PASTE-PACK.md`, with every open item's exact text, title, link, where to paste it and the steps. An item is marked CLEARED only if it is approved, its text is unchanged since, and every check passes. Otherwise it says why not. It posts nothing and changes no item.
 * `lint ID`: runs every check on one item. A pass moves it to linted. A fail or a missing input moves it back to drafted.
 * `next [--today DATE]`: lists the items due, in order, with the reason and the next step. It writes nothing.
 * `approve ID --confirmed`: run only after the owner says yes in chat for that exact item. It stores the SHA-256 of the title, link and body.
@@ -54,12 +57,22 @@ Exit codes: 0 pass, 2 fail with reasons, 3 cannot decide, 64 usage. Never 1.
 * Length limits from `limits.json`, counted in characters. A limit that is unknown, or not marked as confirmed on the platform's own page, gives exit 3. A text that is over a number gives exit 2 either way.
 * No em dash.
 * No hashtag, unless the platform entry allows it.
+* No unfilled `[[placeholder]]`. A fresh template cannot pass.
+* No copy: a post that shares 70 percent or more of its words with another post on the same platform fails, so one text is not pasted everywhere.
 * No markdown: no asterisk, backtick, heading marker, link syntax or hyphen bullet. Bullet lines start with the bullet character.
 * No word from the banned list, no phrase from the claims blocklist, no company name from the private blocklist. A missing list gives exit 3. It is never read as an empty list.
 * Every link is https and on the allowlist.
 * The source is a published article or the owner's own repository.
 * Every media file exists and sits inside the private folder. A path that leaves the folder, by `..`, an absolute path or a symlink, is refused.
 * `ai_assisted` is set. Unknown gives exit 3.
+
+## Drafts and cross posting
+
+Templates are in `scripts/social/templates/`. Each is plain text with `[[placeholders]]` and the limit stated in it: Show HN comment, article link comment, Reddit, Indie Hackers, Threads, LinkedIn, directory listing, Product Hunt comment, YouTube description, Discord, and a reply.
+
+`fanout` picks the template for each platform. Hacker News gets a Show HN comment for a repository and a link comment for an article. Every text is then written for its own place.
+
+Articles already go to DEV and LinkedIn through `scripts/cross-post.mjs` when they are published. This queue is for launch posts and extra posts, not for that.
 
 ## The order of a post
 

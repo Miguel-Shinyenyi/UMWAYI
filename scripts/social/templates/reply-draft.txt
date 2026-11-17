@@ -1,0 +1,5 @@
+[[Thank them or acknowledge the report in one sentence.]]
+
+[[Answer in plain words. If the answer is a limit, say it as a limit.]]
+
+[[Link to the doc, if there is one]]

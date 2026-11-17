@@ -1,0 +1,7 @@
+[[Two sentences: what the video shows and who it is for.]]
+
+[[Chapters, one per line: 0:00 title]]
+
+[[Repo link]]
+
+[[State the limit: enforcement is cooperative today and it is not a sandbox]]

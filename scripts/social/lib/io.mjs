@@ -144,8 +144,16 @@ function checkMedia(env, item) {
   return problems;
 }
 
-export function gatherContext(env, item) {
+export function gatherContext(env, item, allItems = []) {
   const { body, problem } = readBody(env, item);
+  const others = [];
+  if (item.kind === "post") {
+    for (const o of allItems) {
+      if (o.id === item.id || o.platform !== item.platform || o.kind !== "post" || o.status === "skipped" || !o.body_file) continue;
+      const ob = readBody(env, o).body;
+      if (ob !== null) others.push({ id: o.id, body: ob });
+    }
+  }
   let limitsDoc = null;
   const limitsText = readOptional(path.join(env.socialDir, "limits.json"));
   if (limitsText !== null) {
@@ -162,6 +170,7 @@ export function gatherContext(env, item) {
   return {
     item,
     body,
+    others,
     bodyProblem: problem,
     limits: limitsDoc?.platforms?.[item.platform] ?? null,
     banned: list("banned-words.txt"),

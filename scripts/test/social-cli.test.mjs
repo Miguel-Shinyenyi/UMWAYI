@@ -329,3 +329,49 @@ test("reminders lists what Miguel posts by hand: post now, not ready, and coming
   f.queue(item({ id: "none", mode: "browser" }));
   assert.match(f.cli("reminders").out[0], /Nothing by hand is waiting today/);
 });
+
+test("pack writes a private file, marks only approved and unchanged items as cleared, and changes nothing", (t) => {
+  const f = fixture(t);
+  f.body("ok.txt", "\u2022 One honest line to paste.");
+  f.body("bad.txt", "\u2022 A line with a placeholder [[todo]].");
+  f.body("edit.txt", "\u2022 Another honest line to paste.");
+  f.queue(
+    item({ id: "ok", body_file: "drafts/ok.txt", title: "My title", link: "https://github.com/Miguel-Shinyenyi/umwayi-os" }),
+    item({ id: "bad", body_file: "drafts/bad.txt" }),
+    item({ id: "edit", body_file: "drafts/edit.txt" }),
+    item({ id: "gone", body_file: "drafts/ok.txt", status: "posted", posted_url: "https://example.com/x" }),
+    item({ id: "skip", body_file: "drafts/ok.txt", status: "skipped" }),
+  );
+  for (const id of ["ok", "edit"]) {
+    assert.equal(f.cli("lint", id).code, 0, id);
+    assert.equal(f.cli("approve", id, "--confirmed").code, 0, id);
+  }
+  f.body("edit.txt", "\u2022 Edited after approval.");
+  const before = fs.readFileSync(path.join(f.soc, "queue.jsonl"), "utf8");
+  const r = f.cli("pack");
+  assert.equal(r.code, 0);
+  assert.match(r.out.join(), /3 items, 1 cleared to post, 2 not cleared/);
+  assert.match(r.out.join(), /nothing was posted/);
+  assert.equal(fs.readFileSync(path.join(f.soc, "queue.jsonl"), "utf8"), before);
+  const file = path.join(f.soc, "COPY-PASTE-PACK.md");
+  assert.equal(fs.statSync(file).mode & 0o777, 0o600);
+  const text = fs.readFileSync(file, "utf8");
+  assert.match(text, /=== ok ===\nCLEARED: Miguel approved this exact text/);
+  assert.match(text, /=== bad ===\nNOT CLEARED, do not post yet[\s\S]*?placeholder/);
+  assert.match(text, /=== edit ===\nNOT CLEARED, do not post yet[\s\S]*?status is drafted, not approved/);
+  assert.ok(!text.includes("=== gone ==="));
+  assert.ok(!text.includes("=== skip ==="));
+  assert.match(text, /----- TEXT, copy from here -----\n\u2022 One honest line to paste\.\n----- end of text -----/);
+  assert.match(text, /----- TITLE, copy from here -----\nMy title\n/);
+  assert.match(text, /1 x placeholder/);
+});
+
+test("pack counts what blocks items and handles an empty queue and bad input", (t) => {
+  const f = fixture(t);
+  assert.equal(f.cli("pack").code, 0);
+  assert.match(fs.readFileSync(path.join(f.soc, "COPY-PASTE-PACK.md"), "utf8"), /nothing\n/);
+  assert.equal(f.cli("pack", "x").code, 64);
+  assert.equal(f.cli("pack", "--today", "bad").code, 64);
+  fs.writeFileSync(path.join(f.soc, "queue.jsonl"), "{broken\n");
+  assert.equal(f.cli("pack").code, 3);
+});

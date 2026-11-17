@@ -4,7 +4,7 @@ import { redact } from "../secrets.mjs";
 
 export class ConnectorError extends Error {}
 
-export async function request(fetchFn, url, { method = "POST", headers = {}, json, form, secrets = [], timeoutMs = 15000 } = {}) {
+export async function request(fetchFn, url, { method = "POST", headers = {}, json, form, secrets = [], timeoutMs = 15000, allowEmpty = false } = {}) {
   if (!/^https:\/\/[^\s/]+\//.test(url)) throw new ConnectorError("refusing a request that is not https");
   const h = { ...headers };
   let body;
@@ -28,6 +28,11 @@ export async function request(fetchFn, url, { method = "POST", headers = {}, jso
   const text = await res.text();
   if (!res.ok) {
     throw new ConnectorError(redact(`HTTP ${res.status}: ${text.slice(0, 300)}`, secrets));
+  }
+  if (allowEmpty && text.trim() === "") {
+    const h = {};
+    for (const [k, v] of res.headers?.entries?.() ?? []) h[k.toLowerCase()] = v;
+    return { _headers: h };
   }
   try {
     return JSON.parse(text);

@@ -1,0 +1,9 @@
+[[Who you are, one sentence.]]
+
+I built [[what it is]] because [[why]].
+
+• [[What it does]]
+• [[What it does not do. State the limit: enforcement is cooperative today and it is not a sandbox]]
+
+[[Who it is for.]]
+[[A specific question for feedback. Ask for feedback, never for upvotes.]]

@@ -12,7 +12,7 @@ import { request } from "../social/lib/connectors/http.mjs";
 const NOW = new Date("2026-11-20T10:00:00Z");
 const TOKEN = "tok-SECRET-1234567890";
 
-function setup(t, platform = "mastodon", { itemOver = {}, body = "• One honest line about the tool.", approve = true, mediaFile = null } = {}) {
+function setup(t, platform = "mastodon", { itemOver = {}, body = "• One honest line about the tool.", approve = true, mediaFile = null, hashtags = false } = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "social-conn-"));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   const hub = path.join(root, "hub");
@@ -23,7 +23,7 @@ function setup(t, platform = "mastodon", { itemOver = {}, body = "• One honest
   fs.writeFileSync(path.join(hub, "site", "tech", "ok.md"), "---\ndraft: false\n---\n");
   const lim = (v) => ({ value: v, checked: true, url: "https://example.com/r", date: "2026-11-17" });
   fs.writeFileSync(path.join(soc, "limits.json"), JSON.stringify({
-    platforms: { [platform]: { hashtags_allowed: false, title_max: lim(300), body_max: lim(500) } },
+    platforms: { [platform]: { hashtags_allowed: hashtags, title_max: lim(300), body_max: lim(500) } },
   }));
   fs.writeFileSync(path.join(soc, "banned-words.txt"), "synergy\n");
   fs.writeFileSync(path.join(soc, "claims-blocklist.txt"), "secure\n");
@@ -53,7 +53,7 @@ function fakeFetch(replies) {
     const r = replies.shift();
     if (r instanceof Error) throw r;
     const status = r.status ?? 200;
-    return { ok: status < 400, status, text: async () => (typeof r.body === "string" ? r.body : JSON.stringify(r.body)) };
+    return { ok: status < 400, status, headers: new Map(Object.entries(r.headers ?? {})), text: async () => (r.body === undefined ? "" : typeof r.body === "string" ? r.body : JSON.stringify(r.body)) };
   };
   fn.calls = calls;
   return fn;
@@ -327,4 +327,87 @@ test("only an item with mode api can be sent through an API", async (t) => {
     assert.match(r.out.join(), new RegExp(`has mode ${mode}`));
     assert.equal(fetch.calls.length, 0);
   }
+});
+
+const AUTHOR = "urn:li:person:abc123";
+const LINK = "https://github.com/Miguel-Shinyenyi/umwayi-os";
+const LI = { linkedin: enabled({ author_urn: AUTHOR, mentions: [{ name: "Example Org", urn: "urn:li:organization:42" }] }) };
+const liSetup = (t, body, extra = {}) => setup(t, "linkedin", { itemOver: { link: LINK, title: "Launch note", ...extra.itemOver }, body, hashtags: true, ...extra });
+const liSecrets = secretsOf({ LINKEDIN_TOKEN: TOKEN });
+
+test("linkedin dry run shows the official endpoint and the author, never the token", async (t) => {
+  const f = liSetup(t, "\u2022 A plain honest line about the tool.");
+  f.conn(LI);
+  const fetch = fakeFetch([]);
+  const r = await go(f, ["publish", "p1"], fetch, liSecrets);
+  assert.equal(r.code, 0, r.out.join("\n"));
+  assert.equal(fetch.calls.length, 0);
+  const text = r.out.join("\n");
+  assert.match(text, /would: POST https:\/\/api\.linkedin\.com\/rest\/posts/);
+  assert.match(text, /author urn:li:person:abc123/);
+  assert.ok(!text.includes(TOKEN));
+});
+
+test("linkedin live: same text rules as cross-post (escapes, hashtags, mentions, link once) and the post URL is recorded", async (t) => {
+  const f = liSetup(t, `\u2022 Rules (before) the agent acts, @Example Org agrees #AgenticEngineering\n${LINK}`);
+  f.conn(LI);
+  const fetch = fakeFetch([{ status: 201, headers: { "x-restli-id": "urn:li:share:7000000000000000001" } }]);
+  const r = await go(f, ["publish", "p1", "--live", "--confirmed"], fetch, liSecrets);
+  assert.equal(r.code, 0, r.out.join("\n"));
+  const c = fetch.calls[0];
+  assert.equal(c.url, "https://api.linkedin.com/rest/posts");
+  assert.equal(c.opts.headers.Authorization, `Bearer ${TOKEN}`);
+  assert.ok(c.opts.headers["LinkedIn-Version"]);
+  assert.equal(c.opts.headers["X-Restli-Protocol-Version"], "2.0.0");
+  const body = JSON.parse(c.opts.body);
+  assert.equal(body.author, AUTHOR);
+  assert.equal(body.visibility, "PUBLIC");
+  assert.equal(body.content.article.source, LINK);
+  assert.match(body.commentary, /Rules \\\(before\\\) the agent acts/);
+  assert.match(body.commentary, /@\[Example Org\]\(urn:li:organization:42\)/);
+  assert.match(body.commentary, /\{hashtag\|\\#\|AgenticEngineering\}/);
+  assert.equal(body.commentary.split(LINK).length - 1, 1);
+  assert.equal(f.queue().posted_url, "https://www.linkedin.com/feed/update/urn:li:share:7000000000000000001/");
+  assert.ok(!r.out.join().includes(TOKEN));
+});
+
+test("linkedin refuses a mention that is not configured, a bad author, and an item with no link", async (t) => {
+  let f = liSetup(t, "\u2022 Thanks @Unknown Org for the idea.");
+  f.conn(LI);
+  let fetch = fakeFetch([]);
+  let r = await go(f, ["publish", "p1", "--live", "--confirmed"], fetch, liSecrets);
+  assert.equal(r.code, 3);
+  assert.match(r.out.join(), /no matching entry in linkedin.mentions/);
+  assert.equal(fetch.calls.length, 0);
+
+  f = liSetup(t, "\u2022 A plain line.");
+  f.conn({ linkedin: enabled({ author_urn: "not-a-urn" }) });
+  assert.match((await go(f, ["publish", "p1"], fakeFetch([]), liSecrets)).out.join(), /author_urn must look like urn:li:person/);
+
+  f = liSetup(t, "\u2022 A plain line.", { itemOver: { link: null } });
+  f.conn(LI);
+  assert.match((await go(f, ["publish", "p1"], fakeFetch([]), liSecrets)).out.join(), /needs an https link/);
+});
+
+test("linkedin: an expired token (401) is exit 2 with the token removed, and a reply with no id records nothing", async (t) => {
+  let f = liSetup(t, "\u2022 A plain honest line about the tool.");
+  f.conn(LI);
+  let r = await go(f, ["publish", "p1", "--live", "--confirmed"], fakeFetch([{ status: 401, body: `expired ${TOKEN}` }]), liSecrets);
+  assert.equal(r.code, 2);
+  assert.ok(!r.out.join().includes(TOKEN));
+  assert.equal(f.queue().status, "approved");
+
+  f = liSetup(t, "\u2022 A plain honest line about the tool.");
+  f.conn(LI);
+  r = await go(f, ["publish", "p1", "--live", "--confirmed"], fakeFetch([{ status: 201 }]), liSecrets);
+  assert.equal(r.code, 2);
+  assert.match(r.out.join(), /returned no id/);
+  assert.equal(f.queue().status, "approved");
+});
+
+test("draft now has an Instagram caption template", (t) => {
+  const f = setup(t, "instagram", { approve: false, itemOver: { kind: "video", mode: "browser", status: "idea", body_file: "drafts/new-caption.txt" } });
+  const r = run(["draft", "p1"], f.env, NOW);
+  assert.equal(r.code, 0, r.out.join("\n"));
+  assert.match(r.out[0], /from template instagram-caption/);
 });

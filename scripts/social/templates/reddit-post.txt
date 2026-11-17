@@ -1,0 +1,8 @@
+I built [[what it is]]. [[One sentence on why you built it.]]
+
+• [[What it does, with a number or a concrete example]]
+• [[What it cannot do. State the limit: enforcement is cooperative today and it is not a sandbox]]
+
+[[Link, only if this subreddit allows it]]
+
+[[One real question written for this subreddit.]]

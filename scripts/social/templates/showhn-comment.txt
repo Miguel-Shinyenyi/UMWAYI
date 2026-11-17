@@ -1,0 +1,8 @@
+[[One sentence: what it is.]]
+I built it because [[the problem you hit, with one concrete example]].
+
+• [[What it does, with a number or a concrete example]]
+• [[What it does not do. State the limit: enforcement is cooperative today and it is not a sandbox]]
+
+You can try it without signing up: [[the repo or runnable demo link]]
+[[One real question for readers.]]
