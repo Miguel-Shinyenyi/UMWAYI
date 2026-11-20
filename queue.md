@@ -285,3 +285,14 @@ Plans are in `docs/plans/`. Rules are in `docs/agent-principles.md`. Order and c
 | L-04 | Fix the `BASENTEN_API_KEY` risk in `umwayi-rm` (accept both spellings). | done 2026-11-03, PR #20 (the deploy batch in PR #21 kept one key helper) | A run with each spelling reaches the model adapter. | `umwayi-rm/docs/hackathon-log.md`, H-21 |
 | L-05 | Run Steward steps S1 to S3 only, then stop and review. | queued, after Nov 4 | Acceptance checks in `docs/plans/steward-agent.md`. | `docs/plans/steward-agent.md` |
 | L-06 | Measure real token use of one video script and one render, and compare with your Pro limits. | queued, after Nov 4 | A number from Settings, Usage, before and after. | `docs/plans/social-agent.md` |
+
+## M. umwayi-os items from 2026-11-20 (public-safe; the full prioritised list is private)
+
+| ID | Task | Priority | Status | Acceptance checks | Outcome goes in |
+|---|---|---|---|---|---|
+| M-01 | Round-2 prompt for the Claude Code reruns, from the rerun feedback (demo-tests.sh python3, macOS /proc skip, goal plan check vs part files, failed-task report path). | P1 | queued | Prompt written; the feedback tests run on the next pass. | `docs/` rerun notes |
+| M-02 | Review the three points on umwayi-os PR 158 (pseudo-terminal check, adapter example text, umask follow-up). | P2 | queued | Each point has a recorded decision. | this file |
+| M-03 | Backlog for the site: answer HTTP 402 Payment Required to AI browsers and scrapers, and to AI scanning umwayi-os code and files. | P3 | queued | A short design note naming known approaches; owner picks one. | `docs/plans/` |
+| M-04 | Fascia as a living network: write which ideas umwayi-os can copy (continuous web, tension, tensegrity, adaptive remodeling). | P3 | held (owner confirms the meaning) | One page mapping each idea to a umwayi-os part. | `docs/plans/` |
+| M-05 | Concept videos in the sample format (9:16, 20 s, code panel with highlighted line), then PR explainers. Free credits only. | P3 | held (needs the concept list) | One video per concept; no paid credits spent. | `docs/plans/social-agent.md` |
+| M-06 | Mind map of what each video shows and the umwayi-os plan. | P3 | held (after M-05 list) | Map covers every video; published as a page. | `docs/plans/` |
