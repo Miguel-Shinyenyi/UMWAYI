@@ -108,10 +108,15 @@ test("links must be https and on the allowlist", () => {
 });
 
 test("a missing list file means cannot decide, never a pass", () => {
-  assert.equal(code(ctx({ banned: null })), 3);
   assert.equal(code(ctx({ claims: null })), 3);
   assert.equal(code(ctx({ companies: null })), 3);
   assert.equal(code(ctx({ allowlist: null })), 3);
+});
+
+test("a missing banned-words list skips that check, and a list still catches a word", () => {
+  assert.equal(code(ctx({ banned: null })), 0);
+  assert.doesNotMatch(fails(ctx({ banned: null, body: "Great synergy here" })), /banned-words/);
+  assert.match(fails(ctx({ banned: ["synergy"], body: "Great synergy here" })), /banned-words/);
 });
 
 test("ai_assisted unknown means cannot decide", () => {
