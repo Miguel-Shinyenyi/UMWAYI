@@ -4,7 +4,7 @@ date: 2026-11-09T00:00:00.000Z
 summary: >-
   A test that failed now and then turned out to be a real bug in the logbook of
   my AI helper hub. What I found, how I fixed it, and how I checked the fix.
-draft: true
+draft: false
 illustration: a-flaky-test-showed-a-real-bug.svg
 illustrationAlt: >-
   A clipboard shows a test that is sometimes green and sometimes red, with a
@@ -15,6 +15,14 @@ tags:
   - Testing
   - AI
   - Building in public
+linkedin:
+  hashtags:
+    - AgenticEngineering
+    - SoftwareTesting
+    - Python
+    - BuildInPublic
+crossposted:
+  linkedin: manual-with-video
 ---
 
 On Sep 16 I started a notebook. It held a journal, a list of projects and one master context file. Seven weeks later it holds rules, a queue of decisions, an archive, and a logbook of every change. I call it the Umwayi hub. It is pre-release, and one backend engineer in Nairobi builds it.

@@ -2,7 +2,7 @@
 title: "Reserve before you spend: a budget governor for AI agents"
 date: 2026-11-13
 summary: "umwayi-os reserves a cost cap before an AI agent starts, counts unknown cost at the worst case, and settles every run in the logbook. Here is how one unit works across tools that report cost in different ways."
-draft: true
+draft: false
 illustration: reserve-before-you-spend.svg
 illustrationAlt: "A bar for the day's limit. A block labelled reserved sits at the start of the bar before a run begins, and a smaller block labelled spent replaces it after the run. A sheep stands by an empty block labelled unknown, which is drawn at full size. The shepherd says unknown counts as the worst case."
 tags:
@@ -16,6 +16,8 @@ linkedin:
   links:
     - label: Event
       url: https://kiroween.devpost.com/
+crossposted:
+  linkedin: manual-with-video
 ---
 
 ## The problem

@@ -2,7 +2,7 @@
 title: "Two pull requests never edit the same line: generating shared files from parts"
 date: 2026-11-13
 summary: "When several builders work in parallel, the files every pull request touches become the conflicts. umwayi-os builds its status log and its list of known limits from one small file per task, and a check proves the output matches byte for byte."
-draft: true
+draft: false
 illustration: two-pull-requests-never-edit-the-same-line.svg
 illustrationAlt: "Two small part files on the left, one from each task, flowing into a single wide file labelled built log on the right through a builder box. A sheep stands on each part file. The shepherd says each task writes its own file."
 tags:
@@ -16,6 +16,8 @@ linkedin:
   links:
     - label: Event
       url: https://kiroween.devpost.com/
+crossposted:
+  linkedin: manual-with-video
 ---
 
 ## The conflict every pull request creates

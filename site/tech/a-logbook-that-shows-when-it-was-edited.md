@@ -2,7 +2,7 @@
 title: "A logbook that shows when it was edited: crash safety and a hash chain"
 date: 2026-11-13
 summary: "umwayi-os writes every change into an append only logbook. It cannot stop you from editing that file, but it can tell you that someone did, and it survives a power cut half way through a write. Here is how."
-draft: true
+draft: false
 illustration: a-logbook-that-shows-when-it-was-edited.svg
 illustrationAlt: "An open logbook with a row of linked blocks along the bottom, each block holding the fingerprint of the one before it. One block is cracked and a sheep stands on it. The shepherd says an edit breaks the chain."
 tags:
@@ -16,6 +16,8 @@ linkedin:
   links:
     - label: Event
       url: https://kiroween.devpost.com/
+crossposted:
+  linkedin: manual-with-video
 ---
 
 ## What a logbook is for
