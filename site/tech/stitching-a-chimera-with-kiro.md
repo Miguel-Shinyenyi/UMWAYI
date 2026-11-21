@@ -2,7 +2,7 @@
 title: "Stitching a Chimera: Building umwayi-os With Kiro"
 date: 2026-11-12
 summary: "umwayi-os puts one set of written rules in front of Claude Code, Kiro and OpenCode. Kiro builds it one spec at a time. Here is what exists, what broke, and where it goes next."
-draft: true
+draft: false
 tags:
   - AI
   - Kiro

@@ -2,7 +2,7 @@
 title: "One task, one worktree: how umwayi-os keeps parallel AI builders apart"
 date: 2026-11-13
 summary: "Several AI builders in one checkout overwrite each other. umwayi-os gives each task its own git worktree, accepts only a path it made, and runs git from a fixed list of argument lists. Here is the design, and what is built so far."
-draft: true
+draft: false
 illustration: one-task-one-worktree.svg
 illustrationAlt: "Three separate folders side by side, each with its own branch label, and a sheep standing in each. A fourth folder, drawn with a dashed line and labelled the owner's copy, stands apart with no sheep. The shepherd says each task gets its own folder."
 tags:

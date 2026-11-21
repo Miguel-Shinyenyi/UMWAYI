@@ -2,7 +2,7 @@
 title: "Yes, No or Ask me first: a rules gate that fails closed"
 date: 2026-11-13
 summary: "Before an AI helper acts, umwayi-os checks the action against rules you wrote and answers Yes, No or Ask me first. Here is why every unclear case answers Ask me first, and how the kill switch and the run lock follow the same idea."
-draft: true
+draft: false
 illustration: yes-no-or-ask-me-first.svg
 illustrationAlt: "Three doors in a row. The left door is green and says yes, the middle door is red and says no, the right door is ochre and says ask me first. A sheep stands at the right door. The shepherd says if unsure, ask."
 tags:

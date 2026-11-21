@@ -2,7 +2,7 @@
 title: "A timer and a web page use the same gate: scheduled runs and a local server"
 date: 2026-11-13
 summary: "umwayi-os runs jobs on a schedule through systemd and serves a page on 127.0.0.1. Neither has a rule set of its own. Both call the code a typed command calls, so the kill switch, the rules and the logbook apply every time."
-draft: true
+draft: false
 illustration: a-timer-and-a-web-page-use-the-same-gate.svg
 illustrationAlt: "A clock and a browser window on the left, each with an arrow to the same gate on the right. Past the gate a single arrow leads to a logbook. A sheep stands by the clock. The shepherd says every way in meets the same gate."
 tags:

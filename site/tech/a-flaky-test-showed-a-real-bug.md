@@ -4,7 +4,7 @@ date: 2026-11-09T00:00:00.000Z
 summary: >-
   A test that failed now and then turned out to be a real bug in the logbook of
   my AI helper hub. What I found, how I fixed it, and how I checked the fix.
-draft: true
+draft: false
 illustration: a-flaky-test-showed-a-real-bug.svg
 illustrationAlt: >-
   A clipboard shows a test that is sometimes green and sometimes red, with a

@@ -2,7 +2,7 @@
 title: "One gate, three tools: putting the same rules in front of Claude Code, Kiro and OpenCode"
 date: 2026-11-13
 summary: "Each AI tool has its own hook and its own idea of allow and deny. umwayi-os translates one answer into what each tool understands, blocks on any error, and refuses to start an agent it cannot gate."
-draft: true
+draft: false
 illustration: one-gate-three-tools.svg
 illustrationAlt: "One gate in the centre with three paths leading to it from the left, labelled Claude Code, Kiro and OpenCode. Past the gate a single path continues. A sheep waits at the gate. The shepherd says same rules, every tool."
 tags:

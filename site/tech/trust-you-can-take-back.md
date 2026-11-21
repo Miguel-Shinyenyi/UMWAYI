@@ -2,7 +2,7 @@
 title: "Trust you can take back: reopening decisions, petitions and graded autonomy"
 date: 2026-11-13
 summary: "A system that asks you the same question for the hundredth time gets ignored. A system that stops asking without limits gets dangerous. umwayi-os lets trust grow from your own record, and lets you take it back without rewriting history."
-draft: true
+draft: false
 illustration: trust-you-can-take-back.svg
 illustrationAlt: "A dial with three marks labelled ask, yes and no, with the pointer on ask. Beside it, a short list of gates with check marks, and a lock icon on the no mark. A sheep sits at the base of the dial. The shepherd says only up from ask, never from no."
 tags:
