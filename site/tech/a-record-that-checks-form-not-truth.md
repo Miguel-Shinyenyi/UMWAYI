@@ -1,23 +1,41 @@
 ---
-title: "A record that checks its form and never claims it is true: 111 concerns and four stall checks"
-date: 2026-11-13
-summary: "umwayi-os keeps a record of 111 engineering concerns and four checks for stuck builders. Each one proves that an honest answer exists and is well formed, and says plainly that it cannot prove the answer is right."
+title: >-
+  A record that checks its form and never claims it is true: 111 concerns and
+  four stall checks
+date: 2026-11-13T00:00:00.000Z
+summary: >-
+  umwayi-os keeps a record of 111 engineering concerns and four checks for stuck
+  builders. Each one proves that an honest answer exists and is well formed, and
+  says plainly that it cannot prove the answer is right.
 draft: false
 illustration: a-record-that-checks-form-not-truth.svg
-illustrationAlt: "A table with three stamped columns labelled applies, not applicable and deferred. One row has a small file icon pointing at a real file. A magnifier hovers over the table and a note says form checked, truth not checked. The shepherd says I check the form."
+illustrationAlt: >-
+  A table with three stamped columns labelled applies, not applicable and
+  deferred. One row has a small file icon pointing at a real file. A magnifier
+  hovers over the table and a note says form checked, truth not checked. The
+  shepherd says I check the form.
 tags:
   - Engineering
   - Testing
   - Process
   - Building in public
 linkedin:
-  hashtags: [KiroweenHackathon26, Kiroween, Kiro, AgenticEngineering, SoftwareTesting, Python, BuildInPublic]
+  hashtags:
+    - KiroweenHackathon26
+    - Kiroween
+    - Kiro
+    - AgenticEngineering
+    - SoftwareTesting
+    - Python
+    - BuildInPublic
   post: docs/plans/a-record-that-checks-form-not-truth-linkedin-post.md
   links:
     - label: Event
-      url: https://kiroween.devpost.com/
+      url: 'https://kiroween.devpost.com/'
 crossposted:
   linkedin: manual-with-video
+  devto: >-
+    https://dev.to/miguel_shinyenyi_e2291c8c/a-record-that-checks-its-form-and-never-claims-it-is-true-111-concerns-and-four-stall-checks-165n
 ---
 
 ## Engineering concerns you skip without noticing

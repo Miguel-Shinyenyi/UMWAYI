@@ -1,23 +1,39 @@
 ---
-title: "One gate, three tools: putting the same rules in front of Claude Code, Kiro and OpenCode"
-date: 2026-11-13
-summary: "Each AI tool has its own hook and its own idea of allow and deny. umwayi-os translates one answer into what each tool understands, blocks on any error, and refuses to start an agent it cannot gate."
+title: >-
+  One gate, three tools: putting the same rules in front of Claude Code, Kiro
+  and OpenCode
+date: 2026-11-13T00:00:00.000Z
+summary: >-
+  Each AI tool has its own hook and its own idea of allow and deny. umwayi-os
+  translates one answer into what each tool understands, blocks on any error,
+  and refuses to start an agent it cannot gate.
 draft: false
 illustration: one-gate-three-tools.svg
-illustrationAlt: "One gate in the centre with three paths leading to it from the left, labelled Claude Code, Kiro and OpenCode. Past the gate a single path continues. A sheep waits at the gate. The shepherd says same rules, every tool."
+illustrationAlt: >-
+  One gate in the centre with three paths leading to it from the left, labelled
+  Claude Code, Kiro and OpenCode. Past the gate a single path continues. A sheep
+  waits at the gate. The shepherd says same rules, every tool.
 tags:
   - Engineering
   - Agentic engineering
   - Integration
   - Building in public
 linkedin:
-  hashtags: [KiroweenHackathon26, Kiroween, Kiro, AgenticEngineering, Python, BuildInPublic]
+  hashtags:
+    - KiroweenHackathon26
+    - Kiroween
+    - Kiro
+    - AgenticEngineering
+    - Python
+    - BuildInPublic
   post: docs/plans/one-gate-three-tools-linkedin-post.md
   links:
     - label: Event
-      url: https://kiroween.devpost.com/
+      url: 'https://kiroween.devpost.com/'
 crossposted:
   linkedin: manual-with-video
+  devto: >-
+    https://dev.to/miguel_shinyenyi_e2291c8c/one-gate-three-tools-putting-the-same-rules-in-front-of-claude-code-kiro-and-opencode-3d1m
 ---
 
 ## Three tools, three vocabularies

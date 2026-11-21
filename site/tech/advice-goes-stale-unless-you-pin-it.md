@@ -1,23 +1,40 @@
 ---
-title: "Advice goes stale unless you pin it to its source: a hash-checked rules library"
-date: 2026-11-13
-summary: "umwayi-os keeps its guidance for AI builders in one file. Each entry is marked enforce, advise or owner, has a priority tier, and carries the hash of the line it came from. If that line changes, the loader stops. Here is why, and where the design goes next."
+title: >-
+  Advice goes stale unless you pin it to its source: a hash-checked rules
+  library
+date: 2026-11-13T00:00:00.000Z
+summary: >-
+  umwayi-os keeps its guidance for AI builders in one file. Each entry is marked
+  enforce, advise or owner, has a priority tier, and carries the hash of the
+  line it came from. If that line changes, the loader stops. Here is why, and
+  where the design goes next.
 draft: false
 illustration: advice-goes-stale-unless-you-pin-it.svg
-illustrationAlt: "A rule card pinned to a page with a small hash tag. The page has one line edited, the tag no longer matches, and a stop sign sits beside it. A sheep reads the card. The shepherd says if the source changes, stop and ask."
+illustrationAlt: >-
+  A rule card pinned to a page with a small hash tag. The page has one line
+  edited, the tag no longer matches, and a stop sign sits beside it. A sheep
+  reads the card. The shepherd says if the source changes, stop and ask.
 tags:
   - Engineering
   - Process
   - Agentic engineering
   - Building in public
 linkedin:
-  hashtags: [KiroweenHackathon26, Kiroween, Kiro, AgenticEngineering, Python, BuildInPublic]
+  hashtags:
+    - KiroweenHackathon26
+    - Kiroween
+    - Kiro
+    - AgenticEngineering
+    - Python
+    - BuildInPublic
   post: docs/plans/advice-goes-stale-unless-you-pin-it-linkedin-post.md
   links:
     - label: Event
-      url: https://kiroween.devpost.com/
+      url: 'https://kiroween.devpost.com/'
 crossposted:
   linkedin: manual-with-video
+  devto: >-
+    https://dev.to/miguel_shinyenyi_e2291c8c/advice-goes-stale-unless-you-pin-it-to-its-source-a-hash-checked-rules-library-1g54
 ---
 
 ## Rules are copied, and copies drift

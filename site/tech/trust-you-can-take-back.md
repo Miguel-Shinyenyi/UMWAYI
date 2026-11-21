@@ -1,23 +1,39 @@
 ---
-title: "Trust you can take back: reopening decisions, petitions and graded autonomy"
-date: 2026-11-13
-summary: "A system that asks you the same question for the hundredth time gets ignored. A system that stops asking without limits gets dangerous. umwayi-os lets trust grow from your own record, and lets you take it back without rewriting history."
+title: 'Trust you can take back: reopening decisions, petitions and graded autonomy'
+date: 2026-11-13T00:00:00.000Z
+summary: >-
+  A system that asks you the same question for the hundredth time gets ignored.
+  A system that stops asking without limits gets dangerous. umwayi-os lets trust
+  grow from your own record, and lets you take it back without rewriting
+  history.
 draft: false
 illustration: trust-you-can-take-back.svg
-illustrationAlt: "A dial with three marks labelled ask, yes and no, with the pointer on ask. Beside it, a short list of gates with check marks, and a lock icon on the no mark. A sheep sits at the base of the dial. The shepherd says only up from ask, never from no."
+illustrationAlt: >-
+  A dial with three marks labelled ask, yes and no, with the pointer on ask.
+  Beside it, a short list of gates with check marks, and a lock icon on the no
+  mark. A sheep sits at the base of the dial. The shepherd says only up from
+  ask, never from no.
 tags:
   - Engineering
   - Agentic engineering
   - Safety
   - Building in public
 linkedin:
-  hashtags: [KiroweenHackathon26, Kiroween, Kiro, AgenticEngineering, Python, BuildInPublic]
+  hashtags:
+    - KiroweenHackathon26
+    - Kiroween
+    - Kiro
+    - AgenticEngineering
+    - Python
+    - BuildInPublic
   post: docs/plans/trust-you-can-take-back-linkedin-post.md
   links:
     - label: Event
-      url: https://kiroween.devpost.com/
+      url: 'https://kiroween.devpost.com/'
 crossposted:
   linkedin: manual-with-video
+  devto: >-
+    https://dev.to/miguel_shinyenyi_e2291c8c/trust-you-can-take-back-reopening-decisions-petitions-and-graded-autonomy-3ipf
 ---
 
 ## Two ways a gate fails

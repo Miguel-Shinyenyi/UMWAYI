@@ -1,23 +1,37 @@
 ---
-title: "Yes, No or Ask me first: a rules gate that fails closed"
-date: 2026-11-13
-summary: "Before an AI helper acts, umwayi-os checks the action against rules you wrote and answers Yes, No or Ask me first. Here is why every unclear case answers Ask me first, and how the kill switch and the run lock follow the same idea."
+title: 'Yes, No or Ask me first: a rules gate that fails closed'
+date: 2026-11-13T00:00:00.000Z
+summary: >-
+  Before an AI helper acts, umwayi-os checks the action against rules you wrote
+  and answers Yes, No or Ask me first. Here is why every unclear case answers
+  Ask me first, and how the kill switch and the run lock follow the same idea.
 draft: false
 illustration: yes-no-or-ask-me-first.svg
-illustrationAlt: "Three doors in a row. The left door is green and says yes, the middle door is red and says no, the right door is ochre and says ask me first. A sheep stands at the right door. The shepherd says if unsure, ask."
+illustrationAlt: >-
+  Three doors in a row. The left door is green and says yes, the middle door is
+  red and says no, the right door is ochre and says ask me first. A sheep stands
+  at the right door. The shepherd says if unsure, ask.
 tags:
   - Engineering
   - Agentic engineering
   - Safety
   - Building in public
 linkedin:
-  hashtags: [KiroweenHackathon26, Kiroween, Kiro, AgenticEngineering, Python, BuildInPublic]
+  hashtags:
+    - KiroweenHackathon26
+    - Kiroween
+    - Kiro
+    - AgenticEngineering
+    - Python
+    - BuildInPublic
   post: docs/plans/yes-no-or-ask-me-first-linkedin-post.md
   links:
     - label: Event
-      url: https://kiroween.devpost.com/
+      url: 'https://kiroween.devpost.com/'
 crossposted:
   linkedin: manual-with-video
+  devto: >-
+    https://dev.to/miguel_shinyenyi_e2291c8c/yes-no-or-ask-me-first-a-rules-gate-that-fails-closed-4b41
 ---
 
 ## The problem with a gate that guesses

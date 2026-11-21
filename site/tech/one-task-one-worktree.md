@@ -1,23 +1,38 @@
 ---
-title: "One task, one worktree: how umwayi-os keeps parallel AI builders apart"
-date: 2026-11-13
-summary: "Several AI builders in one checkout overwrite each other. umwayi-os gives each task its own git worktree, accepts only a path it made, and runs git from a fixed list of argument lists. Here is the design, and what is built so far."
+title: 'One task, one worktree: how umwayi-os keeps parallel AI builders apart'
+date: 2026-11-13T00:00:00.000Z
+summary: >-
+  Several AI builders in one checkout overwrite each other. umwayi-os gives each
+  task its own git worktree, accepts only a path it made, and runs git from a
+  fixed list of argument lists. Here is the design, and what is built so far.
 draft: false
 illustration: one-task-one-worktree.svg
-illustrationAlt: "Three separate folders side by side, each with its own branch label, and a sheep standing in each. A fourth folder, drawn with a dashed line and labelled the owner's copy, stands apart with no sheep. The shepherd says each task gets its own folder."
+illustrationAlt: >-
+  Three separate folders side by side, each with its own branch label, and a
+  sheep standing in each. A fourth folder, drawn with a dashed line and labelled
+  the owner's copy, stands apart with no sheep. The shepherd says each task gets
+  its own folder.
 tags:
   - Engineering
   - Git
   - Agentic engineering
   - Building in public
 linkedin:
-  hashtags: [KiroweenHackathon26, Kiroween, Kiro, AgenticEngineering, Python, BuildInPublic]
+  hashtags:
+    - KiroweenHackathon26
+    - Kiroween
+    - Kiro
+    - AgenticEngineering
+    - Python
+    - BuildInPublic
   post: docs/plans/one-task-one-worktree-linkedin-post.md
   links:
     - label: Event
-      url: https://kiroween.devpost.com/
+      url: 'https://kiroween.devpost.com/'
 crossposted:
   linkedin: manual-with-video
+  devto: >-
+    https://dev.to/miguel_shinyenyi_e2291c8c/one-task-one-worktree-how-umwayi-os-keeps-parallel-ai-builders-apart-4051
 ---
 
 ## The problem with one checkout

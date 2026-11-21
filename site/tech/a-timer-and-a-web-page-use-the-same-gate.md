@@ -1,23 +1,37 @@
 ---
-title: "A timer and a web page use the same gate: scheduled runs and a local server"
-date: 2026-11-13
-summary: "umwayi-os runs jobs on a schedule through systemd and serves a page on 127.0.0.1. Neither has a rule set of its own. Both call the code a typed command calls, so the kill switch, the rules and the logbook apply every time."
+title: 'A timer and a web page use the same gate: scheduled runs and a local server'
+date: 2026-11-13T00:00:00.000Z
+summary: >-
+  umwayi-os runs jobs on a schedule through systemd and serves a page on
+  127.0.0.1. Neither has a rule set of its own. Both call the code a typed
+  command calls, so the kill switch, the rules and the logbook apply every time.
 draft: false
 illustration: a-timer-and-a-web-page-use-the-same-gate.svg
-illustrationAlt: "A clock and a browser window on the left, each with an arrow to the same gate on the right. Past the gate a single arrow leads to a logbook. A sheep stands by the clock. The shepherd says every way in meets the same gate."
+illustrationAlt: >-
+  A clock and a browser window on the left, each with an arrow to the same gate
+  on the right. Past the gate a single arrow leads to a logbook. A sheep stands
+  by the clock. The shepherd says every way in meets the same gate.
 tags:
   - Engineering
   - Security
   - Agentic engineering
   - Building in public
 linkedin:
-  hashtags: [KiroweenHackathon26, Kiroween, Kiro, AgenticEngineering, Python, BuildInPublic]
+  hashtags:
+    - KiroweenHackathon26
+    - Kiroween
+    - Kiro
+    - AgenticEngineering
+    - Python
+    - BuildInPublic
   post: docs/plans/a-timer-and-a-web-page-use-the-same-gate-linkedin-post.md
   links:
     - label: Event
-      url: https://kiroween.devpost.com/
+      url: 'https://kiroween.devpost.com/'
 crossposted:
   linkedin: manual-with-video
+  devto: >-
+    https://dev.to/miguel_shinyenyi_e2291c8c/a-timer-and-a-web-page-use-the-same-gate-scheduled-runs-and-a-local-server-2fp0
 ---
 
 ## Every new way in is a new way around

@@ -1,23 +1,38 @@
 ---
-title: "A logbook that shows when it was edited: crash safety and a hash chain"
-date: 2026-11-13
-summary: "umwayi-os writes every change into an append only logbook. It cannot stop you from editing that file, but it can tell you that someone did, and it survives a power cut half way through a write. Here is how."
+title: 'A logbook that shows when it was edited: crash safety and a hash chain'
+date: 2026-11-13T00:00:00.000Z
+summary: >-
+  umwayi-os writes every change into an append only logbook. It cannot stop you
+  from editing that file, but it can tell you that someone did, and it survives
+  a power cut half way through a write. Here is how.
 draft: false
 illustration: a-logbook-that-shows-when-it-was-edited.svg
-illustrationAlt: "An open logbook with a row of linked blocks along the bottom, each block holding the fingerprint of the one before it. One block is cracked and a sheep stands on it. The shepherd says an edit breaks the chain."
+illustrationAlt: >-
+  An open logbook with a row of linked blocks along the bottom, each block
+  holding the fingerprint of the one before it. One block is cracked and a sheep
+  stands on it. The shepherd says an edit breaks the chain.
 tags:
   - Engineering
   - Security
   - Reliability
   - Building in public
 linkedin:
-  hashtags: [KiroweenHackathon26, Kiroween, Kiro, AgenticEngineering, Python, SoftwareTesting, BuildInPublic]
+  hashtags:
+    - KiroweenHackathon26
+    - Kiroween
+    - Kiro
+    - AgenticEngineering
+    - Python
+    - SoftwareTesting
+    - BuildInPublic
   post: docs/plans/a-logbook-that-shows-when-it-was-edited-linkedin-post.md
   links:
     - label: Event
-      url: https://kiroween.devpost.com/
+      url: 'https://kiroween.devpost.com/'
 crossposted:
   linkedin: manual-with-video
+  devto: >-
+    https://dev.to/miguel_shinyenyi_e2291c8c/a-logbook-that-shows-when-it-was-edited-crash-safety-and-a-hash-chain-53g0
 ---
 
 ## What a logbook is for

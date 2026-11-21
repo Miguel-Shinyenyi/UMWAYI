@@ -1,23 +1,39 @@
 ---
-title: "Two pull requests never edit the same line: generating shared files from parts"
-date: 2026-11-13
-summary: "When several builders work in parallel, the files every pull request touches become the conflicts. umwayi-os builds its status log and its list of known limits from one small file per task, and a check proves the output matches byte for byte."
+title: 'Two pull requests never edit the same line: generating shared files from parts'
+date: 2026-11-13T00:00:00.000Z
+summary: >-
+  When several builders work in parallel, the files every pull request touches
+  become the conflicts. umwayi-os builds its status log and its list of known
+  limits from one small file per task, and a check proves the output matches
+  byte for byte.
 draft: false
 illustration: two-pull-requests-never-edit-the-same-line.svg
-illustrationAlt: "Two small part files on the left, one from each task, flowing into a single wide file labelled built log on the right through a builder box. A sheep stands on each part file. The shepherd says each task writes its own file."
+illustrationAlt: >-
+  Two small part files on the left, one from each task, flowing into a single
+  wide file labelled built log on the right through a builder box. A sheep
+  stands on each part file. The shepherd says each task writes its own file.
 tags:
   - Engineering
   - Git
   - Process
   - Building in public
 linkedin:
-  hashtags: [KiroweenHackathon26, Kiroween, Kiro, AgenticEngineering, ContinuousIntegration, Python, BuildInPublic]
+  hashtags:
+    - KiroweenHackathon26
+    - Kiroween
+    - Kiro
+    - AgenticEngineering
+    - ContinuousIntegration
+    - Python
+    - BuildInPublic
   post: docs/plans/two-pull-requests-never-edit-the-same-line-linkedin-post.md
   links:
     - label: Event
-      url: https://kiroween.devpost.com/
+      url: 'https://kiroween.devpost.com/'
 crossposted:
   linkedin: manual-with-video
+  devto: >-
+    https://dev.to/miguel_shinyenyi_e2291c8c/two-pull-requests-never-edit-the-same-line-generating-shared-files-from-parts-28i7
 ---
 
 ## The conflict every pull request creates

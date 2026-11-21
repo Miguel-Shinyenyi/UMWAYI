@@ -1,7 +1,10 @@
 ---
-title: "Stitching a Chimera: Building umwayi-os With Kiro"
-date: 2026-11-12
-summary: "umwayi-os puts one set of written rules in front of Claude Code, Kiro and OpenCode. Kiro builds it one spec at a time. Here is what exists, what broke, and where it goes next."
+title: 'Stitching a Chimera: Building umwayi-os With Kiro'
+date: 2026-11-12T00:00:00.000Z
+summary: >-
+  umwayi-os puts one set of written rules in front of Claude Code, Kiro and
+  OpenCode. Kiro builds it one spec at a time. Here is what exists, what broke,
+  and where it goes next.
 draft: false
 tags:
   - AI
@@ -10,16 +13,20 @@ tags:
   - Hackathon
 linkedin:
   post: docs/plans/kiroween-linkedin-post.md
-  hashtags: [Kiroween, AgenticEngineering]
+  hashtags:
+    - Kiroween
+    - AgenticEngineering
   mentions:
     - name: Amazon Web Services
       urn: 'urn:li:organization:2382910'
       url: 'https://www.linkedin.com/company/amazon-web-services/'
   links:
     - label: Event
-      url: https://kiroween.devpost.com/
+      url: 'https://kiroween.devpost.com/'
 crossposted:
   linkedin: manual-with-video
+  devto: >-
+    https://dev.to/miguel_shinyenyi_e2291c8c/stitching-a-chimera-building-umwayi-os-with-kiro-2een
 ---
 
 ## What I am building

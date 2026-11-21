@@ -1,23 +1,38 @@
 ---
-title: "Reserve before you spend: a budget governor for AI agents"
-date: 2026-11-13
-summary: "umwayi-os reserves a cost cap before an AI agent starts, counts unknown cost at the worst case, and settles every run in the logbook. Here is how one unit works across tools that report cost in different ways."
+title: 'Reserve before you spend: a budget governor for AI agents'
+date: 2026-11-13T00:00:00.000Z
+summary: >-
+  umwayi-os reserves a cost cap before an AI agent starts, counts unknown cost
+  at the worst case, and settles every run in the logbook. Here is how one unit
+  works across tools that report cost in different ways.
 draft: false
 illustration: reserve-before-you-spend.svg
-illustrationAlt: "A bar for the day's limit. A block labelled reserved sits at the start of the bar before a run begins, and a smaller block labelled spent replaces it after the run. A sheep stands by an empty block labelled unknown, which is drawn at full size. The shepherd says unknown counts as the worst case."
+illustrationAlt: >-
+  A bar for the day's limit. A block labelled reserved sits at the start of the
+  bar before a run begins, and a smaller block labelled spent replaces it after
+  the run. A sheep stands by an empty block labelled unknown, which is drawn at
+  full size. The shepherd says unknown counts as the worst case.
 tags:
   - Engineering
   - Cost control
   - Agentic engineering
   - Building in public
 linkedin:
-  hashtags: [KiroweenHackathon26, Kiroween, Kiro, AgenticEngineering, Python, BuildInPublic]
+  hashtags:
+    - KiroweenHackathon26
+    - Kiroween
+    - Kiro
+    - AgenticEngineering
+    - Python
+    - BuildInPublic
   post: docs/plans/reserve-before-you-spend-linkedin-post.md
   links:
     - label: Event
-      url: https://kiroween.devpost.com/
+      url: 'https://kiroween.devpost.com/'
 crossposted:
   linkedin: manual-with-video
+  devto: >-
+    https://dev.to/miguel_shinyenyi_e2291c8c/reserve-before-you-spend-a-budget-governor-for-ai-agents-bne
 ---
 
 ## The problem
