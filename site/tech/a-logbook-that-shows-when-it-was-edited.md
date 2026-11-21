@@ -16,6 +16,8 @@ linkedin:
   links:
     - label: Event
       url: https://kiroween.devpost.com/
+crossposted:
+  linkedin: manual-with-video
 ---
 
 ## What a logbook is for

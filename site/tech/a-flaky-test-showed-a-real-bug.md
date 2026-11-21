@@ -15,6 +15,14 @@ tags:
   - Testing
   - AI
   - Building in public
+linkedin:
+  hashtags:
+    - AgenticEngineering
+    - SoftwareTesting
+    - Python
+    - BuildInPublic
+crossposted:
+  linkedin: manual-with-video
 ---
 
 On Sep 16 I started a notebook. It held a journal, a list of projects and one master context file. Seven weeks later it holds rules, a queue of decisions, an archive, and a logbook of every change. I call it the Umwayi hub. It is pre-release, and one backend engineer in Nairobi builds it.
