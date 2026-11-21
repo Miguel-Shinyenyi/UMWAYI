@@ -217,3 +217,80 @@ test("fanout never overwrites an existing draft file", (t) => {
   assert.equal(r.code, 2);
   assert.equal(f.read("drafts/the-ci-wait-halved-threads.txt"), "mine");
 });
+
+// Three more video platforms: x, tiktok, substack.
+const NEW_VIDEO = { x: "x-post", tiktok: "tiktok-caption", substack: "substack-note" };
+const CLEAN = {
+  x: "A rules gate for coding agents answers yes, no or ask me first. Enforcement is cooperative, not a sandbox.",
+  tiktok: "A rules gate for coding agents, shown in one run. Enforcement is cooperative, not a sandbox. Link in my bio.",
+  substack: "A gate that answers yes, no or ask me first.\n\nIt checks each agent action. Enforcement is cooperative today and it is not a sandbox.",
+};
+
+function newVideoFixture(t, platform) {
+  const f = fixture(t);
+  const lim = (v) => ({ value: v, checked: true, url: "https://example.com/r", date: "2026-11-17" });
+  const limits = JSON.parse(f.read("limits.json"));
+  limits.platforms.x.body_max = lim(250);
+  fs.writeFileSync(path.join(f.soc, "limits.json"), JSON.stringify(limits));
+  f.queue(idea({ platform, kind: "video", mode: "browser" }));
+  assert.equal(f.cli("draft", "x1").code, 0);
+  return f;
+}
+
+test("x, tiktok and substack are video platforms in browser mode with their own template", () => {
+  for (const [p, tpl] of Object.entries(NEW_VIDEO)) {
+    assert.deepEqual(PLATFORMS[p], { kind: "video", mode: "browser", template: tpl });
+    assert.equal(templateFor(p, "video", REPO), tpl);
+  }
+});
+
+test("each new template carries the limit line, and tiktok says link in my bio", () => {
+  for (const tpl of Object.values(NEW_VIDEO)) {
+    assert.match(fs.readFileSync(path.join(TEMPLATES, `${tpl}.txt`), "utf8"), /cooperative today and it is not a sandbox/);
+  }
+  assert.match(fs.readFileSync(path.join(TEMPLATES, "tiktok-caption.txt"), "utf8"), /link in my bio/);
+});
+
+test("fanout makes one video item per new platform, in browser mode, from the right template", (t) => {
+  const f = fixture(t);
+  const r = f.cli("fanout", "site/tech/the-ci-wait-halved.md", "--platforms", "x,tiktok,substack", "--date", "2026-11-24");
+  assert.equal(r.code, 0, r.out.join("\n"));
+  const q = f.readQueue();
+  assert.deepEqual(q.map((i) => i.id), ["the-ci-wait-halved-x", "the-ci-wait-halved-tiktok", "the-ci-wait-halved-substack"]);
+  assert.deepEqual(q.map((i) => i.kind), ["video", "video", "video"]);
+  assert.deepEqual(q.map((i) => i.mode), ["browser", "browser", "browser"]);
+  assert.match(f.read("drafts/the-ci-wait-halved-x.txt"), /under 250 characters/);
+  assert.match(f.read("drafts/the-ci-wait-halved-tiktok.txt"), /link in my bio/);
+  assert.match(f.read("drafts/the-ci-wait-halved-substack.txt"), /Sentence two/);
+  for (const p of ["x", "substack"]) assert.ok(f.read(`drafts/the-ci-wait-halved-${p}.txt`).includes("miguel-site/tech/the-ci-wait-halved/"));
+});
+
+for (const platform of Object.keys(NEW_VIDEO)) {
+  test(`draft starts ${platform} from ${NEW_VIDEO[platform]}, and lint catches an em dash and a hashtag`, (t) => {
+    const f = newVideoFixture(t, platform);
+    assert.match(f.read("drafts/x1.txt"), /\[\[/);
+    assert.equal(f.cli("lint", "x1").code, 2, "a fresh template fails on its placeholders");
+    f.write("drafts/x1.txt", CLEAN[platform]);
+    const ok = f.cli("lint", "x1");
+    assert.equal(ok.code, 0, ok.out.join("\n"));
+    f.write("drafts/x1.txt", CLEAN[platform].replace("is cooperative", "— is cooperative"));
+    const dash = f.cli("lint", "x1");
+    assert.equal(dash.code, 2);
+    assert.match(dash.out.join("\n"), /em.?dash/i);
+    f.write("drafts/x1.txt", `${CLEAN[platform]} #agents`);
+    const tag = f.cli("lint", "x1");
+    assert.equal(tag.code, 2);
+    assert.match(tag.out.join("\n"), /no-hashtag/);
+  });
+}
+
+test("x is held to 250 characters: 250 passes, 251 fails with the limit named", (t) => {
+  const f = newVideoFixture(t, "x");
+  const pad = (n) => "a".repeat(n);
+  f.write("drafts/x1.txt", pad(250));
+  assert.equal(f.cli("lint", "x1").code, 0);
+  f.write("drafts/x1.txt", pad(251));
+  const r = f.cli("lint", "x1");
+  assert.equal(r.code, 2);
+  assert.match(r.out.join("\n"), /limit: .*251 characters, over the 250 limit/);
+});
