@@ -6,6 +6,8 @@ summary: >-
   OpenCode. Kiro builds it one spec at a time. Here is what exists, what broke,
   and where it goes next.
 draft: false
+illustration: stitching-a-chimera-with-kiro.svg
+illustrationAlt: "A sheep with three stitched patches labelled Kiro, Claude and OpenCode, and a shepherd who says he stitched one gate in front of them."
 tags:
   - AI
   - Kiro
