@@ -2,6 +2,8 @@
 
 Status on 2026-10-15: all stages done. The 10 existing articles are on Substack, posted with no email. The record is `scripts/substack-posted.json`.
 
+Update 2026-11-22: the 12 umwayi-os tech articles were posted to Substack by hand in Substack's editor (web only, no email), because the cookie script was not used for them. They are in the record file so the script skips them. Some posts also carry extra videos. The record is the only place these links are kept; the articles' front matter does not hold a Substack key.
+
 ## Purpose
 
 Publish the articles in `site/philosophy/` and `site/tech/` to Miguel's Substack from a script that runs on his machine. Substack has no public publishing API, so the script uses his session cookie (`substack.sid`) and the same undocumented endpoints Substack's own web editor calls. Journal excerpts (`site/journals/`) and project pages are not included.
