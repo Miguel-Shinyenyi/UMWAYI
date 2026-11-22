@@ -1146,6 +1146,32 @@ SCENES["tech/a-timer-and-a-web-page-use-the-same-gate"] = (
 )
 
 
+SCENES["tech/stitching-a-chimera-with-kiro"] = (
+    "One sheep stitched from three patches",
+    "A large sheep with three stitched patches on its wool, labelled Kiro, Claude and OpenCode. A dashed thread runs between the patches. The shepherd says he stitched one gate in front of them.",
+    f"""
+{sheep(400, 420, 2.2)}
+<g stroke="{INK}" stroke-width="3">
+<rect x="338" y="294" width="66" height="46" rx="8" fill="{OCHRE_L}"/>
+<rect x="414" y="266" width="84" height="46" rx="8" fill="#A9C29B"/>
+<rect x="418" y="328" width="96" height="44" rx="8" fill="#E7B7AE"/>
+</g>
+<g stroke="{INK}" stroke-width="2" stroke-dasharray="5 4" fill="none" stroke-linecap="round">
+<rect x="343" y="299" width="56" height="36" rx="5"/>
+<rect x="419" y="271" width="74" height="36" rx="5"/>
+<rect x="423" y="333" width="86" height="34" rx="5"/>
+</g>
+<path d="M404 312 C410 308 410 300 414 296 M456 312 C456 318 460 322 462 328" stroke="{OCHRE}" stroke-width="3" stroke-dasharray="4 4" stroke-linecap="round" fill="none"/>
+{label(371, 321, "KIRO", 12)}
+{label(456, 293, "CLAUDE", 12)}
+{label(466, 354, "OPENCODE", 11)}
+{label(400, 436, "ONE GATE IN FRONT OF THEM ALL", 13)}
+{shepherd(750, 430, 0.5, flip=True)}
+{bubble(110, 40, 420, 58, "I stitched one gate in front of them.", 22, tail="left")}
+""",
+)
+
+
 if __name__ == "__main__":
     for key, (title, desc, body) in SCENES.items():
         name = key.split("/")[1] + ".svg"
