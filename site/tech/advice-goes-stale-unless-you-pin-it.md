@@ -9,6 +9,7 @@ summary: >-
   line it came from. If that line changes, the loader stops. Here is why, and
   where the design goes next.
 draft: false
+updated: 2026-11-22
 illustration: advice-goes-stale-unless-you-pin-it.svg
 illustrationAlt: >-
   A rule card pinned to a page with a small hash tag. The page has one line
@@ -123,7 +124,7 @@ This part is not built yet, and I record it as a design. The library should work
 - A user's own rules live in a separate per-user file under the user's control.
 - If an AI notices that a user's rule works well, it can tell me, as text, with the user's consent and with how often the rule fired. I decide whether it enters the base library, and I edit the library and re-hash it myself.
 
-The data for that decision will come from the logbook, through an exporter that reads only the logbook. That exporter waits for the goal commands to exist.
+The data for that decision will come from the logbook, through an exporter that reads only the logbook. That exporter was waiting for the goal commands. They exist now, and I do not record the exporter as built.
 
 ## What I took from it
 
