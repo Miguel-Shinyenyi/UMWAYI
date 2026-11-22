@@ -82,7 +82,7 @@ My review of that pull request:
 
 ## What I do not know yet
 
-- On Nov 9 the hub had not run against a real Claude Code login or a real Kiro login. The first real runs were on Nov 15, one each for Claude Code, OpenCode and Kiro on one machine. The gate held in all three. The Claude Code run found a fault in how its cost report is read, and the fix is approved and not merged yet.
+- On Nov 9 the hub had not run against a real Claude Code login or a real Kiro login. The first real runs were on Nov 15, one each for Claude Code, OpenCode and Kiro on one machine. The gate held in all three. The Claude Code run found a fault in how its cost report is read, and the fix is merged since.
 - Cost readings from Claude Code are estimates at list price. On a subscription they are not a bill.
 - Known limits are listed in a file in the repository, and I keep adding to it.
 
