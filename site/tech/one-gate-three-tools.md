@@ -8,6 +8,7 @@ summary: >-
   translates one answer into what each tool understands, blocks on any error,
   and refuses to start an agent it cannot gate.
 draft: false
+updated: 2026-11-22
 illustration: one-gate-three-tools.svg
 illustrationAlt: >-
   One gate in the centre with three paths leading to it from the left, labelled
@@ -106,7 +107,7 @@ For Kiro with ACP, umwayi talks to `kiro-cli acp` with a small client of its own
 
 ## What does not work yet
 
-- The first real runs were on Nov 15, on one Mac: Claude Code 2.1.322, OpenCode 2.3.0 on its free route, and Kiro CLI 3.3.0. For each one the kill switch stopped the start, and with the switch off and the Yes rules in place the agent ran and answered. OpenCode and Kiro ended with exit 0. The Claude Code run answered and was then stopped with exit 2, because umwayi refused the form of its cost report. That fix is approved and not merged yet. One run per tool on one machine is a first proof, not a test suite.
+- The first real runs were on Nov 15, on one Mac: Claude Code 2.1.322, OpenCode 2.3.0 on its free route, and Kiro CLI 3.3.0. For each one the kill switch stopped the start, and with the switch off and the Yes rules in place the agent ran and answered. OpenCode and Kiro ended with exit 0. The Claude Code run answered and was then stopped with exit 2, because umwayi refused the form of its cost report. That fix is merged since. One run per tool on one machine is a first proof, not a test suite.
 - On macOS a temporary folder under `/var` is really `/private/var`. umwayi compares the hook command with the resolved root path, so a hook file written by hand with the `/var` path fails the gate check. Use the resolved path.
 - Some Kiro field names, `input_command` and `input_path`, are not confirmed by Kiro's docs. If Kiro uses other names, a Kiro call is still Ask me first, except reads.
 - Matching is plain text. A command can be written to avoid a match. Ask me first for every shell command is the real guard.
