@@ -5,6 +5,7 @@ summary: >-
   A test that failed now and then turned out to be a real bug in the logbook of
   my AI helper hub. What I found, how I fixed it, and how I checked the fix.
 draft: false
+updated: 2026-11-22
 illustration: a-flaky-test-showed-a-real-bug.svg
 illustrationAlt: >-
   A clipboard shows a test that is sometimes green and sometimes red, with a
@@ -89,8 +90,8 @@ My review of that pull request:
 
 This was the plan on Nov 9. The login checks, the hash chain on the logbook, the spending limit across all tools, the whole-system check and the security scan were all merged by Nov 10, earlier than planned. What is left as of Nov 15:
 
-- A fix for the Claude Code cost report, and a second round of real runs.
-- A page that says plainly what the system is and is not.
+- A fix for the Claude Code cost report (merged since), and a second round of real runs.
+- A page that says plainly what the system is and is not (written since, as `docs/what-it-is.md` in the repo).
 - Nov 29 to Dec 2: freeze.
 - Dec 3: the Kiroween submission.
 

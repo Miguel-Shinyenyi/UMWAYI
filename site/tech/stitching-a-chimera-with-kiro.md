@@ -6,6 +6,7 @@ summary: >-
   OpenCode. Kiro builds it one spec at a time. Here is what exists, what broke,
   and where it goes next.
 draft: false
+updated: 2026-11-22
 illustration: stitching-a-chimera-with-kiro.svg
 illustrationAlt: "A sheep with three stitched patches labelled Kiro, Claude and OpenCode, and a shepherd who says he stitched one gate in front of them."
 tags:
@@ -89,7 +90,7 @@ Some of this is built and some is a plan. I say which.
 - A local backend, so the page can send the same request the command line would. It is built and merged: it binds only to the local machine, needs a token, and goes through the same rules, logbook and kill switch. The page cannot turn the kill switch off. The page client is merged too.
 - One chat for Claude Code, Kiro and OpenCode, and a queue where an intake step asks questions until the intent is clear before it adds a task.
 - Goals that a main agent holds and tests. This is built and merged as of Nov 15: the `umwayi goal` commands, a supervisor, and one git worktree per task with a fresh session. A different agent tests each task before it moves up. It is tested with fake agents in 16 whole-system scenarios. A real goal run from start to end is still on my own list.
-- A goal map page that draws one goal as a mind map, with a small Halloween theme for Kiroween. It is merged and reads a file for now. The live read from the local backend is being built.
+- A goal map page that draws one goal as a mind map, with a small Halloween theme for Kiroween. It is merged. Since Nov 15 it also has a live read: `umwayi serve --page ui/dist/goal-map.html` serves the page, and it reads one route from the local backend when it opens and when you press Refresh.
 - Progress dashboards, so a person can see they are getting better at agentic engineering. A first read-only progress page is merged.
 
 I also want the system to carry the working rules and the practices Kiro lists for frontier engineering, such as giving agents fast feedback and enforcing limits at the boundaries. The first part is built: a checked guidance file with 31 entries, each pinned to its source line by a hash. Rules that code can check, such as a question without a recommendation or a branch behind main, are to be enforced at the gates. The rest are put into the prompts and checked by the tester. How much of the file the goal flow loads is something I still have to check.
