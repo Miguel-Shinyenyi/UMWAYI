@@ -6,6 +6,7 @@ summary: >-
   at the worst case, and settles every run in the logbook. Here is how one unit
   works across tools that report cost in different ways.
 draft: false
+updated: 2026-11-22
 illustration: reserve-before-you-spend.svg
 illustrationAlt: >-
   A bar for the day's limit. A block labelled reserved sits at the start of the
@@ -112,7 +113,7 @@ You can ask umwayi to propose limits with `umwayi budget calibrate`. It needs at
 
 ## What is not checked
 
-- The first real run found a fault. On Nov 15 I ran Claude Code 2.1.322 through `umwayi agent run` on my own machine. The agent answered, and umwayi then stopped the run with exit 2 and settled the full reservation as unknown. The cause is traced: Claude Code sends each token count as a whole number under the key `asDouble`, and the receiver accepts token counts only under `asInt`. The tests passed because the fake sends `asInt`. The fix is approved and not merged yet: accept `asDouble` for a token count only when it is a whole number from 0 to 10^12, and keep refusing everything else. I have not checked older versions of Claude Code.
+- The first real run found a fault. On Nov 15 I ran Claude Code 2.1.322 through `umwayi agent run` on my own machine. The agent answered, and umwayi then stopped the run with exit 2 and settled the full reservation as unknown. The cause is traced: Claude Code sends each token count as a whole number under the key `asDouble`, and the receiver accepts token counts only under `asInt`. The tests passed because the fake sends `asInt`. The fix is merged since: umwayi accepts `asDouble` for a token count only when it is a whole number from 0 to 10^12, and keeps refusing everything else. I have not checked older versions of Claude Code.
 - OpenCode sent no cost report in its real run either, so that run settled as unknown at the worst case, like Kiro.
 - UU is an estimate. A price change at the vendor makes a rate stale until you edit its date and value.
 - umwayi cannot read what a Kiro run uses. You declare a price per run, or your own credits per run, and umwayi trusts that number.

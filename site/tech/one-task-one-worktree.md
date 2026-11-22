@@ -6,6 +6,7 @@ summary: >-
   task its own git worktree, accepts only a path it made, and runs git from a
   fixed list of argument lists. Here is the design, and what is built so far.
 draft: false
+updated: 2026-11-22
 illustration: one-task-one-worktree.svg
 illustrationAlt: >-
   Three separate folders side by side, each with its own branch label, and a
@@ -121,7 +122,8 @@ A test reads the source and fails if a forbidden word appears in the list. An ex
 I merged the part that matters first.
 
 - Built: the worktree functions, the path check and the two `--workdir` options. The tests use real git in temporary folders.
-- Not built yet: the supervisor that starts a builder inside a worktree, and the `umwayi goal` commands that run a whole goal. These come after the Kiroween freeze.
+- Built since: the supervisor that starts a builder inside a worktree, and the `umwayi goal` commands that run a whole goal. They were tested with fake agents first. The first real goal runs by Claude Code, on Nov 15, found faults that are fixed now. For example, a program the helper ran left `__pycache__` in the worktree and the task failed with `tree_not_clean`.
+- Still not proven: I do not claim that a whole goal has run from start to end with real agents. That check is on my own list.
 
 ## What I do not know yet
 
