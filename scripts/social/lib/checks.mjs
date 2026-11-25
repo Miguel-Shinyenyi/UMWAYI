@@ -121,7 +121,8 @@ export function runChecks(ctx) {
   const hyphen = /^\s*[-+]\s/m.exec(text);
   if (hyphen) fails.push(`bullet: line ${lineOf(text, hyphen.index)} starts with a hyphen; start bullet lines with the bullet character`);
 
-  // Word lists. A missing list is "cannot decide", never a pass.
+  // Word lists. A missing claims, company or allowlist file is "cannot decide", never a pass.
+  // A missing banned-words.txt is the exception: the owner has no list, so that check is skipped.
   const lists = [
     ["banned-words", ctx.banned, "banned-words.txt"],
     ["claims", ctx.claims, "claims-blocklist.txt"],
@@ -129,7 +130,7 @@ export function runChecks(ctx) {
   ];
   for (const [name, list, file] of lists) {
     if (!list) {
-      unknowns.push(`${name}: ${file} is missing, so this check cannot run`);
+      if (name !== "banned-words") unknowns.push(`${name}: ${file} is missing, so this check cannot run`);
       continue;
     }
     for (const phrase of list) {

@@ -60,7 +60,7 @@ Exit codes: 0 pass, 2 fail with reasons, 3 cannot decide, 64 usage. Never 1.
 * No unfilled `[[placeholder]]`. A fresh template cannot pass.
 * No copy: a post that shares 70 percent or more of its words with another post on the same platform fails, so one text is not pasted everywhere.
 * No markdown: no asterisk, backtick, heading marker, link syntax or hyphen bullet. Bullet lines start with the bullet character.
-* No word from the banned list, no phrase from the claims blocklist, no company name from the private blocklist. A missing list gives exit 3. It is never read as an empty list.
+* No word from the banned list, no phrase from the claims blocklist, no company name from the private blocklist. A missing claims, company or link list gives exit 3 and is never read as an empty list. A missing `banned-words.txt` skips that one check, because the owner has no list yet.
 * Every link is https and on the allowlist.
 * The source is a published article or the owner's own repository.
 * Every media file exists and sits inside the private folder. A path that leaves the folder, by `..`, an absolute path or a symlink, is refused.

@@ -1,0 +1,5 @@
+[[Hook: one line, with a number or an example. The whole post stays under 250 characters.]]
+
+[[State the limit in a few words: enforcement is cooperative today and it is not a sandbox]]
+
+[[Link]]
