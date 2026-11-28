@@ -1,11 +1,22 @@
 ---
-title: "Will, force and giving way"
-date: 2026-11-28
-summary: "Society is quick to call a determined person evil and slow to match their effort. What I think happens when one will pushes on another, and why a gentle push, or giving way, can work better. My opinion, with the limits I can see."
+title: 'Will, force and giving way'
+date: 2026-11-28T00:00:00.000Z
+summary: >-
+  Society is quick to call a determined person evil and slow to match their
+  effort. What I think happens when one will pushes on another, and why a gentle
+  push, or giving way, can work better. My opinion, with the limits I can see.
 draft: false
-tags: ["Philosophy", "Society", "Opinion"]
+tags:
+  - Philosophy
+  - Society
+  - Opinion
 illustration: will-force-and-giving-way.svg
-illustrationAlt: "Two doors. The left one is cracked from being pushed hard and stays shut. The right one stands open after a gentle push. The shepherd says a firm goal needs a gentle push."
+illustrationAlt: >-
+  Two doors. The left one is cracked from being pushed hard and stays shut. The
+  right one stands open after a gentle push. The shepherd says a firm goal needs
+  a gentle push.
+crossposted:
+  devto: 'https://dev.to/miguel_shinyenyi_e2291c8c/will-force-and-giving-way-1974'
 ---
 
 ## What I keep noticing
