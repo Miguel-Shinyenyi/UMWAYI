@@ -1172,6 +1172,28 @@ SCENES["tech/stitching-a-chimera-with-kiro"] = (
 )
 
 
+# will-force-and-giving-way: a hard push cracks the door shut; a gentle push opens it.
+SCENES["philosophy/will-force-and-giving-way"] = (
+    "A firm goal, a gentle push",
+    "Two doors. The left one is cracked from being pushed hard and stays shut. The right one stands open after a gentle push. The shepherd says a firm goal needs a gentle push.",
+    f"""
+<g stroke="{INK}" stroke-width="3">
+<rect x="120" y="120" width="140" height="230" rx="6" fill="{OCHRE_L}"/>
+<rect x="420" y="120" width="140" height="230" rx="6" fill="#E5DFCF"/>
+<path d="M420 120 L486 142 L486 328 L420 350 Z" fill="{OCHRE_L}" stroke-linejoin="round"/>
+</g>
+<path d="M150 150 L176 205 L156 245 L192 300" stroke="{RED}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<circle cx="242" cy="236" r="7" fill="{PAPER}" stroke="{INK}" stroke-width="2.5"/>
+<circle cx="472" cy="236" r="6" fill="{PAPER}" stroke="{INK}" stroke-width="2.5"/>
+{label(190, 384, "PUSH HARD", 13)}
+{label(490, 384, "GENTLE PUSH", 13)}
+{sheep(330, 430, 0.6)}
+{shepherd(690, 430, 0.55, flip=True)}
+{bubble(110, 28, 440, 58, "A firm goal needs a gentle push.", 22, tail="left")}
+""",
+)
+
+
 if __name__ == "__main__":
     for key, (title, desc, body) in SCENES.items():
         name = key.split("/")[1] + ".svg"
